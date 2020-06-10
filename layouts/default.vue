@@ -4,18 +4,22 @@
       <my-header />
     </container>
     <nuxt />
-    <container> </container>
+    <container>
+      <my-footer />
+    </container>
   </div>
 </template>
 
 <script>
 import Container from '@/components/Container';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default {
   components: {
-    'my-header': Header,
     container: Container,
+    'my-header': Header,
+    'my-footer': Footer,
   },
 };
 </script>
