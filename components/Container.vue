@@ -13,5 +13,6 @@ export default {};
   max-width: 1440px;
   padding: 0 60px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 </style>

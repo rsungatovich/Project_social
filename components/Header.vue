@@ -27,6 +27,9 @@ export default {};
 
 .header__title {
   max-width: 295px;
+  margin: 0;
+  display: flex;
+  align-items: center;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -35,18 +38,19 @@ export default {};
 }
 
 .header__title-link {
+  margin: 0;
   color: inherit;
   text-decoration: none;
 }
 
 .header__navigation {
-  max-width: 450px;
+  width: 436px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header__link {
-  margin-right: 40px;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
