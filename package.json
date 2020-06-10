@@ -11,19 +11,23 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
     "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/pwa": "^3.0.0-0"
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "normalize.css": "^8.0.1",
+    "nuxt": "^2.0.0"
   },
   "devDependencies": {
+    "@nuxtjs/style-resources": "^1.0.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.5",
-    "prettier": "^1.19.1"
+    "node-sass": "^4.14.1",
+    "prettier": "^1.19.1",
+    "sass-loader": "^8.0.2"
   },
   "husky": {
-    "hooks" : {
-      "pre-commit" : "prettier --write './**/*.{js,vue}' && git add ."
+    "hooks": {
+      "pre-commit": "prettier --write './**/*.{js,vue}' && git add ."
     }
   }
 }
