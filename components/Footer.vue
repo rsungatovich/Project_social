@@ -110,16 +110,13 @@ export default {
 }
 
 .footer__button {
+  @extend %button-default;
   max-width: 300px;
-  padding: 0;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
-  border: none;
-  cursor: pointer;
   color: #000000;
-  background-color: transparent;
 }
 
 .footer__copyright {

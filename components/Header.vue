@@ -60,14 +60,13 @@ export default {};
 }
 
 .header__button {
+  @extend %button-default;
   height: 44px;
   padding: 0 24px;
-  border: none;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  cursor: pointer;
   color: #ffffff;
   background-color: $mainColor;
 }
