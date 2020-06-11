@@ -36,6 +36,7 @@ export default {};
 }
 
 .head-banner__button {
+  @extend %button-default;
   min-height: 60px;
   margin: 0 auto 192px;
   padding: 0 37px;
@@ -44,25 +45,21 @@ export default {};
   font-weight: 500;
   font-size: 24px;
   line-height: 36px;
-  cursor: pointer;
   border-radius: 30px;
   border: 1.5px solid #ffffff;
   color: #ffffff;
-  background-color: transparent;
 }
 
 .head-banner__button-arrow {
+  @extend %button-default;
   width: 36px;
   height: 12px;
   margin: 0 auto;
   padding: 0;
   display: block;
-  cursor: pointer;
-  border: none;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: transparent;
   background-image: url("data:image/svg+xml,%3Csvg width='38' height='15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M37 1L19 13 1 1' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E");
 }
 </style>
