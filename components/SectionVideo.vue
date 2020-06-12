@@ -1,14 +1,14 @@
 <template>
   <section class="section-video">
     <div class="section-video__box">
-      <section-title class="section-video__section-title">
+      <ui-title class="section-video__title">
         Истории людей, победивших рак, но не свои привычки
-      </section-title>
-      <section-subtitle class="section-video__section-subtitle">
+      </ui-title>
+      <ui-subtitle class="section-video__subtitle">
         Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я», фобии,
         страхи. Но это точно не рак. Рак лечится. Лучшее доказательство — люди с
         их историями.
-      </section-subtitle>
+      </ui-subtitle>
       <button class="section-video__button section-video__button_left"></button>
       <button
         class="section-video__button section-video__button_right"
@@ -43,13 +43,13 @@
 </template>
 
 <script>
-import SectionTitle from '@/components/ui/SectionTitle';
-import SectionSubtitle from '@/components/ui/SectionSubtitle';
+import Title from '@/components/ui/Title';
+import Subtitle from '@/components/ui/Subtitle';
 
 export default {
   components: {
-    'section-title': SectionTitle,
-    'section-subtitle': SectionSubtitle,
+    'ui-title': Title,
+    'ui-subtitle': Subtitle,
   },
 };
 </script>
@@ -65,11 +65,11 @@ export default {
 .section-video__box {
 }
 
-.section-video__section-title {
+.section-video__title {
   margin: 10px 0 32px;
 }
 
-.section-video__section-subtitle {
+.section-video__subtitle {
   margin-bottom: 150px;
 }
 

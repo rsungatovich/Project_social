@@ -1,11 +1,11 @@
 <template>
   <div>
     <container>
-      <my-header />
+      <the-header />
     </container>
     <nuxt />
     <container>
-      <my-footer />
+      <the-footer />
     </container>
   </div>
 </template>
@@ -18,8 +18,8 @@ import Footer from '@/components/Footer';
 export default {
   components: {
     container: Container,
-    'my-header': Header,
-    'my-footer': Footer,
+    'the-header': Header,
+    'the-footer': Footer,
   },
 };
 </script>
