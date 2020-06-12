@@ -1,5 +1,5 @@
 <template>
-  <p class="section-subtitle">
+  <p class="subtitle">
     <slot>section-subtitle</slot>
   </p>
 </template>
@@ -9,7 +9,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.section-subtitle {
+.subtitle {
   max-width: 340px;
   margin: 0;
   font-style: normal;

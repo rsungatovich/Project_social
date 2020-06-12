@@ -2,9 +2,9 @@
   <footer class="footer">
     <section class="footer__content">
       <div class="footer__box footer__box_left">
-        <section-title class="footer__section-title">
+        <ui-title class="footer__title">
           Спасибо всем, кто помог состояться этому проекту
-        </section-title>
+        </ui-title>
         <nav class="footer__navigation">
           <nuxt-link to="/" class="footer__link">Главная</nuxt-link>
           <nuxt-link to="/" class="footer__link">Истории</nuxt-link>
@@ -42,11 +42,11 @@
 </template>
 
 <script>
-import SectionTitle from '@/components/ui/SectionTitle';
+import Title from '@/components/ui/Title';
 
 export default {
   components: {
-    'section-title': SectionTitle,
+    'ui-title': Title,
   },
 };
 </script>
