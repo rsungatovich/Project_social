@@ -62,9 +62,6 @@ export default {
   font-family: 'Inter', monospace;
 }
 
-.section-video__box {
-}
-
 .section-video__title {
   margin: 10px 0 32px;
 }
