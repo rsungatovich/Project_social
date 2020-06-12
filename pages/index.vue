@@ -11,6 +11,7 @@
         рассказывайте ваши истории в инстаграм
       </tag-banner>
       <section-instagram />
+      <section-tellstory />
     </container>
   </main>
 </template>
@@ -22,6 +23,7 @@ import SectionVideo from '@/components/SectionVideo.vue';
 import TagBanner from '@/components/TagBanner.vue';
 import SectionMainstories from '@/components/SectionMainstories.vue';
 import SectionInstagram from '@/components/SectionInstagram.vue';
+import SectionTellstory from '@/components/SectionTellstory.vue';
 
 export default {
   components: {
@@ -31,6 +33,7 @@ export default {
     'tag-banner': TagBanner,
     'section-mainstories': SectionMainstories,
     'section-instagram': SectionInstagram,
+    'section-tellstory': SectionTellstory,
   },
 };
 </script>
