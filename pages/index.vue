@@ -3,6 +3,12 @@
     <head-banner />
     <container>
       <section-video />
+      <tag-banner>
+        и в отличие от рака
+      </tag-banner>
+      <tag-banner>
+        рассказывайте ваши истории в инстаграм
+      </tag-banner>
     </container>
   </main>
 </template>
@@ -11,12 +17,14 @@
 import Container from '@/components/Container.vue';
 import HeadBanner from '@/components/HeadBanner.vue';
 import SectionVideo from '@/components/SectionVideo.vue';
+import TagBanner from '@/components/TagBanner.vue';
 
 export default {
   components: {
     container: Container,
     'head-banner': HeadBanner,
     'section-video': SectionVideo,
+    'tag-banner': TagBanner,
   },
 };
 </script>
