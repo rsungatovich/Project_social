@@ -1,47 +1,52 @@
 <template>
   <section class="section-tellstory">
-    <ui-title class="section-tellstory__title">
-      Расскажите свою историю
-    </ui-title>
-    <div class="section-tellstory__container">
-      <ui-subtitle class="section-tellstory__subtitle">
-        Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
-        поделиться своей историей неизлечимых привычек, навязчивых идей и
-        болезненных привязанностей.
-      </ui-subtitle>
-      <div class="section-tellstory__box">
-        <div class="section-tellstory__controls">
-          <button
-            class="section-tellstory__button section-tellstory__button_is-active"
-          >
-            1-й вариант
-          </button>
-          <button class="section-tellstory__button">
-            2-й вариант
-          </button>
-        </div>
-        <div class="section-tellstory__inner">
-          <p class="section-tellstory__description">
-            Заполнить подробную форму прямо на сайте и мы опубликуем вашу
-            историю после проверки. Пожалуйста, заполняйте все пункты корректно,
-            если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.
-          </p>
-          <middle-button>
-            Заполнить форму
-          </middle-button>
+    <window class="section-tellstory__window">
+      <ui-title class="section-tellstory__title">
+        Расскажите свою историю
+      </ui-title>
+      <div class="section-tellstory__container">
+        <ui-subtitle class="section-tellstory__subtitle">
+          Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
+          поделиться своей историей неизлечимых привычек, навязчивых идей и
+          болезненных привязанностей.
+        </ui-subtitle>
+        <div class="section-tellstory__box">
+          <div class="section-tellstory__controls">
+            <button
+              class="section-tellstory__control section-tellstory__control_is-active"
+            >
+              1-й вариант
+            </button>
+            <button class="section-tellstory__control">
+              2-й вариант
+            </button>
+          </div>
+          <div class="section-tellstory__inner">
+            <p class="section-tellstory__description">
+              Заполнить подробную форму прямо на сайте и мы опубликуем вашу
+              историю после проверки. Пожалуйста, заполняйте все пункты
+              корректно, если вы испытаете какие-то сложности, воспользуйтесь
+              2-м вариантом.
+            </p>
+            <middle-button>
+              Заполнить форму
+            </middle-button>
+          </div>
         </div>
       </div>
-    </div>
+    </window>
   </section>
 </template>
 
 <script>
+import Window from '@/components/Window';
 import Title from '@/components/ui/Title';
 import Subtitle from '@/components/ui/Subtitle';
 import MiddleButton from '@/components/ui/MiddleButton';
 
 export default {
   components: {
+    window: Window,
     'ui-title': Title,
     'ui-subtitle': Subtitle,
     'middle-button': MiddleButton,
@@ -72,7 +77,7 @@ export default {
   margin-right: 40px;
 }
 
-.section-tellstory__button {
+.section-tellstory__control {
   @extend %button-default;
   display: block;
   font-style: normal;
@@ -82,12 +87,12 @@ export default {
   color: #a2a2a2;
 }
 
-.section-tellstory__button_is-active {
+.section-tellstory__control_is-active {
   font-weight: 500;
   color: #000000;
 }
 
-.section-tellstory__button:first-child {
+.section-tellstory__control:first-child {
   margin-bottom: 10px;
 }
 

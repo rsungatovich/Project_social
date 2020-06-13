@@ -4,7 +4,7 @@
       Описание статистики
     </p>
     <div class="progress-card__box">
-      <progress-bar class="progress-card__progress-bar" />
+      <ui-progress-bar class="progress-card__progress-bar" />
       <p class="progress-card__meta">
         10%
       </p>
@@ -20,7 +20,7 @@ import ProgressBar from '@/components/ui/ProgressBar';
 
 export default {
   components: {
-    'progress-bar': ProgressBar,
+    'ui-progress-bar': ProgressBar,
   },
 };
 </script>
@@ -34,6 +34,7 @@ export default {
   box-sizing: border-box;
   flex-direction: column;
   justify-content: space-between;
+  font-family: 'Inter', monospace;
 }
 
 .progress-card__description {

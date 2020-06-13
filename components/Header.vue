@@ -19,7 +19,7 @@ export default {};
 
 <style lang="scss" scoped>
 .header {
-  min-height: 76px;
+  padding: 18px 0;
   display: flex;
   justify-content: space-between;
   font-family: 'Inter', monospace;
