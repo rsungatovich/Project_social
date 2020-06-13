@@ -4,10 +4,10 @@
       Статистика по онкозаболеваниям
     </ui-title>
     <div class="section-statistic__container">
-      <progress-card />
-      <progress-card />
-      <progress-card />
-      <progress-card />
+      <ui-progress-card />
+      <ui-progress-card />
+      <ui-progress-card />
+      <ui-progress-card />
     </div>
   </section>
 </template>
@@ -19,7 +19,7 @@ import ProgressCard from '@/components/ui/ProgressCard';
 export default {
   components: {
     'ui-title': Title,
-    'progress-card': ProgressCard,
+    'ui-progress-card': ProgressCard,
   },
 };
 </script>
@@ -27,6 +27,7 @@ export default {
 <style lang="scss" scoped>
 .section-statistic {
   padding: 100px 0;
+  font-family: 'Inter', monospace;
 }
 
 .section-statistic__container {

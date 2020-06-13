@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="window">
     <slot>components</slot>
   </div>
 </template>
@@ -9,9 +9,9 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.container {
+.window {
   max-width: 1440px;
-  padding: 0 60px;
+  padding: 0 90px;
   margin: 0 auto;
   box-sizing: border-box;
 }

@@ -1,7 +1,7 @@
 <template>
   <main class="content">
     <head-banner />
-    <container>
+    <window>
       <section-video />
       <tag-banner>
         и в отличие от рака
@@ -13,12 +13,13 @@
       <section-instagram />
       <section-tellstory />
       <section-statistic />
-    </container>
+    </window>
+    <section-about />
   </main>
 </template>
 
 <script>
-import Container from '@/components/Container';
+import Window from '@/components/Window';
 import HeadBanner from '@/components/HeadBanner';
 import TagBanner from '@/components/TagBanner';
 import SectionVideo from '@/components/SectionVideo';
@@ -26,10 +27,11 @@ import SectionMainstories from '@/components/SectionMainstories';
 import SectionInstagram from '@/components/SectionInstagram';
 import SectionTellstory from '@/components/SectionTellstory';
 import SectionStatistic from '@/components/SectionStatistic';
+import SectionAbout from '@/components/SectionAbout';
 
 export default {
   components: {
-    container: Container,
+    window: Window,
     'head-banner': HeadBanner,
     'tag-banner': TagBanner,
     'section-video': SectionVideo,
@@ -37,6 +39,7 @@ export default {
     'section-instagram': SectionInstagram,
     'section-tellstory': SectionTellstory,
     'section-statistic': SectionStatistic,
+    'section-about': SectionAbout,
   },
 };
 </script>

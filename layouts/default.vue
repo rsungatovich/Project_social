@@ -1,23 +1,23 @@
 <template>
-  <div>
-    <container>
+  <div class="page">
+    <window>
       <the-header />
-    </container>
+    </window>
     <nuxt />
-    <container>
+    <window>
       <the-footer />
-    </container>
+    </window>
   </div>
 </template>
 
 <script>
-import Container from '@/components/Container';
+import Window from '@/components/Window';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export default {
   components: {
-    container: Container,
+    window: Window,
     'the-header': Header,
     'the-footer': Footer,
   },
