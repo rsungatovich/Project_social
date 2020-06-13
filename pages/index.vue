@@ -12,28 +12,31 @@
       </tag-banner>
       <section-instagram />
       <section-tellstory />
+      <section-statistic />
     </container>
   </main>
 </template>
 
 <script>
-import Container from '@/components/Container.vue';
-import HeadBanner from '@/components/HeadBanner.vue';
-import SectionVideo from '@/components/SectionVideo.vue';
-import TagBanner from '@/components/TagBanner.vue';
-import SectionMainstories from '@/components/SectionMainstories.vue';
-import SectionInstagram from '@/components/SectionInstagram.vue';
-import SectionTellstory from '@/components/SectionTellstory.vue';
+import Container from '@/components/Container';
+import HeadBanner from '@/components/HeadBanner';
+import TagBanner from '@/components/TagBanner';
+import SectionVideo from '@/components/SectionVideo';
+import SectionMainstories from '@/components/SectionMainstories';
+import SectionInstagram from '@/components/SectionInstagram';
+import SectionTellstory from '@/components/SectionTellstory';
+import SectionStatistic from '@/components/SectionStatistic';
 
 export default {
   components: {
     container: Container,
     'head-banner': HeadBanner,
-    'section-video': SectionVideo,
     'tag-banner': TagBanner,
+    'section-video': SectionVideo,
     'section-mainstories': SectionMainstories,
     'section-instagram': SectionInstagram,
     'section-tellstory': SectionTellstory,
+    'section-statistic': SectionStatistic,
   },
 };
 </script>
