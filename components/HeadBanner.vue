@@ -39,7 +39,7 @@ export default {};
   @extend %button-default;
   min-height: 60px;
   margin: 0 auto 192px;
-  padding: 0 37px;
+  padding: 0 45px;
   display: block;
   font-style: normal;
   font-weight: 500;
@@ -61,5 +61,92 @@ export default {};
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("data:image/svg+xml,%3Csvg width='38' height='15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M37 1L19 13 1 1' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+@media screen and (max-width: 1280px) {
+  .head-banner {
+    min-height: 620px;
+  }
+
+  .head-banner__title {
+    font-size: 78px;
+    line-height: 94px;
+  }
+
+  .head-banner__button {
+    min-height: 58px;
+    margin: 0 auto 167px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .head-banner {
+    min-height: 540px;
+  }
+
+  .head-banner__title {
+    font-size: 78px;
+    line-height: 94px;
+  }
+
+  .head-banner__button {
+    min-height: 56px;
+    margin: 0 auto 133px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .head-banner {
+    min-height: 780px;
+  }
+
+  .head-banner__title {
+    font-size: 64px;
+    line-height: 77px;
+  }
+
+  .head-banner__button {
+    margin: 0 auto 257px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .head-banner {
+    min-height: 480px;
+    padding: 0 0 30px;
+  }
+
+  .head-banner__title {
+    font-size: 48px;
+    line-height: 58px;
+  }
+
+  .head-banner__button {
+    margin: 0 auto 145px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .head-banner__title {
+    margin: 0 0 20px;
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .head-banner__button {
+    min-height: 44px;
+    margin: 0 auto 145px;
+    padding: 0 30px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+}
+
+@media screen and (max-width: 320px) {
 }
 </style>
