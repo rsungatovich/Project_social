@@ -143,10 +143,4 @@ export default {};
     line-height: 20px;
   }
 }
-
-@media screen and (max-width: 425px) {
-}
-
-@media screen and (max-width: 320px) {
-}
 </style>
