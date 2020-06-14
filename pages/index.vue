@@ -1,6 +1,6 @@
 <template>
   <main class="content">
-    <head-banner />
+    <!-- <head-banner />
     <window>
       <section-video />
       <tag-banner>
@@ -14,7 +14,7 @@
       <section-tellstory />
       <section-statistic />
     </window>
-    <section-about />
+    <section-about /> -->
   </main>
 </template>
 
