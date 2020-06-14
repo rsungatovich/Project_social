@@ -11,8 +11,26 @@ export default {};
 <style lang="scss" scoped>
 .window {
   max-width: 1440px;
-  padding: 0 90px;
+  padding: 0 60px;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 1280px) {
+  .window {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .window {
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .window {
+    padding: 0 15px;
+  }
 }
 </style>
