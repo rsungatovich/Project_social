@@ -1,7 +1,7 @@
 <template>
   <main class="content">
-    <!-- <head-banner />
-    <window>
+    <head-banner />
+    <!-- <window>
       <section-video />
       <tag-banner>
         и в отличие от рака
@@ -13,8 +13,8 @@
       <section-instagram />
       <section-tellstory />
       <section-statistic />
-    </window>
-    <section-about /> -->
+    </window> -->
+    <!-- <section-about /> -->
   </main>
 </template>
 

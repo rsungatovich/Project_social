@@ -4,9 +4,9 @@
       <the-header />
     </window> -->
     <nuxt />
-    <window>
+    <!-- <window>
       <the-footer />
-    </window>
+    </window> -->
   </div>
 </template>
 
