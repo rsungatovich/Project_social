@@ -1,9 +1,9 @@
 <template>
   <main class="content">
-    <head-banner />
-    <!-- <window>
+    <!-- <head-banner /> -->
+    <window>
       <section-video />
-      <tag-banner>
+      <!-- <tag-banner>
         и в отличие от рака
       </tag-banner>
       <section-mainstories />
@@ -12,8 +12,8 @@
       </tag-banner>
       <section-instagram />
       <section-tellstory />
-      <section-statistic />
-    </window> -->
+      <section-statistic /> -->
+    </window>
     <!-- <section-about /> -->
   </main>
 </template>
