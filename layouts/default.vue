@@ -1,12 +1,12 @@
 <template>
   <div class="page">
-    <window>
-      <the-header />
-    </window>
-    <nuxt />
     <!-- <window>
-      <the-footer />
+      <the-header />
     </window> -->
+    <nuxt />
+    <window>
+      <the-footer />
+    </window>
   </div>
 </template>
 

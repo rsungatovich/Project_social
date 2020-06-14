@@ -67,6 +67,7 @@ export default {
 }
 
 .footer__box_left {
+  min-width: 400px;
   display: flex;
   justify-content: space-between;
 }
@@ -77,7 +78,7 @@ export default {
 }
 
 .footer__navigation {
-  width: 188px;
+  width: 172px;
   display: flex;
   justify-content: space-between;
 }
@@ -100,8 +101,7 @@ export default {
 }
 
 .footer__links {
-  margin: 0;
-  margin-bottom: 44px;
+  margin: 0 0 44px;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -132,5 +132,139 @@ export default {
   line-height: 18px;
   color: #898989;
 }
-// rerequest
+
+@media screen and (max-width: 1280px) {
+  .footer {
+    padding: 50px 0;
+  }
+
+  .footer__social {
+    width: 265px;
+  }
+
+  .footer__link {
+    font-size: 16px;
+  }
+
+  .footer__links {
+    font-size: 16px;
+  }
+
+  .footer__button {
+    font-size: 16px;
+  }
+
+  .footer__copy {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .footer__social {
+    width: auto;
+  }
+
+  .footer__navigation {
+    width: 162px;
+  }
+
+  .footer__links {
+    margin: 0 0 30px;
+  }
+
+  .footer__content {
+    margin-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer__title {
+    margin: 0;
+    max-width: 280px;
+  }
+
+  .footer__box_left {
+    width: 55%;
+    min-width: unset;
+  }
+
+  .footer__box_right {
+    width: 45%;
+  }
+
+  .footer__navigation {
+    width: auto;
+    height: 63px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer__links {
+    margin: 0 0 15px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .footer__title {
+    margin: 0 0 50px;
+  }
+
+  .footer__box_left {
+    width: auto;
+    margin: 0 0 20px;
+    flex-direction: column;
+  }
+
+  .footer__box_right {
+    width: auto;
+    justify-content: unset;
+  }
+
+  .footer__content {
+    margin-bottom: 50px;
+    flex-direction: column;
+  }
+
+  .footer__navigation {
+    height: 68px;
+  }
+
+  .footer__links {
+    margin: 0 0 20px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .footer__copyright {
+    display: block;
+  }
+
+  .footer__copy:first-child {
+    margin: 0 0 10px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .footer__link {
+    font-size: 13px;
+    line-height: 15px;
+  }
+
+  .footer__links {
+    font-size: 13px;
+    line-height: 15px;
+  }
+
+  .footer__button {
+    font-size: 13px;
+    line-height: 15px;
+  }
+
+  .footer__copy {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+}
 </style>
