@@ -1,0 +1,10 @@
+// variable
+$mainColor: #613a93;
+
+//extends
+%button-default {
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}

@@ -1,5 +1,5 @@
 <template>
-  <h2 class="section-title">
+  <h2 class="title">
     <slot>section-title</slot>
   </h2>
 </template>
@@ -9,7 +9,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.section-title {
+.title {
   max-width: 375px;
   margin: 0;
   font-style: normal;
