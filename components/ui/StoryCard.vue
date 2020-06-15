@@ -6,7 +6,7 @@
       alt="Человек"
     />
     <h3 class="story-card__title">
-      Имя человек
+      Имя человека
     </h3>
     <p class="story-card__subtitle">
       Цитата человека, оставленная в разделе истории.
@@ -20,7 +20,7 @@ export default {};
 
 <style lang="scss" scoped>
 .story-card {
-  max-width: 300px;
+  width: 100%;
   cursor: pointer;
   font-family: 'Inter', monospace;
 }
@@ -45,5 +45,20 @@ export default {};
   font-size: 14px;
   line-height: 18px;
   color: #666666;
+}
+
+@media screen and (max-width: 1280px) {
+}
+
+@media screen and (max-width: 1024px) {
+  .story-card__title {
+    margin: 16px 0;
+    font-size: 18px;
+  }
+
+  .story-card__subtitle {
+    font-size: 13px;
+    line-height: 16px;
+  }
 }
 </style>
