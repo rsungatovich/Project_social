@@ -39,7 +39,6 @@ export default {};
 @media screen and (max-width: 768px) {
   .title {
     max-width: 380px;
-    margin: 0 auto;
   }
 }
 
