@@ -19,4 +19,25 @@ export default {};
   height: 100%;
   background-color: $mainColor;
 }
+
+@media screen and (max-width: 1280px) {
+  .progress-bar {
+    height: 35px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .progress-bar {
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 425px) {
+}
+
+@media screen and (max-width: 320px) {
+}
 </style>

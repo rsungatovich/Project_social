@@ -69,4 +69,47 @@ export default {
   text-align: right;
   color: #666666;
 }
+
+@media screen and (max-width: 1280px) {
+  .progress-card {
+    width: 265px;
+    height: 265px;
+    padding: 18px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .progress-card {
+    width: 208px;
+    height: 208px;
+    padding: 10px;
+  }
+
+  .progress-card__description {
+    font-size: 10px;
+    line-height: 14px;
+  }
+
+  .progress-card__progress-bar {
+    margin-bottom: 10px;
+  }
+
+  .progress-card__meta {
+    margin: 0 0 10px;
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  .progress-card__copy {
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .progress-card {
+    width: 216px;
+    height: 216px;
+  }
+}
 </style>
