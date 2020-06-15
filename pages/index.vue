@@ -10,8 +10,8 @@
       <!-- <tag-banner>
         рассказывайте ваши истории в инстаграм
       </tag-banner> -->
-      <section-instagram />
-      <!-- <section-tellstory /> -->
+      <!-- <section-instagram /> -->
+      <section-tellstory />
       <!-- <section-statistic /> -->
     </window>
     <!-- <section-about /> -->

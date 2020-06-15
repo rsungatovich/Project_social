@@ -130,7 +130,4 @@ export default {
     grid-gap: 10px;
   }
 }
-
-@media screen and (max-width: 320px) {
-}
 </style>

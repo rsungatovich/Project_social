@@ -24,19 +24,4 @@ export default {};
 .instagram-card__image {
   width: 100%;
 }
-
-@media screen and (max-width: 1280px) {
-}
-
-@media screen and (max-width: 1024px) {
-}
-
-@media screen and (max-width: 768px) {
-}
-
-@media screen and (max-width: 425px) {
-}
-
-@media screen and (max-width: 320px) {
-}
 </style>
