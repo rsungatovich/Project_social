@@ -31,13 +31,4 @@ export default {};
     height: 28px;
   }
 }
-
-@media screen and (max-width: 768px) {
-}
-
-@media screen and (max-width: 425px) {
-}
-
-@media screen and (max-width: 320px) {
-}
 </style>
