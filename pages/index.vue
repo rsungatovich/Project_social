@@ -6,13 +6,13 @@
       <!-- <tag-banner>
         и в отличие от рака
       </tag-banner> -->
-      <section-mainstories />
+      <!-- <section-mainstories /> -->
       <!-- <tag-banner>
         рассказывайте ваши истории в инстаграм
       </tag-banner> -->
-      <!-- <section-instagram />
-      <section-tellstory />
-      <section-statistic /> -->
+      <section-instagram />
+      <!-- <section-tellstory /> -->
+      <!-- <section-statistic /> -->
     </window>
     <!-- <section-about /> -->
   </main>
