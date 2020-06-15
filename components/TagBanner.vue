@@ -39,4 +39,66 @@ export default {};
   font-size: 40px;
   line-height: 46px;
 }
+
+@media screen and (max-width: 1280px) {
+  .tag-banner__title {
+    font-size: 28px;
+  }
+
+  .tag-banner__subtitle {
+    font-size: 38px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .tag-banner__title {
+    font-size: 24px;
+    line-height: 40px;
+  }
+
+  .tag-banner__subtitle {
+    font-size: 34px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tag-banner {
+    padding: 12px 0;
+  }
+
+  .tag-banner__title {
+    font-size: 22px;
+    line-height: 36px;
+  }
+
+  .tag-banner__subtitle {
+    display: block;
+    font-size: 32px;
+    line-height: 36px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .tag-banner__title {
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .tag-banner {
+    padding: 15px 0;
+  }
+
+  .tag-banner__title {
+    max-width: 220px;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .tag-banner__subtitle {
+    font-size: 22px;
+    line-height: 24px;
+  }
+}
 </style>
