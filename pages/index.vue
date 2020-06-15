@@ -3,13 +3,13 @@
     <!-- <head-banner /> -->
     <window>
       <!-- <section-video /> -->
-      <tag-banner>
+      <!-- <tag-banner>
         и в отличие от рака
-      </tag-banner>
-      <!-- <section-mainstories /> -->
-      <tag-banner>
+      </tag-banner> -->
+      <section-mainstories />
+      <!-- <tag-banner>
         рассказывайте ваши истории в инстаграм
-      </tag-banner>
+      </tag-banner> -->
       <!-- <section-instagram />
       <section-tellstory />
       <section-statistic /> -->
