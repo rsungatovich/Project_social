@@ -7,7 +7,7 @@
         </ui-title>
         <nav class="footer__navigation">
           <nuxt-link to="/" class="footer__link">Главная</nuxt-link>
-          <nuxt-link to="/" class="footer__link">Истории</nuxt-link>
+          <nuxt-link to="/stories" class="footer__link">Истории</nuxt-link>
         </nav>
       </div>
       <div class="footer__box footer__box_right">
@@ -53,7 +53,8 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-  padding: 60px 0;
+  max-width: 1440px;
+  padding: 60px 60px;
   font-family: 'Inter', monospace;
 }
 
@@ -135,7 +136,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .footer {
-    padding: 50px 0;
+    padding: 50px;
   }
 
   .footer__social {
@@ -178,6 +179,10 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .footer {
+    padding: 50px 40px;
+  }
+
   .footer__title {
     margin: 0;
     max-width: 280px;
@@ -245,6 +250,11 @@ export default {
 }
 
 @media screen and (max-width: 425px) {
+  .footer {
+    max-width: 1440px;
+    padding: 50px 15px;
+  }
+
   .footer__link {
     font-size: 13px;
     line-height: 15px;

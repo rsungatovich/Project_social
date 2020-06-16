@@ -43,7 +43,8 @@ export default {
 
 <style lang="scss" scoped>
 .section-mainstories {
-  padding: 100px 0;
+  max-width: 1440px;
+  padding: 100px 60px;
 }
 
 .section-mainstories__title {
@@ -65,7 +66,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .section-mainstories {
-    padding: 90px 0;
+    padding: 90px 50px;
   }
 
   .section-mainstories__title {
@@ -80,7 +81,7 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .section-mainstories {
-    padding: 80px 0;
+    padding: 80px 50px;
   }
 
   .section-mainstories__title {
@@ -95,6 +96,10 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .section-mainstories {
+    padding: 80px 40px;
+  }
+
   .section-mainstories__story-grid_main {
     max-width: 452px;
     margin: 0 auto;
@@ -114,7 +119,7 @@ export default {
 
 @media screen and (max-width: 425px) {
   .section-mainstories {
-    padding: 50px 0;
+    padding: 50px 15px;
   }
 
   .section-mainstories__story-grid_main {

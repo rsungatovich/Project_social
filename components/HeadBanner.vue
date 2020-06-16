@@ -15,7 +15,7 @@ export default {};
 <style lang="scss" scoped>
 .head-banner {
   min-height: 689px;
-  padding: 0 0 40px;
+  padding: 0 60px 40px;
   display: flex;
   box-sizing: border-box;
   align-items: flex-end;
@@ -65,7 +65,9 @@ export default {};
 
 @media screen and (max-width: 1280px) {
   .head-banner {
+    max-width: 1440px;
     min-height: 620px;
+    padding: 0 50px 40px;
   }
 
   .head-banner__title {
@@ -100,6 +102,7 @@ export default {};
 @media screen and (max-width: 768px) {
   .head-banner {
     min-height: 780px;
+    padding: 0 40px 40px;
   }
 
   .head-banner__title {
@@ -129,6 +132,10 @@ export default {};
 }
 
 @media screen and (max-width: 425px) {
+  .head-banner {
+    padding: 0 15px 40px;
+  }
+
   .head-banner__title {
     margin: 0 0 20px;
     font-size: 36px;

@@ -64,8 +64,9 @@ export default {
 
 <style lang="scss" scoped>
 .section-video {
+  max-width: 1440px;
   display: flex;
-  padding: 100px 0 74px;
+  padding: 100px 60px 74px;
   justify-content: space-between;
   font-family: 'Inter', monospace;
 }
@@ -199,7 +200,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .section-video {
-    padding: 90px 0 64px;
+    padding: 90px 50px 64px;
   }
 
   .section-video__inner {
@@ -220,7 +221,7 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .section-video {
-    padding: 80px 0 54px;
+    padding: 80px 50px 54px;
   }
 
   .section-video__inner {
@@ -238,7 +239,7 @@ export default {
 
 @media screen and (max-width: 768px) {
   .section-video {
-    padding: 80px 0 44px;
+    padding: 80px 40px 44px;
     display: block;
   }
 
@@ -271,7 +272,7 @@ export default {
 
 @media screen and (max-width: 530px) {
   .section-video {
-    padding: 50px 0 50px;
+    padding: 50px 40px 50px;
   }
 
   .section-video__box_right {
@@ -311,6 +312,12 @@ export default {
 
   .section-video__excerpt {
     display: none;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .section-video {
+    padding: 50px 15px 50px;
   }
 }
 </style>

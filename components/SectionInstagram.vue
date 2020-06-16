@@ -40,7 +40,8 @@ export default {
 
 <style lang="scss" scoped>
 .section-instagram {
-  padding: 100px 0;
+  max-width: 1440px;
+  padding: 100px 60px;
   display: flex;
   justify-content: space-between;
 }
@@ -63,7 +64,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .section-instagram {
-    padding: 90px 0;
+    padding: 90px 50px;
   }
 
   .section-instagram__container {
@@ -74,7 +75,7 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .section-instagram {
-    padding: 80px 0;
+    padding: 80px 50px;
   }
 
   .section-instagram__description {
@@ -88,6 +89,10 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .section-instagram {
+    padding: 80px 40px;
+  }
+
   .section-instagram {
     display: block;
   }
@@ -113,7 +118,7 @@ export default {
 
 @media screen and (max-width: 425px) {
   .section-instagram {
-    padding: 50px 0;
+    padding: 80px 15px;
   }
 
   .section-instagram__title {

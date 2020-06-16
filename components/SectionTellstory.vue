@@ -26,9 +26,9 @@
             историю после проверки. Пожалуйста, заполняйте все пункты корректно,
             если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.
           </p>
-          <middle-button class="section-tellstory__middle-button">
+          <ui-button-middle class="section-tellstory__button-middle">
             Заполнить форму
-          </middle-button>
+          </ui-button-middle>
         </div>
       </div>
     </div>
@@ -38,20 +38,21 @@
 <script>
 import Title from '@/components/ui/Title';
 import Subtitle from '@/components/ui/Subtitle';
-import MiddleButton from '@/components/ui/MiddleButton';
+import ButtonMiddle from '@/components/ui/ButtonMiddle';
 
 export default {
   components: {
     'ui-title': Title,
     'ui-subtitle': Subtitle,
-    'middle-button': MiddleButton,
+    'ui-button-middle': ButtonMiddle,
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .section-tellstory {
-  padding: 100px 0;
+  max-width: 1440px;
+  padding: 100px 60px;
   font-family: 'Inter', monospace;
 }
 
@@ -103,7 +104,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .section-tellstory {
-    padding: 90px 0;
+    padding: 90px 50px;
   }
 
   .section-tellstory__description {
@@ -123,7 +124,7 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .section-tellstory {
-    padding: 80px 0;
+    padding: 80px 50px;
   }
 
   .section-tellstory__title {
@@ -184,7 +185,7 @@ export default {
 
 @media screen and (max-width: 425px) {
   .section-tellstory {
-    padding: 50px 0;
+    padding: 50px 15px;
   }
 
   .section-tellstory__container {

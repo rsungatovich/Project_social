@@ -1,12 +1,8 @@
 <template>
   <div class="page">
-    <!-- <window>
-      <the-header />
-    </window> -->
+    <the-header class="page__header" />
     <nuxt />
-    <!-- <window>
-      <the-footer />
-    </window> -->
+    <the-footer class="page__footer" />
   </div>
 </template>
 
@@ -24,4 +20,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.page__header {
+  margin: 0 auto;
+}
+
+.page__footer {
+  margin: 0 auto;
+}
+</style>

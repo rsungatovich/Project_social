@@ -1,25 +1,22 @@
 <template>
   <main class="content">
-    <!-- <head-banner /> -->
-    <!-- <window>
-      <section-video />
-      <tag-banner>
-        и в отличие от рака
-      </tag-banner>
-      <section-mainstories />
-      <tag-banner>
-        рассказывайте ваши истории в инстаграм
-      </tag-banner>
-      <section-instagram />
-      <section-tellstory />
-      <section-statistic />
-    </window> -->
-    <section-about />
+    <head-banner class="content__head-banner" />
+    <section-video class="content__section-video" />
+    <tag-banner class="content__tag-banner">
+      и в отличие от рака
+    </tag-banner>
+    <section-mainstories class="content__section-mainstories" />
+    <tag-banner class="content__tag-banner">
+      рассказывайте ваши истории в инстаграм
+    </tag-banner>
+    <section-instagram class="content__section-instagram" />
+    <section-tellstory class="content__section-tellstory" />
+    <section-statistic class="content__section-statistic" />
+    <section-about class="content__section-about" />
   </main>
 </template>
 
 <script>
-import Window from '@/components/Window';
 import HeadBanner from '@/components/HeadBanner';
 import TagBanner from '@/components/TagBanner';
 import SectionVideo from '@/components/SectionVideo';
@@ -31,7 +28,6 @@ import SectionAbout from '@/components/SectionAbout';
 
 export default {
   components: {
-    window: Window,
     'head-banner': HeadBanner,
     'tag-banner': TagBanner,
     'section-video': SectionVideo,
@@ -47,5 +43,41 @@ export default {
 <style lang="scss" scoped>
 .content {
   font-family: 'Inter', monospace;
+}
+
+.content__head-banner {
+  margin: 0 auto;
+}
+
+.content__section-video {
+  margin: 0 auto;
+}
+
+.content__tag-banner {
+  margin: 0 auto;
+}
+
+.content__section-mainstories {
+  margin: 0 auto;
+}
+
+.content__tag-banner {
+  margin: 0 auto;
+}
+
+.content__section-instagram {
+  margin: 0 auto;
+}
+
+.content__section-tellstory {
+  margin: 0 auto;
+}
+
+.content__section-statistic {
+  margin: 0 auto;
+}
+
+.content__section-about {
+  margin: 0 auto;
 }
 </style>

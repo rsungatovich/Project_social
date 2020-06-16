@@ -1,9 +1,11 @@
 <template>
   <section class="tag-banner">
-    <h2 class="tag-banner__title">
-      <slot>banner-content</slot>
-      <span class="tag-banner__subtitle">#этонелечится</span>
-    </h2>
+    <div class="tag-banner__container">
+      <h2 class="tag-banner__title">
+        <slot>banner-content</slot>
+        <span class="tag-banner__subtitle">#этонелечится</span>
+      </h2>
+    </div>
   </section>
 </template>
 
@@ -13,12 +15,17 @@ export default {};
 
 <style lang="scss" scoped>
 .tag-banner {
+  max-width: 1440px;
+  padding: 0 60px;
+  font-family: 'Inter', monospace;
+}
+
+.tag-banner__container {
   padding: 20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: $mainColor;
-  font-family: 'Inter', monospace;
 }
 
 .tag-banner__title {
@@ -41,6 +48,10 @@ export default {};
 }
 
 @media screen and (max-width: 1280px) {
+  .tag-banner {
+    padding: 0 50px;
+  }
+
   .tag-banner__title {
     font-size: 28px;
   }
@@ -64,6 +75,10 @@ export default {};
 
 @media screen and (max-width: 768px) {
   .tag-banner {
+    padding: 0 40px;
+  }
+
+  .tag-banner__container {
     padding: 12px 0;
   }
 
@@ -87,6 +102,10 @@ export default {};
 
 @media screen and (max-width: 425px) {
   .tag-banner {
+    padding: 0 15px;
+  }
+
+  .tag-banner__container {
     padding: 15px 0;
   }
 

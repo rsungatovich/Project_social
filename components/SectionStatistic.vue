@@ -26,7 +26,8 @@ export default {
 
 <style lang="scss" scoped>
 .section-statistic {
-  padding: 100px 0;
+  max-width: 1440px;
+  padding: 100px 60px;
   font-family: 'Inter', monospace;
 }
 
@@ -43,7 +44,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .section-statistic {
-    padding: 90px 0;
+    padding: 90px 50px;
   }
 
   .section-statistic__title {
@@ -53,7 +54,7 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .section-statistic {
-    padding: 80px 0;
+    padding: 80px 50px;
   }
 
   .section-statistic__title {
@@ -66,6 +67,10 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .section-statistic {
+    padding: 80px 40px;
+  }
+
   .section-statistic__title {
     margin: 0 auto 60px;
     text-align: center;
@@ -78,7 +83,7 @@ export default {
 
 @media screen and (max-width: 425px) {
   .section-statistic {
-    padding: 50px 0;
+    padding: 50px 15px;
   }
 
   .section-statistic__title {

@@ -1,70 +1,64 @@
 <template>
   <section class="section-about">
-    <window class="section-about__window">
-      <div class="section-about__content">
-        <p class="section-about__heading">
-          #Раклечится
-        </p>
-        <ui-title class="section-about__title section-about__title_theme_main">
-          О проекте
-        </ui-title>
-        <div class="section-about__container">
-          <div class="section-about__wrapper">
-            <ui-subtitle
-              class="section-about__subtitle section-about__subtitle_theme_main"
-            >
-              Этот проект был создан благотворительным фондом Константина
-              Хабенского.
-            </ui-subtitle>
-            <button class="section-about__button">
-              Рассказать историю
-            </button>
-          </div>
-          <div class="section-about__box">
-            <div class="section-about__controls">
-              <button
-                class="section-about__control section-about__control_is-active"
-              >
-                Рак Лечится
-              </button>
-              <button class="section-about__control">
-                Фонд&nbsp;Хабенского
-              </button>
-            </div>
-            <div class="section-about__description">
-              <p class="section-about__text">
-                Есть вещи, которые не лечатся. Особенности характера, страстные
-                увлечения, привычки, ставшие частью нашего «я», фобии, которые
-                мы приобрели в детстве. Список можно продолжать до
-                бесконечности, но одна болезнь в него точно не войдет. Эта
-                болезнь — рак. Рак лечится, и лучшее доказательство — люди с их
-                неизлечимыми особенностями, которые сумели победить рак.
-              </p>
-              <p class="section-about__text">
-                Рак лечится — проект Благотворительного Фонда Константина
-                Хабенского и Leo Burnett Moscow. С его помощью мы надеемся
-                изменить отношение людей к раку и заставить каждого поверить:
-                онкологическое заболевание — это не приговор.
-              </p>
-            </div>
-            <button class="section-about__button-mob">
-              Рассказать историю
-            </button>
-          </div>
-        </div>
+    <p class="section-about__heading">
+      #Раклечится
+    </p>
+    <ui-title class="section-about__title section-about__title_theme_main">
+      О проекте
+    </ui-title>
+    <div class="section-about__container">
+      <div class="section-about__wrapper">
+        <ui-subtitle
+          class="section-about__subtitle section-about__subtitle_theme_main"
+        >
+          Этот проект был создан благотворительным фондом Константина
+          Хабенского.
+        </ui-subtitle>
+        <button class="section-about__button">
+          Рассказать историю
+        </button>
       </div>
-    </window>
+      <div class="section-about__box">
+        <div class="section-about__controls">
+          <button
+            class="section-about__control section-about__control_is-active"
+          >
+            Рак Лечится
+          </button>
+          <button class="section-about__control">
+            Фонд&nbsp;Хабенского
+          </button>
+        </div>
+        <div class="section-about__description">
+          <p class="section-about__text">
+            Есть вещи, которые не лечатся. Особенности характера, страстные
+            увлечения, привычки, ставшие частью нашего «я», фобии, которые мы
+            приобрели в детстве. Список можно продолжать до бесконечности, но
+            одна болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится,
+            и лучшее доказательство — люди с их неизлечимыми особенностями,
+            которые сумели победить рак.
+          </p>
+          <p class="section-about__text">
+            Рак лечится — проект Благотворительного Фонда Константина Хабенского
+            и Leo Burnett Moscow. С его помощью мы надеемся изменить отношение
+            людей к раку и заставить каждого поверить: онкологическое
+            заболевание — это не приговор.
+          </p>
+        </div>
+        <button class="section-about__button-mob">
+          Рассказать историю
+        </button>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
-import Window from '@/components/Window';
 import Title from '@/components/ui/Title';
 import Subtitle from '@/components/ui/Subtitle';
 
 export default {
   components: {
-    window: Window,
     'ui-title': Title,
     'ui-subtitle': Subtitle,
   },
@@ -73,7 +67,8 @@ export default {
 
 <style lang="scss" scoped>
 .section-about {
-  padding: 90px 0 100px;
+  max-width: 1440px;
+  padding: 90px 60px 100px;
   background-color: $mainColor;
   font-family: 'Inter', monospace;
 }
@@ -182,7 +177,7 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .section-about {
-    padding: 80px 0 90px;
+    padding: 80px 50px 90px;
   }
 
   .section-about__description {
@@ -211,7 +206,7 @@ export default {
 
 @media screen and (max-width: 1110px) {
   .section-about {
-    padding: 80px 0 80px;
+    padding: 80px 50px 80px;
   }
 
   .section-about__heading {
@@ -258,6 +253,10 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .section-about {
+    padding: 80px 40px 80px;
+  }
+
   .section-about__container {
     display: block;
   }
@@ -324,7 +323,7 @@ export default {
 
 @media screen and (max-width: 425px) {
   .section-about {
-    padding: 50px 0;
+    padding: 50px 15px;
   }
 
   .section-about__title {
@@ -359,8 +358,5 @@ export default {
     font-size: 12px;
     line-height: 15px;
   }
-}
-
-@media screen and (max-width: 320px) {
 }
 </style>
