@@ -12,7 +12,7 @@ export default {};
 .button-small {
   @extend %button-default;
   min-height: 52px;
-  padding: 0 80px;
+  padding: 0 89px;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -21,5 +21,20 @@ export default {};
   color: #ffffff;
   background-color: $mainColor;
   font-family: 'Inter', monospace;
+}
+
+@media screen and (max-width: 1280px) {
+  .button-small {
+    min-height: 48px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .button-small {
+    min-height: 46px;
+    padding: 0 80px;
+    font-size: 15px;
+    line-height: 18px;
+  }
 }
 </style>

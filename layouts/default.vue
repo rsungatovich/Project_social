@@ -21,6 +21,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.page {
+  min-width: 320px;
+}
+
 .page__header {
   margin: 0 auto;
 }

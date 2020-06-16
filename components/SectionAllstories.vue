@@ -60,25 +60,59 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .section-allstories {
-    padding: 100px 50px;
+    padding: 90px 50px;
+  }
+
+  .content__search {
+    margin: 50px 0 60px;
+  }
+
+  .content__pagination-buttons {
+    margin: 130px 0 0;
   }
 }
 
 @media screen and (max-width: 1024px) {
   .section-allstories {
-    padding: 100px 50px;
+    padding: 80px 50px;
+  }
+
+  .content__search {
+    margin: 40px 0 46px;
+  }
+
+  .content__pagination-buttons {
+    margin: 110px 0 0;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .section-allstories {
-    padding: 100px 40px;
+  .content__title {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .content__search {
+    margin: 50px 0 60px;
+  }
+
+  .content__pagination-buttons {
+    margin: 130px 0 0;
   }
 }
 
 @media screen and (max-width: 425px) {
   .section-allstories {
-    padding: 100px 15px;
+    padding: 50px 15px;
+  }
+
+  .content__title {
+    margin: 0;
+    text-align: unset;
+  }
+
+  .content__search {
+    margin: 40px 0 30px;
   }
 }
 </style>

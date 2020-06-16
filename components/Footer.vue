@@ -255,6 +255,10 @@ export default {
     padding: 50px 15px;
   }
 
+  .footer__navigation {
+    height: 53px;
+  }
+
   .footer__link {
     font-size: 13px;
     line-height: 15px;
@@ -273,8 +277,5 @@ export default {
   .footer__copy {
     font-size: 13px;
   }
-}
-
-@media screen and (max-width: 320px) {
 }
 </style>
