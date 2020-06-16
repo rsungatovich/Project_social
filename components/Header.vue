@@ -9,6 +9,7 @@
       <nuxt-link to="/" class="header__link">Главная</nuxt-link>
       <nuxt-link to="/" class="header__link">Истории</nuxt-link>
       <button class="header__button">Рассказать историю</button>
+      <button class="header__mobile-bar"></button>
     </nav>
   </header>
 </template>
@@ -19,7 +20,7 @@ export default {};
 
 <style lang="scss" scoped>
 .header {
-  min-height: 76px;
+  padding: 18px 0;
   display: flex;
   justify-content: space-between;
   font-family: 'Inter', monospace;
@@ -44,31 +45,83 @@ export default {};
 }
 
 .header__navigation {
-  width: 436px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .header__link {
+  margin-right: 40px;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 24px;
   color: #000000;
   text-decoration: none;
 }
 
 .header__button {
+  @extend %button-default;
   height: 44px;
   padding: 0 24px;
-  border: none;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  cursor: pointer;
   color: #ffffff;
   background-color: $mainColor;
+}
+
+.header__mobile-bar {
+  @extend %button-default;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  display: none;
+  background-size: cover;
+  background-position: center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M0 0h32v4H0zM0 14h32v4H0zM0 28h32v4H0z'/%3E%3C/svg%3E");
+}
+
+@media screen and (max-width: 1024px) {
+  .header__link {
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .header__link {
+    margin-right: 20px;
+  }
+
+  .header__button {
+    padding: 0 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header__link {
+    display: none;
+  }
+
+  .header__button {
+    display: none;
+  }
+
+  .header__mobile-bar {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header__title {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .header__mobile-bar {
+    width: 26px;
+    height: 26px;
+  }
 }
 </style>
