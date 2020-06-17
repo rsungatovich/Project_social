@@ -69,6 +69,7 @@ export default {
 .section-about {
   max-width: 1440px;
   padding: 90px 60px 100px;
+  box-sizing: border-box;
   background-color: $mainColor;
   font-family: 'Inter', monospace;
 }

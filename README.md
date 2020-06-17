@@ -1,22 +1,5 @@
-# Social
+Пересмотреть логику изменения HTML-элементов на разных разрешениях:
 
-> Social
-
-## Build Setup
-
-```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+1. Стрелки в компоненте section-video
+2. Кнопка очистить (крестик) в компоненте search
+3. Кнопки "Первая" и "Последняя" в компоненте paginationButtons

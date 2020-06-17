@@ -67,6 +67,7 @@ export default {
   max-width: 1440px;
   display: flex;
   padding: 100px 60px 74px;
+  box-sizing: border-box;
   justify-content: space-between;
   font-family: 'Inter', monospace;
 }

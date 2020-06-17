@@ -81,10 +81,6 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.pagination-buttons {
-  font-family: 'Inter', monospace;
-}
-
 .pagination-buttons__container {
   display: flex;
   justify-content: center;

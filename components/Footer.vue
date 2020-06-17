@@ -55,6 +55,7 @@ export default {
 .footer {
   max-width: 1440px;
   padding: 60px 60px;
+  box-sizing: border-box;
   font-family: 'Inter', monospace;
 }
 

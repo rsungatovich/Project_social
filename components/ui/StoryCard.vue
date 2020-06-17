@@ -22,7 +22,6 @@ export default {};
 .story-card {
   width: 100%;
   cursor: pointer;
-  font-family: 'Inter', monospace;
 }
 
 .story-card__image {

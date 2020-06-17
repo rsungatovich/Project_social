@@ -17,7 +17,6 @@ export default {};
   font-size: 32px;
   line-height: 36px;
   color: #000000;
-  font-family: 'Inter', monospace;
 }
 
 @media screen and (max-width: 1280px) {

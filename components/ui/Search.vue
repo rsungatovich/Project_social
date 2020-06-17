@@ -26,7 +26,6 @@ export default {
 .search {
   display: flex;
   position: relative;
-  font-family: 'Inter', monospace;
 }
 
 .search__input {
@@ -78,6 +77,14 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23666' stroke-width='2' d='M7.93 7.929l14.142 14.142M7.93 22.071L22.072 7.929'/%3E%3C/svg%3E");
+}
+
+.search__button-reset:focus {
+  outline: none;
+}
+
+.search__button-reset-mob:focus {
+  outline: none;
 }
 
 @media screen and (max-width: 1280px) {

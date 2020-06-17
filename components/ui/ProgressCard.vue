@@ -34,7 +34,6 @@ export default {
   box-sizing: border-box;
   flex-direction: column;
   justify-content: space-between;
-  font-family: 'Inter', monospace;
 }
 
 .progress-card__description {

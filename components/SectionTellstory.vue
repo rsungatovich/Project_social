@@ -53,6 +53,7 @@ export default {
 .section-tellstory {
   max-width: 1440px;
   padding: 100px 60px;
+  box-sizing: border-box;
   font-family: 'Inter', monospace;
 }
 
