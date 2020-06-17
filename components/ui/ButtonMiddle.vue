@@ -20,7 +20,6 @@ export default {};
   text-align: center;
   color: #ffffff;
   background-color: $mainColor;
-  font-family: 'Inter', monospace;
 }
 
 @media screen and (max-width: 1280px) {

@@ -43,6 +43,7 @@ export default {
   max-width: 1440px;
   padding: 100px 60px;
   display: flex;
+  box-sizing: border-box;
   justify-content: space-between;
 }
 

@@ -23,6 +23,7 @@ export default {};
   max-width: 1440px;
   padding: 18px 60px;
   display: flex;
+  box-sizing: border-box;
   justify-content: space-between;
   font-family: 'Inter', monospace;
 }

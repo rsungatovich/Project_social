@@ -17,6 +17,7 @@ export default {};
 .tag-banner {
   max-width: 1440px;
   padding: 0 60px;
+  box-sizing: border-box;
   font-family: 'Inter', monospace;
 }
 

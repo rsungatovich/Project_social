@@ -21,19 +21,21 @@
       <ui-story-card />
       <ui-story-card />
     </ui-story-grid>
-    <button class="section-mainstories__button">
+    <ui-button-long class="section-mainstories__button-long">
       Больше статей
-    </button>
+    </ui-button-long>
   </section>
 </template>
 
 <script>
-import StoryGrid from '@/components/ui/StoryGrid.vue';
-import StoryCard from '@/components/ui/StoryCard.vue';
+import ButtonLong from '@/components/ui/ButtonLong';
+import StoryGrid from '@/components/ui/StoryGrid';
+import StoryCard from '@/components/ui/StoryCard';
 import Title from '@/components/ui/Title';
 
 export default {
   components: {
+    'ui-button-long': ButtonLong,
     'ui-story-grid': StoryGrid,
     'ui-story-card': StoryCard,
     'ui-title': Title,
@@ -45,23 +47,16 @@ export default {
 .section-mainstories {
   max-width: 1440px;
   padding: 100px 60px;
+  box-sizing: border-box;
+  font-family: 'Inter', monospace;
 }
 
 .section-mainstories__title {
   margin: 70px 0;
 }
 
-.section-mainstories__button {
-  @extend %button-default;
-  width: 100%;
-  min-height: 82px;
+.section-mainstories__button-long {
   margin: 70px 0 0;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 20px;
-  color: #000000;
-  background-color: #fbfbfb;
 }
 
 @media screen and (max-width: 1280px) {
@@ -73,8 +68,7 @@ export default {
     margin: 60px 0;
   }
 
-  .section-mainstories__button {
-    min-height: 78px;
+  .section-mainstories__button-long {
     margin: 60px 0 0;
   }
 }
@@ -88,10 +82,8 @@ export default {
     margin: 46px 0;
   }
 
-  .section-mainstories__button {
-    min-height: 50px;
+  .section-mainstories__button-long {
     margin: 46px 0 0;
-    font-size: 13px;
   }
 }
 
@@ -112,7 +104,7 @@ export default {
     text-align: center;
   }
 
-  .section-mainstories__button {
+  .section-mainstories__button-long {
     margin: 40px 0 0;
   }
 }
