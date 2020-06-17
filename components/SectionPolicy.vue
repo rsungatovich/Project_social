@@ -274,7 +274,7 @@ export default {
 <style lang="scss" scoped>
 .policy {
   max-width: 780px;
-  padding: 130px 60px 230px;
+  padding: 130px 60px;
 }
 
 .policy__title {
@@ -289,6 +289,7 @@ export default {
 
 .policy__list {
   margin: 0;
+  padding: 0 0 0 30px;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -306,6 +307,7 @@ export default {
 }
 
 .policy__sublist {
+  padding: 0 0 0 30px;
   font-weight: normal;
 }
 
@@ -316,5 +318,91 @@ export default {
 
 .policy__item:first-child {
   margin: 0;
+}
+
+@media screen and (max-width: 1280px) {
+  .policy {
+    max-width: 700px;
+    padding: 120px 50px;
+  }
+
+  .policy__title {
+    margin: 0 0 120px;
+    font-size: 34px;
+    line-height: 44px;
+  }
+
+  .policy__list {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .policy {
+    max-width: 640px;
+    padding: 110px 50px;
+  }
+
+  .policy__title {
+    margin: 0 0 110px;
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .policy__list {
+    padding: 0 0 0 20px;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .policy__sublist {
+    padding: 0 0 0 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .policy {
+    padding: 110px 40px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .policy {
+    max-width: 640px;
+    padding: 70px 15px;
+  }
+
+  .policy__title {
+    max-width: 290px;
+    margin: 0 auto 60px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .policy__list {
+    padding: 0 0 0 15px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .policy__sublist {
+    padding: 0 0 0 15px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .policy__item {
+    margin: 20px 0 0;
+  }
+  .policy__heading {
+    margin: 20px 0 0;
+  }
+  .policy__subitem {
+    margin: 20px 0 0;
+  }
+  .policy__item:first-child {
+    margin: 0;
+  }
 }
 </style>
