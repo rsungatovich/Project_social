@@ -76,9 +76,6 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.article {
-}
-
 .article__persone {
   display: flex;
 }
@@ -138,8 +135,7 @@ export default {};
 
 .article__persone-story {
   max-width: 780px;
-  margin: 0 auto;
-  padding: 130px 0 100px;
+  margin: 130px auto 100px;
 }
 
 .article__text {
@@ -159,17 +155,126 @@ export default {};
 }
 
 @media screen and (max-width: 1280px) {
+  .article__blockquote {
+    max-width: 602px;
+    font-size: 34px;
+    line-height: 44px;
+  }
+
+  .article__persone-story {
+    max-width: 720px;
+    margin: 120px auto 90px;
+  }
+
+  .article__text {
+    margin: 0 0 40px;
+    font-size: 20px;
+    line-height: 28px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
+  .article__photoe {
+    margin: 0 40px 0 0;
+  }
+
+  .article__box {
+    padding: 20px 0;
+  }
+
+  .article__blockquote {
+    max-width: 477px;
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .article__share {
+    font-size: 16px;
+  }
+
+  .article__date {
+    font-size: 16px;
+  }
+
+  .article__persone-story {
+    max-width: 640px;
+    margin: 90px auto 70px;
+  }
+
+  .article__text {
+    margin: 0 0 40px;
+    font-size: 18px;
+    line-height: 27px;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  .article__persone {
+    position: relative;
+    flex-direction: column-reverse;
+  }
+
+  .article__photoe {
+    width: 420px;
+    margin: 60px auto 77px;
+  }
+
+  .article__box {
+    padding: 0;
+  }
+
+  .article__blockquote {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .article__copyright {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+  }
+
+  .article__persone-story {
+    margin: 120px auto 104px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .article__blockquote {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .article__share {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .article__date {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .article__photoe {
+    width: 100%;
+  }
+
+  .article__persone-story {
+    margin: 60px auto;
+  }
+
+  .article__text {
+    margin: 0 0 20px;
+    font-size: 13px;
+    line-height: 16px;
+  }
 }
 
 @media screen and (max-width: 425px) {
-}
-
-@media screen and (max-width: 320px) {
+  .article__photoe {
+    margin: 30px 0 47px;
+  }
 }
 </style>

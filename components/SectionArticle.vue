@@ -46,23 +46,50 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
+  .section-article {
+    padding: 100px 50px 90px;
+  }
+
+  .section-article__article {
+    margin: 0 0 180px;
+  }
+
   .section-article__button-long {
     margin: 60px 0 0;
   }
 }
 
 @media screen and (max-width: 1024px) {
+  .section-article {
+    padding: 100px 50px 80px;
+  }
+
+  .section-article__article {
+    margin: 0 0 144px;
+  }
+
   .section-article__button-long {
     margin: 46px 0 0;
   }
 }
 
 @media screen and (max-width: 768px) {
+  .section-article {
+    padding: 100px 40px 80px;
+  }
+
   .section-article__button-long {
     margin: 40px 0 0;
   }
 }
 
 @media screen and (max-width: 425px) {
+  .section-article {
+    padding: 50px 15px;
+  }
+
+  .section-article__article {
+    margin: 0 0 120px;
+  }
 }
 </style>
