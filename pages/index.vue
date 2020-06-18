@@ -14,8 +14,8 @@
     <section-statistic class="content__section-statistic" />
     <section-about class="content__section-about" />
     <!-- <form-questions /> -->
-    <!-- <form-thanks /> -->
-    <form-contacts />
+    <!-- <form-contacts /> -->
+    <!-- <popup-thanks /> -->
   </main>
 </template>
 
@@ -28,7 +28,7 @@ import SectionInstagram from '@/components/SectionInstagram';
 import SectionTellstory from '@/components/SectionTellstory';
 import SectionStatistic from '@/components/SectionStatistic';
 import SectionAbout from '@/components/SectionAbout';
-import FormThanks from '@/components/ui/FormThanks';
+import PopupThanks from '@/components/ui/PopupThanks';
 import FormContacts from '@/components/ui/FormContacts';
 import FormQuestions from '../components/ui/FormQuestions';
 
@@ -43,7 +43,7 @@ export default {
     'section-statistic': SectionStatistic,
     'section-about': SectionAbout,
     'form-questions': FormQuestions,
-    'form-thanks': FormThanks,
+    'popup-thanks': PopupThanks,
     'form-contacts': FormContacts,
   },
 };

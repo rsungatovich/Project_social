@@ -36,4 +36,10 @@ export default {};
     line-height: 18px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .button-small {
+    min-height: 40px;
+  }
+}
 </style>

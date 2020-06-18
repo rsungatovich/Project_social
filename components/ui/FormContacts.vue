@@ -262,7 +262,6 @@ export default {
 
   .form-contacts__button-small {
     width: 100%;
-    min-height: 40px;
     padding: 0;
   }
 

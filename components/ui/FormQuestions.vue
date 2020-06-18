@@ -163,10 +163,6 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .form-questions {
-    min-height: 440px;
-  }
-
   .form-questions__steps {
     font-size: 26px;
     line-height: 30px;
@@ -225,7 +221,6 @@ export default {
 
   .form-questions__button-small {
     width: 100%;
-    min-height: 40px;
     padding: 0;
   }
 
