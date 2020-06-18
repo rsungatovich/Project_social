@@ -21,7 +21,7 @@
             Назад
           </button>
           <ui-button-small class="form-questions__button-small">
-            Отправить
+            Далее
           </ui-button-small>
         </div>
         <p class="form-questions__policy">
@@ -50,7 +50,7 @@ export default {
 <style lang="scss" scoped>
 .form-questions {
   width: 100%;
-  height: 100%;
+  min-height: 520px;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -136,6 +136,10 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
+  .form-questions {
+    min-height: 440px;
+  }
+
   .form-questions__steps {
     font-size: 28px;
     line-height: 32px;
@@ -159,6 +163,10 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .form-questions {
+    min-height: 440px;
+  }
+
   .form-questions__steps {
     font-size: 26px;
     line-height: 30px;

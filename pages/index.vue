@@ -13,9 +13,9 @@
     <section-tellstory class="content__section-tellstory" />
     <section-statistic class="content__section-statistic" />
     <section-about class="content__section-about" />
-    <form-questions />
-    <!-- <form-thanks />
-    <form-contacts /> -->
+    <!-- <form-questions /> -->
+    <!-- <form-thanks /> -->
+    <form-contacts />
   </main>
 </template>
 

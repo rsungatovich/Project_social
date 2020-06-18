@@ -13,8 +13,9 @@ export default {};
 
 <style lang="scss" scoped>
 .popup {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  min-width: 320px;
   padding: 0 60px;
   top: 0;
   left: 0;
@@ -27,7 +28,6 @@ export default {};
 
 .popup__inner {
   width: 920px;
-  height: 600px;
   margin: auto;
   padding: 40px;
   position: relative;
@@ -49,7 +49,6 @@ export default {};
 
   .popup__inner {
     width: 800px;
-    height: 520px;
   }
 }
 
@@ -60,8 +59,7 @@ export default {};
 
   .popup__inner {
     width: 580px;
-    height: 520px;
-    padding: 15px;
+    padding: 40px;
   }
 }
 
@@ -77,10 +75,7 @@ export default {};
 
   .popup__inner {
     width: 290px;
-    height: 520px;
+    padding: 15px;
   }
-}
-
-@media screen and (max-width: 320px) {
 }
 </style>
