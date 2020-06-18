@@ -1,0 +1,86 @@
+<template>
+  <div class="popup">
+    <div class="popup__inner">
+      <img class="popup__close" src="/images/close.svg" alt="Кнопка закрыть" />
+      <slot>form</slot>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style lang="scss" scoped>
+.popup {
+  width: 100vw;
+  height: 100vh;
+  padding: 0 60px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  position: fixed;
+  box-sizing: border-box;
+  background-color: #00000070;
+}
+
+.popup__inner {
+  width: 920px;
+  height: 600px;
+  margin: auto;
+  padding: 40px;
+  position: relative;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+.popup__close {
+  top: 36px;
+  right: 36px;
+  position: absolute;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1280px) {
+  .popup {
+    padding: 0 50px;
+  }
+
+  .popup__inner {
+    width: 800px;
+    height: 520px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .popup {
+    padding: 0 40px;
+  }
+
+  .popup__inner {
+    width: 580px;
+    height: 520px;
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .popup {
+    padding: 0 15px;
+  }
+
+  .popup__close {
+    top: 13px;
+    right: 13px;
+  }
+
+  .popup__inner {
+    width: 290px;
+    height: 520px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+}
+</style>

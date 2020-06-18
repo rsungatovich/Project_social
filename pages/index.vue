@@ -13,6 +13,9 @@
     <section-tellstory class="content__section-tellstory" />
     <section-statistic class="content__section-statistic" />
     <section-about class="content__section-about" />
+    <form-questions />
+    <!-- <form-thanks />
+    <form-contacts /> -->
   </main>
 </template>
 
@@ -25,6 +28,9 @@ import SectionInstagram from '@/components/SectionInstagram';
 import SectionTellstory from '@/components/SectionTellstory';
 import SectionStatistic from '@/components/SectionStatistic';
 import SectionAbout from '@/components/SectionAbout';
+import FormThanks from '@/components/ui/FormThanks';
+import FormContacts from '@/components/ui/FormContacts';
+import FormQuestions from '../components/ui/FormQuestions';
 
 export default {
   components: {
@@ -36,6 +42,9 @@ export default {
     'section-tellstory': SectionTellstory,
     'section-statistic': SectionStatistic,
     'section-about': SectionAbout,
+    'form-questions': FormQuestions,
+    'form-thanks': FormThanks,
+    'form-contacts': FormContacts,
   },
 };
 </script>
