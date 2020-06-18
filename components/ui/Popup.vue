@@ -59,7 +59,6 @@ export default {};
 
   .popup__inner {
     width: 580px;
-    padding: 40px;
   }
 }
 

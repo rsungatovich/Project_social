@@ -273,7 +273,4 @@ export default {
     line-height: 13px;
   }
 }
-
-@media screen and (max-width: 320px) {
-}
 </style>

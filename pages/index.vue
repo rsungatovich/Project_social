@@ -16,6 +16,7 @@
     <!-- <form-questions /> -->
     <!-- <form-contacts /> -->
     <!-- <popup-thanks /> -->
+    <popup-socials />
   </main>
 </template>
 
@@ -28,9 +29,10 @@ import SectionInstagram from '@/components/SectionInstagram';
 import SectionTellstory from '@/components/SectionTellstory';
 import SectionStatistic from '@/components/SectionStatistic';
 import SectionAbout from '@/components/SectionAbout';
-import PopupThanks from '@/components/ui/PopupThanks';
 import FormContacts from '@/components/ui/FormContacts';
-import FormQuestions from '../components/ui/FormQuestions';
+import FormQuestions from '@/components/ui/FormQuestions';
+import PopupThanks from '@/components/ui/PopupThanks';
+import PopupSocials from '@/components/ui/PopupSocials';
 
 export default {
   components: {
@@ -43,8 +45,9 @@ export default {
     'section-statistic': SectionStatistic,
     'section-about': SectionAbout,
     'form-questions': FormQuestions,
-    'popup-thanks': PopupThanks,
     'form-contacts': FormContacts,
+    'popup-thanks': PopupThanks,
+    'popup-socials': PopupSocials,
   },
 };
 </script>
