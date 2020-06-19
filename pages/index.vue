@@ -16,7 +16,7 @@
     <!-- <form-questions /> -->
     <!-- <form-contacts /> -->
     <!-- <popup-thanks /> -->
-    <popup-socials />
+    <!-- <popup-socials /> -->
   </main>
 </template>
 

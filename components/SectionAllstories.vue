@@ -1,9 +1,9 @@
 <template>
   <section class="section-allstories">
-    <ui-title class="content__title">
+    <ui-title class="section-allstories__title">
       Истории неизлечимых привычек
     </ui-title>
-    <ui-search class="content__search" />
+    <ui-search class="section-allstories__search" />
     <ui-story-grid>
       <ui-story-card />
       <ui-story-card />
@@ -23,6 +23,7 @@
       <ui-story-card />
     </ui-story-grid>
     <ui-pagination-buttons class="content__pagination-buttons" />
+    <!-- <ui-no-found class="section-allstories__no-found" /> -->
   </section>
 </template>
 
@@ -32,6 +33,7 @@ import StoryGrid from '@/components/ui/StoryGrid.vue';
 import StoryCard from '@/components/ui/StoryCard.vue';
 import Search from '@/components/ui/Search.vue';
 import PaginationButtons from '@/components/ui/PaginationButtons.vue';
+import NoFound from '@/components/ui/NoFound';
 
 export default {
   components: {
@@ -40,6 +42,7 @@ export default {
     'ui-story-card': StoryCard,
     'ui-search': Search,
     'ui-pagination-buttons': PaginationButtons,
+    'ui-no-found': NoFound,
   },
 };
 </script>
@@ -52,12 +55,16 @@ export default {
   font-family: 'Inter', monospace;
 }
 
-.content__search {
+.section-allstories__search {
   margin: 60px 0 70px;
 }
 
-.content__pagination-buttons {
+.section-allstories__pagination-buttons {
   margin: 140px 0 0;
+}
+
+.section-allstories__no-found {
+  margin: 110px 0 0;
 }
 
 @media screen and (max-width: 1280px) {
@@ -65,11 +72,11 @@ export default {
     padding: 90px 50px;
   }
 
-  .content__search {
+  .section-allstories__search {
     margin: 50px 0 60px;
   }
 
-  .content__pagination-buttons {
+  .section-allstories__pagination-buttons {
     margin: 130px 0 0;
   }
 }
@@ -79,26 +86,30 @@ export default {
     padding: 80px 50px;
   }
 
-  .content__search {
+  .section-allstories__search {
     margin: 40px 0 46px;
   }
 
-  .content__pagination-buttons {
+  .section-allstories__pagination-buttons {
     margin: 110px 0 0;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .content__title {
+  .section-allstories {
+    padding: 80px 40px;
+  }
+
+  .section-allstories__title {
     margin: 0 auto;
     text-align: center;
   }
 
-  .content__search {
+  .section-allstories__search {
     margin: 50px 0 60px;
   }
 
-  .content__pagination-buttons {
+  .section-allstories__pagination-buttons {
     margin: 130px 0 0;
   }
 }
@@ -108,13 +119,17 @@ export default {
     padding: 50px 15px;
   }
 
-  .content__title {
+  .section-allstories__title {
     margin: 0;
     text-align: unset;
   }
 
-  .content__search {
+  .section-allstories__search {
     margin: 40px 0 30px;
+  }
+
+  .section-allstories__no-found {
+    margin: 60px 0 0;
   }
 }
 </style>
