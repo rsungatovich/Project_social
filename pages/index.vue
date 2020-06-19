@@ -16,7 +16,8 @@
     <!-- <form-questions /> -->
     <!-- <form-contacts /> -->
     <!-- <popup-thanks /> -->
-    <popup-socials />
+    <!-- <popup-socials /> -->
+    <!-- <ui-no-found-404 class="content__no-found-404" /> -->
   </main>
 </template>
 
@@ -33,6 +34,7 @@ import FormContacts from '@/components/ui/FormContacts';
 import FormQuestions from '@/components/ui/FormQuestions';
 import PopupThanks from '@/components/ui/PopupThanks';
 import PopupSocials from '@/components/ui/PopupSocials';
+import NoFound404 from '@/components/ui/NoFound404';
 
 export default {
   components: {
@@ -48,6 +50,7 @@ export default {
     'form-contacts': FormContacts,
     'popup-thanks': PopupThanks,
     'popup-socials': PopupSocials,
+    'ui-no-found-404': NoFound404,
   },
 };
 </script>
@@ -90,6 +93,10 @@ export default {
 }
 
 .content__section-about {
+  margin: 0 auto;
+}
+
+.content__no-found-404 {
   margin: 0 auto;
 }
 </style>
