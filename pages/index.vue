@@ -3,11 +3,11 @@
     <head-banner class="content__head-banner" />
     <section-video class="content__section-video" />
     <tag-banner class="content__tag-banner">
-      и в отличие от рака
+      {{ tagContentFirst }}
     </tag-banner>
     <section-mainstories class="content__section-mainstories" />
     <tag-banner class="content__tag-banner">
-      рассказывайте ваши истории в инстаграм
+      {{ tagContentSecond }}
     </tag-banner>
     <section-instagram class="content__section-instagram" />
     <section-tellstory class="content__section-tellstory" />
@@ -51,6 +51,13 @@ export default {
     'popup-thanks': PopupThanks,
     'popup-socials': PopupSocials,
     'ui-no-found-404': NoFound404,
+  },
+
+  data() {
+    return {
+      tagContentFirst: 'и в отличие от рака',
+      tagContentSecond: 'рассказывайте ваши истории в инстаграм',
+    };
   },
 };
 </script>

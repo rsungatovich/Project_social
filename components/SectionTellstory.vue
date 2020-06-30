@@ -1,13 +1,11 @@
 <template>
   <section class="section-tellstory">
     <ui-title class="section-tellstory__title">
-      Расскажите свою историю
+      {{ title }}
     </ui-title>
     <div class="section-tellstory__container">
       <ui-subtitle class="section-tellstory__subtitle">
-        Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
-        поделиться своей историей неизлечимых привычек, навязчивых идей и
-        болезненных привязанностей.
+        {{ subtitle }}
       </ui-subtitle>
       <div class="section-tellstory__box">
         <div class="section-tellstory__controls">
@@ -21,11 +19,7 @@
           </button>
         </div>
         <div class="section-tellstory__inner">
-          <p class="section-tellstory__description">
-            Заполнить подробную форму прямо на сайте и мы опубликуем вашу
-            историю после проверки. Пожалуйста, заполняйте все пункты корректно,
-            если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.
-          </p>
+          <p class="section-tellstory__description" v-html="description"></p>
           <ui-button-middle class="section-tellstory__button-middle">
             Заполнить форму
           </ui-button-middle>
@@ -45,6 +39,19 @@ export default {
     'ui-title': Title,
     'ui-subtitle': Subtitle,
     'ui-button-middle': ButtonMiddle,
+  },
+
+  data() {
+    return {
+      title: 'Расскажите свою историю',
+      subtitle:
+        'Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта поделиться своей историей неизлечимых привычек, навязчивых идей и болезненных привязанностей.',
+      description: `
+        <p class="section-tellstory__description">
+          Заполнить подробную форму прямо на сайте и мы опубликуем вашу историю после проверки. Пожалуйста, заполняйте все пункты корректно, если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.
+        </p>      
+      `,
+    };
   },
 };
 </script>
@@ -93,7 +100,7 @@ export default {
   margin: 0 0 10px;
 }
 
-.section-tellstory__description {
+.section-tellstory__inner /deep/ .section-tellstory__description {
   max-width: 633px;
   margin: 0 0 78px;
   font-style: normal;
@@ -108,7 +115,7 @@ export default {
     padding: 90px 50px;
   }
 
-  .section-tellstory__description {
+  .section-tellstory__inner /deep/ .section-tellstory__description {
     max-width: 570px;
   }
 }
@@ -118,7 +125,7 @@ export default {
     margin: 0 30px 0 0;
   }
 
-  .section-tellstory__description {
+  .section-tellstory__inner /deep/ .section-tellstory__description {
     max-width: 470px;
   }
 }
@@ -132,7 +139,7 @@ export default {
     margin: 0 0 20px;
   }
 
-  .section-tellstory__description {
+  .section-tellstory__inner /deep/ .section-tellstory__description {
     max-width: 447px;
     font-size: 15px;
     line-height: 19px;
@@ -170,7 +177,7 @@ export default {
     margin: 0 0 80px;
   }
 
-  .section-tellstory__description {
+  .section-tellstory__inner /deep/ .section-tellstory__description {
     max-width: 380px;
     margin: 0 0 50px;
   }
@@ -212,7 +219,7 @@ export default {
     line-height: 19px;
   }
 
-  .section-tellstory__description {
+  .section-tellstory__inner /deep/ .section-tellstory__description {
     margin: 0 0 30px;
     font-size: 13px;
     line-height: 16px;

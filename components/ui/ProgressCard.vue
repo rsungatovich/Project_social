@@ -1,15 +1,15 @@
 <template>
   <div class="progress-card">
     <p class="progress-card__description">
-      Описание статистики
+      {{ description }}
     </p>
     <div class="progress-card__box">
       <ui-progress-bar class="progress-card__progress-bar" />
       <p class="progress-card__meta">
-        10%
+        {{ metaData }}
       </p>
       <span class="progress-card__copy">
-        Иточник
+        {{ source }}
       </span>
     </div>
   </div>
@@ -21,6 +21,14 @@ import ProgressBar from '@/components/ui/ProgressBar';
 export default {
   components: {
     'ui-progress-bar': ProgressBar,
+  },
+
+  data() {
+    return {
+      description: 'Описание статистики',
+      metaData: '10%',
+      source: 'Иcточник',
+    };
   },
 };
 </script>

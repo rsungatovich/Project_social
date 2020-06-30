@@ -1,53 +1,39 @@
 <template>
   <section class="section-about">
-    <p class="section-about__heading">
-      #Раклечится
-    </p>
-    <ui-title class="section-about__title section-about__title_theme_main">
-      О проекте
-    </ui-title>
-    <div class="section-about__container">
-      <div class="section-about__wrapper">
-        <ui-subtitle
-          class="section-about__subtitle section-about__subtitle_theme_main"
-        >
-          Этот проект был создан благотворительным фондом Константина
-          Хабенского.
-        </ui-subtitle>
-        <button class="section-about__button">
-          Рассказать историю
-        </button>
-      </div>
-      <div class="section-about__box">
-        <div class="section-about__controls">
-          <button
-            class="section-about__control section-about__control_is-active"
+    <div class="section-about__content">
+      <p class="section-about__heading">
+        {{ heading }}
+      </p>
+      <ui-title class="section-about__title section-about__title_theme_main">
+        {{ title }}
+      </ui-title>
+      <div class="section-about__container">
+        <div class="section-about__wrapper">
+          <ui-subtitle
+            class="section-about__subtitle section-about__subtitle_theme_main"
           >
-            Рак Лечится
-          </button>
-          <button class="section-about__control">
-            Фонд&nbsp;Хабенского
+            {{ subtitle }}
+          </ui-subtitle>
+          <button class="section-about__button">
+            Рассказать историю
           </button>
         </div>
-        <div class="section-about__description">
-          <p class="section-about__text">
-            Есть вещи, которые не лечатся. Особенности характера, страстные
-            увлечения, привычки, ставшие частью нашего «я», фобии, которые мы
-            приобрели в детстве. Список можно продолжать до бесконечности, но
-            одна болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится,
-            и лучшее доказательство — люди с их неизлечимыми особенностями,
-            которые сумели победить рак.
-          </p>
-          <p class="section-about__text">
-            Рак лечится — проект Благотворительного Фонда Константина Хабенского
-            и Leo Burnett Moscow. С его помощью мы надеемся изменить отношение
-            людей к раку и заставить каждого поверить: онкологическое
-            заболевание — это не приговор.
-          </p>
+        <div class="section-about__box">
+          <div class="section-about__controls">
+            <button
+              class="section-about__control section-about__control_is-active"
+            >
+              Рак Лечится
+            </button>
+            <button class="section-about__control">
+              Фонд&nbsp;Хабенского
+            </button>
+          </div>
+          <div class="section-about__description" v-html="description"></div>
+          <button class="section-about__button-mob">
+            Рассказать историю
+          </button>
         </div>
-        <button class="section-about__button-mob">
-          Рассказать историю
-        </button>
       </div>
     </div>
   </section>
@@ -62,16 +48,37 @@ export default {
     'ui-title': Title,
     'ui-subtitle': Subtitle,
   },
+
+  data() {
+    return {
+      heading: '#Раклечится',
+      title: 'О проекте',
+      subtitle:
+        'Этот проект был создан благотворительным фондом Константина Хабенского.',
+      description: `
+        <p class="section-about__text">
+          Есть вещи, которые не лечатся. Особенности характера, страстные увлечения, привычки, ставшие частью нашего «я», фобии, которые мы приобрели в детстве. Список можно продолжать до бесконечности, но одна болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится, и лучшее доказательство — люди с их неизлечимыми особенностями, которые сумели победить рак.
+        </p>
+        <p class="section-about__text">
+          Рак лечится — проект Благотворительного Фонда Константина Хабенского и Leo Burnett Moscow. С его помощью мы надеемся изменить отношение людей к раку и заставить каждого поверить: онкологическое заболевание — это не приговор.
+        </p>      
+      `,
+    };
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .section-about {
-  max-width: 1440px;
-  padding: 90px 60px 100px;
-  box-sizing: border-box;
   background-color: $mainColor;
   font-family: 'Inter', monospace;
+}
+
+.section-about__content {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 90px 60px 100px;
+  box-sizing: border-box;
 }
 
 .section-about__heading {
@@ -162,9 +169,9 @@ export default {
   margin: 0 0 10px;
 }
 
-.section-about__text {
+.section-about__description /deep/ .section-about__text {
   max-width: 640px;
-  margin: 0;
+  margin: 0 0 25px;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -172,12 +179,12 @@ export default {
   color: #dedede;
 }
 
-.section-about__text:first-child {
-  margin: 0 0 25px;
+.section-about__description /deep/ .section-about__text:last-child {
+  margin: 0;
 }
 
 @media screen and (max-width: 1280px) {
-  .section-about {
+  .section-about__content {
     padding: 80px 50px 90px;
   }
 
@@ -206,7 +213,7 @@ export default {
 }
 
 @media screen and (max-width: 1110px) {
-  .section-about {
+  .section-about__content {
     padding: 80px 50px 80px;
   }
 
@@ -237,13 +244,10 @@ export default {
     max-width: 200px;
   }
 
-  .section-about__text {
+  .section-about__description /deep/ .section-about__text {
+    margin: 0 0 20px;
     font-size: 15px;
     line-height: 19px;
-  }
-
-  .section-about__text:first-child {
-    margin: 0 0 20px;
   }
 
   .section-about__button {
@@ -254,7 +258,7 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .section-about {
+  .section-about__content {
     padding: 80px 40px 80px;
   }
 
@@ -323,7 +327,7 @@ export default {
 }
 
 @media screen and (max-width: 425px) {
-  .section-about {
+  .section-about__content {
     padding: 50px 15px;
   }
 

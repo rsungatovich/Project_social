@@ -2,12 +2,10 @@
   <section class="section-video">
     <div class="section-video__box section-video__box_left">
       <ui-title class="section-video__title">
-        Истории людей, победивших рак, но не свои привычки
+        {{ title }}
       </ui-title>
       <ui-subtitle class="section-video__subtitle">
-        Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я», фобии,
-        страхи. Но это точно не рак. Рак лечится. Лучшее доказательство — люди с
-        их историями.
+        {{ subtitle }}
       </ui-subtitle>
       <button class="section-video__button section-video__button_left"></button>
       <button
@@ -58,6 +56,13 @@ export default {
   components: {
     'ui-title': Title,
     'ui-subtitle': Subtitle,
+  },
+  data() {
+    return {
+      title: 'Истории людей, победивших рак, но не свои привычки',
+      subtitle:
+        'Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я», фобии,страхи. Но это точно не рак. Рак лечится. Лучшее доказательство — люди сих историями.',
+    };
   },
 };
 </script>

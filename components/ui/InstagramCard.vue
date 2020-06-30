@@ -4,16 +4,18 @@
     target="_blank"
     href="https://www.instagram.com/raklechitsa/"
   >
-    <img
-      class="instagram-card__image"
-      src="https://pkb1.ru/assets/images/default-avatar.png"
-      alt="Человек"
-    />
+    <img class="instagram-card__image" :src="image" alt="Человек" />
   </a>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      image: 'https://volley.sport-liga.pro/images/no_image.png',
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

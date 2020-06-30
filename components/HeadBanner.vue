@@ -1,7 +1,7 @@
 <template>
   <section class="head-banner">
     <div class="head-banner__box">
-      <h2 class="head-banner__title">#Раклечится</h2>
+      <h2 class="head-banner__title">{{ title }}</h2>
       <button class="head-banner__button">Рассказать историю</button>
       <button class="head-banner__button-arrow"></button>
     </div>
@@ -9,7 +9,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      title: '#Раклечится',
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -3,7 +3,7 @@
     <section class="footer__content">
       <div class="footer__box footer__box_left">
         <ui-title class="footer__title">
-          Спасибо всем, кто помог состояться этому проекту
+          {{ title }}
         </ui-title>
         <nav class="footer__navigation">
           <nuxt-link to="/" class="footer__link">Главная</nuxt-link>
@@ -47,6 +47,12 @@ import Title from '@/components/ui/Title';
 export default {
   components: {
     'ui-title': Title,
+  },
+
+  data() {
+    return {
+      title: 'Спасибо всем, кто помог состояться этому проекту',
+    };
   },
 };
 </script>
@@ -95,7 +101,7 @@ export default {
 }
 
 .footer__link_underline {
-  border-bottom: 1.5px solid #000000;
+  border-bottom: 1px solid #000000;
 }
 
 .footer__social {

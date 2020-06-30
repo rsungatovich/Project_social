@@ -1,26 +1,17 @@
 <template>
   <section class="section-allstories">
     <ui-title class="section-allstories__title">
-      Истории неизлечимых привычек
+      {{ title }}
     </ui-title>
     <ui-search class="section-allstories__search" />
-    <ui-story-grid>
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
+    <ui-story-grid class="section-allstories__story-grid">
+      <ui-story-card
+        v-for="card of showPersons"
+        :key="card.id"
+        :photoe="card.photoe"
+        :name="card.name"
+        :quote="card.quote"
+      />
     </ui-story-grid>
     <ui-pagination-buttons class="content__pagination-buttons" />
     <!-- <ui-no-found class="section-allstories__no-found" /> -->
@@ -44,6 +35,108 @@ export default {
     'ui-pagination-buttons': PaginationButtons,
     'ui-no-found': NoFound,
   },
+
+  computed: {
+    showPersons() {
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          return this.cards.filter((card, index) => index < 16);
+        } else if (window.innerWidth <= 768) {
+          return this.cards.filter((card, index) => index < 12);
+        } else if (window.innerWidth <= 425) {
+          return this.cards.filter((card, index) => index < 9);
+        }
+      }
+    },
+  },
+
+  data() {
+    return {
+      title: 'Истории неизлечимых привычек',
+      cards: [
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 1',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 2',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 3',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 4',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 5',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 6',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 7',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 8',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 9',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 10',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 11',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 12',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 13',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 14',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 15',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 16',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+      ],
+    };
+  },
 };
 </script>
 
@@ -59,8 +152,8 @@ export default {
   margin: 60px 0 70px;
 }
 
-.section-allstories__pagination-buttons {
-  margin: 140px 0 0;
+.section-allstories__story-grid {
+  margin: 0 0 140px;
 }
 
 .section-allstories__no-found {
@@ -76,8 +169,8 @@ export default {
     margin: 50px 0 60px;
   }
 
-  .section-allstories__pagination-buttons {
-    margin: 130px 0 0;
+  .section-allstories__story-grid {
+    margin: 0 0 130px;
   }
 }
 
@@ -90,8 +183,8 @@ export default {
     margin: 40px 0 46px;
   }
 
-  .section-allstories__pagination-buttons {
-    margin: 110px 0 0;
+  .section-allstories__story-grid {
+    margin: 0 0 110px;
   }
 }
 
@@ -108,10 +201,6 @@ export default {
   .section-allstories__search {
     margin: 50px 0 60px;
   }
-
-  .section-allstories__pagination-buttons {
-    margin: 130px 0 0;
-  }
 }
 
 @media screen and (max-width: 425px) {
@@ -126,6 +215,10 @@ export default {
 
   .section-allstories__search {
     margin: 40px 0 30px;
+  }
+
+  .section-allstories__story-grid {
+    margin: 0 0 50px;
   }
 
   .section-allstories__no-found {

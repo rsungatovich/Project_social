@@ -1,13 +1,38 @@
 <template>
   <header class="header">
-    <h1 class="header__title">
+    <h1 class="header__title" v-if="$route.path !== '/'">
       <nuxt-link to="/" class="header__title-link">
-        Проект Благотворительного Фонда Константина Хабенского
+        {{ title }}
       </nuxt-link>
     </h1>
+    <h1 class="header__title" v-else>
+      {{ title }}
+    </h1>
     <nav class="header__navigation">
-      <nuxt-link to="/" class="header__link">Главная</nuxt-link>
-      <nuxt-link to="/stories" class="header__link">Истории</nuxt-link>
+      <nuxt-link
+        to="/"
+        class="header__link is-active"
+        v-if="$route.path === '/'"
+      >
+        Главная
+      </nuxt-link>
+      <nuxt-link to="/" class="header__link" v-if="$route.path !== '/'">
+        Главная
+      </nuxt-link>
+      <nuxt-link
+        to="/stories"
+        class="header__link is-active"
+        v-if="$route.path === '/stories'"
+      >
+        Истории
+      </nuxt-link>
+      <nuxt-link
+        to="/stories"
+        class="header__link"
+        v-if="$route.path !== '/stories'"
+      >
+        Истории
+      </nuxt-link>
       <button class="header__button">Рассказать историю</button>
       <button class="header__mobile-bar"></button>
     </nav>
@@ -15,7 +40,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      title: 'Проект Благотворительного Фонда Константина Хабенского',
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -60,6 +91,10 @@ export default {};
   line-height: 24px;
   color: #000000;
   text-decoration: none;
+}
+
+.is-active {
+  border-bottom: 1px solid black;
 }
 
 .header__button {
