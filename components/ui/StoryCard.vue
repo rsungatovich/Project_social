@@ -1,10 +1,6 @@
 <template>
   <div class="story-card">
-    <img
-      class="story-card__image"
-      src="https://volley.sport-liga.pro/images/no_image.png"
-      alt="Человек"
-    />
+    <img class="story-card__image" :src="photoe" alt="Человек" />
     <h3 class="story-card__title">
       {{ name }}
     </h3>
@@ -16,12 +12,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      name: 'Имя человека',
-      quote: 'Цитата человека, оставленная в разделе истории.',
-    };
-  },
+  props: ['photoe', 'name', 'quote'],
 };
 </script>
 

@@ -101,7 +101,7 @@ export default {
 }
 
 .footer__link_underline {
-  border-bottom: 1.5px solid #000000;
+  border-bottom: 1px solid #000000;
 }
 
 .footer__social {

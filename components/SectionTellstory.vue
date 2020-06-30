@@ -19,9 +19,7 @@
           </button>
         </div>
         <div class="section-tellstory__inner">
-          <p class="section-tellstory__description">
-            {{ description }}
-          </p>
+          <p class="section-tellstory__description" v-html="description"></p>
           <ui-button-middle class="section-tellstory__button-middle">
             Заполнить форму
           </ui-button-middle>
@@ -48,8 +46,11 @@ export default {
       title: 'Расскажите свою историю',
       subtitle:
         'Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта поделиться своей историей неизлечимых привычек, навязчивых идей и болезненных привязанностей.',
-      description:
-        'Заполнить подробную форму прямо на сайте и мы опубликуем вашу историю после проверки. Пожалуйста, заполняйте все пункты корректно, если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.',
+      description: `
+        <p class="section-tellstory__description">
+          Заполнить подробную форму прямо на сайте и мы опубликуем вашу историю после проверки. Пожалуйста, заполняйте все пункты корректно, если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.
+        </p>      
+      `,
     };
   },
 };
@@ -99,7 +100,7 @@ export default {
   margin: 0 0 10px;
 }
 
-.section-tellstory__description {
+.section-tellstory__inner /deep/ .section-tellstory__description {
   max-width: 633px;
   margin: 0 0 78px;
   font-style: normal;
@@ -114,7 +115,7 @@ export default {
     padding: 90px 50px;
   }
 
-  .section-tellstory__description {
+  .section-tellstory__inner /deep/ .section-tellstory__description {
     max-width: 570px;
   }
 }
@@ -124,7 +125,7 @@ export default {
     margin: 0 30px 0 0;
   }
 
-  .section-tellstory__description {
+  .section-tellstory__inner /deep/ .section-tellstory__description {
     max-width: 470px;
   }
 }
@@ -138,7 +139,7 @@ export default {
     margin: 0 0 20px;
   }
 
-  .section-tellstory__description {
+  .section-tellstory__inner /deep/ .section-tellstory__description {
     max-width: 447px;
     font-size: 15px;
     line-height: 19px;
@@ -176,7 +177,7 @@ export default {
     margin: 0 0 80px;
   }
 
-  .section-tellstory__description {
+  .section-tellstory__inner /deep/ .section-tellstory__description {
     max-width: 380px;
     margin: 0 0 50px;
   }
@@ -218,7 +219,7 @@ export default {
     line-height: 19px;
   }
 
-  .section-tellstory__description {
+  .section-tellstory__inner /deep/ .section-tellstory__description {
     margin: 0 0 30px;
     font-size: 13px;
     line-height: 16px;

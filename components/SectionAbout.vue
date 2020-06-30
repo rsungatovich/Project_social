@@ -29,14 +29,7 @@
               Фонд&nbsp;Хабенского
             </button>
           </div>
-          <div class="section-about__description">
-            <p class="section-about__text">
-              {{ descriptionFirst }}
-            </p>
-            <p class="section-about__text">
-              {{ descriptionSecond }}
-            </p>
-          </div>
+          <div class="section-about__description" v-html="description"></div>
           <button class="section-about__button-mob">
             Рассказать историю
           </button>
@@ -62,10 +55,14 @@ export default {
       title: 'О проекте',
       subtitle:
         'Этот проект был создан благотворительным фондом Константина Хабенского.',
-      descriptionFirst:
-        'Есть вещи, которые не лечатся. Особенности характера, страстные увлечения, привычки, ставшие частью нашего «я», фобии, которые мы приобрели в детстве. Список можно продолжать до бесконечности, но одна болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится, и лучшее доказательство — люди с их неизлечимыми особенностями, которые сумели победить рак.',
-      descriptionSecond:
-        'Рак лечится — проект Благотворительного Фонда Константина Хабенского и Leo Burnett Moscow. С его помощью мы надеемся изменить отношение людей к раку и заставить каждого поверить: онкологическое заболевание — это не приговор.',
+      description: `
+        <p class="section-about__text">
+          Есть вещи, которые не лечатся. Особенности характера, страстные увлечения, привычки, ставшие частью нашего «я», фобии, которые мы приобрели в детстве. Список можно продолжать до бесконечности, но одна болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится, и лучшее доказательство — люди с их неизлечимыми особенностями, которые сумели победить рак.
+        </p>
+        <p class="section-about__text">
+          Рак лечится — проект Благотворительного Фонда Константина Хабенского и Leo Burnett Moscow. С его помощью мы надеемся изменить отношение людей к раку и заставить каждого поверить: онкологическое заболевание — это не приговор.
+        </p>      
+      `,
     };
   },
 };
@@ -172,9 +169,9 @@ export default {
   margin: 0 0 10px;
 }
 
-.section-about__text {
+.section-about__description /deep/ .section-about__text {
   max-width: 640px;
-  margin: 0;
+  margin: 0 0 25px;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -182,8 +179,8 @@ export default {
   color: #dedede;
 }
 
-.section-about__text:first-child {
-  margin: 0 0 25px;
+.section-about__description /deep/ .section-about__text:last-child {
+  margin: 0;
 }
 
 @media screen and (max-width: 1280px) {
@@ -247,13 +244,10 @@ export default {
     max-width: 200px;
   }
 
-  .section-about__text {
+  .section-about__description /deep/ .section-about__text {
+    margin: 0 0 20px;
     font-size: 15px;
     line-height: 19px;
-  }
-
-  .section-about__text:first-child {
-    margin: 0 0 20px;
   }
 
   .section-about__button {
