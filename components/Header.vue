@@ -2,7 +2,7 @@
   <header class="header">
     <h1 class="header__title">
       <nuxt-link to="/" class="header__title-link">
-        Проект Благотворительного Фонда Константина Хабенского
+        {{ title }}
       </nuxt-link>
     </h1>
     <nav class="header__navigation">
@@ -15,7 +15,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      title: 'Проект Благотворительного Фонда Константина Хабенского',
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

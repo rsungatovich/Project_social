@@ -2,13 +2,10 @@
   <section class="section-instagram">
     <div class="section-instagram__description">
       <ui-title class="section-instagram__title">
-        Инстаграм
+        {{ title }}
       </ui-title>
       <ui-subtitle class="section-instagram__subtitle">
-        Два раза в неделю мы просматриваем все посты по хештегу #этонелечится.
-        Все истории, где нет нецензурных выражений и запрещенного контента
-        попадают сюда. Следите за правильным написанием хештега, чтобы мы не
-        пропустили вашу историю.
+        {{ subtitle }}
       </ui-subtitle>
     </div>
     <div class="section-instagram__container">
@@ -34,6 +31,14 @@ export default {
     'ui-title': Title,
     'ui-subtitle': Subtitle,
     'ui-instagram-card': InstagramCard,
+  },
+
+  data() {
+    return {
+      title: 'Инстаграм',
+      subtitle:
+        'Два раза в неделю мы просматриваем все посты по хештегу #этонелечится. Все истории, где нет нецензурных выражений и запрещенного контента попадают сюда. Следите за правильным написанием хештега, чтобы мы не пропустили вашу историю.',
+    };
   },
 };
 </script>

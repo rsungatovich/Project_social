@@ -3,22 +3,20 @@
     <div class="article__persone">
       <img
         class="article__photoe"
-        src="https://pkb1.ru/assets/images/default-avatar.png"
+        src="https://volley.sport-liga.pro/images/no_image.png"
         alt="Человек"
       />
       <div class="article__box">
         <p class="article__blockquote">
-          <span class="article__author">
-            Александр Тарханов:
-          </span>
-          «Я не могу победить свою пунктуальность в отличии от рака»
+          <span class="article__author"> {{ author }}: </span>
+          {{ quote }}
         </p>
         <div class="article__copyright">
           <button class="article__share">
             Поделитесь ↗
           </button>
           <time class="article__date">
-            20 апреля 2018
+            {{ date }}
           </time>
         </div>
       </div>
@@ -72,7 +70,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      author: 'Александр Тарханов',
+      quote: '«Я не могу победить свою пунктуальность в отличии от рака»',
+      date: '20 апреля 2018',
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

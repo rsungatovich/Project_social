@@ -2,20 +2,27 @@
   <div class="story-card">
     <img
       class="story-card__image"
-      src="https://pkb1.ru/assets/images/default-avatar.png"
+      src="https://volley.sport-liga.pro/images/no_image.png"
       alt="Человек"
     />
     <h3 class="story-card__title">
-      Имя человека
+      {{ name }}
     </h3>
     <p class="story-card__subtitle">
-      Цитата человека, оставленная в разделе истории.
+      {{ quote }}
     </p>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      name: 'Имя человека',
+      quote: 'Цитата человека, оставленная в разделе истории.',
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

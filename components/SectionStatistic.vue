@@ -1,7 +1,7 @@
 <template>
   <section class="section-statistic">
     <ui-title class="section-statistic__title">
-      Статистика по онкозаболеваниям
+      {{ title }}
     </ui-title>
     <div class="section-statistic__container">
       <ui-progress-card />
@@ -20,6 +20,12 @@ export default {
   components: {
     'ui-title': Title,
     'ui-progress-card': ProgressCard,
+  },
+
+  data() {
+    return {
+      title: 'Статистика по онкозаболеваниям',
+    };
   },
 };
 </script>

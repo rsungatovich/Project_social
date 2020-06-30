@@ -9,7 +9,7 @@
       <ui-story-card />
     </ui-story-grid>
     <ui-title class="section-mainstories__title">
-      Истории неизлечимых привычек
+      {{ title }}
     </ui-title>
     <ui-story-grid>
       <ui-story-card />
@@ -39,6 +39,12 @@ export default {
     'ui-story-grid': StoryGrid,
     'ui-story-card': StoryCard,
     'ui-title': Title,
+  },
+
+  data() {
+    return {
+      title: 'Истории неизлечимых привычек',
+    };
   },
 };
 </script>

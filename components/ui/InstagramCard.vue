@@ -6,7 +6,7 @@
   >
     <img
       class="instagram-card__image"
-      src="https://pkb1.ru/assets/images/default-avatar.png"
+      src="https://volley.sport-liga.pro/images/no_image.png"
       alt="Человек"
     />
   </a>

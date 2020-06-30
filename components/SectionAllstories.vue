@@ -1,10 +1,10 @@
 <template>
   <section class="section-allstories">
     <ui-title class="section-allstories__title">
-      Истории неизлечимых привычек
+      {{ title }}
     </ui-title>
     <ui-search class="section-allstories__search" />
-    <ui-story-grid>
+    <ui-story-grid class="section-allstories__story-grid">
       <ui-story-card />
       <ui-story-card />
       <ui-story-card />
@@ -44,6 +44,12 @@ export default {
     'ui-pagination-buttons': PaginationButtons,
     'ui-no-found': NoFound,
   },
+
+  data() {
+    return {
+      title: 'Истории неизлечимых привычек',
+    };
+  },
 };
 </script>
 
@@ -59,8 +65,8 @@ export default {
   margin: 60px 0 70px;
 }
 
-.section-allstories__pagination-buttons {
-  margin: 140px 0 0;
+.section-allstories__story-grid {
+  margin: 0 0 140px;
 }
 
 .section-allstories__no-found {
@@ -76,8 +82,8 @@ export default {
     margin: 50px 0 60px;
   }
 
-  .section-allstories__pagination-buttons {
-    margin: 130px 0 0;
+  .section-allstories__story-grid {
+    margin: 0 0 130px;
   }
 }
 
@@ -90,8 +96,8 @@ export default {
     margin: 40px 0 46px;
   }
 
-  .section-allstories__pagination-buttons {
-    margin: 110px 0 0;
+  .section-allstories__story-grid {
+    margin: 0 0 110px;
   }
 }
 
@@ -108,10 +114,6 @@ export default {
   .section-allstories__search {
     margin: 50px 0 60px;
   }
-
-  .section-allstories__pagination-buttons {
-    margin: 130px 0 0;
-  }
 }
 
 @media screen and (max-width: 425px) {
@@ -126,6 +128,10 @@ export default {
 
   .section-allstories__search {
     margin: 40px 0 30px;
+  }
+
+  .section-allstories__story-grid {
+    margin: 0 0 50px;
   }
 
   .section-allstories__no-found {
