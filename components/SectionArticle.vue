@@ -2,10 +2,13 @@
   <section class="section-article">
     <ui-article class="section-article__article" />
     <ui-story-grid class="section-article__story-grid">
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
-      <ui-story-card />
+      <ui-story-card
+        v-for="card of renderCards"
+        :key="card.id"
+        :photoe="card.photoe"
+        :name="card.name"
+        :quote="card.quote"
+      />
     </ui-story-grid>
     <ui-button-long class="section-article__button-long">
       Больше статей
@@ -25,6 +28,109 @@ export default {
     'ui-story-grid': StoryGrid,
     'ui-story-card': StoryCard,
     'ui-button-long': ButtonLong,
+  },
+
+  data() {
+    return {
+      cards: [
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 1',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 2',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 3',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 4',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 5',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 6',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 7',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 8',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 9',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 10',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 11',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 12',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 13',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 14',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 15',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+        {
+          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
+          name: 'Имя человека 16',
+          quote: 'Цитата человека, оставленная в разделе истории.',
+        },
+      ],
+    };
+  },
+
+  computed: {
+    renderCards() {
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          return this.cards.filter((card, index) => index < 4);
+        } else if (window.innerWidth > 530) {
+          return this.cards.filter((card, index) => index < 3);
+        } else if (window.innerWidth <= 530) {
+          return this.cards.filter((card, index) => index < 2);
+        }
+      } else {
+        return this.cards.filter((card, index) => index < 4);
+      }
+    },
   },
 };
 </script>
