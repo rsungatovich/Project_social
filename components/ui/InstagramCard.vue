@@ -1,20 +1,12 @@
 <template>
-  <a
-    class="instagram-card"
-    target="_blank"
-    href="https://www.instagram.com/raklechitsa/"
-  >
-    <img class="instagram-card__image" :src="image" alt="Человек" />
+  <a class="instagram-card" target="_blank" :href="link">
+    <img class="instagram-card__image" :src="photoe" alt="Человек" />
   </a>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      image: 'https://volley.sport-liga.pro/images/no_image.png',
-    };
-  },
+  props: ['photoe', 'link'],
 };
 </script>
 

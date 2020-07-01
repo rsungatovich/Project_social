@@ -6,7 +6,7 @@
     <ui-search class="section-allstories__search" />
     <ui-story-grid class="section-allstories__story-grid">
       <ui-story-card
-        v-for="card of showPersons"
+        v-for="card of renderCards"
         :key="card.id"
         :photoe="card.photoe"
         :name="card.name"
@@ -34,20 +34,6 @@ export default {
     'ui-search': Search,
     'ui-pagination-buttons': PaginationButtons,
     'ui-no-found': NoFound,
-  },
-
-  computed: {
-    showPersons() {
-      if (process.browser) {
-        if (window.innerWidth > 768) {
-          return this.cards.filter((card, index) => index < 16);
-        } else if (window.innerWidth <= 768) {
-          return this.cards.filter((card, index) => index < 12);
-        } else if (window.innerWidth <= 425) {
-          return this.cards.filter((card, index) => index < 9);
-        }
-      }
-    },
   },
 
   data() {
@@ -136,6 +122,22 @@ export default {
         },
       ],
     };
+  },
+
+  computed: {
+    renderCards() {
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          return this.cards.filter((card, index) => index < 16);
+        } else if (window.innerWidth > 425) {
+          return this.cards.filter((card, index) => index < 12);
+        } else if (window.innerWidth <= 425) {
+          return this.cards.filter((card, index) => index < 9);
+        }
+      } else {
+        return this.cards.filter((card, index) => index < 16);
+      }
+    },
   },
 };
 </script>
