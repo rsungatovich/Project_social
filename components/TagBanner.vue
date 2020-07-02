@@ -2,8 +2,10 @@
   <section class="tag-banner">
     <div class="tag-banner__container">
       <h2 class="tag-banner__title">
-        <slot>banner-content</slot>
-        <span class="tag-banner__subtitle">#этонелечится</span>
+        <slot name="title">banner-content</slot>
+        <span class="tag-banner__subtitle">
+          <slot name="subtitle">#hashtag</slot>
+        </span>
       </h2>
     </div>
   </section>

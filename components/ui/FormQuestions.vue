@@ -1,5 +1,5 @@
 <template>
-  <popup>
+  <popup @closePopup="$emit('closePopup')">
     <form class="form-questions">
       <div class="form-questions__box">
         <span class="form-questions__steps">

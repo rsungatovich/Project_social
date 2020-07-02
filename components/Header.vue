@@ -33,7 +33,9 @@
       >
         Истории
       </nuxt-link>
-      <button class="header__button">Рассказать историю</button>
+      <button class="header__button" @click="$emit('openFormQustions')">
+        Рассказать историю
+      </button>
       <button class="header__mobile-bar"></button>
     </nav>
   </header>

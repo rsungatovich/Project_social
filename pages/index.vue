@@ -1,23 +1,38 @@
 <template>
   <main class="content">
-    <head-banner class="content__head-banner" />
+    <head-banner
+      class="content__head-banner"
+      @openFormQustions="openFormQustions"
+    />
     <section-video class="content__section-video" />
     <tag-banner class="content__tag-banner">
-      {{ tagContentFirst }}
+      <template v-slot:title>
+        {{ tagContentFirst }}
+      </template>
+      <template v-slot:subtitle>
+        {{ tagFirst }}
+      </template>
     </tag-banner>
     <section-mainstories class="content__section-mainstories" />
     <tag-banner class="content__tag-banner">
-      {{ tagContentSecond }}
+      <template v-slot:title>
+        {{ tagContentSecond }}
+      </template>
+      <template v-slot:subtitle> {{ tagFirst }} {{ tagSecond }} </template>
     </tag-banner>
     <section-instagram class="content__section-instagram" />
-    <section-tellstory class="content__section-tellstory" />
+    <section-tellstory
+      class="content__section-tellstory"
+      @openFormQustions="openFormQustions"
+    />
     <section-statistic class="content__section-statistic" />
-    <section-about class="content__section-about" />
-    <!-- <form-questions /> -->
-    <!-- <form-contacts /> -->
-    <!-- <popup-thanks /> -->
-    <!-- <popup-socials /> -->
-    <!-- <ui-no-found-404 class="content__no-found-404" /> -->
+    <section-about
+      class="content__section-about"
+      @openFormQustions="openFormQustions"
+    />
+    <form-questions v-if="visibleFormQustions" @closePopup="closePopup" />
+    <form-contacts v-if="visibleFormContacts" @closePopup="closePopup" />
+    <popup-thanks v-if="visiblePopupThanks" @closePopup="closePopup" />
   </main>
 </template>
 
@@ -30,11 +45,9 @@ import SectionInstagram from '@/components/SectionInstagram';
 import SectionTellstory from '@/components/SectionTellstory';
 import SectionStatistic from '@/components/SectionStatistic';
 import SectionAbout from '@/components/SectionAbout';
-import FormContacts from '@/components/ui/FormContacts';
 import FormQuestions from '@/components/ui/FormQuestions';
+import FormContacts from '@/components/ui/FormContacts';
 import PopupThanks from '@/components/ui/PopupThanks';
-import PopupSocials from '@/components/ui/PopupSocials';
-import NoFound404 from '@/components/ui/NoFound404';
 
 export default {
   components: {
@@ -49,15 +62,30 @@ export default {
     'form-questions': FormQuestions,
     'form-contacts': FormContacts,
     'popup-thanks': PopupThanks,
-    'popup-socials': PopupSocials,
-    'ui-no-found-404': NoFound404,
   },
 
   data() {
     return {
+      tagFirst: '#этонелечится',
+      tagSecond: '#раклечится',
       tagContentFirst: 'и в отличие от рака',
       tagContentSecond: 'рассказывайте ваши истории в инстаграм',
+      visibleFormQustions: false,
+      visibleFormContacts: false,
+      visiblePopupThanks: false,
     };
+  },
+
+  methods: {
+    closePopup() {
+      this.visibleFormQustions = false;
+      this.visibleFormContacts = false;
+      this.visiblePopupThanks = false;
+    },
+
+    openFormQustions() {
+      this.visibleFormQustions = true;
+    },
   },
 };
 </script>

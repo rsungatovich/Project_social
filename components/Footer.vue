@@ -30,7 +30,9 @@
               YouTube
             </a>
           </p>
-          <button class="footer__button">Поделитесь ↗</button>
+          <button class="footer__button" @click="$emit('openPopupSocials')">
+            Поделитесь ↗
+          </button>
         </div>
       </div>
     </section>

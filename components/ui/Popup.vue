@@ -1,7 +1,12 @@
 <template>
   <div class="popup">
     <div class="popup__inner">
-      <img class="popup__close" src="/images/close.svg" alt="Кнопка закрыть" />
+      <img
+        class="popup__close"
+        src="/images/close.svg"
+        alt="Кнопка закрыть"
+        @click="$emit('closePopup')"
+      />
       <slot>form</slot>
     </div>
   </div>
@@ -38,6 +43,7 @@ export default {};
 .popup__close {
   top: 36px;
   right: 36px;
+  z-index: 1;
   position: absolute;
   cursor: pointer;
 }

@@ -1,5 +1,5 @@
 <template>
-  <popup>
+  <popup @closePopup="$emit('closePopup')">
     <div class="popup-socials">
       <p class="popup-socials__heading">
         Поделитесь

@@ -1,5 +1,5 @@
 <template>
-  <popup>
+  <popup @closePopup="$emit('closePopup')">
     <form class="form-contacts">
       <p class="form-contacts__headline">
         Оставьте контакт для связи
