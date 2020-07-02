@@ -1,6 +1,6 @@
 <template>
-  <popup>
-    <form class="form-questions">
+  <popup @theClick="$emit('theClick')">
+    <form class="form-questions" @submit.prevent="submitForm">
       <div class="form-questions__box">
         <span class="form-questions__steps">
           Шаг 1 из 12
@@ -13,7 +13,10 @@
       <input
         class="form-questions__input"
         type="text"
+        name="answer"
         placeholder="Напишите тут"
+        required
+        v-model="valueAnswer"
       />
       <div class="form-questions__box form-questions__box_flex">
         <div class="form-questions__controls">
@@ -26,7 +29,7 @@
         </div>
         <p class="form-questions__policy">
           Нажимая на кнопку «отправить», вы даете согласие на
-          <a class="form-questions__link" href="/policy">
+          <a class="form-questions__link" href="/policy" target="_blank">
             обработку персональных данных</a
           >
         </p>
@@ -43,6 +46,18 @@ export default {
   components: {
     popup: Popup,
     'ui-button-small': ButtonSmall,
+  },
+
+  data() {
+    return {
+      valueAnswer: '',
+    };
+  },
+
+  methods: {
+    submitForm() {
+      console.log('answer:', this.valueAnswer);
+    },
   },
 };
 </script>

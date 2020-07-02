@@ -1,5 +1,5 @@
 <template>
-  <button class="middle-button">
+  <button class="button-middle" @click="$emit('theClick')">
     <slot>button</slot>
   </button>
 </template>
@@ -9,7 +9,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.middle-button {
+.button-middle {
   @extend %button-default;
   min-height: 52px;
   padding: 0 71px;
@@ -23,20 +23,20 @@ export default {};
 }
 
 @media screen and (max-width: 1280px) {
-  .middle-button {
+  .button-middle {
     min-height: 48px;
     padding: 0 46px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .middle-button {
+  .button-middle {
     min-height: 46px;
   }
 }
 
 @media screen and (max-width: 375px) {
-  .middle-button {
+  .button-middle {
     width: 100%;
     min-height: 40px;
     padding: 0;

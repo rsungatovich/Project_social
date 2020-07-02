@@ -1,6 +1,9 @@
 <template>
   <section class="section-article">
-    <ui-article class="section-article__article" />
+    <ui-article
+      class="section-article__article"
+      @theClick="$emit('theClick')"
+    />
     <ui-story-grid class="section-article__story-grid">
       <ui-story-card
         v-for="card of renderCards"

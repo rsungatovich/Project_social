@@ -14,7 +14,7 @@
           >
             {{ subtitle }}
           </ui-subtitle>
-          <button class="section-about__button">
+          <button class="section-about__button" @click="$emit('theClick')">
             Рассказать историю
           </button>
         </div>
@@ -30,7 +30,7 @@
             </button>
           </div>
           <div class="section-about__description" v-html="description"></div>
-          <button class="section-about__button-mob">
+          <button class="section-about__button-mob" @click="$emit('theClick')">
             Рассказать историю
           </button>
         </div>

@@ -20,7 +20,10 @@
         </div>
         <div class="section-tellstory__inner">
           <p class="section-tellstory__description" v-html="description"></p>
-          <ui-button-middle class="section-tellstory__button-middle">
+          <ui-button-middle
+            class="section-tellstory__button-middle"
+            @theClick="$emit('theClick')"
+          >
             Заполнить форму
           </ui-button-middle>
         </div>

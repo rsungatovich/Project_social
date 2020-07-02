@@ -1,7 +1,7 @@
 <template>
-  <button class="button-long">
+  <nuxt-link class="button-long" to="/stories">
     <slot>button-long</slot>
-  </button>
+  </nuxt-link>
 </template>
 
 <script>
@@ -10,13 +10,17 @@ export default {};
 
 <style lang="scss" scoped>
 .button-long {
-  @extend %button-default;
   width: 100%;
   min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 20px;
+  text-decoration: none;
   color: #000000;
   background-color: #fbfbfb;
 }

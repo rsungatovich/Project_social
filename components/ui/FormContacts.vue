@@ -1,6 +1,6 @@
 <template>
-  <popup>
-    <form class="form-contacts">
+  <popup @theClick="$emit('theClick')">
+    <form class="form-contacts" @submit.prevent="submitForm">
       <p class="form-contacts__headline">
         Оставьте контакт для связи
       </p>
@@ -14,7 +14,10 @@
       <input
         class="form-contacts__input"
         type="text"
+        name="name"
         placeholder="Напишите тут"
+        required
+        v-model="valueName"
       />
       <div class="form-contacts__inputs">
         <div class="form-contacts__box">
@@ -24,7 +27,10 @@
           <input
             class="form-contacts__input"
             type="email"
+            name="email"
             placeholder="pochta@example.com"
+            required
+            v-model="valueEmail"
           />
         </div>
         <div class="form-contacts__box">
@@ -34,7 +40,10 @@
           <input
             class="form-contacts__input"
             type="tel"
+            name="phone"
             placeholder="+7 000 000 00 00"
+            required
+            v-model="valuePhone"
           />
         </div>
       </div>
@@ -44,7 +53,9 @@
       <input
         class="form-contacts__input"
         type="text"
+        name="other"
         placeholder="Телефон / почта и удобное время"
+        v-model="valueOther"
       />
       <div class="form-contacts__container">
         <ui-button-small class="form-contacts__button-small">
@@ -52,7 +63,7 @@
         </ui-button-small>
         <p class="form-contacts__policy">
           Нажимая на кнопку «отправить», вы даете согласие на
-          <a class="form-contacts__link" href="/policy">
+          <a class="form-contacts__link" href="/policy" target="_blank">
             обработку персональных данных</a
           >
         </p>
@@ -69,6 +80,30 @@ export default {
   components: {
     popup: Popup,
     'ui-button-small': ButtonSmall,
+  },
+
+  data() {
+    return {
+      valueName: '',
+      valueEmail: '',
+      valuePhone: '',
+      valueOther: '',
+    };
+  },
+
+  methods: {
+    submitForm() {
+      console.log(
+        'name:',
+        this.valueName,
+        'email:',
+        this.valueEmail,
+        'phone:',
+        this.valuePhone,
+        'other:',
+        this.valueOther
+      );
+    },
   },
 };
 </script>

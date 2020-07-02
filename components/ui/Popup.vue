@@ -1,7 +1,13 @@
 <template>
   <div class="popup">
+    <div class="popup__overlay" @click="$emit('theClick')"></div>
     <div class="popup__inner">
-      <img class="popup__close" src="/images/close.svg" alt="Кнопка закрыть" />
+      <img
+        class="popup__close"
+        src="/images/close.svg"
+        alt="Кнопка закрыть"
+        @click="$emit('theClick')"
+      />
       <slot>form</slot>
     </div>
   </div>
@@ -23,6 +29,14 @@ export default {};
   display: flex;
   position: fixed;
   box-sizing: border-box;
+}
+
+.popup__overlay {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
   background-color: #00000070;
 }
 
@@ -38,6 +52,7 @@ export default {};
 .popup__close {
   top: 36px;
   right: 36px;
+  z-index: 1;
   position: absolute;
   cursor: pointer;
 }

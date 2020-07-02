@@ -1,18 +1,37 @@
 <template>
   <main class="content">
-    <section-article class="content__section-article" />
-    <!-- <ui-no-found-404 class="content__no-found-404" /> -->
+    <section-article
+      class="content__section-article"
+      @theClick="openPopupSocials"
+    />
+    <popup-socials v-if="visiblePopupSocials" @theClick="closePopup" />
   </main>
 </template>
 
 <script>
 import SectionArticle from '@/components/SectionArticle';
-import NoFound404 from '@/components/ui/NoFound404';
+import PopupSocials from '@/components/ui/PopupSocials';
 
 export default {
   components: {
     'section-article': SectionArticle,
-    'ui-no-found-404': NoFound404,
+    'popup-socials': PopupSocials,
+  },
+
+  data() {
+    return {
+      visiblePopupSocials: false,
+    };
+  },
+
+  methods: {
+    closePopup() {
+      this.visiblePopupSocials = false;
+    },
+
+    openPopupSocials() {
+      this.visiblePopupSocials = true;
+    },
   },
 };
 </script>

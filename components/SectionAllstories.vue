@@ -14,7 +14,7 @@
       />
     </ui-story-grid>
     <ui-pagination-buttons class="content__pagination-buttons" />
-    <!-- <ui-no-found class="section-allstories__no-found" /> -->
+    <ui-no-found class="section-allstories__no-found" v-if="nothingNoFound" />
   </section>
 </template>
 
@@ -38,6 +38,7 @@ export default {
 
   data() {
     return {
+      nothingNoFound: false,
       title: 'Истории неизлечимых привычек',
       cards: [
         {

@@ -1,5 +1,5 @@
 <template>
-  <popup>
+  <popup @theClick="$emit('theClick')">
     <div class="popup-thanks">
       <p class="popup-thanks__heading">
         Спасибо что приняли участие!

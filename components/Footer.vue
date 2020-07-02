@@ -30,7 +30,9 @@
               YouTube
             </a>
           </p>
-          <button class="footer__button">Поделитесь ↗</button>
+          <button class="footer__button" @click="$emit('theClick')">
+            Поделитесь ↗
+          </button>
         </div>
       </div>
     </section>
