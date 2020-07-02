@@ -2,7 +2,7 @@
   <section class="section-article">
     <ui-article
       class="section-article__article"
-      @openPopupSocials="$emit('openPopupSocials')"
+      @theClick="$emit('theClick')"
     />
     <ui-story-grid class="section-article__story-grid">
       <ui-story-card

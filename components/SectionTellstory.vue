@@ -22,7 +22,7 @@
           <p class="section-tellstory__description" v-html="description"></p>
           <ui-button-middle
             class="section-tellstory__button-middle"
-            @openFormQustions="$emit('openFormQustions')"
+            @theClick="$emit('theClick')"
           >
             Заполнить форму
           </ui-button-middle>

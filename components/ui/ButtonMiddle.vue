@@ -1,5 +1,5 @@
 <template>
-  <button class="button-middle" @click="$emit('openFormQustions')">
+  <button class="button-middle" @click="$emit('theClick')">
     <slot>button</slot>
   </button>
 </template>

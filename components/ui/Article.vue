@@ -8,7 +8,7 @@
           {{ quote }}
         </p>
         <div class="article__copyright">
-          <button class="article__share" @click="$emit('openPopupSocials')">
+          <button class="article__share" @click="$emit('theClick')">
             Поделитесь ↗
           </button>
           <time class="article__date">
@@ -20,7 +20,7 @@
     <div class="article__persone-story" v-html="story"></div>
     <button
       class="article__share article__share_long"
-      @click="$emit('openPopupSocials')"
+      @click="$emit('theClick')"
     >
       Поделитесь этой статьей в своих социальных сетях ↗
     </button>

@@ -1,12 +1,12 @@
 <template>
   <div class="page">
-    <the-header class="page__header" @openFormQustions="openFormQustions" />
+    <the-header class="page__header" @theClick="openFormQustions" />
     <nuxt />
-    <the-footer class="page__footer" @openPopupSocials="openPopupSocials" />
-    <form-questions v-if="visibleFormQustions" @closePopup="closePopup" />
-    <form-contacts v-if="visibleFormContacts" @closePopup="closePopup" />
-    <popup-thanks v-if="visiblePopupThanks" @closePopup="closePopup" />
-    <popup-socials v-if="visiblePopupSocials" @closePopup="closePopup" />
+    <the-footer class="page__footer" @theClick="openPopupSocials" />
+    <form-questions v-if="visibleFormQustions" @theClick="closePopup" />
+    <form-contacts v-if="visiblePopupThanks" @theClick="closePopup" />
+    <popup-thanks v-if="visiblePopupThanks" @theClick="closePopup" />
+    <popup-socials v-if="visiblePopupSocials" @theClick="closePopup" />
     <ui-no-found-404 class="content__no-found-404" v-if="visiblePopupError" />
   </div>
 </template>
@@ -33,6 +33,7 @@ export default {
 
   data() {
     return {
+      inputValue: '',
       visibleFormQustions: false,
       visibleFormContacts: false,
       visiblePopupThanks: false,
@@ -53,6 +54,9 @@ export default {
     },
     openPopupSocials() {
       this.visiblePopupSocials = true;
+    },
+    submitForm() {
+      console.log(this.inputValue);
     },
   },
 };

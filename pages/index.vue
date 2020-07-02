@@ -1,9 +1,6 @@
 <template>
   <main class="content">
-    <head-banner
-      class="content__head-banner"
-      @openFormQustions="openFormQustions"
-    />
+    <head-banner class="content__head-banner" @theClick="openFormQustions" />
     <section-video class="content__section-video" />
     <tag-banner class="content__tag-banner">
       <template v-slot:title>
@@ -23,16 +20,16 @@
     <section-instagram class="content__section-instagram" />
     <section-tellstory
       class="content__section-tellstory"
-      @openFormQustions="openFormQustions"
+      @theClick="openFormQustions"
     />
     <section-statistic class="content__section-statistic" />
     <section-about
       class="content__section-about"
-      @openFormQustions="openFormQustions"
+      @theClick="openFormQustions"
     />
-    <form-questions v-if="visibleFormQustions" @closePopup="closePopup" />
-    <form-contacts v-if="visibleFormContacts" @closePopup="closePopup" />
-    <popup-thanks v-if="visiblePopupThanks" @closePopup="closePopup" />
+    <form-questions v-if="visibleFormQustions" @theClick="closePopup" />
+    <form-contacts v-if="visibleFormContacts" @theClick="closePopup" />
+    <popup-thanks v-if="visiblePopupThanks" @theClick="closePopup" />
   </main>
 </template>
 

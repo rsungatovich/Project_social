@@ -2,9 +2,9 @@
   <main class="content">
     <section-article
       class="content__section-article"
-      @openPopupSocials="openPopupSocials"
+      @theClick="openPopupSocials"
     />
-    <popup-socials v-if="visiblePopupSocials" @closePopup="closePopup" />
+    <popup-socials v-if="visiblePopupSocials" @theClick="closePopup" />
   </main>
 </template>
 
