@@ -45,6 +45,13 @@ export default {};
   }
 }
 
+@media screen and (max-width: 768px) {
+  .button-middle {
+    font-size: 15px;
+    line-height: 18px;
+  }
+}
+
 @media screen and (max-width: 375px) {
   .button-middle {
     width: 100%;

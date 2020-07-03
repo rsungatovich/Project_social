@@ -15,21 +15,27 @@
             {{ subtitle }}
           </ui-subtitle>
           <button class="section-about__button" @click="$emit('theClick')">
-            Рассказать историю
+            {{ buttonName }}
           </button>
         </div>
         <div class="section-about__box">
           <div class="section-about__controls">
             <button
               class="section-about__control section-about__control_is-active"
+              ref="firstButton"
+              @click="toggleIsActive"
             >
               Рак Лечится
             </button>
-            <button class="section-about__control">
+            <button
+              class="section-about__control"
+              ref="secondButton"
+              @click="toggleIsActive"
+            >
               Фонд&nbsp;Хабенского
             </button>
           </div>
-          <div class="section-about__description" v-html="description"></div>
+          <div class="section-about__description" v-html="setDescription"></div>
           <button class="section-about__button-mob" @click="$emit('theClick')">
             Рассказать историю
           </button>
@@ -53,9 +59,12 @@ export default {
     return {
       heading: '#Раклечится',
       title: 'О проекте',
+      buttonName: 'Рассказать историю',
+      firstButton: true,
+      secondButton: false,
       subtitle:
         'Этот проект был создан благотворительным фондом Константина Хабенского.',
-      description: `
+      firstDescription: `
         <p class="section-about__text">
           Есть вещи, которые не лечатся. Особенности характера, страстные увлечения, привычки, ставшие частью нашего «я», фобии, которые мы приобрели в детстве. Список можно продолжать до бесконечности, но одна болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится, и лучшее доказательство — люди с их неизлечимыми особенностями, которые сумели победить рак.
         </p>
@@ -63,7 +72,41 @@ export default {
           Рак лечится — проект Благотворительного Фонда Константина Хабенского и Leo Burnett Moscow. С его помощью мы надеемся изменить отношение людей к раку и заставить каждого поверить: онкологическое заболевание — это не приговор.
         </p>      
       `,
+      secondDescription: `
+        <p class="section-about__text">
+          Благотворительный Фонд Константина Хабенского с 2008 года помогает детям с онкологическими и другими тяжелыми заболеваниями головного мозга. Фонд не только поддерживает семью заболевшего ребенка в самый сложный момент, оплачивая обследования, лечение и медицинские препараты, но и в целом меняет систему оказания помощи детям с опухолями мозга в России.
+        </p>     
+      `,
     };
+  },
+
+  computed: {
+    setDescription() {
+      if (this.firstButton) {
+        return this.firstDescription;
+      }
+
+      if (this.secondButton) {
+        return this.secondDescription;
+      }
+    },
+  },
+
+  methods: {
+    toggleIsActive(event) {
+      if (
+        !event.target.classList.contains('section-about__control_is-active')
+      ) {
+        this.$refs.firstButton.classList.toggle(
+          'section-about__control_is-active'
+        );
+        this.$refs.secondButton.classList.toggle(
+          'section-about__control_is-active'
+        );
+        this.firstButton = !this.firstButton;
+        this.secondButton = !this.firstButton;
+      }
+    },
   },
 };
 </script>

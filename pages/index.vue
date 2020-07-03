@@ -83,6 +83,10 @@ export default {
     openFormQustions() {
       this.visibleFormQustions = true;
     },
+
+    openFormContacts() {
+      this.visibleFormContacts = true;
+    },
   },
 };
 </script>
