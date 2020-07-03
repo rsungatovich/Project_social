@@ -145,7 +145,13 @@ export default {
   font-size: 18px;
   line-height: 24px;
   box-sizing: border-box;
-  border: 1px solid #afafaf;
+  border: none;
+  border-bottom: 1px solid #afafaf;
+}
+
+.form-contacts__input:focus {
+  outline: none;
+  border-bottom: 2px solid black;
 }
 
 .form-contacts__inputs {

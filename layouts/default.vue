@@ -5,7 +5,6 @@
     <the-footer class="page__footer" @theClick="openPopupSocials" />
     <form-questions v-if="visibleFormQustions" @theClick="closePopup" />
     <form-contacts v-if="visibleFormContacts" @theClick="closePopup" />
-    <popup-thanks v-if="visiblePopupThanks" @theClick="closePopup" />
     <popup-socials v-if="visiblePopupSocials" @theClick="closePopup" />
     <ui-no-found-404 class="content__no-found-404" v-if="visiblePopupError" />
   </div>
@@ -16,7 +15,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FormContacts from '@/components/ui/FormContacts';
 import FormQuestions from '@/components/ui/FormQuestions';
-import PopupThanks from '@/components/ui/PopupThanks';
 import PopupSocials from '@/components/ui/PopupSocials';
 import NoFound404 from '@/components/ui/NoFound404';
 
@@ -26,7 +24,6 @@ export default {
     'the-footer': Footer,
     'form-questions': FormQuestions,
     'form-contacts': FormContacts,
-    'popup-thanks': PopupThanks,
     'popup-socials': PopupSocials,
     'ui-no-found-404': NoFound404,
   },

@@ -79,6 +79,10 @@ export default {
   text-decoration: none;
 }
 
+.header__title-link:focus {
+  outline: none;
+}
+
 .header__navigation {
   display: flex;
   align-items: center;
