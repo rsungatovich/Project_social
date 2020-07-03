@@ -79,6 +79,10 @@ export default {
   text-decoration: none;
 }
 
+.header__title-link:focus {
+  outline: none;
+}
+
 .header__navigation {
   display: flex;
   align-items: center;
@@ -93,6 +97,16 @@ export default {
   line-height: 24px;
   color: #000000;
   text-decoration: none;
+  transition: opacity linear 0.1s;
+}
+
+.header__link:hover {
+  opacity: 0.6;
+}
+
+.header__link:focus {
+  outline: none;
+  opacity: 0.6;
 }
 
 .is-active {
@@ -109,6 +123,16 @@ export default {
   line-height: 24px;
   color: #ffffff;
   background-color: $mainColor;
+  transition: opacity linear 0.1s;
+}
+
+.header__button:hover {
+  opacity: 0.9;
+}
+
+.header__button:focus {
+  outline: none;
+  opacity: 0.9;
 }
 
 .header__mobile-bar {

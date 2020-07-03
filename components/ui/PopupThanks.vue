@@ -1,19 +1,20 @@
 <template>
-  <popup @theClick="$emit('theClick')">
-    <div class="popup-thanks">
-      <p class="popup-thanks__heading">
-        Спасибо что приняли участие!
-      </p>
-      <ui-button-small class="popup-thanks__button-small">
-        Закрыть
-      </ui-button-small>
-    </div>
-  </popup>
+  <div class="popup-thanks">
+    <p class="popup-thanks__heading">
+      Спасибо что приняли участие!
+    </p>
+    <ui-button-small
+      class="popup-thanks__button-small"
+      @theClick="$emit('theClick')"
+    >
+      Закрыть
+    </ui-button-small>
+  </div>
 </template>
 
 <script>
-import Popup from '@/components/ui/Popup.vue';
-import ButtonSmall from '@/components/ui/ButtonSmall.vue';
+import Popup from '@/components/ui/Popup';
+import ButtonSmall from '@/components/ui/ButtonSmall';
 
 export default {
   components: {

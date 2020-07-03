@@ -55,6 +55,16 @@ export default {};
   z-index: 1;
   position: absolute;
   cursor: pointer;
+  transition: opacity linear 0.1s;
+}
+
+.popup__close:hover {
+  opacity: 0.6;
+}
+
+.popup__close:focus {
+  outline: none;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 1280px) {

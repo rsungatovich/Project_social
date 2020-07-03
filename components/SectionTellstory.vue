@@ -11,21 +11,39 @@
         <div class="section-tellstory__controls">
           <button
             class="section-tellstory__control section-tellstory__control_is-active"
+            ref="firstButton"
+            @click="toggleIsActive"
           >
             1-й вариант
           </button>
-          <button class="section-tellstory__control">
+          <button
+            class="section-tellstory__control"
+            ref="secondButton"
+            @click="toggleIsActive"
+          >
             2-й вариант
           </button>
         </div>
         <div class="section-tellstory__inner">
-          <p class="section-tellstory__description" v-html="description"></p>
-          <ui-button-middle
-            class="section-tellstory__button-middle"
-            @theClick="$emit('theClick')"
-          >
-            Заполнить форму
-          </ui-button-middle>
+          <div
+            class="section-tellstory__description"
+            v-html="setDescription"
+          ></div>
+          <div class="section-tellstory__button-wrapper">
+            <ui-button-middle
+              class="section-tellstory__button-middle"
+              v-if="firstButton"
+              @theClick="$emit('theClick')"
+            >
+              {{ firstButtonName }}
+            </ui-button-middle>
+            <ui-button-middle
+              class="section-tellstory__button-middle"
+              v-if="secondButton"
+            >
+              {{ secondButtonName }}
+            </ui-button-middle>
+          </div>
         </div>
       </div>
     </div>
@@ -46,15 +64,62 @@ export default {
 
   data() {
     return {
+      firstButtonName: 'Заполнить форму',
+      secondButtonName: 'Оставить контакт',
+      firstButton: true,
+      secondButton: false,
       title: 'Расскажите свою историю',
       subtitle:
         'Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта поделиться своей историей неизлечимых привычек, навязчивых идей и болезненных привязанностей.',
-      description: `
+      firstDescription: `
         <p class="section-tellstory__description">
           Заполнить подробную форму прямо на сайте и мы опубликуем вашу историю после проверки. Пожалуйста, заполняйте все пункты корректно, если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.
         </p>      
       `,
+      secondDescription: `
+        <p class="section-tellstory__description">
+          Оставить контакт (почту или номер телефона) и мы свяжемся с вами, зададим вопросы, уточним детали вашей истории.
+        </p>      
+      `,
     };
+  },
+
+  computed: {
+    setButtonName() {
+      if (this.firstButton) {
+        return this.firstDescription;
+      }
+
+      if (this.secondButton) {
+        return this.secondDescription;
+      }
+    },
+    setDescription() {
+      if (this.firstButton) {
+        return this.firstDescription;
+      }
+
+      if (this.secondButton) {
+        return this.secondDescription;
+      }
+    },
+  },
+
+  methods: {
+    toggleIsActive(event) {
+      if (
+        !event.target.classList.contains('section-tellstory__control_is-active')
+      ) {
+        this.$refs.firstButton.classList.toggle(
+          'section-tellstory__control_is-active'
+        );
+        this.$refs.secondButton.classList.toggle(
+          'section-tellstory__control_is-active'
+        );
+        this.firstButton = !this.firstButton;
+        this.secondButton = !this.firstButton;
+      }
+    },
   },
 };
 </script>
@@ -92,6 +157,16 @@ export default {
   font-size: 18px;
   line-height: 22px;
   color: #a2a2a2;
+  transition: color linear 0.1s;
+}
+
+.section-tellstory__control:hover {
+  color: #000000;
+}
+
+.section-tellstory__control:focus {
+  outline: none;
+  color: #000000;
 }
 
 .section-tellstory__control_is-active {
@@ -103,9 +178,16 @@ export default {
   margin: 0 0 10px;
 }
 
+.section-tellstory__inner {
+  min-height: 218px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .section-tellstory__inner /deep/ .section-tellstory__description {
   max-width: 633px;
-  margin: 0 0 78px;
+  margin: 0;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -180,9 +262,12 @@ export default {
     margin: 0 0 80px;
   }
 
+  .section-tellstory__inner {
+    min-height: 190px;
+  }
+
   .section-tellstory__inner /deep/ .section-tellstory__description {
     max-width: 380px;
-    margin: 0 0 50px;
   }
 
   .section-tellstory__control:first-child {
@@ -222,8 +307,11 @@ export default {
     line-height: 19px;
   }
 
+  .section-tellstory__inner {
+    min-height: 170px;
+  }
+
   .section-tellstory__inner /deep/ .section-tellstory__description {
-    margin: 0 0 30px;
     font-size: 13px;
     line-height: 16px;
   }

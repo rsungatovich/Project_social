@@ -20,6 +20,16 @@ export default {};
   text-align: center;
   color: #ffffff;
   background-color: $mainColor;
+  transition: opacity linear 0.1s;
+}
+
+.button-middle:hover {
+  opacity: 0.9;
+}
+
+.button-middle:focus {
+  outline: none;
+  opacity: 0.9;
 }
 
 @media screen and (max-width: 1280px) {
@@ -32,6 +42,13 @@ export default {};
 @media screen and (max-width: 1024px) {
   .button-middle {
     min-height: 46px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button-middle {
+    font-size: 15px;
+    line-height: 18px;
   }
 }
 

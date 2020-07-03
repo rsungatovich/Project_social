@@ -73,6 +73,17 @@ export default {
   width: 48px;
   height: 48px;
   margin: 0 20px 0 0;
+  cursor: pointer;
+  transition: transform linear 0.1s;
+}
+
+.popup-socials__icon:hover {
+  transform: scale(1.2);
+}
+
+.popup-socials__icon:focus {
+  outline: none;
+  transform: scale(1.2);
 }
 
 .popup-socials__icon:last-child {
