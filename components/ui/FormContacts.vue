@@ -141,7 +141,7 @@ export default {
 .form-contacts__input {
   width: 100%;
   min-height: 52px;
-  padding: 0;
+  padding: 0 10px;
   font-size: 18px;
   line-height: 24px;
   border: none;

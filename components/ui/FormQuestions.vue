@@ -101,7 +101,7 @@ export default {
 .form-questions__input {
   width: 100%;
   min-height: 52px;
-  padding: 0;
+  padding: 0 10px;
   top: calc(50% - 26px);
   left: 0;
   display: block;
@@ -129,6 +129,11 @@ export default {
   font-size: 16px;
   line-height: 19px;
   color: #666666;
+  transition: opacity linear 0.1s;
+}
+
+.form-questions__button-back:hover {
+  opacity: 0.6;
 }
 
 .form-questions__button-small {

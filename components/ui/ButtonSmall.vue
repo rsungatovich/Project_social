@@ -20,6 +20,11 @@ export default {};
   text-align: center;
   color: #ffffff;
   background-color: $mainColor;
+  transition: opacity linear 0.1s;
+}
+
+.button-small:hover {
+  opacity: 0.9;
 }
 
 @media screen and (max-width: 1280px) {

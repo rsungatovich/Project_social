@@ -100,6 +100,11 @@ export default {
   line-height: 24px;
   color: #000000;
   text-decoration: none;
+  transition: opacity linear 0.1s;
+}
+
+.footer__link:hover {
+  opacity: 0.6;
 }
 
 .footer__link_underline {
@@ -127,6 +132,11 @@ export default {
   font-size: 18px;
   line-height: 24px;
   color: #000000;
+  transition: opacity linear 0.1s;
+}
+
+.footer__button:hover {
+  opacity: 0.6;
 }
 
 .footer__copyright {

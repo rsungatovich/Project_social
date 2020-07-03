@@ -92,6 +92,11 @@ export default {
   background-size: 20px;
   background-repeat: no-repeat;
   background-color: $mainColor;
+  transition: opacity linear 0.1s;
+}
+
+.section-video__button:hover {
+  opacity: 0.9;
 }
 
 .section-video__button_left {
@@ -120,6 +125,11 @@ export default {
   background-size: 20px;
   background-repeat: no-repeat;
   background-color: $mainColor;
+  transition: opacity linear 0.1s;
+}
+
+.section-video__button-mob:hover {
+  opacity: 0.9;
 }
 
 .section-video__button-mob_left {

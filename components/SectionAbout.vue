@@ -124,6 +124,11 @@ export default {
   line-height: 24px;
   color: #000000;
   background-color: #ffffff;
+  transition: opacity linear 0.1s;
+}
+
+.section-about__button:hover {
+  opacity: 0.8;
 }
 
 .section-about__button-mob {
@@ -138,6 +143,11 @@ export default {
   line-height: 18px;
   color: #000000;
   background-color: #ffffff;
+  transition: opacity linear 0.1s;
+}
+
+.section-about__button-mob:hover {
+  opacity: 0.8;
 }
 
 .section-about__box {
@@ -158,6 +168,11 @@ export default {
   line-height: 22px;
   color: #c9c9c9;
   text-align: right;
+  transition: color linear 0.1s;
+}
+
+.section-about__control:hover {
+  color: #ffffff;
 }
 
 .section-about__control_is-active {

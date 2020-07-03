@@ -125,6 +125,11 @@ export default {
   font-size: 18px;
   line-height: 24px;
   color: #121212;
+  transition: opacity linear 0.1s;
+}
+
+.article__share:hover {
+  opacity: 0.6;
 }
 
 .article__share_long {

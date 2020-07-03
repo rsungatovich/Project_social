@@ -93,6 +93,11 @@ export default {
   line-height: 24px;
   color: #000000;
   text-decoration: none;
+  transition: opacity linear 0.1s;
+}
+
+.header__link:hover {
+  opacity: 0.6;
 }
 
 .is-active {
@@ -109,6 +114,11 @@ export default {
   line-height: 24px;
   color: #ffffff;
   background-color: $mainColor;
+  transition: opacity linear 0.1s;
+}
+
+.header__button:hover {
+  opacity: 0.9;
 }
 
 .header__mobile-bar {

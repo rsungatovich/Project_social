@@ -102,6 +102,11 @@ export default {};
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
+  transition: opacity linear 0.1s;
+}
+
+.pagination-buttons__button:hover {
+  opacity: 0.6;
 }
 
 .pagination-buttons__button:last-child {
@@ -135,7 +140,7 @@ export default {};
 }
 
 .pagination-buttons__button_active {
-  color: #a2a2a2;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 1280px) {

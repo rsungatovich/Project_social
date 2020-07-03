@@ -92,6 +92,11 @@ export default {
   font-size: 18px;
   line-height: 22px;
   color: #a2a2a2;
+  transition: color linear 0.1s;
+}
+
+.section-tellstory__control:hover {
+  color: #000000;
 }
 
 .section-tellstory__control_is-active {
