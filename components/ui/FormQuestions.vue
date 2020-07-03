@@ -108,8 +108,8 @@ export default {
   position: absolute;
   font-size: 18px;
   line-height: 24px;
-  border: none;
   box-sizing: border-box;
+  border: 1px solid #afafaf;
 }
 
 .form-questions__box_flex {
@@ -136,6 +136,11 @@ export default {
   opacity: 0.6;
 }
 
+.form-questions__button-back:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
 .form-questions__button-small {
   padding: 0 70px;
 }
@@ -153,6 +158,16 @@ export default {
 
 .form-questions__link {
   color: #666666;
+  transition: opacity linear 0.1s;
+}
+
+.form-questions__link:hover {
+  opacity: 0.6;
+}
+
+.form-questions__link:focus {
+  outline: none;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 1280px) {

@@ -100,6 +100,11 @@ export default {
   opacity: 0.6;
 }
 
+.header__link:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
 .is-active {
   border-bottom: 1px solid black;
 }
@@ -118,6 +123,11 @@ export default {
 }
 
 .header__button:hover {
+  opacity: 0.9;
+}
+
+.header__button:focus {
+  outline: none;
   opacity: 0.9;
 }
 

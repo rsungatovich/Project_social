@@ -109,6 +109,11 @@ export default {};
   opacity: 0.6;
 }
 
+.pagination-buttons__button:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
 .pagination-buttons__button:last-child {
   margin: 0;
 }

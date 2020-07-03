@@ -81,6 +81,11 @@ export default {
   transform: scale(1.2);
 }
 
+.popup-socials__icon:focus {
+  outline: none;
+  transform: scale(1.2);
+}
+
 .popup-socials__icon:last-child {
   margin: 0;
 }

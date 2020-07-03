@@ -4,7 +4,7 @@
     <nuxt />
     <the-footer class="page__footer" @theClick="openPopupSocials" />
     <form-questions v-if="visibleFormQustions" @theClick="closePopup" />
-    <form-contacts v-if="visiblePopupThanks" @theClick="closePopup" />
+    <form-contacts v-if="visibleFormContacts" @theClick="closePopup" />
     <popup-thanks v-if="visiblePopupThanks" @theClick="closePopup" />
     <popup-socials v-if="visiblePopupSocials" @theClick="closePopup" />
     <ui-no-found-404 class="content__no-found-404" v-if="visiblePopupError" />

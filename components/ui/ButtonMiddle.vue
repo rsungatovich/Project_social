@@ -27,6 +27,11 @@ export default {};
   opacity: 0.9;
 }
 
+.button-middle:focus {
+  outline: none;
+  opacity: 0.9;
+}
+
 @media screen and (max-width: 1280px) {
   .button-middle {
     min-height: 48px;

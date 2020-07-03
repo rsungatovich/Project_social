@@ -144,8 +144,8 @@ export default {
   padding: 0 10px;
   font-size: 18px;
   line-height: 24px;
-  border: none;
   box-sizing: border-box;
+  border: 1px solid #afafaf;
 }
 
 .form-contacts__inputs {
@@ -184,6 +184,16 @@ export default {
 
 .form-contacts__link {
   color: #666666;
+  transition: opacity linear 0.1s;
+}
+
+.form-contacts__link:hover {
+  opacity: 0.6;
+}
+
+.form-contacts__link:focus {
+  outline: none;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 1280px) {

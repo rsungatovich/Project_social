@@ -99,6 +99,11 @@ export default {
   color: #000000;
 }
 
+.section-tellstory__control:focus {
+  outline: none;
+  color: #000000;
+}
+
 .section-tellstory__control_is-active {
   font-weight: 500;
   color: #000000;

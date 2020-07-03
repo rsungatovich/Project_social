@@ -99,6 +99,11 @@ export default {
   opacity: 0.9;
 }
 
+.section-video__button:focus {
+  outline: none;
+  opacity: 0.9;
+}
+
 .section-video__button_left {
   background-position: 9px;
   background-image: url("data:image/svg+xml,%3Csvg height='128' width='128' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23fff' stroke-width='10' stroke-linecap='square' stroke-miterlimit='10'%3E%3Cpath d='M87.5 111l-47-47M40.5 64l47-47'/%3E%3C/g%3E%3C/svg%3E");
@@ -212,6 +217,16 @@ export default {
   color: #666666;
   border-bottom: 1px solid #666666;
   text-decoration: none;
+  transition: opacity linear 0.1s;
+}
+
+.section-video__link:hover {
+  opacity: 0.6;
+}
+
+.section-video__link:focus {
+  outline: none;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 1280px) {

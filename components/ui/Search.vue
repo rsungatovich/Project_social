@@ -49,6 +49,16 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("data:image/svg+xml,%3Csvg width='17' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5.913' cy='5.913' r='5.413' stroke='%23fff'/%3E%3Cpath stroke='%23fff' d='M10.092 10.081l6.261 6.261'/%3E%3C/svg%3E");
+  transition: opacity linear 0.1s;
+}
+
+.search__button-small-mob:hover {
+  opacity: 0.9;
+}
+
+.search__button-small-mob:focus {
+  outline: none;
+  opacity: 0.9;
 }
 
 .search__button-reset {
@@ -67,6 +77,11 @@ export default {
 }
 
 .search__button-reset:hover {
+  opacity: 0.6;
+}
+
+.search__button-reset:focus {
+  outline: none;
   opacity: 0.6;
 }
 
@@ -91,6 +106,7 @@ export default {
 
 .search__button-reset:focus {
   outline: none;
+  opacity: 0.6;
 }
 
 .search__button-reset-mob:focus {

@@ -63,6 +63,11 @@ export default {
   opacity: 0.6;
 }
 
+.head-banner__button:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
 .head-banner__button-arrow {
   @extend %button-default;
   width: 36px;
@@ -78,6 +83,11 @@ export default {
 }
 
 .head-banner__button-arrow:hover {
+  opacity: 0.6;
+}
+
+.head-banner__button-arrow:focus {
+  outline: none;
   opacity: 0.6;
 }
 

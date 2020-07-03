@@ -131,6 +131,11 @@ export default {
   opacity: 0.8;
 }
 
+.section-about__button:focus {
+  outline: none;
+  opacity: 0.8;
+}
+
 .section-about__button-mob {
   @extend %button-default;
   min-height: 38px;
@@ -147,6 +152,11 @@ export default {
 }
 
 .section-about__button-mob:hover {
+  opacity: 0.8;
+}
+
+.section-about__button-mob:focus {
+  outline: none;
   opacity: 0.8;
 }
 
@@ -172,6 +182,11 @@ export default {
 }
 
 .section-about__control:hover {
+  color: #ffffff;
+}
+
+.section-about__control:focus {
+  outline: none;
   color: #ffffff;
 }
 

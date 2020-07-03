@@ -30,7 +30,7 @@
               YouTube
             </a>
           </p>
-          <button class="footer__button" @click="$emit('theClick')">
+          <button class="footer__share" @click="$emit('theClick')">
             Поделитесь ↗
           </button>
         </div>
@@ -107,6 +107,11 @@ export default {
   opacity: 0.6;
 }
 
+.footer__link:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
 .footer__link_underline {
   border-bottom: 1px solid #000000;
 }
@@ -124,7 +129,7 @@ export default {
   color: #000000;
 }
 
-.footer__button {
+.footer__share {
   @extend %button-default;
   max-width: 300px;
   font-style: normal;
@@ -135,7 +140,12 @@ export default {
   transition: opacity linear 0.1s;
 }
 
-.footer__button:hover {
+.footer__share:hover {
+  opacity: 0.6;
+}
+
+.footer__share:focus {
+  outline: none;
   opacity: 0.6;
 }
 
@@ -170,7 +180,7 @@ export default {
     font-size: 16px;
   }
 
-  .footer__button {
+  .footer__share {
     font-size: 16px;
   }
 
@@ -288,7 +298,7 @@ export default {
     line-height: 15px;
   }
 
-  .footer__button {
+  .footer__share {
     font-size: 13px;
     line-height: 15px;
   }
