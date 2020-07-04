@@ -2,7 +2,7 @@
   <section class="section-article">
     <ui-article
       class="section-article__article"
-      @theClick="$emit('theClick')"
+      :openPopupSocials="openPopupSocials"
     />
     <ui-story-grid class="section-article__story-grid">
       <ui-story-card
@@ -32,6 +32,8 @@ export default {
     'ui-story-card': StoryCard,
     'ui-button-long': ButtonLong,
   },
+
+  props: ['openPopupSocials'],
 
   data() {
     return {

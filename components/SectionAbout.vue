@@ -14,7 +14,7 @@
           >
             {{ subtitle }}
           </ui-subtitle>
-          <button class="section-about__button" @click="$emit('theClick')">
+          <button class="section-about__button" @click="openFormQustions">
             {{ buttonName }}
           </button>
         </div>
@@ -36,8 +36,8 @@
             </button>
           </div>
           <div class="section-about__description" v-html="setDescription"></div>
-          <button class="section-about__button-mob" @click="$emit('theClick')">
-            Рассказать историю
+          <button class="section-about__button-mob" @click="openFormQustions">
+            {{ buttonName }}
           </button>
         </div>
       </div>
@@ -54,6 +54,8 @@ export default {
     'ui-title': Title,
     'ui-subtitle': Subtitle,
   },
+
+  props: ['openFormQustions'],
 
   data() {
     return {

@@ -1,11 +1,15 @@
 <template>
   <div class="page">
-    <the-header class="page__header" @theClick="openFormQustions" />
+    <the-header class="page__header" :openFormQustions="openFormQustions" />
     <nuxt />
-    <the-footer class="page__footer" @theClick="openPopupSocials" />
-    <form-questions v-if="visibleFormQustions" @theClick="closePopup" />
-    <form-contacts v-if="visibleFormContacts" @theClick="closePopup" />
-    <popup-socials v-if="visiblePopupSocials" @theClick="closePopup" />
+    <the-footer class="page__footer" :openPopupSocials="openPopupSocials" />
+    <form-questions
+      v-if="visibleFormQustions"
+      :closePopup="closePopup"
+      @theClick="closePopup"
+    />
+    <form-contacts v-if="visibleFormContacts" :closePopup="closePopup" />
+    <popup-socials v-if="visiblePopupSocials" :closePopup="closePopup" />
     <ui-no-found-404 class="content__no-found-404" v-if="visiblePopupError" />
   </div>
 </template>

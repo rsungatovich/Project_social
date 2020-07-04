@@ -1,5 +1,5 @@
 <template>
-  <popup @theClick="$emit('theClick')">
+  <popup :closePopup="closePopup">
     <form
       class="form-questions"
       v-if="visibleForm"
@@ -63,6 +63,8 @@ export default {
     'ui-popup-thanks': PopupThanks,
     'ui-button-small': ButtonSmall,
   },
+
+  props: ['closePopup'],
 
   data() {
     return {

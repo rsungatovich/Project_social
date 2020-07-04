@@ -2,7 +2,7 @@
   <section class="head-banner">
     <div class="head-banner__box">
       <h2 class="head-banner__title">{{ title }}</h2>
-      <button class="head-banner__button" @click="$emit('theClick')">
+      <button class="head-banner__button" @click="openFormQustions">
         Рассказать историю
       </button>
       <button class="head-banner__button-arrow"></button>
@@ -12,6 +12,8 @@
 
 <script>
 export default {
+  props: ['openFormQustions'],
+
   data() {
     return {
       title: '#Раклечится',

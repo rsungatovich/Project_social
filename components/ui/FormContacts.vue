@@ -1,5 +1,5 @@
 <template>
-  <popup @theClick="$emit('theClick')">
+  <popup :closePopup="closePopup">
     <form class="form-contacts" @submit.prevent="submitForm">
       <p class="form-contacts__headline">
         Оставьте контакт для связи
@@ -8,7 +8,7 @@
         Мы свяжемся с вами в течение недели, чтобы задать вопросы о вашей
         истории и разместить ее на сайте.
       </p>
-      <label class="form-contacts__label" for="">
+      <label class="form-contacts__label" for="name">
         Как вас зовут?
       </label>
       <input
@@ -21,7 +21,7 @@
       />
       <div class="form-contacts__inputs">
         <div class="form-contacts__box">
-          <label class="form-contacts__label" for="">
+          <label class="form-contacts__label" for="email">
             Электронная почта
           </label>
           <input
@@ -34,7 +34,7 @@
           />
         </div>
         <div class="form-contacts__box">
-          <label class="form-contacts__label" for="">
+          <label class="form-contacts__label" for="phone">
             Телефон
           </label>
           <input
@@ -47,7 +47,7 @@
           />
         </div>
       </div>
-      <label class="form-contacts__label" for="">
+      <label class="form-contacts__label" for="other">
         Напишите, если есть предпочтительный способ связи и удобное время
       </label>
       <input
@@ -81,6 +81,8 @@ export default {
     popup: Popup,
     'ui-button-small': ButtonSmall,
   },
+
+  props: ['closePopup'],
 
   data() {
     return {

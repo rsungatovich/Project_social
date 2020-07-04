@@ -1,7 +1,7 @@
 <template>
   <div class="search">
-    <input class="search__input" type="text" />
-    <button class="search__button-reset">
+    <input class="search__input" type="text" ref="input" />
+    <button class="search__button-reset" @click="resetInput">
       Очистить
     </button>
     <ui-button-small class="search__button-small">
@@ -18,6 +18,11 @@ import ButtonSmall from '@/components/ui/ButtonSmall.vue';
 export default {
   components: {
     'ui-button-small': ButtonSmall,
+  },
+  methods: {
+    resetInput() {
+      this.$refs.input.value = '';
+    },
   },
 };
 </script>
