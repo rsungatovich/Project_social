@@ -1,5 +1,5 @@
 <template>
-  <popup @theClick="$emit('theClick')">
+  <popup :closePopup="closePopup">
     <div class="popup-socials">
       <p class="popup-socials__heading">
         Поделитесь
@@ -49,6 +49,8 @@ export default {
     popup: Popup,
     'ui-button-small': ButtonSmall,
   },
+
+  props: ['closePopup'],
 };
 </script>
 

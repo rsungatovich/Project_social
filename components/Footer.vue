@@ -30,7 +30,7 @@
               YouTube
             </a>
           </p>
-          <button class="footer__share" @click="$emit('theClick')">
+          <button class="footer__share" @click="openPopupSocials">
             Поделитесь ↗
           </button>
         </div>
@@ -50,6 +50,8 @@ export default {
   components: {
     'ui-title': Title,
   },
+
+  props: ['openPopupSocials'],
 
   data() {
     return {

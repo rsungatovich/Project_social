@@ -8,7 +8,7 @@
           {{ quote }}
         </p>
         <div class="article__copyright">
-          <button class="article__share" @click="$emit('theClick')">
+          <button class="article__share" @click="openPopupSocials">
             Поделитесь ↗
           </button>
           <time class="article__date">
@@ -20,7 +20,7 @@
     <div class="article__persone-story" v-html="story"></div>
     <button
       class="article__share article__share_long"
-      @click="$emit('theClick')"
+      @click="openPopupSocials"
     >
       Поделитесь этой статьей в своих социальных сетях ↗
     </button>
@@ -29,6 +29,8 @@
 
 <script>
 export default {
+  props: ['openPopupSocials'],
+
   data() {
     return {
       image: 'https://volley.sport-liga.pro/images/no_image.png',

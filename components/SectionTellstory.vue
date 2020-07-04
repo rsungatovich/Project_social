@@ -33,13 +33,14 @@
             <ui-button-middle
               class="section-tellstory__button-middle"
               v-if="firstButton"
-              @theClick="$emit('theClick')"
+              @theClick="openFormQustions"
             >
               {{ firstButtonName }}
             </ui-button-middle>
             <ui-button-middle
               class="section-tellstory__button-middle"
               v-if="secondButton"
+              @theClick="openFormContacts"
             >
               {{ secondButtonName }}
             </ui-button-middle>
@@ -61,6 +62,8 @@ export default {
     'ui-subtitle': Subtitle,
     'ui-button-middle': ButtonMiddle,
   },
+
+  props: ['openFormContacts', 'openFormQustions'],
 
   data() {
     return {
