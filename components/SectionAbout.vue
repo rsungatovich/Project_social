@@ -242,6 +242,10 @@ export default {
   margin: 0 0 10px;
 }
 
+.section-about__description {
+  min-height: 245px;
+}
+
 .section-about__description /deep/ .section-about__text {
   max-width: 640px;
   margin: 0 0 25px;
@@ -263,6 +267,7 @@ export default {
 
   .section-about__description {
     max-width: 570px;
+    min-height: 267px;
   }
 
   .section-about__heading {
@@ -311,6 +316,7 @@ export default {
 
   .section-about__description {
     max-width: 447px;
+    min-height: 248px;
   }
 
   .section-about__subtitle {
@@ -372,6 +378,7 @@ export default {
 
   .section-about__description {
     margin: 0 0 80px;
+    min-height: 286px;
   }
 
   .section-about__controls {
@@ -428,6 +435,7 @@ export default {
 
   .section-about__description {
     margin: 0 0 50px;
+    min-height: 267px;
   }
 
   .section-about__button-mob {
@@ -435,6 +443,18 @@ export default {
     padding: 0 13px;
     font-size: 12px;
     line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .section-about__description {
+    min-height: 305px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .section-about__description {
+    min-height: 381px;
   }
 }
 </style>
