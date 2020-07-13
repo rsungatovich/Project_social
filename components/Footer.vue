@@ -30,7 +30,7 @@
               YouTube
             </a>
           </p>
-          <button class="footer__share" @click="openPopupSocials">
+          <button class="footer__share" @click="openPopup">
             Поделитесь ↗
           </button>
         </div>
@@ -51,12 +51,16 @@ export default {
     'ui-title': Title,
   },
 
-  props: ['openPopupSocials'],
-
   data() {
     return {
       title: 'Спасибо всем, кто помог состояться этому проекту',
     };
+  },
+
+  methods: {
+    openPopup() {
+      this.$store.commit('popupSocials/setPopupState');
+    },
   },
 };
 </script>

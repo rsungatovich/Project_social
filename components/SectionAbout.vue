@@ -14,7 +14,7 @@
           >
             {{ subtitle }}
           </ui-subtitle>
-          <button class="section-about__button" @click="openFormQustions">
+          <button class="section-about__button" @click="openPopup">
             {{ buttonName }}
           </button>
         </div>
@@ -36,7 +36,7 @@
             </button>
           </div>
           <div class="section-about__description" v-html="setDescription"></div>
-          <button class="section-about__button-mob" @click="openFormQustions">
+          <button class="section-about__button-mob">
             {{ buttonName }}
           </button>
         </div>
@@ -54,8 +54,6 @@ export default {
     'ui-title': Title,
     'ui-subtitle': Subtitle,
   },
-
-  props: ['openFormQustions'],
 
   data() {
     return {
@@ -108,6 +106,10 @@ export default {
         this.firstButton = !this.firstButton;
         this.secondButton = !this.firstButton;
       }
+    },
+
+    openPopup() {
+      this.$store.commit('formQuestions/setPopupState');
     },
   },
 };

@@ -3,10 +3,7 @@
     <p class="popup-thanks__heading">
       Спасибо что приняли участие!
     </p>
-    <ui-button-small
-      class="popup-thanks__button-small"
-      @theClick="$emit('theClick')"
-    >
+    <ui-button-small class="popup-thanks__button-small" @theClick="closePopup">
       Закрыть
     </ui-button-small>
   </div>
@@ -20,6 +17,12 @@ export default {
   components: {
     popup: Popup,
     'ui-button-small': ButtonSmall,
+  },
+
+  methods: {
+    closePopup() {
+      this.$store.commit('formQuestions/setPopupState');
+    },
   },
 };
 </script>

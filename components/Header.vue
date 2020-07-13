@@ -33,7 +33,7 @@
       >
         Истории
       </nuxt-link>
-      <button class="header__button" @click="openFormQustions">
+      <button class="header__button" @click="openPopup">
         Рассказать историю
       </button>
       <button class="header__mobile-bar"></button>
@@ -43,12 +43,16 @@
 
 <script>
 export default {
-  props: ['openFormQustions'],
-
   data() {
     return {
       title: 'Проект Благотворительного Фонда Константина Хабенского',
     };
+  },
+
+  methods: {
+    openPopup() {
+      this.$store.commit('formQuestions/setPopupState');
+    },
   },
 };
 </script>

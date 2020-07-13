@@ -1,5 +1,5 @@
 <template>
-  <popup :closePopup="closePopup">
+  <popup @theClick="closePopup">
     <div class="popup-socials">
       <p class="popup-socials__heading">
         Поделитесь
@@ -50,7 +50,11 @@ export default {
     'ui-button-small': ButtonSmall,
   },
 
-  props: ['closePopup'],
+  methods: {
+    closePopup() {
+      this.$store.commit('popupSocials/setPopupState');
+    },
+  },
 };
 </script>
 

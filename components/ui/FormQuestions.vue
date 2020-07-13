@@ -1,5 +1,5 @@
 <template>
-  <popup :closePopup="closePopup">
+  <popup @theClick="closePopup">
     <form
       class="form-questions"
       v-if="visibleForm"
@@ -63,8 +63,6 @@ export default {
     'ui-popup-thanks': PopupThanks,
     'ui-button-small': ButtonSmall,
   },
-
-  props: ['closePopup'],
 
   data() {
     return {
@@ -193,6 +191,10 @@ export default {
         this.visibleForm = false;
         this.visibleThanks = true;
       }
+    },
+
+    closePopup() {
+      this.$store.commit('formQuestions/setPopupState');
     },
   },
 };

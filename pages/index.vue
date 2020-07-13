@@ -1,9 +1,6 @@
 <template>
   <main class="content">
-    <head-banner
-      class="content__head-banner"
-      :openFormQustions="openFormQustions"
-    />
+    <head-banner class="content__head-banner" />
     <section-video class="content__section-video" />
     <tag-banner class="content__tag-banner">
       <template v-slot:title>
@@ -21,19 +18,9 @@
       <template v-slot:subtitle> {{ tagFirst }} {{ tagSecond }} </template>
     </tag-banner>
     <section-instagram class="content__section-instagram" />
-    <section-tellstory
-      class="content__section-tellstory"
-      :openFormContacts="openFormContacts"
-      :openFormQustions="openFormQustions"
-    />
+    <section-tellstory class="content__section-tellstory" />
     <section-statistic class="content__section-statistic" />
-    <section-about
-      class="content__section-about"
-      :openFormQustions="openFormQustions"
-    />
-    <form-questions v-if="visibleFormQustions" :closePopup="closePopup" />
-    <form-contacts v-if="visibleFormContacts" :closePopup="closePopup" />
-    <popup-thanks v-if="visiblePopupThanks" :closePopup="closePopup" />
+    <section-about class="content__section-about" />
   </main>
 </template>
 
@@ -71,26 +58,7 @@ export default {
       tagSecond: '#раклечится',
       tagContentFirst: 'и в отличие от рака',
       tagContentSecond: 'рассказывайте ваши истории в инстаграм',
-      visibleFormQustions: false,
-      visibleFormContacts: false,
-      visiblePopupThanks: false,
     };
-  },
-
-  methods: {
-    closePopup() {
-      this.visibleFormQustions = false;
-      this.visibleFormContacts = false;
-      this.visiblePopupThanks = false;
-    },
-
-    openFormQustions() {
-      this.visibleFormQustions = true;
-    },
-
-    openFormContacts() {
-      this.visibleFormContacts = true;
-    },
   },
 };
 </script>

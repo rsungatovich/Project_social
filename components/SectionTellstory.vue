@@ -33,7 +33,7 @@
             <ui-button-middle
               class="section-tellstory__button-middle"
               v-if="firstButton"
-              @theClick="openFormQustions"
+              @theClick="openFormQuestions"
             >
               {{ firstButtonName }}
             </ui-button-middle>
@@ -62,8 +62,6 @@ export default {
     'ui-subtitle': Subtitle,
     'ui-button-middle': ButtonMiddle,
   },
-
-  props: ['openFormContacts', 'openFormQustions'],
 
   data() {
     return {
@@ -122,6 +120,14 @@ export default {
         this.firstButton = !this.firstButton;
         this.secondButton = !this.firstButton;
       }
+    },
+
+    openFormQuestions() {
+      this.$store.commit('formQuestions/setPopupState');
+    },
+
+    openFormContacts() {
+      this.$store.commit('formContacts/setPopupState');
     },
   },
 };

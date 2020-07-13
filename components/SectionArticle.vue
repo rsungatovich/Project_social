@@ -1,9 +1,6 @@
 <template>
   <section class="section-article">
-    <ui-article
-      class="section-article__article"
-      :openPopupSocials="openPopupSocials"
-    />
+    <ui-article class="section-article__article" />
     <ui-story-grid class="section-article__story-grid">
       <ui-story-card
         v-for="card of renderCards"
@@ -11,6 +8,7 @@
         :photoe="card.photoe"
         :name="card.name"
         :quote="card.quote"
+        :id="card.id"
       />
     </ui-story-grid>
     <ui-button-long class="section-article__button-long">
@@ -33,87 +31,101 @@ export default {
     'ui-button-long': ButtonLong,
   },
 
-  props: ['openPopupSocials'],
-
   data() {
     return {
       cards: [
         {
+          id: 1,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 1',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 2,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 2',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 3,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 3',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 4,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 4',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 5,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 5',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 6,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 6',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 7,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 7',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 8,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 8',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 9,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 9',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 10,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 10',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 11,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 11',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 12,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 12',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 13,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 13',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 14,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 14',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 15,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 15',
           quote: 'Цитата человека, оставленная в разделе истории.',
         },
         {
+          id: 16,
           photoe: 'https://volley.sport-liga.pro/images/no_image.png',
           name: 'Имя человека 16',
           quote: 'Цитата человека, оставленная в разделе истории.',

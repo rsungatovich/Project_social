@@ -1,5 +1,5 @@
 <template>
-  <popup :closePopup="closePopup">
+  <popup @theClick="closePopup">
     <form class="form-contacts" @submit.prevent="submitForm">
       <p class="form-contacts__headline">
         Оставьте контакт для связи
@@ -82,8 +82,6 @@ export default {
     'ui-button-small': ButtonSmall,
   },
 
-  props: ['closePopup'],
-
   data() {
     return {
       valueName: '',
@@ -105,6 +103,10 @@ export default {
         'other:',
         this.valueOther
       );
+    },
+
+    closePopup() {
+      this.$store.commit('formContacts/setPopupState');
     },
   },
 };
