@@ -1,9 +1,9 @@
 <template>
   <section class="head-banner">
     <div class="head-banner__box">
-      <h2 class="head-banner__title">{{ title }}</h2>
+      <h2 class="head-banner__title">{{ getTitle }}</h2>
       <button class="head-banner__button" @click="openPopup">
-        Рассказать историю
+        {{ buttonName }}
       </button>
       <button class="head-banner__button-arrow"></button>
     </div>
@@ -14,8 +14,14 @@
 export default {
   data() {
     return {
-      title: '#Раклечится',
+      buttonName: 'Рассказать историю',
     };
+  },
+
+  computed: {
+    getTitle() {
+      return this.$store.getters['headBanner/getTitle'];
+    },
   },
 
   methods: {

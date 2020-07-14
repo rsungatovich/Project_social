@@ -2,17 +2,17 @@
   <section class="section-about">
     <div class="section-about__content">
       <p class="section-about__heading">
-        {{ heading }}
+        {{ getHeading }}
       </p>
       <ui-title class="section-about__title section-about__title_theme_main">
-        {{ title }}
+        {{ getTitle }}
       </ui-title>
       <div class="section-about__container">
         <div class="section-about__wrapper">
           <ui-subtitle
             class="section-about__subtitle section-about__subtitle_theme_main"
           >
-            {{ subtitle }}
+            {{ getSubtitle }}
           </ui-subtitle>
           <button class="section-about__button" @click="openPopup">
             {{ buttonName }}
@@ -25,17 +25,17 @@
               ref="firstButton"
               @click="toggleIsActive"
             >
-              Рак Лечится
+              {{ firstControlName }}
             </button>
             <button
               class="section-about__control"
               ref="secondButton"
               @click="toggleIsActive"
             >
-              Фонд&nbsp;Хабенского
+              {{ lastControlName }}
             </button>
           </div>
-          <div class="section-about__description" v-html="setDescription"></div>
+          <div class="section-about__description" v-html="getDescription"></div>
           <button class="section-about__button-mob">
             {{ buttonName }}
           </button>
@@ -57,37 +57,31 @@ export default {
 
   data() {
     return {
-      heading: '#Раклечится',
-      title: 'О проекте',
-      buttonName: 'Рассказать историю',
       firstButton: true,
       secondButton: false,
-      subtitle:
-        'Этот проект был создан благотворительным фондом Константина Хабенского.',
-      firstDescription: `
-        <p class="section-about__text">
-          Есть вещи, которые не лечатся. Особенности характера, страстные увлечения, привычки, ставшие частью нашего «я», фобии, которые мы приобрели в детстве. Список можно продолжать до бесконечности, но одна болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится, и лучшее доказательство — люди с их неизлечимыми особенностями, которые сумели победить рак.
-        </p>
-        <p class="section-about__text">
-          Рак лечится — проект Благотворительного Фонда Константина Хабенского и Leo Burnett Moscow. С его помощью мы надеемся изменить отношение людей к раку и заставить каждого поверить: онкологическое заболевание — это не приговор.
-        </p>      
-      `,
-      secondDescription: `
-        <p class="section-about__text">
-          Благотворительный Фонд Константина Хабенского с 2008 года помогает детям с онкологическими и другими тяжелыми заболеваниями головного мозга. Фонд не только поддерживает семью заболевшего ребенка в самый сложный момент, оплачивая обследования, лечение и медицинские препараты, но и в целом меняет систему оказания помощи детям с опухолями мозга в России.
-        </p>     
-      `,
+      firstControlName: 'Рак Лечится',
+      lastControlName: 'Фонд Хабенского',
+      buttonName: 'Рассказать историю',
     };
   },
 
   computed: {
-    setDescription() {
+    getHeading() {
+      return this.$store.getters['sectionAbout/getHeading'];
+    },
+    getTitle() {
+      return this.$store.getters['sectionAbout/getTitle'];
+    },
+    getSubtitle() {
+      return this.$store.getters['sectionAbout/getSubtitle'];
+    },
+    getDescription() {
       if (this.firstButton) {
-        return this.firstDescription;
+        return this.$store.getters['sectionAbout/getFirstDescription'];
       }
 
       if (this.secondButton) {
-        return this.secondDescription;
+        return this.$store.getters['sectionAbout/getSecondDescription'];
       }
     },
   },

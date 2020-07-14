@@ -1,7 +1,7 @@
 <template>
   <section class="section-allstories">
     <ui-title class="section-allstories__title">
-      {{ title }}
+      {{ getTitle }}
     </ui-title>
     <ui-search class="section-allstories__search" />
     <ui-story-grid class="section-allstories__story-grid">
@@ -40,105 +40,6 @@ export default {
   data() {
     return {
       nothingNoFound: false,
-      title: 'Истории неизлечимых привычек',
-      cards: [
-        {
-          id: 1,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 1',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 2,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 2',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 3,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 3',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 4,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 4',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 5,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 5',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 6,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 6',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 7,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 7',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 8,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 8',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 9,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 9',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 10,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 10',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 11,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 11',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 12,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 12',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 13,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 13',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 14,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 14',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 15,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 15',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-        {
-          id: 16,
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          name: 'Имя человека 16',
-          quote: 'Цитата человека, оставленная в разделе истории.',
-        },
-      ],
     };
   },
 
@@ -146,15 +47,21 @@ export default {
     renderCards() {
       if (process.browser) {
         if (window.innerWidth > 768) {
-          return this.cards.filter((card, index) => index < 16);
+          return this.storiesData.filter((card, index) => index < 16);
         } else if (window.innerWidth > 425) {
-          return this.cards.filter((card, index) => index < 12);
+          return this.storiesData.filter((card, index) => index < 12);
         } else if (window.innerWidth <= 425) {
-          return this.cards.filter((card, index) => index < 9);
+          return this.storiesData.filter((card, index) => index < 9);
         }
       } else {
-        return this.cards.filter((card, index) => index < 16);
+        return this.storiesData.filter((card, index) => index < 16);
       }
+    },
+    storiesData() {
+      return this.$store.getters['storiesData/getStoriesData'];
+    },
+    getTitle() {
+      return this.$store.getters['sectionAllstories/getTitle'];
     },
   },
 };

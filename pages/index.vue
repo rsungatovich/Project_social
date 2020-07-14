@@ -4,18 +4,20 @@
     <section-video class="content__section-video" />
     <tag-banner class="content__tag-banner">
       <template v-slot:title>
-        {{ tagContentFirst }}
+        {{ getTagContentFirst }}
       </template>
       <template v-slot:subtitle>
-        {{ tagFirst }}
+        {{ getTagFirst }}
       </template>
     </tag-banner>
     <section-mainstories class="content__section-mainstories" />
     <tag-banner class="content__tag-banner">
       <template v-slot:title>
-        {{ tagContentSecond }}
+        {{ getTagContentSecond }}
       </template>
-      <template v-slot:subtitle> {{ tagFirst }} {{ tagSecond }} </template>
+      <template v-slot:subtitle>
+        {{ getTagFirst }} {{ getTagSecond }}
+      </template>
     </tag-banner>
     <section-instagram class="content__section-instagram" />
     <section-tellstory class="content__section-tellstory" />
@@ -52,13 +54,19 @@ export default {
     'popup-thanks': PopupThanks,
   },
 
-  data() {
-    return {
-      tagFirst: '#этонелечится',
-      tagSecond: '#раклечится',
-      tagContentFirst: 'и в отличие от рака',
-      tagContentSecond: 'рассказывайте ваши истории в инстаграм',
-    };
+  computed: {
+    getTagFirst(state) {
+      return this.$store.getters['tagBanner/getTagFirst'];
+    },
+    getTagSecond(state) {
+      return this.$store.getters['tagBanner/getTagSecond'];
+    },
+    getTagContentFirst(state) {
+      return this.$store.getters['tagBanner/getTagContentFirst'];
+    },
+    getTagContentSecond(state) {
+      return this.$store.getters['tagBanner/getTagContentSecond'];
+    },
   },
 };
 </script>
