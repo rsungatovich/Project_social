@@ -35,7 +35,15 @@
               {{ lastControlName }}
             </button>
           </div>
-          <div class="section-about__description" v-html="getDescription"></div>
+          <div class="section-about__description">
+            <p
+              class="section-about__text"
+              v-for="paragraph of getDescription"
+              :key="paragraph.id"
+            >
+              {{ paragraph.text }}
+            </p>
+          </div>
           <button class="section-about__button-mob">
             {{ buttonName }}
           </button>
@@ -77,11 +85,11 @@ export default {
     },
     getDescription() {
       if (this.firstButton) {
-        return this.$store.getters['sectionAbout/getFirstDescription'];
+        return this.$store.getters['sectionAbout/getDescription'][0].paragraphs;
       }
 
       if (this.secondButton) {
-        return this.$store.getters['sectionAbout/getSecondDescription'];
+        return this.$store.getters['sectionAbout/getDescription'][1].paragraphs;
       }
     },
   },
@@ -244,7 +252,7 @@ export default {
   min-height: 245px;
 }
 
-.section-about__description /deep/ .section-about__text {
+.section-about__text {
   max-width: 640px;
   margin: 0 0 25px;
   font-style: normal;
@@ -254,7 +262,7 @@ export default {
   color: #dedede;
 }
 
-.section-about__description /deep/ .section-about__text:last-child {
+.section-about__text:last-child {
   margin: 0;
 }
 
@@ -321,7 +329,7 @@ export default {
     max-width: 200px;
   }
 
-  .section-about__description /deep/ .section-about__text {
+  .section-about__text {
     margin: 0 0 20px;
     font-size: 15px;
     line-height: 19px;

@@ -25,10 +25,15 @@
           </button>
         </div>
         <div class="section-tellstory__inner">
-          <div
-            class="section-tellstory__description"
-            v-html="getDescription"
-          ></div>
+          <div class="section-tellstory__description">
+            <p
+              class="section-tellstory__text"
+              v-for="paragraph of getDescription"
+              :key="paragraph.id"
+            >
+              {{ paragraph.text }}
+            </p>
+          </div>
           <div class="section-tellstory__button-wrapper">
             <ui-button-middle
               class="section-tellstory__button-middle"
@@ -83,11 +88,13 @@ export default {
     },
     getDescription() {
       if (this.firstButton) {
-        return this.$store.getters['sectionTellstory/getFirstDescription'];
+        return this.$store.getters['sectionTellstory/getDescription'][0]
+          .paragraphs;
       }
 
       if (this.secondButton) {
-        return this.$store.getters['sectionTellstory/getSecondDescription'];
+        return this.$store.getters['sectionTellstory/getDescription'][1]
+          .paragraphs;
       }
     },
   },
@@ -180,7 +187,7 @@ export default {
   justify-content: space-between;
 }
 
-.section-tellstory__inner /deep/ .section-tellstory__description {
+.section-tellstory__text {
   max-width: 633px;
   margin: 0;
   font-style: normal;
@@ -195,7 +202,7 @@ export default {
     padding: 90px 50px;
   }
 
-  .section-tellstory__inner /deep/ .section-tellstory__description {
+  .section-tellstory__text {
     max-width: 570px;
   }
 }
@@ -205,7 +212,7 @@ export default {
     margin: 0 30px 0 0;
   }
 
-  .section-tellstory__inner /deep/ .section-tellstory__description {
+  .section-tellstory__text {
     max-width: 470px;
   }
 }
