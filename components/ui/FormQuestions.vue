@@ -7,14 +7,14 @@
     >
       <div class="form-questions__box">
         <span class="form-questions__steps">
-          {{ forms[counter].step }}
+          {{ getForms[getCounter].step }}
         </span>
         <p class="form-questions__about">
           <span class="form-questions__headline">
-            {{ forms[counter].question }}
+            {{ getForms[getCounter].question }}
           </span>
           <span class="form-questions__description">
-            {{ forms[counter].description }}
+            {{ getForms[getCounter].description }}
           </span>
         </p>
       </div>
@@ -23,7 +23,7 @@
         type="text"
         name="answer"
         ref="input"
-        :value="answers[counter]"
+        :value="getAnswers[getCounter]"
         placeholder="Напишите тут"
         required
       />
@@ -34,10 +34,10 @@
             type="button"
             @click="backForm"
           >
-            Назад
+            {{ buttonBack }}
           </button>
           <ui-button-small class="form-questions__button-small" type="submit">
-            {{ buttonName }}
+            {{ buttonNext }}
           </ui-button-small>
         </div>
         <p class="form-questions__policy" v-if="visiblePolicy">
@@ -66,110 +66,49 @@ export default {
 
   data() {
     return {
-      counter: 1,
-      forms: {
-        1: {
-          step: 'Шаг 1 из 12',
-          question: 'Как вас зовут?',
-          description: '',
-        },
-        2: {
-          step: 'Шаг 2 из 12',
-          question: 'Было ли у вас онкологическое заболевание?',
-          description:
-            'Если да – расскажите, пожалуйста, кратко, какой диагноз и текущий статус. Если нет — приглашаем Вас поделиться своей историей неизлечимых привычек в Инстаграм с хештегами #раклечится и #этонелечится.',
-        },
-        3: {
-          step: 'Шаг 3 из 12',
-          question: 'Какие занятия приносят Вам наибольшее удовольствие?',
-          description:
-            'Расскажите о ваших неизлечимых привычках, чего Вы боитесь или без чего не можете жить.',
-        },
-        4: {
-          step: 'Шаг 4 из 12',
-          question:
-            'На что, кроме семьи, быта и работы, Вы тратите свое время?',
-          description: '',
-        },
-        5: {
-          step: 'Шаг 5 из 12',
-          question: 'Какие сильные увлечения у Вас есть?',
-          description:
-            'Расскажите о занятии, хобби или спорте, которые увлекают Вас с головой.',
-        },
-        6: {
-          step: 'Шаг 6 из 12',
-          question:
-            'Ваши близкие, друзья или коллеги замечали за вами какие-нибудь необычные привычки или особенности?',
-          description: '',
-        },
-        7: {
-          step: 'Шаг 7 из 12',
-          question:
-            'Существуют ли какие-то ритуалы/действия, которые Вы совершаете регулярно?',
-          description: 'Кроме необходимых, таких, как чистка зубов.',
-        },
-        8: {
-          step: 'Шаг 8 из 12',
-          question:
-            'Если вам выдался свободный день/вечер в одиночестве, чем вы займетесь?',
-          description: '',
-        },
-        9: {
-          step: 'Шаг 9 из 12',
-          question: 'Что Вас успокаивает/умиротворяет лучше всего?',
-          description: '',
-        },
-        10: {
-          step: 'Шаг 10 из 12',
-          question:
-            'Какие события/ситуации или действия других людей обычно выводят Вас из себя?',
-          description: '',
-        },
-        11: {
-          step: 'Шаг 11 из 12',
-          question: 'Как вы обычно проводите выходные?',
-          description: '',
-        },
-        12: {
-          step: 'Шаг 12 из 12',
-          question: 'Почта или телефон для связи.',
-          description:
-            'Укажите удобный для вас формат связи. После обработки анкеты координатор проекта свяжется с Вами для размещения Вашей истории на сайте.',
-        },
-      },
-      answers: {
-        1: '',
-        2: '',
-        3: '',
-        4: '',
-        5: '',
-        6: '',
-        7: '',
-        8: '',
-        9: '',
-        10: '',
-        11: '',
-        12: '',
-      },
       visibleForm: true,
       visibleThanks: false,
       visiblePolicy: false,
-      buttonName: 'Далее',
+      buttonNext: 'Далее',
+      buttonBack: 'Назад',
       buttonType: 'button',
     };
   },
 
+  computed: {
+    getForms() {
+      return this.$store.getters['formQuestions/getForms'];
+    },
+    getAnswers() {
+      return this.$store.getters['formQuestions/getAnswers'];
+    },
+    getCounter() {
+      return this.$store.getters['formQuestions/getCounter'];
+    },
+  },
+
   methods: {
     backForm() {
-      if (this.counter > 1) {
-        this.counter = this.counter - 1;
+      if (this.getCounter > 1) {
+        this.setCounter(this.getCounter - 1);
         this.formStatus();
       }
     },
+    submitForm() {
+      this.setAnswers();
 
+      if (this.getCounter < 12) {
+        this.setCounter(this.getCounter + 1);
+        this.formStatus();
+      } else {
+        console.log('susses');
+        this.setCounter(1);
+        this.visibleForm = false;
+        this.visibleThanks = true;
+      }
+    },
     formStatus() {
-      if (this.counter === 12) {
+      if (this.getCounter === 12) {
         this.visiblePolicy = true;
         this.buttonName = 'Отправить';
         this.buttonType = 'submit';
@@ -179,22 +118,19 @@ export default {
         this.buttonType = 'button';
       }
     },
-
-    submitForm() {
-      this.answers[this.counter] = this.$refs.input.value;
-
-      if (this.counter < 12) {
-        this.counter = this.counter + 1;
-        this.formStatus();
-      } else {
-        console.log('susses');
-        this.visibleForm = false;
-        this.visibleThanks = true;
-      }
-    },
-
     closePopup() {
       this.$store.commit('formQuestions/setPopupState');
+    },
+    setAnswers() {
+      return this.$store.commit('formQuestions/setAnswers', {
+        name: this.getCounter,
+        answer: this.$refs.input.value,
+      });
+    },
+    setCounter(num) {
+      return this.$store.commit('formQuestions/setCounter', {
+        count: num,
+      });
     },
   },
 };
