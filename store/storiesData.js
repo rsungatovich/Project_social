@@ -792,3 +792,5 @@ export const getters = {
     return state.storiesData;
   },
 };
+
+// запросы на сервер прописываются здесь

@@ -3,7 +3,25 @@
     <h2 class="policy__title">
       {{ getTitle }}
     </h2>
-    <div class="policy__information" v-html="getInformation"></div>
+    <div class="policy__information">
+      <ol class="policy__list">
+        <li class="policy__item" v-for="item in getInformation" :key="item.id">
+          {{ item.title }}
+          <p class="policy__heading" v-if="item.description">
+            {{ item.description }}
+          </p>
+          <ol class="policy__sublist">
+            <li
+              class="policy__subitem"
+              v-for="clause in item.clauses"
+              :key="clause.id"
+            >
+              {{ clause.text }}
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </div>
   </section>
 </template>
 
