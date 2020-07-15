@@ -1,6 +1,6 @@
 export const state = () => ({
+  visible: false,
   counter: 1,
-  visibleFormQustions: false,
   forms: {
     1: {
       step: 'Шаг 1 из 12',
@@ -95,7 +95,7 @@ export const mutations = {
     return (state.answers[name] = answer);
   },
   setPopupState(state) {
-    return (state.visibleFormQustions = !state.visibleFormQustions);
+    return (state.visible = !state.visible);
   },
 };
 
@@ -110,6 +110,6 @@ export const getters = {
     return state.answers;
   },
   getPopupState(state) {
-    return state.visibleFormQustions;
+    return state.visible;
   },
 };

@@ -2,7 +2,7 @@
   <popup @theClick="closePopup">
     <div class="popup-socials">
       <p class="popup-socials__heading">
-        Поделитесь
+        {{ getDescription }}
       </p>
       <div class="popup-socials__icons">
         <img
@@ -49,7 +49,11 @@ export default {
     popup: Popup,
     'ui-button-small': ButtonSmall,
   },
-
+  computed: {
+    getDescription() {
+      return this.$store.getters['popupSocials/getDescription'];
+    },
+  },
   methods: {
     closePopup() {
       this.$store.commit('popupSocials/setPopupState');

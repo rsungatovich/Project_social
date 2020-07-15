@@ -1,15 +1,19 @@
 export const state = () => ({
-  visiblePopupSocials: false,
+  visible: false,
+  text: 'Поделитесь',
 });
 
 export const mutations = {
   setPopupState(state) {
-    return (state.visiblePopupSocials = !state.visiblePopupSocials);
+    return (state.visible = !state.visible);
   },
 };
 
 export const getters = {
+  getDescription(state) {
+    return state.text;
+  },
   getPopupState(state) {
-    return state.visiblePopupSocials;
+    return state.visible;
   },
 };

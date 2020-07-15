@@ -1,15 +1,19 @@
 export const state = () => ({
-  visiblePopupThanks: false,
+  visible: false,
+  text: 'Спасибо что приняли участие!',
 });
 
 export const mutations = {
   setPopupState(state) {
-    return (state.visiblePopupThanks = !state.visiblePopupThanks);
+    return (state.visible = !state.visible);
   },
 };
 
 export const getters = {
+  getDescription(state) {
+    return state.text;
+  },
   getPopupState(state) {
-    return state.visiblePopupThanks;
+    return state.visible;
   },
 };

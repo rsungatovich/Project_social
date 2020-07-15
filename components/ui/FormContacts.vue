@@ -2,14 +2,13 @@
   <popup @theClick="closePopup">
     <form class="form-contacts" @submit.prevent="submitForm">
       <p class="form-contacts__headline">
-        Оставьте контакт для связи
+        {{ getInformation.headline }}
       </p>
       <p class="form-contacts__description">
-        Мы свяжемся с вами в течение недели, чтобы задать вопросы о вашей
-        истории и разместить ее на сайте.
+        {{ getInformation.description }}
       </p>
       <label class="form-contacts__label" for="name">
-        Как вас зовут?
+        {{ getInformation.nameLabel }}
       </label>
       <input
         class="form-contacts__input"
@@ -22,7 +21,7 @@
       <div class="form-contacts__inputs">
         <div class="form-contacts__box">
           <label class="form-contacts__label" for="email">
-            Электронная почта
+            {{ getInformation.emailLabel }}
           </label>
           <input
             class="form-contacts__input"
@@ -35,7 +34,7 @@
         </div>
         <div class="form-contacts__box">
           <label class="form-contacts__label" for="phone">
-            Телефон
+            {{ getInformation.phoneLabel }}
           </label>
           <input
             class="form-contacts__input"
@@ -48,7 +47,7 @@
         </div>
       </div>
       <label class="form-contacts__label" for="other">
-        Напишите, если есть предпочтительный способ связи и удобное время
+        {{ getInformation.otherLabel }}
       </label>
       <input
         class="form-contacts__input"
@@ -59,7 +58,7 @@
       />
       <div class="form-contacts__container">
         <ui-button-small class="form-contacts__button-small">
-          Отправить
+          {{ buttonSend }}
         </ui-button-small>
         <p class="form-contacts__policy">
           Нажимая на кнопку «отправить», вы даете согласие на
@@ -81,32 +80,34 @@ export default {
     popup: Popup,
     'ui-button-small': ButtonSmall,
   },
-
   data() {
     return {
       valueName: '',
       valueEmail: '',
       valuePhone: '',
       valueOther: '',
+      buttonSend: 'Отправить',
     };
   },
-
+  computed: {
+    getInformation() {
+      return this.$store.getters['formContacts/getInformation'];
+    },
+  },
   methods: {
     submitForm() {
-      console.log(
-        'name:',
-        this.valueName,
-        'email:',
-        this.valueEmail,
-        'phone:',
-        this.valuePhone,
-        'other:',
-        this.valueOther
-      );
+      console.log('susses');
+      this.setValues('name', this.valueName);
+      this.setValues('email', this.valueEmail);
+      this.setValues('phone', this.valuePhone);
+      this.setValues('other', this.valueOther);
+      this.closePopup();
     },
-
     closePopup() {
       this.$store.commit('formContacts/setPopupState');
+    },
+    setValues(type, value) {
+      return this.$store.commit('formContacts/setValues', { type, value });
     },
   },
 };

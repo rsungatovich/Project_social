@@ -1,19 +1,25 @@
 <template>
   <div class="no-found-404">
     <h2 class="no-found-404__title">
-      404
+      {{ getMessages.page404Title }}
     </h2>
     <p class="no-found-404__subtitle">
-      Страница не найдена.
+      {{ getMessages.page404Subtitle }}
       <nuxt-link to="/" class="no-found-404__link">
-        Перейти на главную.
+        {{ getMessages.page404Link }}
       </nuxt-link>
     </p>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    getMessages() {
+      return this.$store.getters['errorMessages/getMessages'];
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
