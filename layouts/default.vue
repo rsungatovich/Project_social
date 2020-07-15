@@ -1,16 +1,12 @@
 <template>
   <div class="page">
-    <the-header class="page__header" :openFormQustions="openFormQustions" />
+    <the-header class="page__header" />
     <nuxt />
-    <the-footer class="page__footer" :openPopupSocials="openPopupSocials" />
-    <form-questions
-      v-if="visibleFormQustions"
-      :closePopup="closePopup"
-      @theClick="closePopup"
-    />
-    <form-contacts v-if="visibleFormContacts" :closePopup="closePopup" />
-    <popup-socials v-if="visiblePopupSocials" :closePopup="closePopup" />
-    <ui-no-found-404 class="content__no-found-404" v-if="visiblePopupError" />
+    <the-footer class="page__footer" />
+    <form-questions v-if="visibleFormQustions" />
+    <form-contacts v-if="visibleFormContacts" />
+    <popup-socials v-if="visiblePopupSocials" />
+    <!-- <ui-no-found-404 v-if="visiblePopupError" /> -->
   </div>
 </template>
 
@@ -35,29 +31,26 @@ export default {
   data() {
     return {
       inputValue: '',
-      visibleFormQustions: false,
-      visibleFormContacts: false,
-      visiblePopupThanks: false,
-      visiblePopupSocials: false,
-      visiblePopupError: false,
     };
   },
 
   methods: {
-    closePopup() {
-      this.visibleFormQustions = false;
-      this.visibleFormContacts = false;
-      this.visiblePopupThanks = false;
-      this.visiblePopupSocials = false;
-    },
-    openFormQustions() {
-      this.visibleFormQustions = true;
-    },
-    openPopupSocials() {
-      this.visiblePopupSocials = true;
-    },
     submitForm() {
       console.log(this.inputValue);
+    },
+  },
+
+  computed: {
+    visibleFormQustions() {
+      return this.$store.getters['formQuestions/getPopupState'];
+    },
+
+    visibleFormContacts() {
+      return this.$store.getters['formContacts/getPopupState'];
+    },
+
+    visiblePopupSocials() {
+      return this.$store.getters['popupSocials/getPopupState'];
     },
   },
 };

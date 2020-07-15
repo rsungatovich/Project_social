@@ -1,39 +1,28 @@
 <template>
   <main class="content">
-    <head-banner
-      class="content__head-banner"
-      :openFormQustions="openFormQustions"
-    />
+    <head-banner class="content__head-banner" />
     <section-video class="content__section-video" />
     <tag-banner class="content__tag-banner">
       <template v-slot:title>
-        {{ tagContentFirst }}
+        {{ getTagContentFirst }}
       </template>
       <template v-slot:subtitle>
-        {{ tagFirst }}
+        {{ getTagFirst }}
       </template>
     </tag-banner>
     <section-mainstories class="content__section-mainstories" />
     <tag-banner class="content__tag-banner">
       <template v-slot:title>
-        {{ tagContentSecond }}
+        {{ getTagContentSecond }}
       </template>
-      <template v-slot:subtitle> {{ tagFirst }} {{ tagSecond }} </template>
+      <template v-slot:subtitle>
+        {{ getTagFirst }} {{ getTagSecond }}
+      </template>
     </tag-banner>
     <section-instagram class="content__section-instagram" />
-    <section-tellstory
-      class="content__section-tellstory"
-      :openFormContacts="openFormContacts"
-      :openFormQustions="openFormQustions"
-    />
+    <section-tellstory class="content__section-tellstory" />
     <section-statistic class="content__section-statistic" />
-    <section-about
-      class="content__section-about"
-      :openFormQustions="openFormQustions"
-    />
-    <form-questions v-if="visibleFormQustions" :closePopup="closePopup" />
-    <form-contacts v-if="visibleFormContacts" :closePopup="closePopup" />
-    <popup-thanks v-if="visiblePopupThanks" :closePopup="closePopup" />
+    <section-about class="content__section-about" />
   </main>
 </template>
 
@@ -65,31 +54,18 @@ export default {
     'popup-thanks': PopupThanks,
   },
 
-  data() {
-    return {
-      tagFirst: '#этонелечится',
-      tagSecond: '#раклечится',
-      tagContentFirst: 'и в отличие от рака',
-      tagContentSecond: 'рассказывайте ваши истории в инстаграм',
-      visibleFormQustions: false,
-      visibleFormContacts: false,
-      visiblePopupThanks: false,
-    };
-  },
-
-  methods: {
-    closePopup() {
-      this.visibleFormQustions = false;
-      this.visibleFormContacts = false;
-      this.visiblePopupThanks = false;
+  computed: {
+    getTagFirst(state) {
+      return this.$store.getters['tagBanner/getTagFirst'];
     },
-
-    openFormQustions() {
-      this.visibleFormQustions = true;
+    getTagSecond(state) {
+      return this.$store.getters['tagBanner/getTagSecond'];
     },
-
-    openFormContacts() {
-      this.visibleFormContacts = true;
+    getTagContentFirst(state) {
+      return this.$store.getters['tagBanner/getTagContentFirst'];
+    },
+    getTagContentSecond(state) {
+      return this.$store.getters['tagBanner/getTagContentSecond'];
     },
   },
 };

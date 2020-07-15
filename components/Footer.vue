@@ -3,11 +3,15 @@
     <section class="footer__content">
       <div class="footer__box footer__box_left">
         <ui-title class="footer__title">
-          {{ title }}
+          {{ getTitle }}
         </ui-title>
         <nav class="footer__navigation">
-          <nuxt-link to="/" class="footer__link">Главная</nuxt-link>
-          <nuxt-link to="/stories" class="footer__link">Истории</nuxt-link>
+          <nuxt-link to="/" class="footer__link">
+            {{ buttonMain }}
+          </nuxt-link>
+          <nuxt-link to="/stories" class="footer__link">
+            {{ buttonStories }}
+          </nuxt-link>
         </nav>
       </div>
       <div class="footer__box footer__box_right">
@@ -30,15 +34,15 @@
               YouTube
             </a>
           </p>
-          <button class="footer__share" @click="openPopupSocials">
-            Поделитесь ↗
+          <button class="footer__share" @click="openPopup">
+            {{ buttonShare }}
           </button>
         </div>
       </div>
     </section>
     <section class="footer__copyright">
-      <p class="footer__copy">Рак Лечится 2020</p>
-      <p class="footer__copy">Сделано студентами Яндекс Практикум</p>
+      <p class="footer__copy">{{ copyrightFirst }}</p>
+      <p class="footer__copy">{{ copyrightLast }}</p>
     </section>
   </footer>
 </template>
@@ -51,12 +55,26 @@ export default {
     'ui-title': Title,
   },
 
-  props: ['openPopupSocials'],
-
   data() {
     return {
-      title: 'Спасибо всем, кто помог состояться этому проекту',
+      buttonMain: 'Главная',
+      buttonStories: 'Истории',
+      buttonShare: 'Поделитесь ↗',
+      copyrightFirst: 'Рак Лечится 2020',
+      copyrightLast: 'Сделано студентами Яндекс Практикум',
     };
+  },
+
+  computed: {
+    getTitle() {
+      return this.$store.getters['footer/getTitle'];
+    },
+  },
+
+  methods: {
+    openPopup() {
+      this.$store.commit('popupSocials/setPopupState');
+    },
   },
 };
 </script>

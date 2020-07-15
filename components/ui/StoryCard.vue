@@ -1,5 +1,5 @@
 <template>
-  <div class="story-card">
+  <nuxt-link class="story-card" :to="`/stories/${id}`">
     <img class="story-card__image" :src="photoe" alt="Человек" />
     <h3 class="story-card__title">
       {{ name }}
@@ -7,12 +7,12 @@
     <p class="story-card__subtitle">
       {{ quote }}
     </p>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
 export default {
-  props: ['photoe', 'name', 'quote'],
+  props: ['photoe', 'name', 'quote', 'id'],
 };
 </script>
 
@@ -20,6 +20,7 @@ export default {
 .story-card {
   width: 100%;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .story-card__image {

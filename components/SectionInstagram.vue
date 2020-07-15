@@ -2,10 +2,10 @@
   <section class="section-instagram">
     <div class="section-instagram__description">
       <ui-title class="section-instagram__title">
-        {{ title }}
+        {{ getTitle }}
       </ui-title>
       <ui-subtitle class="section-instagram__subtitle">
-        {{ subtitle }}
+        {{ getSubtitle }}
       </ui-subtitle>
     </div>
     <div class="section-instagram__container">
@@ -31,83 +31,18 @@ export default {
     'ui-instagram-card': InstagramCard,
   },
 
-  data() {
-    return {
-      title: 'Инстаграм',
-      subtitle:
-        'Два раза в неделю мы просматриваем все посты по хештегу #этонелечится. Все истории, где нет нецензурных выражений и запрещенного контента попадают сюда. Следите за правильным написанием хештега, чтобы мы не пропустили вашу историю.',
-      cards: [
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-        {
-          photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-          link: 'https://www.instagram.com/raklechitsa/',
-        },
-      ],
-    };
-  },
-
   computed: {
+    getTitle() {
+      return this.$store.getters['sectionInstagram/getTitle'];
+    },
+    getSubtitle() {
+      return this.$store.getters['sectionInstagram/getSubtitle'];
+    },
+    getInstagramStories() {
+      return this.$store.getters['sectionInstagram/getInstagramStories'];
+    },
     renderCards() {
-      return this.cards.filter((card, index) => index < 8);
+      return this.getInstagramStories.filter((card, index) => index < 8);
     },
   },
 };

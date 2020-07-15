@@ -1,13 +1,10 @@
 <template>
   <div class="popup-thanks">
     <p class="popup-thanks__heading">
-      Спасибо что приняли участие!
+      {{ getDescription }}
     </p>
-    <ui-button-small
-      class="popup-thanks__button-small"
-      @theClick="$emit('theClick')"
-    >
-      Закрыть
+    <ui-button-small class="popup-thanks__button-small" @theClick="closePopup">
+      {{ buttonClose }}
     </ui-button-small>
   </div>
 </template>
@@ -20,6 +17,21 @@ export default {
   components: {
     popup: Popup,
     'ui-button-small': ButtonSmall,
+  },
+  data() {
+    return {
+      buttonClose: 'Закрыть',
+    };
+  },
+  computed: {
+    getDescription() {
+      return this.$store.getters['popupThanks/getDescription'];
+    },
+  },
+  methods: {
+    closePopup() {
+      this.$store.commit('formQuestions/setPopupState');
+    },
   },
 };
 </script>

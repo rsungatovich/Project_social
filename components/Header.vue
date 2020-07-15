@@ -2,11 +2,11 @@
   <header class="header">
     <h1 class="header__title" v-if="$route.path !== '/'">
       <nuxt-link to="/" class="header__title-link">
-        {{ title }}
+        {{ getTitle }}
       </nuxt-link>
     </h1>
     <h1 class="header__title" v-else>
-      {{ title }}
+      {{ getTitle }}
     </h1>
     <nav class="header__navigation">
       <nuxt-link
@@ -14,27 +14,27 @@
         class="header__link is-active"
         v-if="$route.path === '/'"
       >
-        Главная
+        {{ buttonMain }}
       </nuxt-link>
       <nuxt-link to="/" class="header__link" v-if="$route.path !== '/'">
-        Главная
+        {{ buttonMain }}
       </nuxt-link>
       <nuxt-link
         to="/stories"
         class="header__link is-active"
         v-if="$route.path === '/stories'"
       >
-        Истории
+        {{ buttonStories }}
       </nuxt-link>
       <nuxt-link
         to="/stories"
         class="header__link"
         v-if="$route.path !== '/stories'"
       >
-        Истории
+        {{ buttonStories }}
       </nuxt-link>
-      <button class="header__button" @click="openFormQustions">
-        Рассказать историю
+      <button class="header__button" @click="openPopup">
+        {{ buttonTellStory }}
       </button>
       <button class="header__mobile-bar"></button>
     </nav>
@@ -43,12 +43,24 @@
 
 <script>
 export default {
-  props: ['openFormQustions'],
-
   data() {
     return {
-      title: 'Проект Благотворительного Фонда Константина Хабенского',
+      buttonMain: 'Главная',
+      buttonStories: 'Истории',
+      buttonTellStory: 'Рассказать историю',
     };
+  },
+
+  computed: {
+    getTitle() {
+      return this.$store.getters['header/getTitle'];
+    },
+  },
+
+  methods: {
+    openPopup() {
+      this.$store.commit('formQuestions/setPopupState');
+    },
   },
 };
 </script>

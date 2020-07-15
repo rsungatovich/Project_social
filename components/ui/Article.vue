@@ -1,85 +1,57 @@
 <template>
   <article class="article">
     <div class="article__persone">
-      <img class="article__photoe" :src="image" alt="Человек" />
+      <img
+        class="article__photoe"
+        :src="getStoriesData[$route.params.id - 1].photoe"
+        alt="Человек"
+      />
       <div class="article__box">
         <p class="article__blockquote">
-          <span class="article__author"> {{ author }}: </span>
-          {{ quote }}
+          <span class="article__author">
+            {{ getStoriesData[$route.params.id - 1].name }}:
+          </span>
+          {{ getStoriesData[$route.params.id - 1].quote }}
         </p>
         <div class="article__copyright">
-          <button class="article__share" @click="openPopupSocials">
-            Поделитесь ↗
+          <button class="article__share" @click="openPopup">
+            {{ buttonShareSmall }}
           </button>
           <time class="article__date">
-            {{ date }}
+            {{ getStoriesData[$route.params.id - 1].date }}
           </time>
         </div>
       </div>
     </div>
-    <div class="article__persone-story" v-html="story"></div>
-    <button
-      class="article__share article__share_long"
-      @click="openPopupSocials"
-    >
-      Поделитесь этой статьей в своих социальных сетях ↗
+    <div
+      class="article__persone-story"
+      v-html="getStoriesData[$route.params.id - 1].story"
+    ></div>
+    <button class="article__share article__share_long" @click="openPopup">
+      {{ buttonShareLong }}
     </button>
   </article>
 </template>
 
 <script>
 export default {
-  props: ['openPopupSocials'],
-
   data() {
     return {
-      image: 'https://volley.sport-liga.pro/images/no_image.png',
-      author: 'Александр Тарханов',
-      quote: '«Я не могу победить свою пунктуальность в отличии от рака»',
-      date: '20 апреля 2018',
-      story: `
-        <p class="article__text">
-          Я из военной семьи. Отец хоть и не был военным сам, но нас всех держал в
-          ежовых рукавицах. Думаю, поэтому мы и выросли такими ответственными.
-        </p>
-        <p class="article__text">
-          У меня дома до сих пор стоят часы в каждой комнате, хотя они и не нужны
-          особо — я сам чувствую, опаздываю куда-то или нет, отстаю от нужного
-          графика или опережаю. Вот такие встроенные внутренние часы! Будильник
-          мне тоже не нужен — я всегда встаю раньше. Одеваюсь тоже быстро, как в
-          армии, за 45 секунд.
-        </p>
-        <p class="article__text article__text_bold">
-          «В футболе если команда опоздала на 15 минут, ей засчитывается
-          поражение».
-        </p>
-        <p class="article__text">
-          Опаздывать я тоже не люблю, на все встречи прихожу заранее. Если знаю,
-          что могу попасть по дороге в пробку, то не еду на машине. В аэропорт
-          приезжаю задолго до начала регистрации. Лучше подожду и кофе попью, чем
-          опоздаю!
-        </p>
-        <p class="article__text">
-          Когда мне было 16 лет, мне в школе геометрию нужно было пересдавать. Я
-          билеты выучил, знал абсолютно все. Пришел в нужное время, а учительница
-          — нет. Ну, я какое-то время подождал ее и ушел. Потом она спрашивала:
-          «Почему не дождался?». Я ответил: «В футболе если команда опоздала на 15
-          минут, ей засчитывается поражение». Экзамен мне все-таки поставили!
-          Сейчас если кто-то из футболистов моей команды опаздывает — начинаю
-          злиться, могу и прикрикнуть потом. А если кто-то опоздал на тренировку
-          перед игрой — все, подготовка насмарку. Я сразу начинаю думать тогда:
-          «Значит, точно проиграем». Такая болезненная пунктуальность уже не
-          лечится. В отличие от рака.
-        </p>
-        <p class="article__text article__text_bold">
-          «Сейчас если кто-то из футболистов моей команды опаздывает — начинаю
-          злиться, могу и прикрикнуть потом. А если кто-то опоздал на тренировку
-          перед игрой — все, подготовка насмарку. Я сразу начинаю думать тогда:
-          «Значит, точно проиграем». Такая болезненная пунктуальность уже не
-          лечится».
-        </p>
-      `,
+      buttonShareSmall: 'Поделитесь ↗',
+      buttonShareLong: 'Поделитесь этой статьей в своих социальных сетях ↗',
     };
+  },
+
+  computed: {
+    getStoriesData() {
+      return this.$store.getters['storiesData/getStoriesData'];
+    },
+  },
+
+  methods: {
+    openPopup() {
+      this.$store.commit('popupSocials/setPopupState');
+    },
   },
 };
 </script>

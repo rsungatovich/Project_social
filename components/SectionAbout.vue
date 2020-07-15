@@ -2,19 +2,19 @@
   <section class="section-about">
     <div class="section-about__content">
       <p class="section-about__heading">
-        {{ heading }}
+        {{ getHeading }}
       </p>
       <ui-title class="section-about__title section-about__title_theme_main">
-        {{ title }}
+        {{ getTitle }}
       </ui-title>
       <div class="section-about__container">
         <div class="section-about__wrapper">
           <ui-subtitle
             class="section-about__subtitle section-about__subtitle_theme_main"
           >
-            {{ subtitle }}
+            {{ getSubtitle }}
           </ui-subtitle>
-          <button class="section-about__button" @click="openFormQustions">
+          <button class="section-about__button" @click="openPopup">
             {{ buttonName }}
           </button>
         </div>
@@ -25,18 +25,26 @@
               ref="firstButton"
               @click="toggleIsActive"
             >
-              Рак Лечится
+              {{ firstControlName }}
             </button>
             <button
               class="section-about__control"
               ref="secondButton"
               @click="toggleIsActive"
             >
-              Фонд&nbsp;Хабенского
+              {{ lastControlName }}
             </button>
           </div>
-          <div class="section-about__description" v-html="setDescription"></div>
-          <button class="section-about__button-mob" @click="openFormQustions">
+          <div class="section-about__description">
+            <p
+              class="section-about__text"
+              v-for="paragraph of getDescription"
+              :key="paragraph.id"
+            >
+              {{ paragraph.text }}
+            </p>
+          </div>
+          <button class="section-about__button-mob">
             {{ buttonName }}
           </button>
         </div>
@@ -55,41 +63,33 @@ export default {
     'ui-subtitle': Subtitle,
   },
 
-  props: ['openFormQustions'],
-
   data() {
     return {
-      heading: '#Раклечится',
-      title: 'О проекте',
-      buttonName: 'Рассказать историю',
       firstButton: true,
       secondButton: false,
-      subtitle:
-        'Этот проект был создан благотворительным фондом Константина Хабенского.',
-      firstDescription: `
-        <p class="section-about__text">
-          Есть вещи, которые не лечатся. Особенности характера, страстные увлечения, привычки, ставшие частью нашего «я», фобии, которые мы приобрели в детстве. Список можно продолжать до бесконечности, но одна болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится, и лучшее доказательство — люди с их неизлечимыми особенностями, которые сумели победить рак.
-        </p>
-        <p class="section-about__text">
-          Рак лечится — проект Благотворительного Фонда Константина Хабенского и Leo Burnett Moscow. С его помощью мы надеемся изменить отношение людей к раку и заставить каждого поверить: онкологическое заболевание — это не приговор.
-        </p>      
-      `,
-      secondDescription: `
-        <p class="section-about__text">
-          Благотворительный Фонд Константина Хабенского с 2008 года помогает детям с онкологическими и другими тяжелыми заболеваниями головного мозга. Фонд не только поддерживает семью заболевшего ребенка в самый сложный момент, оплачивая обследования, лечение и медицинские препараты, но и в целом меняет систему оказания помощи детям с опухолями мозга в России.
-        </p>     
-      `,
+      firstControlName: 'Рак Лечится',
+      lastControlName: 'Фонд Хабенского',
+      buttonName: 'Рассказать историю',
     };
   },
 
   computed: {
-    setDescription() {
+    getHeading() {
+      return this.$store.getters['sectionAbout/getHeading'];
+    },
+    getTitle() {
+      return this.$store.getters['sectionAbout/getTitle'];
+    },
+    getSubtitle() {
+      return this.$store.getters['sectionAbout/getSubtitle'];
+    },
+    getDescription() {
       if (this.firstButton) {
-        return this.firstDescription;
+        return this.$store.getters['sectionAbout/getDescription'][0].paragraphs;
       }
 
       if (this.secondButton) {
-        return this.secondDescription;
+        return this.$store.getters['sectionAbout/getDescription'][1].paragraphs;
       }
     },
   },
@@ -108,6 +108,10 @@ export default {
         this.firstButton = !this.firstButton;
         this.secondButton = !this.firstButton;
       }
+    },
+
+    openPopup() {
+      this.$store.commit('formQuestions/setPopupState');
     },
   },
 };
@@ -248,7 +252,7 @@ export default {
   min-height: 245px;
 }
 
-.section-about__description /deep/ .section-about__text {
+.section-about__text {
   max-width: 640px;
   margin: 0 0 25px;
   font-style: normal;
@@ -258,7 +262,7 @@ export default {
   color: #dedede;
 }
 
-.section-about__description /deep/ .section-about__text:last-child {
+.section-about__text:last-child {
   margin: 0;
 }
 
@@ -325,7 +329,7 @@ export default {
     max-width: 200px;
   }
 
-  .section-about__description /deep/ .section-about__text {
+  .section-about__text {
     margin: 0 0 20px;
     font-size: 15px;
     line-height: 19px;

@@ -2,10 +2,10 @@
   <div class="search">
     <input class="search__input" type="text" ref="input" />
     <button class="search__button-reset" @click="resetInput">
-      Очистить
+      {{ buttonReset }}
     </button>
     <ui-button-small class="search__button-small">
-      Поиск
+      {{ buttonSearch }}
     </ui-button-small>
     <button class="search__button-small-mob"></button>
     <button class="search__button-reset-mob"></button>
@@ -18,6 +18,12 @@ import ButtonSmall from '@/components/ui/ButtonSmall.vue';
 export default {
   components: {
     'ui-button-small': ButtonSmall,
+  },
+  data() {
+    return {
+      buttonReset: 'Очистить',
+      buttonSearch: 'Поиск',
+    };
   },
   methods: {
     resetInput() {

@@ -1,16 +1,22 @@
 <template>
   <div class="no-found">
     <h3 class="no-found__title">
-      Ничего не найдено
+      {{ getMessages.noFoundTitle }}
     </h3>
     <p class="no-found__subtitle">
-      Попробуйте еще раз.
+      {{ getMessages.noFoundSubtitle }}
     </p>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    getMessages() {
+      return this.$store.getters['errorMessages/getMessages'];
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

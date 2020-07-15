@@ -1,12 +1,12 @@
 <template>
   <div class="popup">
-    <div class="popup__overlay" @click="closePopup"></div>
+    <div class="popup__overlay" @click="$emit('theClick')"></div>
     <div class="popup__inner">
       <img
         class="popup__close"
         src="/images/close.svg"
         alt="Кнопка закрыть"
-        @click="closePopup"
+        @click="$emit('theClick')"
       />
       <slot>form</slot>
     </div>
@@ -14,9 +14,7 @@
 </template>
 
 <script>
-export default {
-  props: ['closePopup'],
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>

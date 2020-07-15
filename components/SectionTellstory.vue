@@ -1,11 +1,11 @@
 <template>
   <section class="section-tellstory">
     <ui-title class="section-tellstory__title">
-      {{ title }}
+      {{ getTitle }}
     </ui-title>
     <div class="section-tellstory__container">
       <ui-subtitle class="section-tellstory__subtitle">
-        {{ subtitle }}
+        {{ getSubtitle }}
       </ui-subtitle>
       <div class="section-tellstory__box">
         <div class="section-tellstory__controls">
@@ -14,26 +14,31 @@
             ref="firstButton"
             @click="toggleIsActive"
           >
-            1-й вариант
+            {{ firstControlName }}
           </button>
           <button
             class="section-tellstory__control"
             ref="secondButton"
             @click="toggleIsActive"
           >
-            2-й вариант
+            {{ lastControlName }}
           </button>
         </div>
         <div class="section-tellstory__inner">
-          <div
-            class="section-tellstory__description"
-            v-html="setDescription"
-          ></div>
+          <div class="section-tellstory__description">
+            <p
+              class="section-tellstory__text"
+              v-for="paragraph of getDescription"
+              :key="paragraph.id"
+            >
+              {{ paragraph.text }}
+            </p>
+          </div>
           <div class="section-tellstory__button-wrapper">
             <ui-button-middle
               class="section-tellstory__button-middle"
               v-if="firstButton"
-              @theClick="openFormQustions"
+              @theClick="openFormQuestions"
             >
               {{ firstButtonName }}
             </ui-button-middle>
@@ -63,47 +68,33 @@ export default {
     'ui-button-middle': ButtonMiddle,
   },
 
-  props: ['openFormContacts', 'openFormQustions'],
-
   data() {
     return {
-      firstButtonName: 'Заполнить форму',
-      secondButtonName: 'Оставить контакт',
       firstButton: true,
       secondButton: false,
-      title: 'Расскажите свою историю',
-      subtitle:
-        'Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта поделиться своей историей неизлечимых привычек, навязчивых идей и болезненных привязанностей.',
-      firstDescription: `
-        <p class="section-tellstory__description">
-          Заполнить подробную форму прямо на сайте и мы опубликуем вашу историю после проверки. Пожалуйста, заполняйте все пункты корректно, если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.
-        </p>      
-      `,
-      secondDescription: `
-        <p class="section-tellstory__description">
-          Оставить контакт (почту или номер телефона) и мы свяжемся с вами, зададим вопросы, уточним детали вашей истории.
-        </p>      
-      `,
+      firstControlName: '1-й вариант',
+      lastControlName: '2-й вариант',
+      firstButtonName: 'Заполнить форму',
+      secondButtonName: 'Оставить контакт',
     };
   },
 
   computed: {
-    setButtonName() {
-      if (this.firstButton) {
-        return this.firstDescription;
-      }
-
-      if (this.secondButton) {
-        return this.secondDescription;
-      }
+    getTitle() {
+      return this.$store.getters['sectionTellstory/getTitle'];
     },
-    setDescription() {
+    getSubtitle() {
+      return this.$store.getters['sectionTellstory/getSubtitle'];
+    },
+    getDescription() {
       if (this.firstButton) {
-        return this.firstDescription;
+        return this.$store.getters['sectionTellstory/getDescription'][0]
+          .paragraphs;
       }
 
       if (this.secondButton) {
-        return this.secondDescription;
+        return this.$store.getters['sectionTellstory/getDescription'][1]
+          .paragraphs;
       }
     },
   },
@@ -122,6 +113,14 @@ export default {
         this.firstButton = !this.firstButton;
         this.secondButton = !this.firstButton;
       }
+    },
+
+    openFormQuestions() {
+      this.$store.commit('formQuestions/setPopupState');
+    },
+
+    openFormContacts() {
+      this.$store.commit('formContacts/setPopupState');
     },
   },
 };
@@ -188,7 +187,7 @@ export default {
   justify-content: space-between;
 }
 
-.section-tellstory__inner /deep/ .section-tellstory__description {
+.section-tellstory__text {
   max-width: 633px;
   margin: 0;
   font-style: normal;
@@ -203,7 +202,7 @@ export default {
     padding: 90px 50px;
   }
 
-  .section-tellstory__inner /deep/ .section-tellstory__description {
+  .section-tellstory__text {
     max-width: 570px;
   }
 }
@@ -213,7 +212,7 @@ export default {
     margin: 0 30px 0 0;
   }
 
-  .section-tellstory__inner /deep/ .section-tellstory__description {
+  .section-tellstory__text {
     max-width: 470px;
   }
 }

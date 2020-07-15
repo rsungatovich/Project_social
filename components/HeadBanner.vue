@@ -1,9 +1,9 @@
 <template>
   <section class="head-banner">
     <div class="head-banner__box">
-      <h2 class="head-banner__title">{{ title }}</h2>
-      <button class="head-banner__button" @click="openFormQustions">
-        Рассказать историю
+      <h2 class="head-banner__title">{{ getTitle }}</h2>
+      <button class="head-banner__button" @click="openPopup">
+        {{ buttonName }}
       </button>
       <button class="head-banner__button-arrow"></button>
     </div>
@@ -12,12 +12,22 @@
 
 <script>
 export default {
-  props: ['openFormQustions'],
-
   data() {
     return {
-      title: '#Раклечится',
+      buttonName: 'Рассказать историю',
     };
+  },
+
+  computed: {
+    getTitle() {
+      return this.$store.getters['headBanner/getTitle'];
+    },
+  },
+
+  methods: {
+    openPopup() {
+      this.$store.commit('formQuestions/setPopupState');
+    },
   },
 };
 </script>
