@@ -4,7 +4,7 @@
       class="section-mainstories__story-grid section-mainstories__story-grid_main"
     >
       <ui-story-card
-        v-for="card of renderMainCards"
+        v-for="card of renderMainStories"
         :key="card.id"
         :photoe="card.photoe"
         :name="card.name"
@@ -17,7 +17,7 @@
     </ui-title>
     <ui-story-grid>
       <ui-story-card
-        v-for="card of renderCards"
+        v-for="card of renderStories"
         :key="card.id"
         :photoe="card.photoe"
         :name="card.name"
@@ -48,24 +48,18 @@ export default {
   data() {
     return {
       buttonName: 'Больше статей',
+      stories: [], // массив с историями
+      totalStories: 0, // количество историй
+      perPage: 8, // количество историй на странице
+      currentPage: 1, // текущая страница
     };
   },
 
   computed: {
-    renderCards() {
-      if (process.browser) {
-        if (window.innerWidth > 768) {
-          return this.storiesData.filter((card, index) => index < 8);
-        } else if (window.innerWidth > 530) {
-          return this.storiesData.filter((card, index) => index < 9);
-        } else if (window.innerWidth <= 530) {
-          return this.storiesData.filter((card, index) => index < 6);
-        }
-      } else {
-        return this.storiesData.filter((card, index) => index < 8);
-      }
+    renderStories() {
+      return this.storiesData.filter((card, index) => index < this.perPage);
     },
-    renderMainCards() {
+    renderMainStories() {
       return this.storiesData.filter((card, index) => index < 4);
     },
     storiesData() {
@@ -74,6 +68,39 @@ export default {
     getTitle() {
       return this.$store.getters['sectionMainstories/getTitle'];
     },
+  },
+
+  methods: {
+    countStories() {
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          this.perPage = 8;
+        } else if (window.innerWidth > 530) {
+          this.perPage = 9;
+        } else if (window.innerWidth <= 530) {
+          this.perPage = 6;
+        }
+      } else {
+        this.perPage = 8;
+      }
+    },
+    fetchStories(page) {
+      const options = {
+        params: {
+          client_id: '',
+          page: page,
+          per_page: this.perPage,
+        },
+      };
+      // запрос ... => storiesData - данные пришедшие с сервера
+      this.stories = this.storiesData; // данные с историями
+      this.totalStories = this.stories.length; //всего кол-во историй
+    },
+  },
+
+  created: function() {
+    this.countStories();
+    this.fetchStories(this.currentPage);
   },
 };
 </script>

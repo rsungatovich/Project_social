@@ -11,6 +11,7 @@
       <button
         class="pagination-buttons__button 
         pagination-buttons__button_left"
+        @click="prevPage"
       ></button>
       <button
         class="pagination-buttons__button 
@@ -20,33 +21,8 @@
       </button>
       <button
         class="pagination-buttons__button 
-        pagination-buttons__button_num"
-      >
-        2
-      </button>
-      <button
-        class="pagination-buttons__button 
-        pagination-buttons__button_num"
-      >
-        3
-      </button>
-      <button
-        class="pagination-buttons__button 
-        pagination-buttons__button_num 
-        pagination-buttons__button_four"
-      >
-        4
-      </button>
-      <button
-        class="pagination-buttons__button 
-        pagination-buttons__button_num 
-        pagination-buttons__button_five"
-      >
-        5
-      </button>
-      <button
-        class="pagination-buttons__button 
         pagination-buttons__button_right"
+        @click="nextPage"
       ></button>
       <button
         class="pagination-buttons__button 
@@ -77,7 +53,59 @@
 </template>
 
 <script>
-export default {};
+export default {
+  // data() {
+  //   return {
+  //     numButtons: [],
+  //   };
+  // },
+  props: ['prevPage', 'nextPage'],
+  // computed: {
+  //   storiesData() {
+  //     return this.$store.getters['storiesData/getStoriesData'];
+  //   },
+  //   countButtons() {
+  //     if (process.browser) {
+  //       if (window.innerWidth > 768) {
+  //         return this.storiesData.length / 16;
+  //       } else if (window.innerWidth > 425) {
+  //         return this.storiesData.length / 12;
+  //       } else if (window.innerWidth <= 425) {
+  //         return this.storiesData.length / 9;
+  //       }
+  //     } else {
+  //       return this.storiesData.length / 16;
+  //     }
+  //   },
+  // },
+  // methods: {
+  //   renderButtons() {
+  //     if (process.browser) {
+  //       if (window.innerWidth > 768) {
+  //         for (let num = 1; num <= 5; num++) {
+  //           this.numButtons.push(num);
+  //         }
+  //       } else if (window.innerWidth > 425) {
+  //         for (let num = 1; num <= 4; num++) {
+  //           this.numButtons.push(num);
+  //         }
+  //       } else if (window.innerWidth <= 425) {
+  //         for (let num = 1; num <= 3; num++) {
+  //           this.numButtons.push(num);
+  //         }
+  //       }
+  //     } else {
+  //       for (let num = 1; num <= 5; num++) {
+  //         this.numButtons.push(num);
+  //       }
+  //     }
+  //   }
+  // },
+  // created: function() {
+  //   this.renderButtons();
+  //   console.log(this.numButtons)
+  // }
+};
 </script>
 
 <style lang="scss" scoped>

@@ -3,7 +3,7 @@
     <ui-article class="section-article__article" />
     <ui-story-grid class="section-article__story-grid">
       <ui-story-card
-        v-for="card of renderCards"
+        v-for="card of renderStories"
         :key="card.id"
         :photoe="card.photoe"
         :name="card.name"
@@ -34,26 +34,53 @@ export default {
   data() {
     return {
       buttonMore: 'Больше статей',
+      stories: [], // массив с историями
+      totalStories: 0, // количество историй
+      perPage: 4, // количество историй на странице
+      currentPage: 1, // текущая страница
     };
   },
 
   computed: {
-    renderCards() {
-      if (process.browser) {
-        if (window.innerWidth > 768) {
-          return this.storiesData.filter((card, index) => index < 4);
-        } else if (window.innerWidth > 530) {
-          return this.storiesData.filter((card, index) => index < 3);
-        } else if (window.innerWidth <= 530) {
-          return this.storiesData.filter((card, index) => index < 2);
-        }
-      } else {
-        return this.storiesData.filter((card, index) => index < 4);
-      }
+    renderStories() {
+      return this.storiesData.filter((card, index) => index < this.perPage);
     },
     storiesData() {
       return this.$store.getters['storiesData/getStoriesData'];
     },
+  },
+
+  methods: {
+    countStories() {
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          this.perPage = 4;
+        } else if (window.innerWidth > 530) {
+          this.perPage = 3;
+        } else if (window.innerWidth <= 530) {
+          this.perPage = 2;
+        }
+      } else {
+        this.perPage = 4;
+      }
+    },
+    fetchStories(page) {
+      const options = {
+        params: {
+          client_id: '',
+          page: page,
+          per_page: this.perPage,
+        },
+      };
+      // запрос ... => storiesData - данные пришедшие с сервера
+      this.stories = this.storiesData; // данные с историями
+      this.totalStories = this.stories.length; //всего кол-во историй
+    },
+  },
+
+  created: function() {
+    this.countStories();
+    this.fetchStories(this.currentPage);
   },
 };
 </script>
