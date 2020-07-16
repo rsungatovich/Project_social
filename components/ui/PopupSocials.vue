@@ -5,36 +5,72 @@
         {{ getDescription }}
       </p>
       <div class="popup-socials__icons">
-        <img
-          class="popup-socials__icon"
-          src="/images/facebook.svg"
-          alt="facebook"
-        />
-        <img
-          class="popup-socials__icon"
-          src="/images/twitter.svg"
-          alt="twitter"
-        />
-        <img
-          class="popup-socials__icon"
-          src="/images/vkontakte.svg"
-          alt="vkontakte"
-        />
-        <img
-          class="popup-socials__icon"
-          src="/images/odnoklassniki.svg"
-          alt="odnoklassniki"
-        />
-        <img
-          class="popup-socials__icon"
-          src="/images/instagram.svg"
-          alt="instagram"
-        />
-        <img
-          class="popup-socials__icon"
-          src="/images/youtube.svg"
-          alt="youtube"
-        />
+        <a
+          class="popup-socials__links"
+          :href="getLinks.facebook"
+          target="_blank"
+        >
+          <img
+            class="popup-socials__icon"
+            src="/images/facebook.svg"
+            alt="facebook"
+          />
+        </a>
+        <a
+          class="popup-socials__links"
+          :href="getLinks.twitter"
+          target="_blank"
+        >
+          <img
+            class="popup-socials__icon"
+            src="/images/twitter.svg"
+            alt="twitter"
+          />
+        </a>
+        <a
+          class="popup-socials__links"
+          :href="getLinks.vkontakte"
+          target="_blank"
+        >
+          <img
+            class="popup-socials__icon"
+            src="/images/vkontakte.svg"
+            alt="vkontakte"
+          />
+        </a>
+        <a
+          class="popup-socials__links"
+          :href="getLinks.odnoklassniki"
+          target="_blank"
+        >
+          <img
+            class="popup-socials__icon"
+            src="/images/odnoklassniki.svg"
+            alt="odnoklassniki"
+          />
+        </a>
+        <a
+          class="popup-socials__links"
+          :href="getLinks.instagram"
+          target="_blank"
+        >
+          <img
+            class="popup-socials__icon"
+            src="/images/instagram.svg"
+            alt="instagram"
+          />
+        </a>
+        <a
+          class="popup-socials__links"
+          :href="getLinks.youtube"
+          target="_blank"
+        >
+          <img
+            class="popup-socials__icon"
+            src="/images/youtube.svg"
+            alt="youtube"
+          />
+        </a>
       </div>
     </div>
   </popup>
@@ -50,6 +86,9 @@ export default {
     'ui-button-small': ButtonSmall,
   },
   computed: {
+    getLinks() {
+      return this.$store.getters['popupSocials/getLinks'];
+    },
     getDescription() {
       return this.$store.getters['popupSocials/getDescription'];
     },
@@ -82,7 +121,6 @@ export default {
 .popup-socials__icon {
   width: 48px;
   height: 48px;
-  margin: 0 20px 0 0;
   cursor: pointer;
   transition: transform linear 0.1s;
 }
@@ -96,7 +134,11 @@ export default {
   transform: scale(1.2);
 }
 
-.popup-socials__icon:last-child {
+.popup-socials__links {
+  margin: 0 20px 0 0;
+}
+
+.popup-socials__links:last-child {
   margin: 0;
 }
 
@@ -118,10 +160,13 @@ export default {
   .popup-socials__icon {
     width: 30px;
     height: 30px;
+  }
+
+  .popup-socials__links {
     margin: 0 10px 0 0;
   }
 
-  .popup-socials__icon:last-child {
+  .popup-socials__links:last-child {
     margin: 0;
   }
 }

@@ -1,13 +1,24 @@
 <template>
   <section class="section-statistic">
     <ui-title class="section-statistic__title">
-      {{ title }}
+      {{ getTitle }}
     </ui-title>
     <div class="section-statistic__container">
-      <ui-progress-card />
-      <ui-progress-card />
-      <ui-progress-card />
-      <ui-progress-card />
+      <ui-progress-card
+        v-for="card of getCards"
+        :key="card.id"
+        :progress="card.progress"
+      >
+        <template v-slot:description>
+          {{ card.description }}
+        </template>
+        <template v-slot:meta>
+          {{ card.meta }}
+        </template>
+        <template v-slot:source>
+          {{ card.source }}
+        </template>
+      </ui-progress-card>
     </div>
   </section>
 </template>
@@ -22,10 +33,13 @@ export default {
     'ui-progress-card': ProgressCard,
   },
 
-  data() {
-    return {
-      title: 'Статистика по онкозаболеваниям',
-    };
+  computed: {
+    getTitle() {
+      return this.$store.getters['sectionStatistic/getTitle'];
+    },
+    getCards() {
+      return this.$store.getters['sectionStatistic/getCards'];
+    },
   },
 };
 </script>
@@ -42,7 +56,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 40px;
-  overflow: scroll;
+  overflow-x: scroll;
 }
 
 .section-statistic__title {

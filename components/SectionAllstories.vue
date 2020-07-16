@@ -6,7 +6,7 @@
     <ui-search class="section-allstories__search" />
     <ui-story-grid class="section-allstories__story-grid">
       <ui-story-card
-        v-for="card of renderCards"
+        v-for="card of renderStories"
         :key="card.id"
         :photoe="card.photoe"
         :name="card.name"
@@ -14,7 +14,11 @@
         :id="card.id"
       />
     </ui-story-grid>
-    <ui-pagination-buttons class="content__pagination-buttons" />
+    <ui-pagination-buttons
+      class="content__pagination-buttons"
+      :prevPage="prevPage"
+      :nextPage="nextPage"
+    />
     <ui-no-found class="section-allstories__no-found" v-if="nothingNoFound" />
   </section>
 </template>
@@ -40,22 +44,19 @@ export default {
   data() {
     return {
       nothingNoFound: false,
+      perPage: 16, // количество историй на странице
+      currentPage: 1, // текущая страница
+      totalStories: 0, // количество историй
     };
   },
 
   computed: {
-    renderCards() {
-      if (process.browser) {
-        if (window.innerWidth > 768) {
-          return this.storiesData.filter((card, index) => index < 16);
-        } else if (window.innerWidth > 425) {
-          return this.storiesData.filter((card, index) => index < 12);
-        } else if (window.innerWidth <= 425) {
-          return this.storiesData.filter((card, index) => index < 9);
-        }
-      } else {
-        return this.storiesData.filter((card, index) => index < 16);
-      }
+    renderStories() {
+      return this.storiesData.filter(
+        (card, index) =>
+          index < this.perPage * this.currentPage &&
+          index >= this.perPage * this.currentPage - this.perPage
+      );
     },
     storiesData() {
       return this.$store.getters['storiesData/getStoriesData'];
@@ -63,6 +64,37 @@ export default {
     getTitle() {
       return this.$store.getters['sectionAllstories/getTitle'];
     },
+  },
+
+  methods: {
+    countStories() {
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          this.perPage = 16;
+        } else if (window.innerWidth > 425) {
+          this.perPage = 12;
+        } else if (window.innerWidth <= 425) {
+          this.perPage = 9;
+        }
+      } else {
+        this.perPage = 16;
+      }
+    },
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage = this.currentPage - 1;
+        console.log(this.currentPage);
+      }
+    },
+    nextPage() {
+      this.currentPage = this.currentPage + 1;
+      console.log(this.currentPage);
+    },
+  },
+
+  created: function() {
+    this.countStories();
+    this.totalStories = this.storiesData.length;
   },
 };
 </script>
