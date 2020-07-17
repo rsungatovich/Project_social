@@ -4,7 +4,10 @@
       {{ getTitle }}
     </ui-title>
     <ui-search class="section-allstories__search" />
-    <ui-story-grid class="section-allstories__story-grid">
+    <ui-story-grid
+      class="section-allstories__story-grid"
+      v-if="getCurrentPage <= totalPages"
+    >
       <ui-story-card
         v-for="card of renderStories"
         :key="card.id"
@@ -14,12 +17,11 @@
         :id="card.id"
       />
     </ui-story-grid>
-    <ui-pagination-buttons
-      class="content__pagination-buttons"
-      :prevPage="prevPage"
-      :nextPage="nextPage"
+    <ui-no-found
+      class="section-allstories__no-found"
+      v-if="getCurrentPage > totalPages"
     />
-    <ui-no-found class="section-allstories__no-found" v-if="nothingNoFound" />
+    <ui-pagination-buttons class="content__pagination-buttons" />
   </section>
 </template>
 
@@ -44,25 +46,31 @@ export default {
   data() {
     return {
       nothingNoFound: false,
-      perPage: 16, // количество историй на странице
-      currentPage: 1, // текущая страница
-      totalStories: 0, // количество историй
     };
   },
 
   computed: {
     renderStories() {
-      return this.storiesData.filter(
+      return this.getStoriesData.filter(
         (card, index) =>
-          index < this.perPage * this.currentPage &&
-          index >= this.perPage * this.currentPage - this.perPage
+          index < this.getPerPage * this.getCurrentPage &&
+          index >= this.getPerPage * this.getCurrentPage - this.getPerPage
       );
     },
-    storiesData() {
+    getStoriesData() {
       return this.$store.getters['storiesData/getStoriesData'];
+    },
+    totalPages() {
+      return this.getStoriesData.length / this.getPerPage;
     },
     getTitle() {
       return this.$store.getters['sectionAllstories/getTitle'];
+    },
+    getCurrentPage() {
+      return this.$store.getters['pagination/getCurrentPage'];
+    },
+    getPerPage() {
+      return this.$store.getters['pagination/getPerPage'];
     },
   },
 
@@ -70,31 +78,26 @@ export default {
     countStories() {
       if (process.browser) {
         if (window.innerWidth > 768) {
-          this.perPage = 16;
+          this.setPerPage(16);
         } else if (window.innerWidth > 425) {
-          this.perPage = 12;
+          this.setPerPage(12);
         } else if (window.innerWidth <= 425) {
-          this.perPage = 9;
+          this.setPerPage(9);
         }
       } else {
-        this.perPage = 16;
+        this.setPerPage(16);
       }
     },
-    prevPage() {
-      if (this.currentPage > 1) {
-        this.currentPage = this.currentPage - 1;
-        console.log(this.currentPage);
-      }
+    setCurrentPage(param) {
+      return this.$store.commit('pagination/setCurrentPage', { param });
     },
-    nextPage() {
-      this.currentPage = this.currentPage + 1;
-      console.log(this.currentPage);
+    setPerPage(param) {
+      return this.$store.commit('pagination/setPerPage', { param });
     },
   },
 
   created: function() {
     this.countStories();
-    this.totalStories = this.storiesData.length;
   },
 };
 </script>
