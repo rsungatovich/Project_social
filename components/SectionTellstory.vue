@@ -313,7 +313,7 @@ export default {
     min-height: 170px;
   }
 
-  .section-tellstory__inner /deep/ .section-tellstory__description {
+  .section-tellstory__text {
     font-size: 13px;
     line-height: 16px;
   }

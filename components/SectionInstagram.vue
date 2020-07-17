@@ -129,7 +129,7 @@ export default {
 
 @media screen and (max-width: 425px) {
   .section-instagram {
-    padding: 80px 15px;
+    padding: 50px 15px;
   }
 
   .section-instagram__title {
