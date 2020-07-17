@@ -48,21 +48,18 @@ export default {
   data() {
     return {
       buttonName: 'Больше статей',
-      stories: [], // массив с историями
-      totalStories: 0, // количество историй
-      perPage: 8, // количество историй на странице
-      currentPage: 1, // текущая страница
+      perPage: 8,
     };
   },
 
   computed: {
     renderStories() {
-      return this.storiesData.filter((card, index) => index < this.perPage);
+      return this.getStoriesData.filter((card, index) => index < this.perPage);
     },
     renderMainStories() {
-      return this.storiesData.filter((card, index) => index < 4);
+      return this.getStoriesData.filter((card, index) => index < 4);
     },
-    storiesData() {
+    getStoriesData() {
       return this.$store.getters['storiesData/getStoriesData'];
     },
     getTitle() {
@@ -84,23 +81,10 @@ export default {
         this.perPage = 8;
       }
     },
-    fetchStories(page) {
-      const options = {
-        params: {
-          client_id: '',
-          page: page,
-          per_page: this.perPage,
-        },
-      };
-      // запрос ... => storiesData - данные пришедшие с сервера
-      this.stories = this.storiesData; // данные с историями
-      this.totalStories = this.stories.length; //всего кол-во историй
-    },
   },
 
   created: function() {
     this.countStories();
-    this.fetchStories(this.currentPage);
   },
 };
 </script>

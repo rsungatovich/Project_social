@@ -785,7 +785,7 @@ export const state = () => ({
       `,
     },
     {
-      id: 1,
+      id: 17,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
       name: 'Имя человека 17',
       quote: 'Цитата человека, оставленная в разделе истории.',
@@ -834,7 +834,7 @@ export const state = () => ({
       `,
     },
     {
-      id: 2,
+      id: 18,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
       name: 'Имя человека 18',
       quote: 'Цитата человека, оставленная в разделе истории.',
@@ -883,7 +883,7 @@ export const state = () => ({
       `,
     },
     {
-      id: 3,
+      id: 19,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
       name: 'Имя человека 19',
       quote: 'Цитата человека, оставленная в разделе истории.',
@@ -932,9 +932,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 4,
+      id: 20,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 4',
+      name: 'Имя человека 20',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `
@@ -981,9 +981,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 5,
+      id: 21,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 5',
+      name: 'Имя человека 21',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `
@@ -1030,9 +1030,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 6,
+      id: 22,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 6',
+      name: 'Имя человека 22',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `
@@ -1079,9 +1079,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 7,
+      id: 23,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 7',
+      name: 'Имя человека 23',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `
@@ -1128,9 +1128,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 8,
+      id: 24,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 8',
+      name: 'Имя человека 24',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `
@@ -1177,9 +1177,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 9,
+      id: 25,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 9',
+      name: 'Имя человека 25',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `
@@ -1226,9 +1226,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 10,
+      id: 26,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 10',
+      name: 'Имя человека 26',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `
@@ -1275,9 +1275,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 11,
+      id: 27,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 11',
+      name: 'Имя человека 27',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `
@@ -1324,9 +1324,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 12,
+      id: 28,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 12',
+      name: 'Имя человека 28',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `
@@ -1373,9 +1373,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 13,
+      id: 29,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 13',
+      name: 'Имя человека 29',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `
@@ -1422,9 +1422,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 14,
+      id: 30,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 14',
+      name: 'Имя человека 30',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `
@@ -1471,9 +1471,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 15,
+      id: 31,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 15',
+      name: 'Имя человека 31',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `
@@ -1520,9 +1520,9 @@ export const state = () => ({
       `,
     },
     {
-      id: 16,
+      id: 32,
       photoe: 'https://volley.sport-liga.pro/images/no_image.png',
-      name: 'Имя человека 16',
+      name: 'Имя человека 32',
       quote: 'Цитата человека, оставленная в разделе истории.',
       date: '20 апреля 2018',
       story: `

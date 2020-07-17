@@ -2,31 +2,57 @@
   <div class="pagination-buttons">
     <div class="pagination-buttons__container">
       <button
-        class="pagination-buttons__button 
-        pagination-buttons__button_text 
-        pagination-buttons__button_active"
+        :class="[
+          `pagination-buttons__button 
+        pagination-buttons__button_text`,
+          { 'pagination-buttons__button_is-active': getCurrentPage === 1 },
+        ]"
+        @click="switchFirstPage"
       >
         Первая
       </button>
       <button
-        class="pagination-buttons__button 
-        pagination-buttons__button_left"
+        :class="[
+          `pagination-buttons__button 
+        pagination-buttons__button_left`,
+          { 'pagination-buttons__button_is-active': getCurrentPage === 1 },
+        ]"
         @click="prevPage"
       ></button>
       <button
-        class="pagination-buttons__button 
-        pagination-buttons__button_num"
+        :class="[
+          `pagination-buttons__button 
+        pagination-buttons__button_num`,
+          { 'pagination-buttons__button_is-active': num === getCurrentPage },
+        ]"
+        v-for="num of getNumButtons"
+        :key="num.id"
+        :ref="num"
+        @click="switchPage"
       >
-        1
+        {{ num }}
       </button>
       <button
-        class="pagination-buttons__button 
-        pagination-buttons__button_right"
+        :class="[
+          `pagination-buttons__button 
+        pagination-buttons__button_right`,
+          {
+            'pagination-buttons__button_is-active':
+              getCurrentPage === totalPages,
+          },
+        ]"
         @click="nextPage"
       ></button>
       <button
-        class="pagination-buttons__button 
-        pagination-buttons__button_text"
+        :class="[
+          `pagination-buttons__button 
+        pagination-buttons__button_text`,
+          {
+            'pagination-buttons__button_is-active':
+              getCurrentPage === totalPages,
+          },
+        ]"
+        @click="switchLastPage"
       >
         Последняя
       </button>
@@ -54,57 +80,98 @@
 
 <script>
 export default {
-  // data() {
-  //   return {
-  //     numButtons: [],
-  //   };
-  // },
-  props: ['prevPage', 'nextPage'],
-  // computed: {
-  //   storiesData() {
-  //     return this.$store.getters['storiesData/getStoriesData'];
-  //   },
-  //   countButtons() {
-  //     if (process.browser) {
-  //       if (window.innerWidth > 768) {
-  //         return this.storiesData.length / 16;
-  //       } else if (window.innerWidth > 425) {
-  //         return this.storiesData.length / 12;
-  //       } else if (window.innerWidth <= 425) {
-  //         return this.storiesData.length / 9;
-  //       }
-  //     } else {
-  //       return this.storiesData.length / 16;
-  //     }
-  //   },
-  // },
-  // methods: {
-  //   renderButtons() {
-  //     if (process.browser) {
-  //       if (window.innerWidth > 768) {
-  //         for (let num = 1; num <= 5; num++) {
-  //           this.numButtons.push(num);
-  //         }
-  //       } else if (window.innerWidth > 425) {
-  //         for (let num = 1; num <= 4; num++) {
-  //           this.numButtons.push(num);
-  //         }
-  //       } else if (window.innerWidth <= 425) {
-  //         for (let num = 1; num <= 3; num++) {
-  //           this.numButtons.push(num);
-  //         }
-  //       }
-  //     } else {
-  //       for (let num = 1; num <= 5; num++) {
-  //         this.numButtons.push(num);
-  //       }
-  //     }
-  //   }
-  // },
-  // created: function() {
-  //   this.renderButtons();
-  //   console.log(this.numButtons)
-  // }
+  computed: {
+    totalPages() {
+      return this.getStoriesData.length / this.getPerPage;
+    },
+    getStoriesData() {
+      return this.$store.getters['storiesData/getStoriesData'];
+    },
+    getPerPage() {
+      return this.$store.getters['pagination/getPerPage'];
+    },
+    getNumButtons() {
+      return this.$store.getters['pagination/getNumButtons'];
+    },
+    getCurrentPage() {
+      return this.$store.getters['pagination/getCurrentPage'];
+    },
+  },
+  methods: {
+    renderButtons() {
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          this.setNumButtons([]);
+          for (
+            let num = this.getCurrentPage;
+            num <= this.getCurrentPage + 4;
+            num++
+          ) {
+            this.setNumButtons(num);
+          }
+        } else if (window.innerWidth > 425) {
+          this.setNumButtons([]);
+          for (
+            let num = this.getCurrentPage;
+            num <= this.getCurrentPage + 3;
+            num++
+          ) {
+            this.setNumButtons(num);
+          }
+        } else if (window.innerWidth <= 425) {
+          this.setNumButtons([]);
+          for (
+            let num = this.getCurrentPage;
+            num <= this.getCurrentPage + 2;
+            num++
+          ) {
+            this.setNumButtons(num);
+          }
+        }
+      } else {
+        this.setNumButtons([]);
+        for (
+          let num = this.getCurrentPage;
+          num <= this.getCurrentPage + 4;
+          num++
+        ) {
+          this.setNumButtons(num);
+        }
+      }
+    },
+    switchPage(event) {
+      this.setCurrentPage(+event.target.textContent);
+    },
+    switchFirstPage() {
+      this.setCurrentPage(1);
+      this.renderButtons();
+    },
+    switchLastPage() {
+      this.setCurrentPage(this.totalPages);
+      this.renderButtons();
+    },
+    prevPage() {
+      if (this.getCurrentPage > 1) {
+        this.setCurrentPage(this.getCurrentPage - 1);
+        this.renderButtons();
+      }
+    },
+    nextPage() {
+      if (this.getCurrentPage < this.totalPages) {
+        this.setCurrentPage(this.getCurrentPage + 1);
+        this.renderButtons();
+      }
+    },
+    setNumButtons(param) {
+      return this.$store.commit('pagination/setNumButtons', { param });
+    },
+    setCurrentPage(param) {
+      return this.$store.commit('pagination/setCurrentPage', { param });
+    },
+  },
+  created: function() {
+    this.renderButtons();
+  },
 };
 </script>
 
@@ -139,7 +206,7 @@ export default {
 
 .pagination-buttons__button:focus {
   outline: none;
-  opacity: 0.6;
+  // opacity: 0.6;
 }
 
 .pagination-buttons__button:last-child {
@@ -173,6 +240,10 @@ export default {
 }
 
 .pagination-buttons__button_active {
+  opacity: 0.6;
+}
+
+.pagination-buttons__button_is-active {
   opacity: 0.6;
 }
 
