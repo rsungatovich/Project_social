@@ -1,7 +1,6 @@
 export const state = () => ({
   perPage: 16,
   currentPage: 1,
-  numButtons: [1],
 });
 
 export const mutations = {
@@ -14,12 +13,6 @@ export const mutations = {
   setTotalStories(state) {
     return (state.totalStories = !state.visible);
   },
-  setNumButtons(state, { param }) {
-    if (Array.isArray(param)) {
-      return (state.numButtons = []);
-    }
-    return state.numButtons.push(param);
-  },
 };
 
 export const getters = {
@@ -31,8 +24,5 @@ export const getters = {
   },
   getTotalStories(state) {
     return state.totalStories;
-  },
-  getNumButtons(state) {
-    return state.numButtons;
   },
 };
