@@ -25,7 +25,7 @@
         pagination-buttons__button_num`,
           { 'pagination-buttons__button_is-active': num === getCurrentPage },
         ]"
-        v-for="num of getNumButtons"
+        v-for="num of numButtons"
         :key="num.id"
         :ref="num"
         @click="switchPage"
@@ -63,8 +63,7 @@
     >
       <button
         class="pagination-buttons__button 
-        pagination-buttons__button_text-mob 
-        pagination-buttons__button_active"
+        pagination-buttons__button_text-mob"
       >
         Первая
       </button>
@@ -80,9 +79,31 @@
 
 <script>
 export default {
+  data() {
+    return {
+      pageRange: 2,
+    };
+  },
   computed: {
+    numButtons() {
+      const buttons = [];
+
+      for (let num = this.rangeStart; num <= this.rangeEnd; num++) {
+        buttons.push(num);
+      }
+
+      return buttons;
+    },
     totalPages() {
-      return this.getStoriesData.length / this.getPerPage;
+      return Math.ceil(this.getStoriesData.length / this.getPerPage);
+    },
+    rangeStart() {
+      const start = this.getCurrentPage - this.pageRange;
+      return start > 0 ? start : 1;
+    },
+    rangeEnd() {
+      const end = this.getCurrentPage + this.pageRange;
+      return end < this.totalPages ? end : this.totalPages;
     },
     getStoriesData() {
       return this.$store.getters['storiesData/getStoriesData'];
@@ -90,53 +111,20 @@ export default {
     getPerPage() {
       return this.$store.getters['pagination/getPerPage'];
     },
-    getNumButtons() {
-      return this.$store.getters['pagination/getNumButtons'];
-    },
     getCurrentPage() {
       return this.$store.getters['pagination/getCurrentPage'];
     },
   },
   methods: {
-    renderButtons() {
+    countButtons() {
       if (process.browser) {
         if (window.innerWidth > 768) {
-          this.setNumButtons([]);
-          for (
-            let num = this.getCurrentPage;
-            num <= this.getCurrentPage + 4;
-            num++
-          ) {
-            this.setNumButtons(num);
-          }
-        } else if (window.innerWidth > 425) {
-          this.setNumButtons([]);
-          for (
-            let num = this.getCurrentPage;
-            num <= this.getCurrentPage + 3;
-            num++
-          ) {
-            this.setNumButtons(num);
-          }
-        } else if (window.innerWidth <= 425) {
-          this.setNumButtons([]);
-          for (
-            let num = this.getCurrentPage;
-            num <= this.getCurrentPage + 2;
-            num++
-          ) {
-            this.setNumButtons(num);
-          }
+          this.pageRange = 2;
+        } else {
+          this.pageRange = 1;
         }
       } else {
-        this.setNumButtons([]);
-        for (
-          let num = this.getCurrentPage;
-          num <= this.getCurrentPage + 4;
-          num++
-        ) {
-          this.setNumButtons(num);
-        }
+        this.pageRange = 2;
       }
     },
     switchPage(event) {
@@ -144,33 +132,26 @@ export default {
     },
     switchFirstPage() {
       this.setCurrentPage(1);
-      this.renderButtons();
     },
     switchLastPage() {
       this.setCurrentPage(this.totalPages);
-      this.renderButtons();
     },
     prevPage() {
       if (this.getCurrentPage > 1) {
         this.setCurrentPage(this.getCurrentPage - 1);
-        this.renderButtons();
       }
     },
     nextPage() {
       if (this.getCurrentPage < this.totalPages) {
         this.setCurrentPage(this.getCurrentPage + 1);
-        this.renderButtons();
       }
-    },
-    setNumButtons(param) {
-      return this.$store.commit('pagination/setNumButtons', { param });
     },
     setCurrentPage(param) {
       return this.$store.commit('pagination/setCurrentPage', { param });
     },
   },
   created: function() {
-    this.renderButtons();
+    this.countButtons();
   },
 };
 </script>
@@ -239,12 +220,8 @@ export default {
   background-image: url("data:image/svg+xml,%3Csvg width='13' height='22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 21l10-10L1 1' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E");
 }
 
-.pagination-buttons__button_active {
-  opacity: 0.6;
-}
-
 .pagination-buttons__button_is-active {
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 @media screen and (max-width: 1280px) {
