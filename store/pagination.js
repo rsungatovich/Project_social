@@ -10,9 +10,6 @@ export const mutations = {
   setCurrentPage(state, { param }) {
     return (state.currentPage = param);
   },
-  setTotalStories(state) {
-    return (state.totalStories = !state.visible);
-  },
 };
 
 export const getters = {
@@ -21,8 +18,5 @@ export const getters = {
   },
   getCurrentPage(state) {
     return state.currentPage;
-  },
-  getTotalStories(state) {
-    return state.totalStories;
   },
 };
