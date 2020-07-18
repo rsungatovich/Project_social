@@ -62,14 +62,25 @@
       pagination-buttons__container_mob"
     >
       <button
-        class="pagination-buttons__button 
-        pagination-buttons__button_text-mob"
+        :class="[
+          `pagination-buttons__button 
+        pagination-buttons__button_text-mob`,
+          { 'pagination-buttons__button_is-active': getCurrentPage === 1 },
+        ]"
+        @click="switchFirstPage"
       >
         Первая
       </button>
       <button
-        class="pagination-buttons__button 
-        pagination-buttons__button_text-mob"
+        :class="[
+          `pagination-buttons__button 
+        pagination-buttons__button_text-mob`,
+          {
+            'pagination-buttons__button_is-active':
+              getCurrentPage === totalPages,
+          },
+        ]"
+        @click="switchLastPage"
       >
         Последняя
       </button>
@@ -98,11 +109,28 @@ export default {
       return Math.ceil(this.getStoriesData.length / this.getPerPage);
     },
     rangeStart() {
-      const start = this.getCurrentPage - this.pageRange;
+      let start;
+
+      if (
+        this.getCurrentPage === this.totalPages ||
+        this.getCurrentPage === this.totalPages - 1
+      ) {
+        this.pageRange === 2
+          ? (start = this.totalPages - 4)
+          : (start = this.totalPages - 2);
+      } else {
+        start = this.getCurrentPage - this.pageRange;
+      }
       return start > 0 ? start : 1;
     },
     rangeEnd() {
-      const end = this.getCurrentPage + this.pageRange;
+      let end;
+
+      if (this.getCurrentPage === 1 || this.getCurrentPage === 2) {
+        this.pageRange === 2 ? (end = 5) : (end = 3);
+      } else {
+        end = this.getCurrentPage + this.pageRange;
+      }
       return end < this.totalPages ? end : this.totalPages;
     },
     getStoriesData() {
@@ -118,7 +146,7 @@ export default {
   methods: {
     countButtons() {
       if (process.browser) {
-        if (window.innerWidth > 768) {
+        if (window.innerWidth > 375) {
           this.pageRange = 2;
         } else {
           this.pageRange = 1;

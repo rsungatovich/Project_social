@@ -61,7 +61,7 @@ export default {
       return this.$store.getters['storiesData/getStoriesData'];
     },
     totalPages() {
-      return this.getStoriesData.length / this.getPerPage;
+      return Math.ceil(this.getStoriesData.length / this.getPerPage);
     },
     getTitle() {
       return this.$store.getters['sectionAllstories/getTitle'];
