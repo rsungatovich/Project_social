@@ -76,7 +76,10 @@ export default {
   methods: {
     playVideo() {
       this.isVisible = false;
-      this.$refs.videoInner.innerHTML = `<iframe class="section-video__player" src="https://www.youtube.com/embed/ou60K0WfcJ0?fs=0&color=white&autoplay=1">`;
+      this.$refs.videoInner.insertAdjacentHTML(
+        'afterbegin',
+        `<iframe class="section-video__player" src="https://www.youtube.com/embed/ou60K0WfcJ0?fs=0&color=white&autoplay=1">`
+      );
     },
   },
 };

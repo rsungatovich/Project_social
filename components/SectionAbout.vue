@@ -44,7 +44,7 @@
               {{ paragraph.text }}
             </p>
           </div>
-          <button class="section-about__button-mob">
+          <button class="section-about__button-mob" @click="openPopup">
             {{ buttonName }}
           </button>
         </div>

@@ -3,7 +3,7 @@
     <nav
       :class="[
         'header__navigation-mob',
-        { 'header__navigation-mob_isActive': menuIsVisible },
+        { 'header__navigation-mob_active': menuIsVisible },
       ]"
     >
       <nuxt-link to="/" class="header__link-mob">
@@ -26,35 +26,17 @@
         {{ getTitle }}
       </h1>
       <nav class="header__navigation">
-        <nuxt-link
-          to="/"
-          class="header__link is-active"
-          v-if="$route.path === '/'"
-        >
+        <nuxt-link to="/" class="header__link">
           {{ buttonMain }}
         </nuxt-link>
-        <nuxt-link to="/" class="header__link" v-if="$route.path !== '/'">
-          {{ buttonMain }}
-        </nuxt-link>
-        <nuxt-link
-          to="/stories"
-          class="header__link is-active"
-          v-if="$route.path === '/stories'"
-        >
-          {{ buttonStories }}
-        </nuxt-link>
-        <nuxt-link
-          to="/stories"
-          class="header__link"
-          v-if="$route.path !== '/stories'"
-        >
+        <nuxt-link to="/stories" class="header__link">
           {{ buttonStories }}
         </nuxt-link>
         <button class="header__button" @click="openPopup">
           {{ buttonTellStory }}
         </button>
-        <button class="header__mobile-bar" @click="toggleMenu"></button>
       </nav>
+      <button class="header__mobile-bar" @click="toggleMenu"></button>
     </div>
   </header>
 </template>
@@ -99,11 +81,12 @@ export default {
 .header__container {
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
 .header__title {
-  max-width: 295px;
+  max-width: 290px;
   margin: 0;
   display: flex;
   align-items: center;
@@ -150,7 +133,7 @@ export default {
   opacity: 0.6;
 }
 
-.is-active {
+.header__link.nuxt-link-exact-active {
   border-bottom: 1px solid black;
 }
 
@@ -187,16 +170,20 @@ export default {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M0 0h32v4H0zM0 14h32v4H0zM0 28h32v4H0z'/%3E%3C/svg%3E");
 }
 
+.header__mobile-bar:focus {
+  outline: none;
+}
+
 .header__navigation-mob {
   width: 100%;
   margin: -150px 0 24px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   transition: margin 0.2s linear;
 }
 
-.header__navigation-mob_isActive {
+.header__navigation-mob_active {
   margin: 0 0 24px;
 }
 
@@ -212,6 +199,10 @@ export default {
   transition: margin 0.2s linear;
 }
 
+.header__link-mob.nuxt-link-exact-active {
+  text-decoration: underline;
+}
+
 .header__button-mob {
   @extend %button-default;
   max-width: 190px;
@@ -222,10 +213,6 @@ export default {
   color: #ffffff;
   background-color: $mainColor;
   transition: opacity linear 0.1s;
-}
-
-.header__button-mob:hover {
-  opacity: 0.9;
 }
 
 .header__button-mob:focus {
@@ -260,16 +247,16 @@ export default {
     padding: 18px 40px;
   }
 
-  .header__link {
-    display: none;
-  }
-
-  .header__button {
+  .header__navigation {
     display: none;
   }
 
   .header__mobile-bar {
     display: block;
+  }
+
+  .header__navigation-mob {
+    display: flex;
   }
 }
 
@@ -293,7 +280,7 @@ export default {
     margin: -120px 0 18px 0;
   }
 
-  .header__navigation-mob_isActive {
+  .header__navigation-mob_active {
     margin: 0 0 18px;
   }
 
