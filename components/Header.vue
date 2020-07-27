@@ -1,43 +1,61 @@
 <template>
   <header class="header">
-    <h1 class="header__title" v-if="$route.path !== '/'">
-      <nuxt-link to="/" class="header__title-link">
-        {{ getTitle }}
-      </nuxt-link>
-    </h1>
-    <h1 class="header__title" v-else>
-      {{ getTitle }}
-    </h1>
-    <nav class="header__navigation">
-      <nuxt-link
-        to="/"
-        class="header__link is-active"
-        v-if="$route.path === '/'"
-      >
+    <nav
+      :class="[
+        'header__navigation-mob',
+        { 'header__navigation-mob_isActive': menuIsVisible },
+      ]"
+    >
+      <nuxt-link to="/" class="header__link-mob">
         {{ buttonMain }}
       </nuxt-link>
-      <nuxt-link to="/" class="header__link" v-if="$route.path !== '/'">
-        {{ buttonMain }}
-      </nuxt-link>
-      <nuxt-link
-        to="/stories"
-        class="header__link is-active"
-        v-if="$route.path === '/stories'"
-      >
+      <nuxt-link to="/stories" class="header__link-mob">
         {{ buttonStories }}
       </nuxt-link>
-      <nuxt-link
-        to="/stories"
-        class="header__link"
-        v-if="$route.path !== '/stories'"
-      >
-        {{ buttonStories }}
-      </nuxt-link>
-      <button class="header__button" @click="openPopup">
+      <button class="header__button-mob" @click="openPopup">
         {{ buttonTellStory }}
       </button>
-      <button class="header__mobile-bar"></button>
     </nav>
+    <div class="header__container">
+      <h1 class="header__title" v-if="$route.path !== '/'">
+        <nuxt-link to="/" class="header__title-link">
+          {{ getTitle }}
+        </nuxt-link>
+      </h1>
+      <h1 class="header__title" v-else>
+        {{ getTitle }}
+      </h1>
+      <nav class="header__navigation">
+        <nuxt-link
+          to="/"
+          class="header__link is-active"
+          v-if="$route.path === '/'"
+        >
+          {{ buttonMain }}
+        </nuxt-link>
+        <nuxt-link to="/" class="header__link" v-if="$route.path !== '/'">
+          {{ buttonMain }}
+        </nuxt-link>
+        <nuxt-link
+          to="/stories"
+          class="header__link is-active"
+          v-if="$route.path === '/stories'"
+        >
+          {{ buttonStories }}
+        </nuxt-link>
+        <nuxt-link
+          to="/stories"
+          class="header__link"
+          v-if="$route.path !== '/stories'"
+        >
+          {{ buttonStories }}
+        </nuxt-link>
+        <button class="header__button" @click="openPopup">
+          {{ buttonTellStory }}
+        </button>
+        <button class="header__mobile-bar" @click="toggleMenu"></button>
+      </nav>
+    </div>
   </header>
 </template>
 
@@ -45,6 +63,7 @@
 export default {
   data() {
     return {
+      menuIsVisible: false,
       buttonMain: 'Главная',
       buttonStories: 'Истории',
       buttonTellStory: 'Рассказать историю',
@@ -61,6 +80,10 @@ export default {
     openPopup() {
       this.$store.commit('formQuestions/setPopupState');
     },
+
+    toggleMenu() {
+      this.menuIsVisible = !this.menuIsVisible;
+    },
   },
 };
 </script>
@@ -69,10 +92,14 @@ export default {
 .header {
   max-width: 1440px;
   padding: 18px 60px;
-  display: flex;
   box-sizing: border-box;
-  justify-content: space-between;
   font-family: 'Inter', monospace;
+}
+
+.header__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header__title {
@@ -160,6 +187,52 @@ export default {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M0 0h32v4H0zM0 14h32v4H0zM0 28h32v4H0z'/%3E%3C/svg%3E");
 }
 
+.header__navigation-mob {
+  width: 100%;
+  margin: -150px 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: margin 0.2s linear;
+}
+
+.header__navigation-mob_isActive {
+  margin: 0 0 24px;
+}
+
+.header__link-mob {
+  max-width: 60px;
+  margin: 0 0 24px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+  text-decoration: none;
+  transition: margin 0.2s linear;
+}
+
+.header__button-mob {
+  @extend %button-default;
+  max-width: 190px;
+  height: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+  background-color: $mainColor;
+  transition: opacity linear 0.1s;
+}
+
+.header__button-mob:hover {
+  opacity: 0.9;
+}
+
+.header__button-mob:focus {
+  outline: none;
+  opacity: 0.9;
+}
+
 @media screen and (max-width: 1280px) {
   .header {
     padding: 18px 50px;
@@ -206,6 +279,7 @@ export default {
   }
 
   .header__title {
+    max-width: 270px;
     font-size: 12px;
     line-height: 14px;
   }
@@ -213,6 +287,27 @@ export default {
   .header__mobile-bar {
     width: 26px;
     height: 26px;
+  }
+
+  .header__navigation-mob {
+    margin: -120px 0 18px 0;
+  }
+
+  .header__navigation-mob_isActive {
+    margin: 0 0 18px;
+  }
+
+  .header__link-mob {
+    margin: 0 0 18px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .header__button-mob {
+    max-width: 146px;
+    height: 31px;
+    font-size: 12px;
+    line-height: 15px;
   }
 }
 </style>
