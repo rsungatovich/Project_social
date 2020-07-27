@@ -13,18 +13,18 @@
       ></button>
     </div>
     <div class="section-video__box section-video__box_right">
-      <div class="section-video__inner">
-        <iframe
-          class="section-video__player"
-          src="https://www.youtube.com/embed/ou60K0WfcJ0?fs=0&color=white"
-        >
-        </iframe>
+      <div class="section-video__inner" ref="videoInner">
         <img
           class="section-video__image"
           src="../static/images/Pozner1.jpg"
           alt="Познер"
+          v-if="isVisible"
         />
-        <button class="section-video__button-play"></button>
+        <button
+          class="section-video__button-play"
+          v-if="isVisible"
+          @click="playVideo"
+        ></button>
         <div class="section-video__mob-buttons">
           <button
             class="section-video__button-mob section-video__button-mob_left"
@@ -58,6 +58,12 @@ export default {
     'ui-subtitle': Subtitle,
   },
 
+  data() {
+    return {
+      isVisible: true,
+    };
+  },
+
   computed: {
     getTitle() {
       return this.$store.getters['sectionVideo/getTitle'];
@@ -67,11 +73,12 @@ export default {
     },
   },
 
-  // methods: {
-  //   scrollTo() {
-  //     this.$refs.section.scrollIntoView({behavior: "smooth"});
-  //   }
-  // },
+  methods: {
+    playVideo() {
+      this.isVisible = false;
+      this.$refs.videoInner.innerHTML = `<iframe class="section-video__player" src="https://www.youtube.com/embed/ou60K0WfcJ0?fs=0&color=white&autoplay=1">`;
+    },
+  },
 };
 </script>
 
@@ -169,7 +176,7 @@ export default {
   // overflow: hidden;
 }
 
-.section-video__player {
+.section-video__inner /deep/ .section-video__player {
   width: 100%;
   height: 100%;
   border: none;
