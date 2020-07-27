@@ -5,7 +5,7 @@
       <button class="head-banner__button" @click="openPopup">
         {{ buttonName }}
       </button>
-      <button class="head-banner__button-arrow"></button>
+      <button class="head-banner__button-arrow" @click="scrollTo"></button>
     </div>
   </section>
 </template>
@@ -17,6 +17,8 @@ export default {
       buttonName: 'Рассказать историю',
     };
   },
+
+  props: ['scrollTo'],
 
   computed: {
     getTitle() {
@@ -95,7 +97,7 @@ export default {
 }
 
 .head-banner__button-arrow:hover {
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 .head-banner__button-arrow:focus {

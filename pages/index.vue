@@ -1,7 +1,7 @@
 <template>
   <main class="content">
-    <head-banner class="content__head-banner" />
-    <section-video class="content__section-video" />
+    <head-banner class="content__head-banner" :scrollTo="scrollTo" />
+    <section-video class="content__section-video" ref="sectionVideo" />
     <tag-banner class="content__tag-banner">
       <template v-slot:title>
         {{ getTagContentFirst }}
@@ -66,6 +66,12 @@ export default {
     },
     getTagContentSecond(state) {
       return this.$store.getters['tagBanner/getTagContentSecond'];
+    },
+  },
+
+  methods: {
+    scrollTo() {
+      this.$refs.sectionVideo.$el.scrollIntoView({ behavior: 'smooth' });
     },
   },
 };

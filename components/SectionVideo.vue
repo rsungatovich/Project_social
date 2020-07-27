@@ -66,6 +66,12 @@ export default {
       return this.$store.getters['sectionVideo/getSubtitle'];
     },
   },
+
+  // methods: {
+  //   scrollTo() {
+  //     this.$refs.section.scrollIntoView({behavior: "smooth"});
+  //   }
+  // },
 };
 </script>
 
