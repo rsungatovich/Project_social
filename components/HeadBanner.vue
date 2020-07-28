@@ -1,12 +1,12 @@
 <template>
   <section class="head-banner">
-    <div class="head-banner__box">
+    <div class="head-banner__container">
       <h2 class="head-banner__title">{{ getTitle }}</h2>
       <button class="head-banner__button" @click="openPopup">
         {{ buttonName }}
       </button>
-      <button class="head-banner__button-arrow" @click="scrollTo"></button>
     </div>
+    <button class="head-banner__button-arrow" @click="scrollTo"></button>
   </section>
 </template>
 
@@ -36,14 +36,19 @@ export default {
 
 <style lang="scss" scoped>
 .head-banner {
-  min-height: 689px;
+  min-height: calc(100vh - 80px);
   padding: 0 60px 40px;
   display: flex;
+  position: relative;
   box-sizing: border-box;
-  align-items: flex-end;
   justify-content: center;
+  flex-direction: column;
   background-color: $mainColor;
   font-family: 'Inter', monospace;
+}
+
+.head-banner__container {
+  height: 100%;
 }
 
 .head-banner__title {
@@ -60,7 +65,7 @@ export default {
 .head-banner__button {
   @extend %button-default;
   min-height: 60px;
-  margin: 0 auto 192px;
+  margin: 0 auto;
   padding: 0 45px;
   display: block;
   font-style: normal;
@@ -84,11 +89,14 @@ export default {
 
 .head-banner__button-arrow {
   @extend %button-default;
-  width: 36px;
-  height: 12px;
+  width: 40px;
+  height: 20px;
+  bottom: 40px;
+  left: calc(50% - 20px);
   margin: 0 auto;
   padding: 0;
   display: block;
+  position: absolute;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -108,7 +116,6 @@ export default {
 @media screen and (max-width: 1280px) {
   .head-banner {
     max-width: 1440px;
-    min-height: 620px;
     padding: 0 50px 40px;
   }
 
@@ -119,16 +126,11 @@ export default {
 
   .head-banner__button {
     min-height: 58px;
-    margin: 0 auto 167px;
     font-size: 22px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .head-banner {
-    min-height: 540px;
-  }
-
   .head-banner__title {
     font-size: 78px;
     line-height: 94px;
@@ -136,14 +138,13 @@ export default {
 
   .head-banner__button {
     min-height: 56px;
-    margin: 0 auto 133px;
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .head-banner {
-    min-height: 780px;
+    min-height: calc(100vh - 76px);
     padding: 0 40px 40px;
   }
 
@@ -151,15 +152,10 @@ export default {
     font-size: 64px;
     line-height: 77px;
   }
-
-  .head-banner__button {
-    margin: 0 auto 257px;
-  }
 }
 
 @media screen and (max-width: 600px) {
   .head-banner {
-    min-height: 480px;
     padding: 0 0 30px;
   }
 
@@ -167,14 +163,11 @@ export default {
     font-size: 48px;
     line-height: 58px;
   }
-
-  .head-banner__button {
-    margin: 0 auto 145px;
-  }
 }
 
 @media screen and (max-width: 425px) {
   .head-banner {
+    min-height: calc(100vh - 61px);
     padding: 0 15px 40px;
   }
 
@@ -186,7 +179,6 @@ export default {
 
   .head-banner__button {
     min-height: 44px;
-    margin: 0 auto 145px;
     padding: 0 30px;
     font-size: 16px;
     line-height: 20px;
