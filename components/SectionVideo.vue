@@ -7,30 +7,26 @@
       <ui-subtitle class="section-video__subtitle">
         {{ getSubtitle }}
       </ui-subtitle>
-      <button class="section-video__button section-video__button_left"></button>
+      <button
+        class="section-video__button section-video__button_left"
+        @click="prevSwipe"
+      ></button>
       <button
         class="section-video__button section-video__button_right"
+        @click="nextSwipe"
       ></button>
     </div>
     <div class="section-video__box section-video__box_right">
       <div class="section-video__inner" ref="videoInner">
-        <img
-          class="section-video__image"
-          src="../static/images/Pozner1.jpg"
-          alt="Познер"
-          v-if="isVisible"
-        />
-        <button
-          class="section-video__button-play"
-          v-if="isVisible"
-          @click="playVideo"
-        ></button>
+        <ui-slider class="section-video__slider" v-swiper:swiper></ui-slider>
         <div class="section-video__mob-buttons">
           <button
             class="section-video__button-mob section-video__button-mob_left"
+            @click="prevSwipe"
           ></button>
           <button
             class="section-video__button-mob section-video__button-mob_right"
+            @click="nextSwipe"
           ></button>
         </div>
       </div>
@@ -51,17 +47,13 @@
 <script>
 import Title from '@/components/ui/Title';
 import Subtitle from '@/components/ui/Subtitle';
+import Slider from '@/components/ui/Slider';
 
 export default {
   components: {
     'ui-title': Title,
     'ui-subtitle': Subtitle,
-  },
-
-  data() {
-    return {
-      isVisible: true,
-    };
+    'ui-slider': Slider,
   },
 
   computed: {
@@ -74,12 +66,16 @@ export default {
   },
 
   methods: {
-    playVideo() {
-      this.isVisible = false;
-      this.$refs.videoInner.insertAdjacentHTML(
-        'afterbegin',
-        `<iframe class="section-video__player" src="https://www.youtube.com/embed/ou60K0WfcJ0?fs=0&color=white&autoplay=1">`
-      );
+    prevSwipe() {
+      this.swiper.slidePrev(500, true);
+      this.setVisibleState(true);
+    },
+    nextSwipe() {
+      this.swiper.slideNext(500, true);
+      this.setVisibleState(true);
+    },
+    setVisibleState(boolean) {
+      this.$store.commit('slider/setVisibleState', { boolean });
     },
   },
 };
@@ -145,6 +141,7 @@ export default {
   @extend %button-default;
   width: 40px;
   height: 40px;
+  z-index: 1;
   background-size: 20px;
   background-repeat: no-repeat;
   background-color: $mainColor;
@@ -153,6 +150,10 @@ export default {
 
 .section-video__button-mob:hover {
   opacity: 0.9;
+}
+
+.section-video__button-mob:focus {
+  outline: none;
 }
 
 .section-video__button-mob_left {
@@ -176,50 +177,12 @@ export default {
   position: relative;
   padding-bottom: 51.9%;
   height: 0;
-  // overflow: hidden;
 }
 
-.section-video__inner /deep/ .section-video__player {
-  width: 100%;
-  height: 100%;
-  border: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.section-video__image {
-  width: 100%;
-  height: 100%;
+.section-video__slider {
   top: 0;
   left: 0;
   position: absolute;
-}
-
-.section-video__button-play {
-  @extend %button-default;
-  width: 90px;
-  height: 90px;
-  top: calc(50% - 45px);
-  left: calc(50% - 45px);
-  position: absolute;
-  border-radius: 50%;
-  background-position: 5px;
-  background-color: #cececee0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M31.356 25.677l38.625 22.3c1.557.899 1.557 3.147 0 4.046l-38.625 22.3c-1.557.899-3.504-.225-3.504-2.023V27.7c0-1.798 1.946-2.922 3.504-2.023z'/%3E%3Cpath d='M69.981 47.977l-38.625-22.3a2.343 2.343 0 00-.716-.259l37.341 21.559c1.557.899 1.557 3.147 0 4.046l-38.625 22.3a2.296 2.296 0 01-1.078.301c.656.938 1.961 1.343 3.078.699l38.625-22.3c1.557-.899 1.557-3.147 0-4.046z'/%3E%3Cpath d='M31.356 25.677l38.625 22.3c1.557.899 1.557 3.147 0 4.046l-38.625 22.3c-1.557.899-3.504-.225-3.504-2.023V27.7c0-1.798 1.946-2.922 3.504-2.023z' fill='%23ffffff' stroke='%23ffffff' stroke-miterlimit='10'/%3E%3C/svg%3E");
-  transition: background 0.1s linear;
-  z-index: 1;
-}
-
-.section-video__button-play:focus {
-  opacity: 0.8;
-  outline: none;
-  background-color: $mainColor;
-}
-
-.section-video__button-play:hover {
-  opacity: 0.8;
-  background-color: $mainColor;
 }
 
 .section-video__excerpt {
@@ -258,13 +221,6 @@ export default {
 
   .section-video__subtitle {
     margin: 0 0 124px;
-  }
-
-  .section-video__button-play {
-    width: 76px;
-    height: 76px;
-    top: calc(50% - 38px);
-    left: calc(50% - 38px);
   }
 }
 
@@ -351,14 +307,6 @@ export default {
     background-image: url("data:image/svg+xml,%3Csvg height='128' width='128' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23cecece' stroke-width='10' stroke-linecap='square' stroke-miterlimit='10'%3E%3Cpath d='M40.5 17l47 47M87.5 64l-47 47'/%3E%3C/g%3E%3C/svg%3E");
   }
 
-  .section-video__button-play {
-    width: 38px;
-    height: 38px;
-    top: calc(50% - 19px);
-    left: calc(50% - 19px);
-    background-position: 3px;
-  }
-
   .section-video__excerpt {
     display: none;
   }
@@ -367,6 +315,16 @@ export default {
 @media screen and (max-width: 425px) {
   .section-video {
     padding: 50px 15px 50px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .section-video__button-mob_left {
+    transform: translateX(-10px);
+  }
+
+  .section-video__button-mob_right {
+    transform: translateX(10px);
   }
 }
 </style>

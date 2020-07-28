@@ -3,7 +3,7 @@
     <nav
       :class="[
         'header__navigation-mob',
-        { 'header__navigation-mob_active': menuIsVisible },
+        { 'header__navigation-mob_active': getVisibleState },
       ]"
     >
       <nuxt-link to="/" class="header__link-mob">
@@ -36,7 +36,7 @@
           {{ buttonTellStory }}
         </button>
       </nav>
-      <button class="header__mobile-bar" @click="toggleMenu"></button>
+      <button class="header__mobile-bar" @click="setVisibleState"></button>
     </div>
   </header>
 </template>
@@ -45,7 +45,6 @@
 export default {
   data() {
     return {
-      menuIsVisible: false,
       buttonMain: 'Главная',
       buttonStories: 'Истории',
       buttonTellStory: 'Рассказать историю',
@@ -56,15 +55,17 @@ export default {
     getTitle() {
       return this.$store.getters['header/getTitle'];
     },
+    getVisibleState() {
+      return this.$store.getters['mobileMenu/getVisibleState'];
+    },
   },
 
   methods: {
     openPopup() {
       this.$store.commit('formQuestions/setPopupState');
     },
-
-    toggleMenu() {
-      this.menuIsVisible = !this.menuIsVisible;
+    setVisibleState() {
+      this.$store.commit('mobileMenu/setVisibleState');
     },
   },
 };
