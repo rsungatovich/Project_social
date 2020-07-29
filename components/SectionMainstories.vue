@@ -54,16 +54,30 @@ export default {
 
   computed: {
     renderStories() {
-      return this.getStoriesData.filter((card, index) => index < this.perPage);
+      return this.getPresentStories.filter(
+        (card, index) => index < this.perPage
+      );
     },
     renderMainStories() {
-      return this.getStoriesData.filter((card, index) => index < 4);
+      return this.getPresentStories.filter((card, index) => index < 4);
     },
     getStoriesData() {
       return this.$store.getters['storiesData/getStoriesData'];
     },
     getTitle() {
       return this.$store.getters['sectionMainstories/getTitle'];
+    },
+    getPresentStories() {
+      return this.getStoriesData.filter(card => {
+        if (card.id === 71) return true;
+        if (card.id === 74) return true;
+        if (card.id === 73) return true;
+        if (card.id === 72) return true;
+        if (card.id === 61) return true;
+        if (card.id === 54) return true;
+        if (card.id === 27) return true;
+        if (card.id === 68) return true;
+      });
     },
   },
 
