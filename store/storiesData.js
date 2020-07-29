@@ -6281,4 +6281,33 @@ export const getters = {
   },
 };
 
-// запросы на сервер прописываются здесь
+export const mutations = {
+  setStoriesData(state, { data }) {
+    return (state.storiesData = data);
+  },
+};
+
+export const actions = {
+  storiesDataRequest({ state, commit }) {
+    return fetch('https://strapi.kruzhok.io/stories')
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        console.log(res);
+        return Promise.reject(res.status);
+      })
+      .then(data => {
+        console.log('Name:', data[0].author);
+        console.log('Quote:', data[0].title);
+        console.log('Date:', data[0].date);
+        console.log(
+          'Photo:',
+          `https://strapi.kruzhok.io${data[0].ImageUrl[0].formats.large.url}`
+        );
+        console.log('Story:', data[0].text);
+        return commit('setStoriesData', { data });
+      })
+      .catch(err => console.log(err));
+  },
+};

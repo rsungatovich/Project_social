@@ -1,6 +1,12 @@
 <template>
   <nuxt-link class="story-card" :to="`/stories/${id}`">
-    <img class="story-card__image" :src="photoe" alt="Человек" />
+    <div class="story-card__image-box">
+      <img
+        class="story-card__image"
+        :src="`https://strapi.kruzhok.io${photo}`"
+        alt="Человек"
+      />
+    </div>
     <h3 class="story-card__title">
       {{ name }}
     </h3>
@@ -12,7 +18,7 @@
 
 <script>
 export default {
-  props: ['photoe', 'name', 'quote', 'id'],
+  props: ['photo', 'name', 'quote', 'id'],
 };
 </script>
 
@@ -23,8 +29,21 @@ export default {
   text-decoration: none;
 }
 
+.story-card__image-box {
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+  position: relative;
+}
+
 .story-card__image {
   width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  object-fit: cover;
+  object-position: center;
 }
 
 .story-card__title {

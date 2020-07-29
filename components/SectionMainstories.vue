@@ -6,9 +6,9 @@
       <ui-story-card
         v-for="card of renderMainStories"
         :key="card.id"
-        :photoe="card.photoe"
-        :name="card.name"
-        :quote="card.quote"
+        :photo="getImageUrlBySize(card)"
+        :name="card.author"
+        :quote="card.title"
         :id="card.id"
       />
     </ui-story-grid>
@@ -19,9 +19,9 @@
       <ui-story-card
         v-for="card of renderStories"
         :key="card.id"
-        :photoe="card.photoe"
-        :name="card.name"
-        :quote="card.quote"
+        :photo="getImageUrlBySize(card)"
+        :name="card.author"
+        :quote="card.title"
         :id="card.id"
       />
     </ui-story-grid>
@@ -68,6 +68,20 @@ export default {
   },
 
   methods: {
+    getImageUrlBySize(card, size = 'medium') {
+      // нужно отрефакторить и перенести в стор
+      if (card.ImageUrl[0].formats[size])
+        return card.ImageUrl[0].formats[size].url;
+      if (card.ImageUrl[0].formats.large)
+        return card.ImageUrl[0].formats.large.url;
+      if (card.ImageUrl[0].formats.medium)
+        return card.ImageUrl[0].formats.medium.url;
+      if (card.ImageUrl[0].formats.small)
+        return card.ImageUrl[0].formats.small.url;
+      if (card.ImageUrl[0].formats.thumbnail)
+        return card.ImageUrl[0].formats.thumbnail.url;
+    },
+
     countStories() {
       if (process.browser) {
         if (window.innerWidth > 768) {
@@ -85,6 +99,10 @@ export default {
 
   created: function() {
     this.countStories();
+  },
+
+  async fetch() {
+    await this.$store.dispatch('storiesData/storiesDataRequest');
   },
 };
 </script>
