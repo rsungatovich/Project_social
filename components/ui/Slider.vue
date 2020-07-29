@@ -78,7 +78,7 @@ export default {
   background-position: 5px;
   background-color: #cecece;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M31.356 25.677l38.625 22.3c1.557.899 1.557 3.147 0 4.046l-38.625 22.3c-1.557.899-3.504-.225-3.504-2.023V27.7c0-1.798 1.946-2.922 3.504-2.023z'/%3E%3Cpath d='M69.981 47.977l-38.625-22.3a2.343 2.343 0 00-.716-.259l37.341 21.559c1.557.899 1.557 3.147 0 4.046l-38.625 22.3a2.296 2.296 0 01-1.078.301c.656.938 1.961 1.343 3.078.699l38.625-22.3c1.557-.899 1.557-3.147 0-4.046z'/%3E%3Cpath d='M31.356 25.677l38.625 22.3c1.557.899 1.557 3.147 0 4.046l-38.625 22.3c-1.557.899-3.504-.225-3.504-2.023V27.7c0-1.798 1.946-2.922 3.504-2.023z' fill='%23ffffff' stroke='%23ffffff' stroke-miterlimit='10'/%3E%3C/svg%3E");
-  transition: background 0.1s linear;
+  transition: background 0.2s linear;
   z-index: 1;
 }
 

@@ -102,17 +102,17 @@ export default {
   border-radius: 30px;
   border: 1.5px solid #ffffff;
   color: #ffffff;
-  transition: opacity linear 0.1s;
+  transition: background linear 0.2s;
   z-index: 1;
 }
 
 .head-banner__button:hover {
-  opacity: 0.6;
+  background-color: #613a939d;
 }
 
 .head-banner__button:focus {
   outline: none;
-  opacity: 0.6;
+  background-color: $mainColor;
 }
 
 .head-banner__button-arrow {

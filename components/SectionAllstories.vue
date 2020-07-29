@@ -11,7 +11,7 @@
       <ui-story-card
         v-for="card of renderStories"
         :key="card.id"
-        :photo="getImageUrlBySize(card)"
+        :photo="findImageSize(card)"
         :name="card.author"
         :quote="card.title"
         :id="card.id"
@@ -75,10 +75,7 @@ export default {
   },
 
   methods: {
-    getImageUrlBySize(card, size = 'medium') {
-      // нужно отрефакторить и перенести в стор
-      if (card.ImageUrl[0].formats[size])
-        return card.ImageUrl[0].formats[size].url;
+    findImageSize(card) {
       if (card.ImageUrl[0].formats.large)
         return card.ImageUrl[0].formats.large.url;
       if (card.ImageUrl[0].formats.medium)

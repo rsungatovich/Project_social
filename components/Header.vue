@@ -298,4 +298,10 @@ export default {
     line-height: 15px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .header__title {
+    max-width: 250px;
+  }
+}
 </style>
