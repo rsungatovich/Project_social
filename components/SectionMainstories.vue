@@ -6,9 +6,9 @@
       <ui-story-card
         v-for="card of renderMainStories"
         :key="card.id"
-        :photoe="card.photoe"
-        :name="card.name"
-        :quote="card.quote"
+        :photo="findImageSize(card)"
+        :name="card.author"
+        :quote="card.title"
         :id="card.id"
       />
     </ui-story-grid>
@@ -19,9 +19,9 @@
       <ui-story-card
         v-for="card of renderStories"
         :key="card.id"
-        :photoe="card.photoe"
-        :name="card.name"
-        :quote="card.quote"
+        :photo="findImageSize(card)"
+        :name="card.author"
+        :quote="card.title"
         :id="card.id"
       />
     </ui-story-grid>
@@ -54,10 +54,12 @@ export default {
 
   computed: {
     renderStories() {
-      return this.getStoriesData.filter((card, index) => index < this.perPage);
+      return this.getPresentStories.filter(
+        (card, index) => index < this.perPage
+      );
     },
     renderMainStories() {
-      return this.getStoriesData.filter((card, index) => index < 4);
+      return this.getPresentStories.filter((card, index) => index < 4);
     },
     getStoriesData() {
       return this.$store.getters['storiesData/getStoriesData'];
@@ -65,9 +67,32 @@ export default {
     getTitle() {
       return this.$store.getters['sectionMainstories/getTitle'];
     },
+    getPresentStories() {
+      return this.getStoriesData.filter(card => {
+        if (card.id === 71) return true;
+        if (card.id === 74) return true;
+        if (card.id === 73) return true;
+        if (card.id === 72) return true;
+        if (card.id === 61) return true;
+        if (card.id === 54) return true;
+        if (card.id === 27) return true;
+        if (card.id === 68) return true;
+      });
+    },
   },
 
   methods: {
+    findImageSize(card) {
+      if (card.ImageUrl[0].formats.large)
+        return card.ImageUrl[0].formats.large.url;
+      if (card.ImageUrl[0].formats.medium)
+        return card.ImageUrl[0].formats.medium.url;
+      if (card.ImageUrl[0].formats.small)
+        return card.ImageUrl[0].formats.small.url;
+      if (card.ImageUrl[0].formats.thumbnail)
+        return card.ImageUrl[0].formats.thumbnail.url;
+    },
+
     countStories() {
       if (process.browser) {
         if (window.innerWidth > 768) {
@@ -85,6 +110,10 @@ export default {
 
   created: function() {
     this.countStories();
+  },
+
+  async fetch() {
+    await this.$store.dispatch('storiesData/storiesDataRequest');
   },
 };
 </script>

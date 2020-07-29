@@ -17,6 +17,11 @@
           <button class="section-about__button" @click="openPopup">
             {{ buttonName }}
           </button>
+          <img
+            class="section-about__image section-about__image_first"
+            src="/images/ill1.png"
+            alt="Узоры"
+          />
         </div>
         <div class="section-about__box">
           <div class="section-about__controls">
@@ -47,8 +52,18 @@
           <button class="section-about__button-mob" @click="openPopup">
             {{ buttonName }}
           </button>
+          <img
+            class="section-about__image section-about__image_first-mob"
+            src="/images/ill1.png"
+            alt="Узоры"
+          />
         </div>
       </div>
+      <img
+        class="section-about__image section-about__image_second"
+        src="/images/ill2.png"
+        alt="Узоры"
+      />
     </div>
   </section>
 </template>
@@ -125,8 +140,10 @@ export default {
 
 .section-about__content {
   max-width: 1440px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 90px 60px 100px;
+  position: relative;
   box-sizing: border-box;
 }
 
@@ -171,7 +188,9 @@ export default {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
+  z-index: 1;
   color: #000000;
+  position: relative;
   background-color: #ffffff;
   transition: opacity linear 0.1s;
 }
@@ -182,7 +201,6 @@ export default {
 
 .section-about__button:focus {
   outline: none;
-  opacity: 0.8;
 }
 
 .section-about__button-mob {
@@ -206,7 +224,6 @@ export default {
 
 .section-about__button-mob:focus {
   outline: none;
-  opacity: 0.8;
 }
 
 .section-about__box {
@@ -214,7 +231,9 @@ export default {
 }
 
 .section-about__controls {
+  min-width: 130px;
   margin: 0 40px 0 0;
+  z-index: 1;
 }
 
 .section-about__control {
@@ -236,7 +255,6 @@ export default {
 
 .section-about__control:focus {
   outline: none;
-  color: #ffffff;
 }
 
 .section-about__control_is-active {
@@ -266,6 +284,24 @@ export default {
   margin: 0;
 }
 
+.section-about__image_first {
+  margin: 70px 0 0;
+  display: block;
+}
+
+.section-about__image_second {
+  right: 60px;
+  bottom: 60px;
+  position: absolute;
+}
+
+.section-about__image_first-mob {
+  width: 136px;
+  height: 96px;
+  margin: 50px auto 0;
+  display: none;
+}
+
 @media screen and (max-width: 1280px) {
   .section-about__content {
     padding: 80px 50px 90px;
@@ -293,6 +329,30 @@ export default {
 
   .section-about__button {
     min-height: 42px;
+  }
+
+  .section-about__image_first {
+    width: 218px;
+    height: 155px;
+  }
+
+  .section-about__image_second {
+    width: 852px;
+    height: 292px;
+    right: 50px;
+    bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .section-about__image_first {
+    width: 167px;
+    height: 118px;
+  }
+
+  .section-about__image_second {
+    width: 657px;
+    height: 227px;
   }
 }
 
@@ -410,6 +470,21 @@ export default {
   .section-about__button-mob {
     display: block;
   }
+
+  .section-about__image_first {
+    display: none;
+  }
+
+  .section-about__image_second {
+    display: none;
+  }
+
+  .section-about__image_first-mob {
+    width: 198px;
+    height: 139px;
+    display: block;
+    margin: 60px auto 0;
+  }
 }
 
 @media screen and (max-width: 425px) {
@@ -449,6 +524,10 @@ export default {
     padding: 0 13px;
     font-size: 12px;
     line-height: 15px;
+  }
+
+  .section-about__image_first-mob {
+    display: block;
   }
 }
 

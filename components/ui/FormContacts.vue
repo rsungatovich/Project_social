@@ -204,7 +204,6 @@ export default {
 
 .form-contacts__link:focus {
   outline: none;
-  opacity: 0.6;
 }
 
 @media screen and (max-width: 1280px) {

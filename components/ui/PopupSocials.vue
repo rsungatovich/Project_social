@@ -131,7 +131,6 @@ export default {
 
 .popup-socials__icon:focus {
   outline: none;
-  transform: scale(1.2);
 }
 
 .popup-socials__links {

@@ -129,7 +129,6 @@ export default {
 
 .footer__link:focus {
   outline: none;
-  opacity: 0.6;
 }
 
 .footer__link_underline {
@@ -166,7 +165,6 @@ export default {
 
 .footer__share:focus {
   outline: none;
-  opacity: 0.6;
 }
 
 .footer__copyright {

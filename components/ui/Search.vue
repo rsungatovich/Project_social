@@ -69,7 +69,6 @@ export default {
 
 .search__button-small-mob:focus {
   outline: none;
-  opacity: 0.9;
 }
 
 .search__button-reset {
@@ -93,7 +92,6 @@ export default {
 
 .search__button-reset:focus {
   outline: none;
-  opacity: 0.6;
 }
 
 .search__button-reset-mob {
@@ -117,7 +115,6 @@ export default {
 
 .search__button-reset:focus {
   outline: none;
-  opacity: 0.6;
 }
 
 .search__button-reset-mob:focus {

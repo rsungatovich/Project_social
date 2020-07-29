@@ -1,32 +1,29 @@
 <template>
   <article class="article">
     <div class="article__persone">
-      <img
-        class="article__photoe"
-        :src="getStoriesData[$route.params.id - 1].photoe"
-        alt="Человек"
-      />
+      <div class="article__photo-box">
+        <img
+          class="article__photo"
+          :src="`https://strapi.kruzhok.io${findImageSize(findStoryData)}`"
+          alt="Человек"
+        />
+      </div>
       <div class="article__box">
         <p class="article__blockquote">
-          <span class="article__author">
-            {{ getStoriesData[$route.params.id - 1].name }}:
-          </span>
-          {{ getStoriesData[$route.params.id - 1].quote }}
+          <span class="article__author"> {{ findStoryData.author }}: </span>
+          {{ findStoryData.title }}
         </p>
         <div class="article__copyright">
           <button class="article__share" @click="openPopup">
             {{ buttonShareSmall }}
           </button>
           <time class="article__date">
-            {{ getStoriesData[$route.params.id - 1].date }}
+            {{ getLocalizedDate }}
           </time>
         </div>
       </div>
     </div>
-    <div
-      class="article__persone-story"
-      v-html="getStoriesData[$route.params.id - 1].story"
-    ></div>
+    <div class="article__persone-story" v-html="findStoryData.text"></div>
     <button class="article__share article__share_long" @click="openPopup">
       {{ buttonShareLong }}
     </button>
@@ -46,12 +43,47 @@ export default {
     getStoriesData() {
       return this.$store.getters['storiesData/getStoriesData'];
     },
+
+    findStoryData() {
+      return this.getStoriesData.find(item => {
+        return item.id == this.$route.params.id;
+      });
+    },
+
+    getLocalizedDate() {
+      const date = new Date(this.findStoryData.date);
+      const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      };
+      const localizedDate = date
+        .toLocaleString('ru', options)
+        .replace(/\s*г\./, '');
+
+      return localizedDate;
+    },
   },
 
   methods: {
     openPopup() {
       this.$store.commit('popupSocials/setPopupState');
     },
+
+    findImageSize(card) {
+      if (card.ImageUrl[0].formats.large)
+        return card.ImageUrl[0].formats.large.url;
+      if (card.ImageUrl[0].formats.medium)
+        return card.ImageUrl[0].formats.medium.url;
+      if (card.ImageUrl[0].formats.small)
+        return card.ImageUrl[0].formats.small.url;
+      if (card.ImageUrl[0].formats.thumbnail)
+        return card.ImageUrl[0].formats.thumbnail.url;
+    },
+  },
+
+  async fetch() {
+    await this.$store.dispatch('storiesData/storiesDataRequest');
   },
 };
 </script>
@@ -61,9 +93,22 @@ export default {
   display: flex;
 }
 
-.article__photoe {
-  width: 43.9%;
+.article__photo-box {
+  width: 44%;
+  height: 0;
   margin: 0 60px 0 0;
+  padding-top: 44%;
+  position: relative;
+}
+
+.article__photo {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  object-fit: cover;
+  object-position: center;
 }
 
 .article__box {
@@ -108,7 +153,6 @@ export default {
 
 .article__share:focus {
   outline: none;
-  opacity: 0.6;
 }
 
 .article__share_long {
@@ -127,21 +171,36 @@ export default {
 .article__persone-story {
   max-width: 780px;
   margin: 130px auto 100px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 30px;
 }
 
-.article__persone-story /deep/ .article__text {
-  margin: 0 0 40px;
-  font-style: normal;
-  font-weight: normal;
+// приходящие данные
+
+.article__persone-story /deep/ p {
+  margin: 0;
   font-size: 22px;
   line-height: 30px;
 }
 
-.article__persone-story /deep/ .article__text:last-child {
+.article__persone-story /deep/ figure {
   margin: 0;
 }
 
-.article__persone-story /deep/ .article__text_bold {
+.article__persone-story /deep/ figcaption {
+  margin: 0;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+.article__persone-story /deep/ blockquote {
+  margin: 0;
+  font-weight: 600;
+}
+
+.article__persone-story /deep/ blockquote p {
+  margin: 0;
   font-weight: 600;
 }
 
@@ -157,15 +216,19 @@ export default {
     margin: 120px auto 90px;
   }
 
-  .article__persone-story /deep/ .article__text {
-    margin: 0 0 40px;
+  .article__persone-story /deep/ p {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .article__persone-story /deep/ figcaption {
     font-size: 20px;
     line-height: 28px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .article__photoe {
+  .article__photo-box {
     margin: 0 40px 0 0;
   }
 
@@ -192,8 +255,12 @@ export default {
     margin: 90px auto 70px;
   }
 
-  .article__persone-story /deep/ .article__text {
-    margin: 0 0 40px;
+  .article__persone-story /deep/ p {
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .article__persone-story /deep/ figcaption {
     font-size: 18px;
     line-height: 27px;
   }
@@ -205,8 +272,10 @@ export default {
     flex-direction: column-reverse;
   }
 
-  .article__photoe {
+  .article__photo-box {
     width: 420px;
+    height: 420px;
+    padding-top: 0;
     margin: 60px auto 77px;
   }
 
@@ -248,23 +317,29 @@ export default {
     line-height: 16px;
   }
 
-  .article__photoe {
+  .article__photo-box {
     width: 100%;
+    height: 0;
+    padding-top: 100%;
   }
 
   .article__persone-story {
     margin: 60px auto;
   }
 
-  .article__persone-story /deep/ .article__text {
-    margin: 0 0 20px;
+  .article__persone-story /deep/ p {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .article__persone-story /deep/ figcaption {
     font-size: 13px;
     line-height: 16px;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .article__photoe {
+  .article__photo-box {
     margin: 30px 0 47px;
   }
 }
