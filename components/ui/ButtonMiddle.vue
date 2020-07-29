@@ -29,7 +29,6 @@ export default {};
 
 .button-middle:focus {
   outline: none;
-  opacity: 0.9;
 }
 
 @media screen and (max-width: 1280px) {

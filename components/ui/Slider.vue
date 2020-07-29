@@ -5,7 +5,7 @@
         <iframe class="slider__player" :src="slide.video" />
         <img
           class="slider__image"
-          src="../../static/images/Pozner1.jpg"
+          :src="slide.image"
           alt="Познер"
           v-if="getVisibleState"
         />
@@ -84,7 +84,6 @@ export default {
 
 .slider__button-play:focus {
   outline: none;
-  background-color: $mainColor;
 }
 
 .slider__button-play:hover {

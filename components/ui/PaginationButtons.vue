@@ -3,7 +3,7 @@
     <div class="pagination-buttons__container">
       <button
         :class="[
-          `pagination-buttons__button 
+          `pagination-buttons__button
         pagination-buttons__button_text`,
           { 'pagination-buttons__button_is-active': getCurrentPage === 1 },
         ]"
@@ -13,7 +13,7 @@
       </button>
       <button
         :class="[
-          `pagination-buttons__button 
+          `pagination-buttons__button
         pagination-buttons__button_left`,
           { 'pagination-buttons__button_is-active': getCurrentPage === 1 },
         ]"
@@ -21,7 +21,7 @@
       ></button>
       <button
         :class="[
-          `pagination-buttons__button 
+          `pagination-buttons__button
         pagination-buttons__button_num`,
           { 'pagination-buttons__button_is-active': num === getCurrentPage },
         ]"
@@ -34,7 +34,7 @@
       </button>
       <button
         :class="[
-          `pagination-buttons__button 
+          `pagination-buttons__button
         pagination-buttons__button_right`,
           {
             'pagination-buttons__button_is-active':
@@ -45,7 +45,7 @@
       ></button>
       <button
         :class="[
-          `pagination-buttons__button 
+          `pagination-buttons__button
         pagination-buttons__button_text`,
           {
             'pagination-buttons__button_is-active':
@@ -58,12 +58,12 @@
       </button>
     </div>
     <div
-      class="pagination-buttons__container 
+      class="pagination-buttons__container
       pagination-buttons__container_mob"
     >
       <button
         :class="[
-          `pagination-buttons__button 
+          `pagination-buttons__button
         pagination-buttons__button_text-mob`,
           { 'pagination-buttons__button_is-active': getCurrentPage === 1 },
         ]"
@@ -73,7 +73,7 @@
       </button>
       <button
         :class="[
-          `pagination-buttons__button 
+          `pagination-buttons__button
         pagination-buttons__button_text-mob`,
           {
             'pagination-buttons__button_is-active':
@@ -215,7 +215,6 @@ export default {
 
 .pagination-buttons__button:focus {
   outline: none;
-  // opacity: 0.6;
 }
 
 .pagination-buttons__button:last-child {

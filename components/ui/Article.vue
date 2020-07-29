@@ -153,7 +153,6 @@ export default {
 
 .article__share:focus {
   outline: none;
-  opacity: 0.6;
 }
 
 .article__share_long {

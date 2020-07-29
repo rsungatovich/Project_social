@@ -131,7 +131,6 @@ export default {
 
 .header__link:focus {
   outline: none;
-  opacity: 0.6;
 }
 
 .header__link.nuxt-link-exact-active {
@@ -157,7 +156,6 @@ export default {
 
 .header__button:focus {
   outline: none;
-  opacity: 0.9;
 }
 
 .header__mobile-bar {
@@ -218,7 +216,6 @@ export default {
 
 .header__button-mob:focus {
   outline: none;
-  opacity: 0.9;
 }
 
 @media screen and (max-width: 1280px) {

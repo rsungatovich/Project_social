@@ -27,6 +27,11 @@ export default {
   width: 100%;
   cursor: pointer;
   text-decoration: none;
+  transition: opacity 0.5s ease;
+}
+
+.story-card:hover {
+  opacity: 0.8;
 }
 
 .story-card__image-box {

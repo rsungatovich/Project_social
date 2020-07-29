@@ -218,7 +218,6 @@ export default {
 
 .form-questions__button-back:focus {
   outline: none;
-  opacity: 0.6;
 }
 
 .form-questions__button-small {
@@ -247,7 +246,6 @@ export default {
 
 .form-questions__link:focus {
   outline: none;
-  opacity: 0.6;
 }
 
 @media screen and (max-width: 1280px) {

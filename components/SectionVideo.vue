@@ -115,7 +115,6 @@ export default {
 
 .section-video__button:focus {
   outline: none;
-  opacity: 0.9;
 }
 
 .section-video__button_left {
@@ -208,7 +207,6 @@ export default {
 
 .section-video__link:focus {
   outline: none;
-  opacity: 0.6;
 }
 
 @media screen and (max-width: 1280px) {
