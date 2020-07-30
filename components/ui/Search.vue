@@ -43,12 +43,18 @@ export default {
       this.$store.commit('search/resetValue');
     },
 
+    setCurrentPage(param) {
+      return this.$store.commit('pagination/setCurrentPage', { param });
+    },
+
     searchData(event) {
       if (event.target.tagName === 'INPUT' && event.keyCode == 13) {
+        this.setCurrentPage(1);
         this.setValue(this.$refs.input.value);
       }
 
       if (event.target.tagName === 'BUTTON') {
+        this.setCurrentPage(1);
         this.setValue(this.$refs.input.value);
       }
     },

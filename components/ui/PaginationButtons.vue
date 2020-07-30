@@ -68,6 +68,9 @@ export default {
       pageRange: 2,
     };
   },
+
+  props: ['getStoriesData'],
+
   computed: {
     numButtons() {
       const buttons = [];
@@ -106,9 +109,6 @@ export default {
       }
       return end < this.totalPages ? end : this.totalPages;
     },
-    getStoriesData() {
-      return this.$store.getters['storiesData/getStoriesData'];
-    },
     getPerPage() {
       return this.$store.getters['pagination/getPerPage'];
     },
@@ -116,6 +116,7 @@ export default {
       return this.$store.getters['pagination/getCurrentPage'];
     },
   },
+
   methods: {
     countButtons() {
       if (process.browser) {
@@ -151,6 +152,7 @@ export default {
       return this.$store.commit('pagination/setCurrentPage', { param });
     },
   },
+
   created: function() {
     this.countButtons();
   },

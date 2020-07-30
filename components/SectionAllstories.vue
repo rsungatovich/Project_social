@@ -18,7 +18,10 @@
       />
     </ui-story-grid>
     <ui-no-found class="section-allstories__no-found" v-if="nothingNoFound" />
-    <ui-pagination-buttons class="content__pagination-buttons" />
+    <ui-pagination-buttons
+      class="content__pagination-buttons"
+      :getStoriesData="filterStories"
+    />
   </section>
 </template>
 
