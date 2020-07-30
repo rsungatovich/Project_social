@@ -122,11 +122,11 @@ export default {
   line-height: 24px;
   color: #000000;
   text-decoration: none;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .header__link:hover {
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 .header__link:focus {
@@ -147,11 +147,11 @@ export default {
   line-height: 24px;
   color: #ffffff;
   background-color: $mainColor;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .header__button:hover {
-  opacity: 0.9;
+  opacity: 0.6;
 }
 
 .header__button:focus {

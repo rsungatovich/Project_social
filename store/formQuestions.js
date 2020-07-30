@@ -113,3 +113,5 @@ export const getters = {
     return state.visible;
   },
 };
+
+// Здесь прописываем POST запрос с данными на сервер

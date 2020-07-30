@@ -106,11 +106,11 @@ export default {
   background-size: 20px;
   background-repeat: no-repeat;
   background-color: $mainColor;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .section-video__button:hover {
-  opacity: 0.9;
+  opacity: 0.6;
 }
 
 .section-video__button:focus {
@@ -145,11 +145,11 @@ export default {
   background-size: 20px;
   background-repeat: no-repeat;
   background-color: $mainColor;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .section-video__button-mob:hover {
-  opacity: 0.9;
+  opacity: 0.6;
 }
 
 .section-video__button-mob:focus {
@@ -198,7 +198,7 @@ export default {
   color: #666666;
   border-bottom: 1px solid #666666;
   text-decoration: none;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .section-video__link:hover {

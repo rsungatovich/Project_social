@@ -159,7 +159,7 @@ export default {
   font-size: 18px;
   line-height: 22px;
   color: #a2a2a2;
-  transition: color linear 0.1s;
+  transition: color linear 0.2s;
 }
 
 .section-tellstory__control:hover {

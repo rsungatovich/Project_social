@@ -2,7 +2,11 @@
   <div class="slider">
     <div class="swiper-wrapper">
       <div class="swiper-slide" v-for="slide of getSlidesData" :key="slide.id">
-        <iframe class="slider__player" :src="slide.video" />
+        <iframe
+          class="slider__player"
+          :src="slide.video"
+          v-if="!getVisibleState"
+        />
         <img
           class="slider__image"
           :src="slide.image"

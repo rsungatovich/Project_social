@@ -6,7 +6,7 @@
     <ui-search class="section-allstories__search" />
     <ui-story-grid
       class="section-allstories__story-grid"
-      v-if="getCurrentPage <= totalPages"
+      v-if="!nothingNoFound"
     >
       <ui-story-card
         v-for="card of renderStories"
@@ -17,11 +17,11 @@
         :id="card.id"
       />
     </ui-story-grid>
-    <ui-no-found
-      class="section-allstories__no-found"
-      v-if="getCurrentPage > totalPages"
+    <ui-no-found class="section-allstories__no-found" v-if="nothingNoFound" />
+    <ui-pagination-buttons
+      class="content__pagination-buttons"
+      :getStoriesData="filterStories"
     />
-    <ui-pagination-buttons class="content__pagination-buttons" />
   </section>
 </template>
 
@@ -43,15 +43,9 @@ export default {
     'ui-no-found': NoFound,
   },
 
-  data() {
-    return {
-      nothingNoFound: false,
-    };
-  },
-
   computed: {
     renderStories() {
-      return this.getStoriesData.filter(
+      return this.filterStories.filter(
         (card, index) =>
           index < this.getPerPage * this.getCurrentPage &&
           index >= this.getPerPage * this.getCurrentPage - this.getPerPage
@@ -71,6 +65,21 @@ export default {
     },
     getPerPage() {
       return this.$store.getters['pagination/getPerPage'];
+    },
+    getSearchValue() {
+      return this.$store.getters['search/getValue'];
+    },
+    filterStories() {
+      if (this.getSearchValue.trim()) {
+        return this.getStoriesData.filter(data => {
+          return data.author.includes(this.getSearchValue);
+        });
+      }
+
+      return this.getStoriesData;
+    },
+    nothingNoFound() {
+      return this.filterStories.length > 0 ? false : true;
     },
   },
 

@@ -122,7 +122,7 @@ export default {
   width: 48px;
   height: 48px;
   cursor: pointer;
-  transition: transform linear 0.1s;
+  transition: transform linear 0.2s;
 }
 
 .popup-socials__icon:hover {

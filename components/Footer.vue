@@ -120,11 +120,11 @@ export default {
   line-height: 24px;
   color: #000000;
   text-decoration: none;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .footer__link:hover {
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 .footer__link:focus {
@@ -156,11 +156,11 @@ export default {
   font-size: 18px;
   line-height: 24px;
   color: #000000;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .footer__share:hover {
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 .footer__share:focus {

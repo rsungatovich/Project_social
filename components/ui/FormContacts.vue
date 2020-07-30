@@ -195,7 +195,7 @@ export default {
 
 .form-contacts__link {
   color: #666666;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .form-contacts__link:hover {

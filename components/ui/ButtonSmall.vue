@@ -1,5 +1,5 @@
 <template>
-  <button class="button-small" @click="$emit('theClick')">
+  <button class="button-small" @click="$emit('theClick', $event)">
     <slot>button</slot>
   </button>
 </template>
@@ -20,11 +20,11 @@ export default {};
   text-align: center;
   color: #ffffff;
   background-color: $mainColor;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .button-small:hover {
-  opacity: 0.9;
+  opacity: 0.6;
 }
 
 .button-small:focus {

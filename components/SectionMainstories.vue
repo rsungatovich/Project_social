@@ -55,7 +55,7 @@ export default {
   computed: {
     renderStories() {
       return this.getPresentStories.filter(
-        (card, index) => index < this.perPage
+        (card, index) => index < this.countStories
       );
     },
     renderMainStories() {
@@ -74,10 +74,24 @@ export default {
         if (card.id === 73) return true;
         if (card.id === 72) return true;
         if (card.id === 61) return true;
-        if (card.id === 54) return true;
+        if (card.id === 11) return true;
         if (card.id === 27) return true;
         if (card.id === 68) return true;
+        if (card.id === 22) return true;
       });
+    },
+    countStories() {
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          return 8;
+        } else if (window.innerWidth > 530) {
+          return 9;
+        } else if (window.innerWidth <= 530) {
+          return 6;
+        }
+      } else {
+        return 8;
+      }
     },
   },
 
@@ -92,24 +106,6 @@ export default {
       if (card.ImageUrl[0].formats.thumbnail)
         return card.ImageUrl[0].formats.thumbnail.url;
     },
-
-    countStories() {
-      if (process.browser) {
-        if (window.innerWidth > 768) {
-          this.perPage = 8;
-        } else if (window.innerWidth > 530) {
-          this.perPage = 9;
-        } else if (window.innerWidth <= 530) {
-          this.perPage = 6;
-        }
-      } else {
-        this.perPage = 8;
-      }
-    },
-  },
-
-  created: function() {
-    this.countStories();
   },
 
   async fetch() {
