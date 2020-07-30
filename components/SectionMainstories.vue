@@ -74,9 +74,10 @@ export default {
         if (card.id === 73) return true;
         if (card.id === 72) return true;
         if (card.id === 61) return true;
-        if (card.id === 54) return true;
+        if (card.id === 11) return true;
         if (card.id === 27) return true;
         if (card.id === 68) return true;
+        if (card.id === 22) return true;
       });
     },
   },
