@@ -60,11 +60,11 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("data:image/svg+xml,%3Csvg width='17' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5.913' cy='5.913' r='5.413' stroke='%23fff'/%3E%3Cpath stroke='%23fff' d='M10.092 10.081l6.261 6.261'/%3E%3C/svg%3E");
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .search__button-small-mob:hover {
-  opacity: 0.9;
+  opacity: 0.3;
 }
 
 .search__button-small-mob:focus {
@@ -83,11 +83,11 @@ export default {
   font-size: 16px;
   line-height: 19px;
   color: #666666;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .search__button-reset:hover {
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 .search__button-reset:focus {
@@ -106,11 +106,11 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23666' stroke-width='2' d='M7.93 7.929l14.142 14.142M7.93 22.071L22.072 7.929'/%3E%3C/svg%3E");
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .search__button-reset-mob:hover {
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 .search__button-reset:focus {

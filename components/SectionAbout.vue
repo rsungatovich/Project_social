@@ -192,11 +192,11 @@ export default {
   color: #000000;
   position: relative;
   background-color: #ffffff;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .section-about__button:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .section-about__button:focus {
@@ -215,11 +215,11 @@ export default {
   line-height: 18px;
   color: #000000;
   background-color: #ffffff;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .section-about__button-mob:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .section-about__button-mob:focus {
@@ -246,7 +246,7 @@ export default {
   line-height: 22px;
   color: #c9c9c9;
   text-align: right;
-  transition: color linear 0.1s;
+  transition: color linear 0.2s;
 }
 
 .section-about__control:hover {

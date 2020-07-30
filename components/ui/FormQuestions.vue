@@ -209,7 +209,7 @@ export default {
   font-size: 16px;
   line-height: 19px;
   color: #666666;
-  transition: opacity linear 0.1s;
+  transition: opacity linear 0.2s;
 }
 
 .form-questions__button-back:hover {
