@@ -1,14 +1,20 @@
 <template>
   <div class="search">
-    <input class="search__input" type="text" ref="input" />
-    <button class="search__button-reset" @click="resetInput">
+    <input
+      class="search__input"
+      type="text"
+      ref="input"
+      placeholder="Найти..."
+      @keydown="searchData"
+    />
+    <button class="search__button-reset" @click="resetValue">
       {{ buttonReset }}
     </button>
-    <ui-button-small class="search__button-small">
+    <ui-button-small class="search__button-small" @theClick="searchData">
       {{ buttonSearch }}
     </ui-button-small>
-    <button class="search__button-small-mob"></button>
-    <button class="search__button-reset-mob"></button>
+    <button class="search__button-small-mob" @click="searchData"></button>
+    <button class="search__button-reset-mob" @click="resetValue"></button>
   </div>
 </template>
 
@@ -19,15 +25,32 @@ export default {
   components: {
     'ui-button-small': ButtonSmall,
   },
+
   data() {
     return {
       buttonReset: 'Очистить',
       buttonSearch: 'Поиск',
     };
   },
+
   methods: {
-    resetInput() {
+    setValue(value) {
+      this.$store.commit('search/setValue', { value });
+    },
+
+    resetValue() {
       this.$refs.input.value = '';
+      this.$store.commit('search/resetValue');
+    },
+
+    searchData(event) {
+      if (event.target.tagName === 'INPUT' && event.keyCode == 13) {
+        this.setValue(this.$refs.input.value);
+      }
+
+      if (event.target.tagName === 'BUTTON') {
+        this.setValue(this.$refs.input.value);
+      }
     },
   },
 };
@@ -45,9 +68,18 @@ export default {
   margin: 0 20px 0 0;
   padding: 0 108px 0 10px;
   font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
+  font-size: 22px;
   border: 1px solid #afafaf;
+}
+
+.search__input::placeholder {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.search__input:focus {
+  outline: none;
 }
 
 .search__button-small-mob {
