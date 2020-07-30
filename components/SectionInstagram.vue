@@ -2,7 +2,13 @@
   <section class="section-instagram">
     <div class="section-instagram__description">
       <ui-title class="section-instagram__title">
-        {{ getTitle }}
+        <a
+          class="section-instagram__title-link"
+          href="https://www.instagram.com/raklechitsa/"
+          target="_blank"
+        >
+          {{ getTitle }}
+        </a>
       </ui-title>
       <ui-subtitle class="section-instagram__subtitle">
         {{ getSubtitle }}
@@ -12,7 +18,7 @@
       <ui-instagram-card
         v-for="cards of renderCards"
         :key="cards.id"
-        :photoe="cards.photoe"
+        :photo="cards.photo"
         :link="cards.link"
       />
     </div>
@@ -58,6 +64,7 @@ export default {
 }
 
 .section-instagram__description {
+  min-width: 250px;
   margin: 0 110px 0 0;
 }
 
@@ -66,8 +73,13 @@ export default {
   text-decoration: underline;
 }
 
+.section-instagram__title-link {
+  color: #000000;
+  text-decoration: none;
+}
+
 .section-instagram__container {
-  max-width: 774px;
+  max-width: 840px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
@@ -90,6 +102,7 @@ export default {
   }
 
   .section-instagram__description {
+    min-width: 180px;
     margin: 0 60px 0 0;
   }
 
