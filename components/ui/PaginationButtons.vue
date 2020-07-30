@@ -4,13 +4,11 @@
       <button
         :class="[
           `pagination-buttons__button
-        pagination-buttons__button_text`,
+        pagination-buttons__button_first`,
           { 'pagination-buttons__button_is-active': getCurrentPage === 1 },
         ]"
         @click="switchFirstPage"
-      >
-        Первая
-      </button>
+      ></button>
       <button
         :class="[
           `pagination-buttons__button
@@ -23,7 +21,7 @@
         :class="[
           `pagination-buttons__button
         pagination-buttons__button_num`,
-          { 'pagination-buttons__button_is-active': num === getCurrentPage },
+          { 'pagination-buttons__button_current': num === getCurrentPage },
         ]"
         v-for="num of numButtons"
         :key="num.id"
@@ -46,44 +44,19 @@
       <button
         :class="[
           `pagination-buttons__button
-        pagination-buttons__button_text`,
+        pagination-buttons__button_last`,
           {
             'pagination-buttons__button_is-active':
               getCurrentPage === totalPages,
           },
         ]"
         @click="switchLastPage"
-      >
-        Последняя
-      </button>
+      ></button>
     </div>
-    <div
-      class="pagination-buttons__container
-      pagination-buttons__container_mob"
-    >
-      <button
-        :class="[
-          `pagination-buttons__button
-        pagination-buttons__button_text-mob`,
-          { 'pagination-buttons__button_is-active': getCurrentPage === 1 },
-        ]"
-        @click="switchFirstPage"
-      >
-        Первая
-      </button>
-      <button
-        :class="[
-          `pagination-buttons__button
-        pagination-buttons__button_text-mob`,
-          {
-            'pagination-buttons__button_is-active':
-              getCurrentPage === totalPages,
-          },
-        ]"
-        @click="switchLastPage"
-      >
-        Последняя
-      </button>
+    <div class="pagination-buttons__container">
+      <p class="pagination-buttons__total">
+        {{ `${getCurrentPage} из ${totalPages}` }}
+      </p>
     </div>
   </div>
 </template>
@@ -146,7 +119,7 @@ export default {
   methods: {
     countButtons() {
       if (process.browser) {
-        if (window.innerWidth > 375) {
+        if (window.innerWidth > 768) {
           this.pageRange = 2;
         } else {
           this.pageRange = 1;
@@ -190,50 +163,66 @@ export default {
   justify-content: center;
 }
 
-.pagination-buttons__container_mob {
-  margin: 34px 0 0;
-  padding: 0 23px;
-  display: none;
-  justify-content: space-between;
+.pagination-buttons__total {
+  margin: 20px 0 0;
+  font-size: 18px;
+  color: #a2a2a2;
 }
 
 .pagination-buttons__button {
   @extend %button-default;
-  width: 58px;
-  height: 58px;
-  margin: 0 10px 0 0;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
-  transition: opacity linear 0.1s;
+  transition: all linear 0.2s;
 }
 
-.pagination-buttons__button:hover {
-  opacity: 0.6;
+.pagination-buttons__button_num {
+  width: 58px;
+  height: 58px;
+  margin: 0 10px 0 0;
+}
+
+.pagination-buttons__button_current {
+  color: #ffffff;
+  background-color: $mainColor;
 }
 
 .pagination-buttons__button:focus {
   outline: none;
 }
 
-.pagination-buttons__button:last-child {
+.pagination-buttons__button_num:last-child {
   margin: 0;
 }
 
-.pagination-buttons__button_text {
-  width: unset;
-  height: unset;
+.pagination-buttons__button_first {
+  width: 30px;
+  background-size: 15px;
+  background-position: 15px;
+  background-repeat: repeat-x;
+  background-image: url("data:image/svg+xml,%3Csvg width='13' height='22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 1L2 11l10 10' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E");
 }
 
-.pagination-buttons__button_text-mob {
-  width: unset;
-  height: unset;
-  margin: 0;
-  display: none;
+.pagination-buttons__button_last {
+  width: 30px;
+  background-size: 15px;
+  background-position: -15px;
+  background-repeat: repeat-x;
+  background-image: url("data:image/svg+xml,%3Csvg width='13' height='22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 21l10-10L1 1' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+.pagination-buttons__button_first:hover {
+  opacity: 0.3;
+}
+
+.pagination-buttons__button_last:hover {
+  opacity: 0.3;
 }
 
 .pagination-buttons__button_left {
+  width: 40px;
   background-size: 15px;
   background-position: center;
   background-repeat: no-repeat;
@@ -241,10 +230,19 @@ export default {
 }
 
 .pagination-buttons__button_right {
+  width: 40px;
   background-size: 15px;
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("data:image/svg+xml,%3Csvg width='13' height='22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 21l10-10L1 1' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+.pagination-buttons__button_left:hover {
+  opacity: 0.3;
+}
+
+.pagination-buttons__button_right:hover {
+  opacity: 0.3;
 }
 
 .pagination-buttons__button_is-active {
@@ -252,29 +250,22 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
-  .pagination-buttons__button {
+  .pagination-buttons__button_num {
     width: 56px;
     height: 56px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .pagination-buttons__button {
+  .pagination-buttons__button_num {
     width: 50px;
     height: 50px;
     font-size: 15px;
     line-height: 18px;
   }
 
-  .pagination-buttons__button_text {
-    width: unset;
-    height: unset;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .pagination-buttons__button_five {
-    display: none;
+  .pagination-buttons__total {
+    font-size: 15px;
   }
 }
 
@@ -282,24 +273,12 @@ export default {
   .pagination-buttons__button_right {
     margin: 0;
   }
+}
 
-  .pagination-buttons__button_four {
-    display: none;
-  }
-
-  .pagination-buttons__button_text {
-    display: none;
-  }
-
-  .pagination-buttons__container_mob {
-    display: flex;
-  }
-
-  .pagination-buttons__button_text-mob {
-    width: unset;
-    height: unset;
-    margin: 0;
-    display: inline-block;
+@media screen and (max-width: 375px) {
+  .pagination-buttons__button_num {
+    width: 40px;
+    height: 40px;
   }
 }
 </style>

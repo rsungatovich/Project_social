@@ -31,6 +31,7 @@ export default {
   top: 0;
   left: 0;
   font-size: 14px;
+  font-style: italic;
   display: flex;
   position: absolute;
   align-items: center;
