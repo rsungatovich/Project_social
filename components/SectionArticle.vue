@@ -5,7 +5,7 @@
       <ui-story-card
         v-for="card of renderStories"
         :key="card.id"
-        :photo="getImageUrlBySize(card)"
+        :photo="findImageSize(card)"
         :name="card.author"
         :quote="card.title"
         :id="card.id"
@@ -34,27 +34,37 @@ export default {
   data() {
     return {
       buttonMore: 'Больше статей',
-      stories: [], // массив с историями
-      totalStories: 0, // количество историй
-      perPage: 4, // количество историй на странице
-      currentPage: 1, // текущая страница
     };
   },
 
   computed: {
     renderStories() {
-      return this.getStoriesData.filter((card, index) => index < this.perPage);
+      return this.getStoriesData.filter((card, index) => {
+        return index < this.countStories;
+      });
     },
+
     getStoriesData() {
       return this.$store.getters['storiesData/getStoriesData'];
+    },
+
+    countStories() {
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          return 4;
+        } else if (window.innerWidth > 530) {
+          return 3;
+        } else if (window.innerWidth <= 530) {
+          return 2;
+        }
+      } else {
+        return 4;
+      }
     },
   },
 
   methods: {
-    getImageUrlBySize(card, size = 'medium') {
-      // нужно отрефакторить и перенести в стор
-      if (card.ImageUrl[0].formats[size])
-        return card.ImageUrl[0].formats[size].url;
+    findImageSize(card) {
       if (card.ImageUrl[0].formats.large)
         return card.ImageUrl[0].formats.large.url;
       if (card.ImageUrl[0].formats.medium)
@@ -64,24 +74,6 @@ export default {
       if (card.ImageUrl[0].formats.thumbnail)
         return card.ImageUrl[0].formats.thumbnail.url;
     },
-
-    countStories() {
-      if (process.browser) {
-        if (window.innerWidth > 768) {
-          this.perPage = 4;
-        } else if (window.innerWidth > 530) {
-          this.perPage = 3;
-        } else if (window.innerWidth <= 530) {
-          this.perPage = 2;
-        }
-      } else {
-        this.perPage = 4;
-      }
-    },
-  },
-
-  created: function() {
-    this.countStories();
   },
 
   async fetch() {
