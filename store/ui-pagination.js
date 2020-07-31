@@ -1,22 +1,18 @@
 export const state = () => ({
-  perPage: 16,
-  currentPage: 1,
+  data: {
+    perPage: 16,
+    currentPage: 1,
+  },
 });
 
 export const mutations = {
-  setPerPage(state, { param }) {
-    return (state.perPage = param);
-  },
-  setCurrentPage(state, { param }) {
-    return (state.currentPage = param);
+  setPropertiesData(state, { prop, value }) {
+    return (state.data[prop] = value);
   },
 };
 
 export const getters = {
-  getPerPage(state) {
-    return state.perPage;
-  },
-  getCurrentPage(state) {
-    return state.currentPage;
+  getData(state) {
+    return state.data;
   },
 };

@@ -14,7 +14,7 @@
           >
             {{ getSectionData.subtitle }}
           </ui-subtitle>
-          <button class="section-about__button" @click="openPopup">
+          <button class="section-about__button" @click="setFormQuestionsState">
             {{ getSectionData.buttonName }}
           </button>
           <img
@@ -49,7 +49,10 @@
               {{ paragraph.text }}
             </p>
           </div>
-          <button class="section-about__button-mob" @click="openPopup">
+          <button
+            class="section-about__button-mob"
+            @click="setFormQuestionsState"
+          >
             {{ getSectionData.buttonName }}
           </button>
           <img
@@ -78,23 +81,16 @@ export default {
     'ui-subtitle': Subtitle,
   },
 
-  data() {
-    return {
-      firstButton: true,
-      secondButton: false,
-    };
-  },
-
   computed: {
     getSectionData() {
       return this.$store.getters['sectionAbout/getData'];
     },
     getDescription() {
-      if (this.firstButton) {
+      if (this.getSectionData.firstButton) {
         return this.getSectionData.description[0].paragraphs;
       }
 
-      if (this.secondButton) {
+      if (this.getSectionData.secondButton) {
         return this.getSectionData.description[1].paragraphs;
       }
     },
@@ -111,12 +107,19 @@ export default {
         this.$refs.secondButton.classList.toggle(
           'section-about__control_is-active'
         );
-        this.firstButton = !this.firstButton;
-        this.secondButton = !this.firstButton;
+        this.setPropertiesData('firstButton', !this.getSectionData.firstButton);
+        this.setPropertiesData(
+          'secondButton',
+          !this.getSectionData.secondButton
+        );
       }
     },
 
-    openPopup() {
+    setPropertiesData(prop, value) {
+      this.$store.commit('sectionAbout/setPropertiesData', { prop, value });
+    },
+
+    setFormQuestionsState() {
       this.$store.commit('ui-formQuestions/setPopupState');
     },
   },

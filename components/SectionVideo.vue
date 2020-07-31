@@ -65,14 +65,14 @@ export default {
   methods: {
     prevSwipe() {
       this.swiper.slidePrev(500, true);
-      this.setVisibleState(true);
+      this.setSliderData('isVisible', true);
     },
     nextSwipe() {
       this.swiper.slideNext(500, true);
-      this.setVisibleState(true);
+      this.setSliderData('isVisible', true);
     },
-    setVisibleState(boolean) {
-      this.$store.commit('ui-slider/setVisibleState', { boolean });
+    setSliderData(prop, value) {
+      this.$store.commit('ui-slider/setPropertiesData', { prop, value });
     },
   },
 };

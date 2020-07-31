@@ -1,5 +1,7 @@
 export const state = () => ({
   data: {
+    firstButton: true,
+    secondButton: false,
     firstControlName: '1-й вариант',
     lastControlName: '2-й вариант',
     firstButtonName: 'Заполнить форму',
@@ -33,5 +35,11 @@ export const state = () => ({
 export const getters = {
   getData(state) {
     return state.data;
+  },
+};
+
+export const mutations = {
+  setPropertiesData(state, { prop, value }) {
+    return (state.data[prop] = value);
   },
 };

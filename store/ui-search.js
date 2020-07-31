@@ -1,19 +1,19 @@
 export const state = () => ({
-  searchValue: '',
+  data: {
+    searchValue: '',
+    buttonReset: 'Очистить',
+    buttonSearch: 'Поиск',
+  },
 });
 
 export const mutations = {
-  setValue(state, { value }) {
-    return (state.searchValue = value);
-  },
-
-  resetValue(state) {
-    return (state.searchValue = '');
+  setPropertiesData(state, { prop, value }) {
+    return (state.data[prop] = value);
   },
 };
 
 export const getters = {
-  getValue(state) {
-    return state.searchValue;
+  getData(state) {
+    return state.data;
   },
 };

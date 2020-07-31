@@ -1,14 +1,14 @@
 <template>
-  <popup @theClick="closePopup">
-    <form class="form-contacts" @submit.prevent="submitForm">
+  <popup @theClick="setFormContactsState">
+    <form class="form-contacts" @submit.prevent="submitForm" ref="form">
       <p class="form-contacts__headline">
-        {{ getInformation.headline }}
+        {{ getUIData.information.headline }}
       </p>
       <p class="form-contacts__description">
-        {{ getInformation.description }}
+        {{ getUIData.information.description }}
       </p>
       <label class="form-contacts__label" for="name">
-        {{ getInformation.nameLabel }}
+        {{ getUIData.information.nameLabel }}
       </label>
       <input
         class="form-contacts__input"
@@ -16,12 +16,11 @@
         name="name"
         placeholder="Напишите тут"
         required
-        v-model="valueName"
       />
       <div class="form-contacts__inputs">
         <div class="form-contacts__box">
           <label class="form-contacts__label" for="email">
-            {{ getInformation.emailLabel }}
+            {{ getUIData.information.emailLabel }}
           </label>
           <input
             class="form-contacts__input"
@@ -29,12 +28,11 @@
             name="email"
             placeholder="pochta@example.com"
             required
-            v-model="valueEmail"
           />
         </div>
         <div class="form-contacts__box">
           <label class="form-contacts__label" for="phone">
-            {{ getInformation.phoneLabel }}
+            {{ getUIData.information.phoneLabel }}
           </label>
           <input
             class="form-contacts__input"
@@ -42,23 +40,21 @@
             name="phone"
             placeholder="+7 000 000 00 00"
             required
-            v-model="valuePhone"
           />
         </div>
       </div>
       <label class="form-contacts__label" for="other">
-        {{ getInformation.otherLabel }}
+        {{ getUIData.information.otherLabel }}
       </label>
       <input
         class="form-contacts__input"
         type="text"
         name="other"
         placeholder="Телефон / почта и удобное время"
-        v-model="valueOther"
       />
       <div class="form-contacts__container">
         <ui-button-small class="form-contacts__button-small">
-          {{ buttonSend }}
+          {{ getUIData.buttonSend }}
         </ui-button-small>
         <p class="form-contacts__policy">
           Нажимая на кнопку «отправить», вы даете согласие на
@@ -80,34 +76,24 @@ export default {
     popup: Popup,
     'ui-button-small': ButtonSmall,
   },
-  data() {
-    return {
-      valueName: '',
-      valueEmail: '',
-      valuePhone: '',
-      valueOther: '',
-      buttonSend: 'Отправить',
-    };
-  },
   computed: {
-    getInformation() {
-      return this.$store.getters['ui-formContacts/getInformation'];
+    getUIData() {
+      return this.$store.getters['ui-formContacts/getData'];
     },
   },
   methods: {
     submitForm() {
-      console.log('susses');
-      this.setValues('name', this.valueName);
-      this.setValues('email', this.valueEmail);
-      this.setValues('phone', this.valuePhone);
-      this.setValues('other', this.valueOther);
-      this.closePopup();
+      this.$refs.form.querySelectorAll('input').forEach(input => {
+        this.setInputValues(input.name, input.value);
+      });
+      this.setFormContactsState();
+      console.log(this.getUIData.inputValues);
     },
-    closePopup() {
+    setInputValues(type, value) {
+      this.$store.commit('ui-formContacts/setInputValues', { type, value });
+    },
+    setFormContactsState() {
       this.$store.commit('ui-formContacts/setPopupState');
-    },
-    setValues(type, value) {
-      return this.$store.commit('ui-formContacts/setValues', { type, value });
     },
   },
 };

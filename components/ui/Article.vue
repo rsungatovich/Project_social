@@ -14,43 +14,34 @@
           {{ findStoryData.title }}
         </p>
         <div class="article__copyright">
-          <button class="article__share" @click="openPopup">
-            {{ buttonShareSmall }}
+          <button class="article__share" @click="setPopupSocialsState">
+            {{ getUIData.buttonShareSmall }}
           </button>
           <time class="article__date">
-            {{ getLocalizedDate }}
+            {{ localizedDate }}
           </time>
         </div>
       </div>
     </div>
     <div class="article__persone-story" v-html="findStoryData.text"></div>
-    <button class="article__share article__share_long" @click="openPopup">
-      {{ buttonShareLong }}
+    <button
+      class="article__share article__share_long"
+      @click="setPopupSocialsState"
+    >
+      {{ getUIData.buttonShareLong }}
     </button>
   </article>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      buttonShareSmall: 'Поделитесь ↗',
-      buttonShareLong: 'Поделитесь этой статьей в своих социальных сетях ↗',
-    };
-  },
-
   computed: {
-    getStoriesData() {
-      return this.$store.getters['global-storiesData/getStoriesData'];
-    },
-
     findStoryData() {
       return this.getStoriesData.find(item => {
         return item.id == this.$route.params.id;
       });
     },
-
-    getLocalizedDate() {
+    localizedDate() {
       const date = new Date(this.findStoryData.date);
       const options = {
         year: 'numeric',
@@ -63,10 +54,16 @@ export default {
 
       return localizedDate;
     },
+    getStoriesData() {
+      return this.$store.getters['global-storiesData/getStoriesData'];
+    },
+    getUIData() {
+      return this.$store.getters['ui-article/getData'];
+    },
   },
 
   methods: {
-    openPopup() {
+    setPopupSocialsState() {
       this.$store.commit('ui-popupSocials/setPopupState');
     },
 

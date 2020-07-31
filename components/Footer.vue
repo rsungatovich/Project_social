@@ -34,7 +34,7 @@
               YouTube
             </a>
           </p>
-          <button class="footer__share" @click="openPopup">
+          <button class="footer__share" @click="setPopupSocialsState">
             {{ getSectionData.buttonShare }}
           </button>
         </div>
@@ -62,7 +62,7 @@ export default {
   },
 
   methods: {
-    openPopup() {
+    setPopupSocialsState() {
       this.$store.commit('ui-popupSocials/setPopupState');
     },
   },

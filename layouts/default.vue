@@ -3,10 +3,9 @@
     <section-header class="page__header" />
     <nuxt />
     <section-footer class="page__footer" />
-    <form-questions v-if="visibleFormQustions" />
-    <form-contacts v-if="visibleFormContacts" />
-    <popup-socials v-if="visiblePopupSocials" />
-    <!-- <ui-no-found-404 v-if="visiblePopupError" /> -->
+    <form-questions v-if="getFormQustionsState" />
+    <form-contacts v-if="getFormContactsState" />
+    <popup-socials v-if="getPopupSocialsState" />
   </div>
 </template>
 
@@ -16,7 +15,6 @@ import Footer from '@/components/Footer';
 import FormContacts from '@/components/ui/FormContacts';
 import FormQuestions from '@/components/ui/FormQuestions';
 import PopupSocials from '@/components/ui/PopupSocials';
-import NoFound404 from '@/components/ui/NoFound404';
 
 export default {
   components: {
@@ -25,32 +23,19 @@ export default {
     'form-questions': FormQuestions,
     'form-contacts': FormContacts,
     'popup-socials': PopupSocials,
-    'ui-no-found-404': NoFound404,
-  },
-
-  data() {
-    return {
-      inputValue: '',
-    };
-  },
-
-  methods: {
-    submitForm() {
-      console.log(this.inputValue);
-    },
   },
 
   computed: {
-    visibleFormQustions() {
-      return this.$store.getters['ui-formQuestions/getPopupState'];
+    getFormQustionsState() {
+      return this.$store.getters['ui-formQuestions/getData'].visible;
     },
 
-    visibleFormContacts() {
-      return this.$store.getters['ui-formContacts/getPopupState'];
+    getFormContactsState() {
+      return this.$store.getters['ui-formContacts/getData'].visible;
     },
 
-    visiblePopupSocials() {
-      return this.$store.getters['ui-popupSocials/getPopupState'];
+    getPopupSocialsState() {
+      return this.$store.getters['ui-popupSocials/getData'].visible;
     },
   },
 };

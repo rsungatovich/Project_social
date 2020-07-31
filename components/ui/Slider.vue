@@ -1,22 +1,26 @@
 <template>
   <div class="slider">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" v-for="slide of getSlidesData" :key="slide.id">
+      <div
+        class="swiper-slide"
+        v-for="slide of getUIData.slides"
+        :key="slide.id"
+      >
         <iframe
           class="slider__player"
           :src="slide.video"
-          v-if="!getVisibleState"
+          v-if="!getUIData.isVisible"
         />
         <img
           class="slider__image"
           :src="slide.image"
           alt="Познер"
-          v-if="getVisibleState"
+          v-if="getUIData.isVisible"
         />
         <button
           class="slider__button-play"
-          v-if="getVisibleState"
-          @click="clickToVideo"
+          v-if="getUIData.isVisible"
+          @click="setPropertiesData('isVisible', false)"
         ></button>
       </div>
     </div>
@@ -26,21 +30,14 @@
 <script>
 export default {
   computed: {
-    getSlidesData() {
-      return this.$store.getters['ui-slider/getSlidesData'];
-    },
-    getVisibleState() {
-      return this.$store.getters['ui-slider/getVisibleState'];
+    getUIData() {
+      return this.$store.getters['ui-slider/getData'];
     },
   },
 
   methods: {
-    clickToVideo() {
-      this.setVisibleState(false);
-    },
-
-    setVisibleState(boolean) {
-      this.$store.commit('ui-slider/setVisibleState', { boolean });
+    setPropertiesData(prop, value) {
+      this.$store.commit('ui-slider/setPropertiesData', { prop, value });
     },
   },
 };

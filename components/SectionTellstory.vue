@@ -37,15 +37,15 @@
           <div class="section-tellstory__button-wrapper">
             <ui-button-middle
               class="section-tellstory__button-middle"
-              v-if="firstButton"
-              @theClick="openFormQuestions"
+              v-if="getSectionData.firstButton"
+              @theClick="setFormQuestionsState"
             >
               {{ getSectionData.firstButtonName }}
             </ui-button-middle>
             <ui-button-middle
               class="section-tellstory__button-middle"
-              v-if="secondButton"
-              @theClick="openFormContacts"
+              v-if="getSectionData.secondButton"
+              @theClick="setFormContactsState"
             >
               {{ getSectionData.secondButtonName }}
             </ui-button-middle>
@@ -68,23 +68,16 @@ export default {
     'ui-button-middle': ButtonMiddle,
   },
 
-  data() {
-    return {
-      firstButton: true,
-      secondButton: false,
-    };
-  },
-
   computed: {
     getSectionData() {
       return this.$store.getters['sectionTellstory/getData'];
     },
     getDescription() {
-      if (this.firstButton) {
+      if (this.getSectionData.firstButton) {
         return this.getSectionData.description[0].paragraphs;
       }
 
-      if (this.secondButton) {
+      if (this.getSectionData.secondButton) {
         return this.getSectionData.description[1].paragraphs;
       }
     },
@@ -101,16 +94,23 @@ export default {
         this.$refs.secondButton.classList.toggle(
           'section-tellstory__control_is-active'
         );
-        this.firstButton = !this.firstButton;
-        this.secondButton = !this.firstButton;
+        this.setPropertiesData('firstButton', !this.getSectionData.firstButton);
+        this.setPropertiesData(
+          'secondButton',
+          !this.getSectionData.secondButton
+        );
       }
     },
 
-    openFormQuestions() {
+    setPropertiesData(prop, value) {
+      this.$store.commit('sectionTellstory/setPropertiesData', { prop, value });
+    },
+
+    setFormQuestionsState() {
       this.$store.commit('ui-formQuestions/setPopupState');
     },
 
-    openFormContacts() {
+    setFormContactsState() {
       this.$store.commit('ui-formContacts/setPopupState');
     },
   },

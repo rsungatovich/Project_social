@@ -45,11 +45,11 @@ export default {
 
   computed: {
     filterStories() {
-      if (this.getSearchValue.trim()) {
+      if (this.getSearchData.searchValue.trim()) {
         return this.getStoriesData.filter(data => {
           return data.author
             .toLowerCase()
-            .includes(this.getSearchValue.toLowerCase());
+            .includes(this.getSearchData.searchValue.toLowerCase());
         });
       }
 
@@ -58,8 +58,13 @@ export default {
     renderStories() {
       return this.filterStories.filter(
         (card, index) =>
-          index < this.getPerPage * this.getCurrentPage &&
-          index >= this.getPerPage * this.getCurrentPage - this.getPerPage
+          index <
+            this.getPaginationData.perPage *
+              this.getPaginationData.currentPage &&
+          index >=
+            this.getPaginationData.perPage *
+              this.getPaginationData.currentPage -
+              this.getPaginationData.perPage
       );
     },
     nothingNoFound() {
@@ -71,14 +76,11 @@ export default {
     getSectionData() {
       return this.$store.getters['sectionAllstories/getData'];
     },
-    getCurrentPage() {
-      return this.$store.getters['ui-pagination/getCurrentPage'];
+    getPaginationData() {
+      return this.$store.getters['ui-pagination/getData'];
     },
-    getPerPage() {
-      return this.$store.getters['ui-pagination/getPerPage'];
-    },
-    getSearchValue() {
-      return this.$store.getters['ui-search/getValue'];
+    getSearchData() {
+      return this.$store.getters['ui-search/getData'];
     },
   },
 
@@ -97,19 +99,21 @@ export default {
     countStories() {
       if (process.browser) {
         if (window.innerWidth > 768) {
-          this.setPerPage(16);
+          this.setPaginationData('perPage', 16);
         } else if (window.innerWidth > 425) {
-          this.setPerPage(12);
+          this.setPaginationData('perPage', 12);
         } else if (window.innerWidth <= 425) {
-          this.setPerPage(9);
+          this.setPaginationData('perPage', 9);
         }
       } else {
-        this.setPerPage(16);
+        this.setPaginationData('perPage', 16);
       }
     },
-
-    setPerPage(param) {
-      return this.$store.commit('ui-pagination/setPerPage', { param });
+    setPaginationData(prop, value) {
+      return this.$store.commit('ui-pagination/setPropertiesData', {
+        prop,
+        value,
+      });
     },
   },
 

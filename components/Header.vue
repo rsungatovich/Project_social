@@ -12,7 +12,7 @@
       <nuxt-link to="/stories" class="header__link-mob">
         {{ getSectionData.buttonStories }}
       </nuxt-link>
-      <button class="header__button-mob" @click="openPopup">
+      <button class="header__button-mob" @click="setFormQuestionsState">
         {{ getSectionData.buttonTellStory }}
       </button>
     </nav>
@@ -32,7 +32,7 @@
         <nuxt-link to="/stories" class="header__link">
           {{ getSectionData.buttonStories }}
         </nuxt-link>
-        <button class="header__button" @click="openPopup">
+        <button class="header__button" @click="setFormQuestionsState">
           {{ getSectionData.buttonTellStory }}
         </button>
       </nav>
@@ -53,7 +53,7 @@ export default {
   },
 
   methods: {
-    openPopup() {
+    setFormQuestionsState() {
       this.$store.commit('ui-formQuestions/setPopupState');
     },
     setVisibleState() {

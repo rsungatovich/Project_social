@@ -1,13 +1,13 @@
 <template>
-  <popup @theClick="closePopup">
+  <popup @theClick="setPopupSocialsState">
     <div class="popup-socials">
       <p class="popup-socials__heading">
-        {{ getDescription }}
+        {{ getUIData.description }}
       </p>
       <div class="popup-socials__icons">
         <a
           class="popup-socials__links"
-          :href="getLinks.facebook"
+          :href="getUIData.links.facebook"
           target="_blank"
         >
           <img
@@ -18,7 +18,7 @@
         </a>
         <a
           class="popup-socials__links"
-          :href="getLinks.twitter"
+          :href="getUIData.links.twitter"
           target="_blank"
         >
           <img
@@ -29,7 +29,7 @@
         </a>
         <a
           class="popup-socials__links"
-          :href="getLinks.vkontakte"
+          :href="getUIData.links.vkontakte"
           target="_blank"
         >
           <img
@@ -40,7 +40,7 @@
         </a>
         <a
           class="popup-socials__links"
-          :href="getLinks.odnoklassniki"
+          :href="getUIData.links.odnoklassniki"
           target="_blank"
         >
           <img
@@ -51,7 +51,7 @@
         </a>
         <a
           class="popup-socials__links"
-          :href="getLinks.instagram"
+          :href="getUIData.links.instagram"
           target="_blank"
         >
           <img
@@ -62,7 +62,7 @@
         </a>
         <a
           class="popup-socials__links"
-          :href="getLinks.youtube"
+          :href="getUIData.links.youtube"
           target="_blank"
         >
           <img
@@ -86,15 +86,12 @@ export default {
     'ui-button-small': ButtonSmall,
   },
   computed: {
-    getLinks() {
-      return this.$store.getters['ui-popupSocials/getLinks'];
-    },
-    getDescription() {
-      return this.$store.getters['ui-popupSocials/getDescription'];
+    getUIData() {
+      return this.$store.getters['ui-popupSocials/getData'];
     },
   },
   methods: {
-    closePopup() {
+    setPopupSocialsState() {
       this.$store.commit('ui-popupSocials/setPopupState');
     },
   },
