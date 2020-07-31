@@ -7,33 +7,33 @@
       ]"
     >
       <nuxt-link to="/" class="header__link-mob">
-        {{ buttonMain }}
+        {{ getSectionData.buttonMain }}
       </nuxt-link>
       <nuxt-link to="/stories" class="header__link-mob">
-        {{ buttonStories }}
+        {{ getSectionData.buttonStories }}
       </nuxt-link>
-      <button class="header__button-mob" @click="openPopup">
-        {{ buttonTellStory }}
+      <button class="header__button-mob" @click="setFormQuestionsState">
+        {{ getSectionData.buttonTellStory }}
       </button>
     </nav>
     <div class="header__container">
       <h1 class="header__title" v-if="$route.path !== '/'">
         <nuxt-link to="/" class="header__title-link">
-          {{ getTitle }}
+          {{ getSectionData.title }}
         </nuxt-link>
       </h1>
       <h1 class="header__title" v-else>
-        {{ getTitle }}
+        {{ getSectionData.title }}
       </h1>
       <nav class="header__navigation">
         <nuxt-link to="/" class="header__link">
-          {{ buttonMain }}
+          {{ getSectionData.buttonMain }}
         </nuxt-link>
         <nuxt-link to="/stories" class="header__link">
-          {{ buttonStories }}
+          {{ getSectionData.buttonStories }}
         </nuxt-link>
-        <button class="header__button" @click="openPopup">
-          {{ buttonTellStory }}
+        <button class="header__button" @click="setFormQuestionsState">
+          {{ getSectionData.buttonTellStory }}
         </button>
       </nav>
       <button class="header__mobile-bar" @click="setVisibleState"></button>
@@ -43,29 +43,21 @@
 
 <script>
 export default {
-  data() {
-    return {
-      buttonMain: 'Главная',
-      buttonStories: 'Истории',
-      buttonTellStory: 'Рассказать историю',
-    };
-  },
-
   computed: {
-    getTitle() {
-      return this.$store.getters['header/getTitle'];
+    getSectionData() {
+      return this.$store.getters['sectionHeader/getData'];
     },
     getVisibleState() {
-      return this.$store.getters['mobileMenu/getVisibleState'];
+      return this.$store.getters['ui-mobileMenu/getVisibleState'];
     },
   },
 
   methods: {
-    openPopup() {
-      this.$store.commit('formQuestions/setPopupState');
+    setFormQuestionsState() {
+      this.$store.commit('ui-formQuestions/setPopupState');
     },
     setVisibleState() {
-      this.$store.commit('mobileMenu/setVisibleState');
+      this.$store.commit('ui-mobileMenu/setVisibleState');
     },
   },
 };

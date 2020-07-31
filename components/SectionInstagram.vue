@@ -7,11 +7,11 @@
           href="https://www.instagram.com/raklechitsa/"
           target="_blank"
         >
-          {{ getTitle }}
+          {{ getSectionData.title }}
         </a>
       </ui-title>
       <ui-subtitle class="section-instagram__subtitle">
-        {{ getSubtitle }}
+        {{ getSectionData.subtitle }}
       </ui-subtitle>
     </div>
     <div class="section-instagram__container">
@@ -38,17 +38,14 @@ export default {
   },
 
   computed: {
-    getTitle() {
-      return this.$store.getters['sectionInstagram/getTitle'];
-    },
-    getSubtitle() {
-      return this.$store.getters['sectionInstagram/getSubtitle'];
-    },
-    getInstagramStories() {
-      return this.$store.getters['sectionInstagram/getInstagramStories'];
-    },
     renderCards() {
-      return this.getInstagramStories.filter((card, index) => index < 8);
+      return this.getSectionData.instagramStories.filter(
+        (card, index) => index < 8
+      );
+    },
+
+    getSectionData() {
+      return this.$store.getters['sectionInstagram/getData'];
     },
   },
 };

@@ -5,7 +5,9 @@
         :class="[
           `pagination-buttons__button
         pagination-buttons__button_first`,
-          { 'pagination-buttons__button_is-active': getCurrentPage === 1 },
+          {
+            'pagination-buttons__button_is-active': getUIData.currentPage === 1,
+          },
         ]"
         @click="switchFirstPage"
       ></button>
@@ -13,7 +15,9 @@
         :class="[
           `pagination-buttons__button
         pagination-buttons__button_left`,
-          { 'pagination-buttons__button_is-active': getCurrentPage === 1 },
+          {
+            'pagination-buttons__button_is-active': getUIData.currentPage === 1,
+          },
         ]"
         @click="prevPage"
       ></button>
@@ -21,7 +25,9 @@
         :class="[
           `pagination-buttons__button
         pagination-buttons__button_num`,
-          { 'pagination-buttons__button_current': num === getCurrentPage },
+          {
+            'pagination-buttons__button_current': num === getUIData.currentPage,
+          },
         ]"
         v-for="num of numButtons"
         :key="num.id"
@@ -36,7 +42,7 @@
         pagination-buttons__button_right`,
           {
             'pagination-buttons__button_is-active':
-              getCurrentPage === totalPages,
+              getUIData.currentPage === totalPages,
           },
         ]"
         @click="nextPage"
@@ -47,7 +53,7 @@
         pagination-buttons__button_last`,
           {
             'pagination-buttons__button_is-active':
-              getCurrentPage === totalPages,
+              getUIData.currentPage === totalPages,
           },
         ]"
         @click="switchLastPage"
@@ -55,7 +61,7 @@
     </div>
     <div class="pagination-buttons__container">
       <p class="pagination-buttons__total">
-        {{ `${getCurrentPage} из ${totalPages}` }}
+        {{ `${getUIData.currentPage} из ${totalPages}` }}
       </p>
     </div>
   </div>
@@ -63,15 +69,20 @@
 
 <script>
 export default {
-  data() {
-    return {
-      pageRange: 2,
-    };
-  },
-
   props: ['getStoriesData'],
 
   computed: {
+    countButtons() {
+      if (process.browser) {
+        if (window.innerWidth > 768) {
+          return 2;
+        } else {
+          return 1;
+        }
+      } else {
+        return 2;
+      }
+    },
     numButtons() {
       const buttons = [];
 
@@ -82,79 +93,67 @@ export default {
       return buttons;
     },
     totalPages() {
-      return Math.ceil(this.getStoriesData.length / this.getPerPage);
+      return Math.ceil(this.getStoriesData.length / this.getUIData.perPage);
     },
     rangeStart() {
       let start;
 
       if (
-        this.getCurrentPage === this.totalPages ||
-        this.getCurrentPage === this.totalPages - 1
+        this.getUIData.currentPage === this.totalPages ||
+        this.getUIData.currentPage === this.totalPages - 1
       ) {
-        this.pageRange === 2
+        this.countButtons === 2
           ? (start = this.totalPages - 4)
           : (start = this.totalPages - 2);
       } else {
-        start = this.getCurrentPage - this.pageRange;
+        start = this.getUIData.currentPage - this.countButtons;
       }
       return start > 0 ? start : 1;
     },
     rangeEnd() {
       let end;
 
-      if (this.getCurrentPage === 1 || this.getCurrentPage === 2) {
-        this.pageRange === 2 ? (end = 5) : (end = 3);
+      if (
+        this.getUIData.currentPage === 1 ||
+        this.getUIData.currentPage === 2
+      ) {
+        this.countButtons === 2 ? (end = 5) : (end = 3);
       } else {
-        end = this.getCurrentPage + this.pageRange;
+        end = this.getUIData.currentPage + this.countButtons;
       }
       return end < this.totalPages ? end : this.totalPages;
     },
-    getPerPage() {
-      return this.$store.getters['pagination/getPerPage'];
-    },
-    getCurrentPage() {
-      return this.$store.getters['pagination/getCurrentPage'];
+    getUIData() {
+      return this.$store.getters['ui-pagination/getData'];
     },
   },
 
   methods: {
-    countButtons() {
-      if (process.browser) {
-        if (window.innerWidth > 768) {
-          this.pageRange = 2;
-        } else {
-          this.pageRange = 1;
-        }
-      } else {
-        this.pageRange = 2;
-      }
-    },
-    switchPage(event) {
-      this.setCurrentPage(+event.target.textContent);
-    },
-    switchFirstPage() {
-      this.setCurrentPage(1);
-    },
-    switchLastPage() {
-      this.setCurrentPage(this.totalPages);
-    },
     prevPage() {
-      if (this.getCurrentPage > 1) {
-        this.setCurrentPage(this.getCurrentPage - 1);
+      if (this.getUIData.currentPage > 1) {
+        this.setPropertiesData('currentPage', this.getUIData.currentPage - 1);
       }
     },
     nextPage() {
-      if (this.getCurrentPage < this.totalPages) {
-        this.setCurrentPage(this.getCurrentPage + 1);
+      if (this.getUIData.currentPage < this.totalPages) {
+        this.setPropertiesData('currentPage', this.getUIData.currentPage + 1);
       }
     },
-    setCurrentPage(param) {
-      return this.$store.commit('pagination/setCurrentPage', { param });
+    switchPage(event) {
+      this.setPropertiesData('currentPage', +event.target.textContent);
     },
-  },
-
-  created: function() {
-    this.countButtons();
+    switchFirstPage() {
+      this.setPropertiesData('currentPage', 1);
+    },
+    switchLastPage() {
+      this.setPropertiesData('currentPage', this.totalPages);
+    },
+    setPropertiesData(prop, value) {
+      return this.$store.commit('ui-pagination/setPropertiesData', {
+        prop,
+        value,
+      });
+    },
   },
 };
 </script>

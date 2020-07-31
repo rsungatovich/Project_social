@@ -13,7 +13,7 @@
 export default {
   computed: {
     getMessages() {
-      return this.$store.getters['errorMessages/getMessages'];
+      return this.$store.getters['global-errorMessages/getMessages'];
     },
   },
 };

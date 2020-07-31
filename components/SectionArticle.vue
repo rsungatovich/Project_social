@@ -12,7 +12,7 @@
       />
     </ui-story-grid>
     <ui-button-long class="section-article__button-long">
-      {{ buttonMore }}
+      {{ getSectionData.buttonMore }}
     </ui-button-long>
   </section>
 </template>
@@ -31,21 +31,11 @@ export default {
     'ui-button-long': ButtonLong,
   },
 
-  data() {
-    return {
-      buttonMore: 'Больше статей',
-    };
-  },
-
   computed: {
     renderStories() {
       return this.getStoriesData.filter((card, index) => {
         return index < this.countStories;
       });
-    },
-
-    getStoriesData() {
-      return this.$store.getters['storiesData/getStoriesData'];
     },
 
     countStories() {
@@ -60,6 +50,14 @@ export default {
       } else {
         return 4;
       }
+    },
+
+    getStoriesData() {
+      return this.$store.getters['global-storiesData/getStoriesData'];
+    },
+
+    getSectionData() {
+      return this.$store.getters['sectionArticle/getData'];
     },
   },
 
@@ -77,7 +75,7 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('storiesData/storiesDataRequest');
+    await this.$store.dispatch('global-storiesData/storiesDataRequest');
   },
 };
 </script>

@@ -1,20 +1,20 @@
 <template>
-  <popup @theClick="closePopup">
+  <popup @theClick="setFormQuestionState">
     <form
       class="form-questions"
-      v-if="visibleForm"
+      v-if="getUIData.visibleForm"
       @submit.prevent="submitForm"
     >
       <div class="form-questions__box">
         <span class="form-questions__steps">
-          {{ getForms[getCounter].step }}
+          {{ getUIData.forms[getUIData.counter].step }}
         </span>
         <p class="form-questions__about">
           <span class="form-questions__headline">
-            {{ getForms[getCounter].question }}
+            {{ getUIData.forms[getUIData.counter].question }}
           </span>
           <span class="form-questions__description">
-            {{ getForms[getCounter].description }}
+            {{ getUIData.forms[getUIData.counter].description }}
           </span>
         </p>
       </div>
@@ -23,7 +23,7 @@
         type="text"
         name="answer"
         ref="input"
-        :value="getAnswers[getCounter]"
+        :value="getUIData.answers[getUIData.counter]"
         placeholder="Напишите тут"
         required
       />
@@ -34,13 +34,13 @@
             type="button"
             @click="backForm"
           >
-            {{ buttonBack }}
+            {{ getUIData.buttonBack }}
           </button>
           <ui-button-small class="form-questions__button-small" type="submit">
-            {{ buttonNext }}
+            {{ getUIData.buttonNext }}
           </ui-button-small>
         </div>
-        <p class="form-questions__policy" v-if="visiblePolicy">
+        <p class="form-questions__policy" v-if="getUIData.visiblePolicy">
           Нажимая на кнопку «отправить», вы даете согласие на
           <a class="form-questions__link" href="/policy" target="_blank">
             обработку персональных данных</a
@@ -48,7 +48,10 @@
         </p>
       </div>
     </form>
-    <ui-popup-thanks v-if="visibleThanks" @theClick="$emit('theClick')" />
+    <ui-popup-thanks
+      v-if="getUIData.visibleThanks"
+      @theClick="$emit('theClick')"
+    />
   </popup>
 </template>
 
@@ -64,73 +67,53 @@ export default {
     'ui-button-small': ButtonSmall,
   },
 
-  data() {
-    return {
-      visibleForm: true,
-      visibleThanks: false,
-      visiblePolicy: false,
-      buttonNext: 'Далее',
-      buttonBack: 'Назад',
-      buttonType: 'button',
-    };
-  },
-
   computed: {
-    getForms() {
-      return this.$store.getters['formQuestions/getForms'];
-    },
-    getAnswers() {
-      return this.$store.getters['formQuestions/getAnswers'];
-    },
-    getCounter() {
-      return this.$store.getters['formQuestions/getCounter'];
+    getUIData() {
+      return this.$store.getters['ui-formQuestions/getData'];
     },
   },
 
   methods: {
     backForm() {
-      if (this.getCounter > 1) {
-        this.setCounter(this.getCounter - 1);
+      if (this.getUIData.counter > 1) {
+        this.setPropertiesData('counter', this.getUIData.counter - 1);
         this.formStatus();
       }
     },
     submitForm() {
-      this.setAnswers();
+      this.setAnswers(this.getUIData.counter, this.$refs.input.value);
 
-      if (this.getCounter < 12) {
-        this.setCounter(this.getCounter + 1);
+      if (this.getUIData.counter < 12) {
+        this.setPropertiesData('counter', this.getUIData.counter + 1);
         this.formStatus();
       } else {
-        console.log('susses');
-        this.setCounter(1);
-        this.visibleForm = false;
-        this.visibleThanks = true;
+        this.setPropertiesData('counter', 1);
+        this.setPropertiesData('visibleForm', false);
+        this.setPropertiesData('visibleThanks', true);
+
+        console.log(this.getUIData.answers);
       }
     },
     formStatus() {
-      if (this.getCounter === 12) {
-        this.visiblePolicy = true;
-        this.buttonName = 'Отправить';
-        this.buttonType = 'submit';
+      if (this.getUIData.counter === 12) {
+        this.setPropertiesData('visiblePolicy', true);
+        this.setPropertiesData('buttonNext', 'Отправить');
       } else {
-        this.visiblePolicy = false;
-        this.buttonName = 'Далее';
-        this.buttonType = 'button';
+        this.setPropertiesData('visiblePolicy', false);
+        this.setPropertiesData('buttonNext', 'Далее');
       }
     },
-    closePopup() {
-      this.$store.commit('formQuestions/setPopupState');
-    },
-    setAnswers() {
-      return this.$store.commit('formQuestions/setAnswers', {
-        name: this.getCounter,
-        answer: this.$refs.input.value,
+    setAnswers(name, answer) {
+      return this.$store.commit('ui-formQuestions/setAnswers', {
+        name,
+        answer,
       });
     },
-    setCounter(num) {
-      return this.$store.commit('formQuestions/setCounter', {
-        count: num,
-      });
+    setFormQuestionState() {
+      this.$store.commit('ui-formQuestions/setPopupState');
+    },
+    setPropertiesData(name, value) {
+      this.$store.commit('ui-formQuestions/setPropertiesData', { name, value });
     },
   },
 };

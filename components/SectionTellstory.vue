@@ -1,11 +1,11 @@
 <template>
   <section class="section-tellstory">
     <ui-title class="section-tellstory__title">
-      {{ getTitle }}
+      {{ getSectionData.title }}
     </ui-title>
     <div class="section-tellstory__container">
       <ui-subtitle class="section-tellstory__subtitle">
-        {{ getSubtitle }}
+        {{ getSectionData.subtitle }}
       </ui-subtitle>
       <div class="section-tellstory__box">
         <div class="section-tellstory__controls">
@@ -14,14 +14,14 @@
             ref="firstButton"
             @click="toggleIsActive"
           >
-            {{ firstControlName }}
+            {{ getSectionData.firstControlName }}
           </button>
           <button
             class="section-tellstory__control"
             ref="secondButton"
             @click="toggleIsActive"
           >
-            {{ lastControlName }}
+            {{ getSectionData.lastControlName }}
           </button>
         </div>
         <div class="section-tellstory__inner">
@@ -37,17 +37,17 @@
           <div class="section-tellstory__button-wrapper">
             <ui-button-middle
               class="section-tellstory__button-middle"
-              v-if="firstButton"
-              @theClick="openFormQuestions"
+              v-if="getSectionData.firstButton"
+              @theClick="setFormQuestionsState"
             >
-              {{ firstButtonName }}
+              {{ getSectionData.firstButtonName }}
             </ui-button-middle>
             <ui-button-middle
               class="section-tellstory__button-middle"
-              v-if="secondButton"
-              @theClick="openFormContacts"
+              v-if="getSectionData.secondButton"
+              @theClick="setFormContactsState"
             >
-              {{ secondButtonName }}
+              {{ getSectionData.secondButtonName }}
             </ui-button-middle>
           </div>
         </div>
@@ -68,33 +68,17 @@ export default {
     'ui-button-middle': ButtonMiddle,
   },
 
-  data() {
-    return {
-      firstButton: true,
-      secondButton: false,
-      firstControlName: '1-й вариант',
-      lastControlName: '2-й вариант',
-      firstButtonName: 'Заполнить форму',
-      secondButtonName: 'Оставить контакт',
-    };
-  },
-
   computed: {
-    getTitle() {
-      return this.$store.getters['sectionTellstory/getTitle'];
-    },
-    getSubtitle() {
-      return this.$store.getters['sectionTellstory/getSubtitle'];
+    getSectionData() {
+      return this.$store.getters['sectionTellstory/getData'];
     },
     getDescription() {
-      if (this.firstButton) {
-        return this.$store.getters['sectionTellstory/getDescription'][0]
-          .paragraphs;
+      if (this.getSectionData.firstButton) {
+        return this.getSectionData.description[0].paragraphs;
       }
 
-      if (this.secondButton) {
-        return this.$store.getters['sectionTellstory/getDescription'][1]
-          .paragraphs;
+      if (this.getSectionData.secondButton) {
+        return this.getSectionData.description[1].paragraphs;
       }
     },
   },
@@ -110,17 +94,24 @@ export default {
         this.$refs.secondButton.classList.toggle(
           'section-tellstory__control_is-active'
         );
-        this.firstButton = !this.firstButton;
-        this.secondButton = !this.firstButton;
+        this.setPropertiesData('firstButton', !this.getSectionData.firstButton);
+        this.setPropertiesData(
+          'secondButton',
+          !this.getSectionData.secondButton
+        );
       }
     },
 
-    openFormQuestions() {
-      this.$store.commit('formQuestions/setPopupState');
+    setPropertiesData(prop, value) {
+      this.$store.commit('sectionTellstory/setPropertiesData', { prop, value });
     },
 
-    openFormContacts() {
-      this.$store.commit('formContacts/setPopupState');
+    setFormQuestionsState() {
+      this.$store.commit('ui-formQuestions/setPopupState');
+    },
+
+    setFormContactsState() {
+      this.$store.commit('ui-formContacts/setPopupState');
     },
   },
 };

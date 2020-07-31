@@ -8,10 +8,10 @@
       @keydown="searchData"
     />
     <button class="search__button-reset" @click="resetValue">
-      {{ buttonReset }}
+      {{ getUIData.buttonReset }}
     </button>
     <ui-button-small class="search__button-small" @theClick="searchData">
-      {{ buttonSearch }}
+      {{ getUIData.buttonSearch }}
     </ui-button-small>
     <button class="search__button-small-mob" @click="searchData"></button>
     <button class="search__button-reset-mob" @click="resetValue"></button>
@@ -26,37 +26,36 @@ export default {
     'ui-button-small': ButtonSmall,
   },
 
-  data() {
-    return {
-      buttonReset: 'Очистить',
-      buttonSearch: 'Поиск',
-    };
+  computed: {
+    getUIData() {
+      return this.$store.getters['ui-search/getData'];
+    },
   },
 
   methods: {
-    setValue(value) {
-      this.$store.commit('search/setValue', { value });
-    },
-
     resetValue() {
       this.$refs.input.value = '';
-      this.$store.commit('search/resetValue');
+      this.setPropertiesData('searchValue', '');
     },
-
-    setCurrentPage(param) {
-      return this.$store.commit('pagination/setCurrentPage', { param });
-    },
-
     searchData(event) {
       if (event.target.tagName === 'INPUT' && event.keyCode == 13) {
-        this.setCurrentPage(1);
-        this.setValue(this.$refs.input.value);
+        this.setPaginationData('currentPage', 1);
+        this.setPropertiesData('searchValue', this.$refs.input.value);
       }
 
       if (event.target.tagName === 'BUTTON') {
-        this.setCurrentPage(1);
-        this.setValue(this.$refs.input.value);
+        this.setPaginationData('currentPage', 1);
+        this.setPropertiesData('searchValue', this.$refs.input.value);
       }
+    },
+    setPropertiesData(prop, value) {
+      return this.$store.commit('ui-search/setPropertiesData', { prop, value });
+    },
+    setPaginationData(prop, value) {
+      return this.$store.commit('ui-pagination/setPropertiesData', {
+        prop,
+        value,
+      });
     },
   },
 };

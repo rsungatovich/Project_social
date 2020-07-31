@@ -1,5 +1,11 @@
 export const state = () => ({
-  content: {
+  data: {
+    firstButton: true,
+    secondButton: false,
+    firstControlName: '1-й вариант',
+    lastControlName: '2-й вариант',
+    firstButtonName: 'Заполнить форму',
+    secondButtonName: 'Оставить контакт',
     title: 'Расскажите свою историю',
     subtitle:
       'Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта поделиться своей историей неизлечимых привычек, навязчивых идей и болезненных привязанностей.',
@@ -26,16 +32,14 @@ export const state = () => ({
   },
 });
 
-export const mutations = {};
-
 export const getters = {
-  getTitle(state) {
-    return state.content.title;
+  getData(state) {
+    return state.data;
   },
-  getSubtitle(state) {
-    return state.content.subtitle;
-  },
-  getDescription(state) {
-    return state.content.description;
+};
+
+export const mutations = {
+  setPropertiesData(state, { prop, value }) {
+    return (state.data[prop] = value);
   },
 };

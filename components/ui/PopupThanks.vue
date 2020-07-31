@@ -1,10 +1,13 @@
 <template>
   <div class="popup-thanks">
     <p class="popup-thanks__heading">
-      {{ getDescription }}
+      {{ getUIData.description }}
     </p>
-    <ui-button-small class="popup-thanks__button-small" @theClick="closePopup">
-      {{ buttonClose }}
+    <ui-button-small
+      class="popup-thanks__button-small"
+      @theClick="setFormQuestionState"
+    >
+      {{ getUIData.buttonClose }}
     </ui-button-small>
   </div>
 </template>
@@ -18,19 +21,14 @@ export default {
     popup: Popup,
     'ui-button-small': ButtonSmall,
   },
-  data() {
-    return {
-      buttonClose: 'Закрыть',
-    };
-  },
   computed: {
-    getDescription() {
-      return this.$store.getters['popupThanks/getDescription'];
+    getUIData() {
+      return this.$store.getters['ui-popupThanks/getData'];
     },
   },
   methods: {
-    closePopup() {
-      this.$store.commit('formQuestions/setPopupState');
+    setFormQuestionState() {
+      this.$store.commit('ui-formQuestions/setPopupState');
     },
   },
 };

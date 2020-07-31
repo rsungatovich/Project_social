@@ -1,7 +1,7 @@
 export const state = () => ({
   data: {
-    buttonName: 'Больше статей',
-    title: 'Истории неизлечимых привычек',
+    buttonClose: 'Закрыть',
+    description: 'Спасибо что приняли участие!',
   },
 });
 

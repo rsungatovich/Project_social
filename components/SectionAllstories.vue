@@ -1,7 +1,7 @@
 <template>
   <section class="section-allstories">
     <ui-title class="section-allstories__title">
-      {{ getTitle }}
+      {{ getSectionData.title }}
     </ui-title>
     <ui-search class="section-allstories__search" />
     <ui-story-grid
@@ -44,42 +44,43 @@ export default {
   },
 
   computed: {
-    renderStories() {
-      return this.filterStories.filter(
-        (card, index) =>
-          index < this.getPerPage * this.getCurrentPage &&
-          index >= this.getPerPage * this.getCurrentPage - this.getPerPage
-      );
-    },
-    getStoriesData() {
-      return this.$store.getters['storiesData/getStoriesData'];
-    },
-    totalPages() {
-      return Math.ceil(this.getStoriesData.length / this.getPerPage);
-    },
-    getTitle() {
-      return this.$store.getters['sectionAllstories/getTitle'];
-    },
-    getCurrentPage() {
-      return this.$store.getters['pagination/getCurrentPage'];
-    },
-    getPerPage() {
-      return this.$store.getters['pagination/getPerPage'];
-    },
-    getSearchValue() {
-      return this.$store.getters['search/getValue'];
-    },
     filterStories() {
-      if (this.getSearchValue.trim()) {
+      if (this.getSearchData.searchValue.trim()) {
         return this.getStoriesData.filter(data => {
-          return data.author.includes(this.getSearchValue);
+          return data.author
+            .toLowerCase()
+            .includes(this.getSearchData.searchValue.toLowerCase());
         });
       }
 
       return this.getStoriesData;
     },
+    renderStories() {
+      return this.filterStories.filter(
+        (card, index) =>
+          index <
+            this.getPaginationData.perPage *
+              this.getPaginationData.currentPage &&
+          index >=
+            this.getPaginationData.perPage *
+              this.getPaginationData.currentPage -
+              this.getPaginationData.perPage
+      );
+    },
     nothingNoFound() {
       return this.filterStories.length > 0 ? false : true;
+    },
+    getStoriesData() {
+      return this.$store.getters['global-storiesData/getStoriesData'];
+    },
+    getSectionData() {
+      return this.$store.getters['sectionAllstories/getData'];
+    },
+    getPaginationData() {
+      return this.$store.getters['ui-pagination/getData'];
+    },
+    getSearchData() {
+      return this.$store.getters['ui-search/getData'];
     },
   },
 
@@ -98,23 +99,21 @@ export default {
     countStories() {
       if (process.browser) {
         if (window.innerWidth > 768) {
-          this.setPerPage(16);
+          this.setPaginationData('perPage', 16);
         } else if (window.innerWidth > 425) {
-          this.setPerPage(12);
+          this.setPaginationData('perPage', 12);
         } else if (window.innerWidth <= 425) {
-          this.setPerPage(9);
+          this.setPaginationData('perPage', 9);
         }
       } else {
-        this.setPerPage(16);
+        this.setPaginationData('perPage', 16);
       }
     },
-
-    setCurrentPage(param) {
-      return this.$store.commit('pagination/setCurrentPage', { param });
-    },
-
-    setPerPage(param) {
-      return this.$store.commit('pagination/setPerPage', { param });
+    setPaginationData(prop, value) {
+      return this.$store.commit('ui-pagination/setPropertiesData', {
+        prop,
+        value,
+      });
     },
   },
 
@@ -123,7 +122,7 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('storiesData/storiesDataRequest');
+    await this.$store.dispatch('global-storiesData/storiesDataRequest');
   },
 };
 </script>

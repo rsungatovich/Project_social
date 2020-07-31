@@ -13,7 +13,7 @@
       />
     </ui-story-grid>
     <ui-title class="section-mainstories__title">
-      {{ getTitle }}
+      {{ getSectionData.title }}
     </ui-title>
     <ui-story-grid>
       <ui-story-card
@@ -26,7 +26,7 @@
       />
     </ui-story-grid>
     <ui-button-long class="section-mainstories__button-long">
-      {{ buttonName }}
+      {{ getSectionData.buttonName }}
     </ui-button-long>
   </section>
 </template>
@@ -45,13 +45,6 @@ export default {
     'ui-title': Title,
   },
 
-  data() {
-    return {
-      buttonName: 'Больше статей',
-      perPage: 8,
-    };
-  },
-
   computed: {
     renderStories() {
       return this.getPresentStories.filter(
@@ -62,10 +55,10 @@ export default {
       return this.getPresentStories.filter((card, index) => index < 4);
     },
     getStoriesData() {
-      return this.$store.getters['storiesData/getStoriesData'];
+      return this.$store.getters['global-storiesData/getStoriesData'];
     },
-    getTitle() {
-      return this.$store.getters['sectionMainstories/getTitle'];
+    getSectionData() {
+      return this.$store.getters['sectionMainstories/getData'];
     },
     getPresentStories() {
       return this.getStoriesData.filter(card => {
@@ -109,7 +102,7 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('storiesData/storiesDataRequest');
+    await this.$store.dispatch('global-storiesData/storiesDataRequest');
   },
 };
 </script>

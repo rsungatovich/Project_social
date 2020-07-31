@@ -1,48 +1,42 @@
 <template>
-  <section class="head-banner">
-    <div class="head-banner__image"></div>
+  <section class="section-cover">
+    <div class="section-cover__image"></div>
     <video
       autoplay="autoplay"
       muted="muted"
       loop="loop"
-      class="head-banner__video"
+      class="section-cover__video"
     >
       <source src="../static/videos/headVideo.mp4" type="video/mp4" />
     </video>
-    <h2 class="head-banner__title">{{ getTitle }}</h2>
-    <button class="head-banner__button" @click="openPopup">
-      {{ buttonName }}
+    <h2 class="section-cover__title">{{ getSectionData.title }}</h2>
+    <button class="section-cover__button" @click="openPopup">
+      {{ getSectionData.buttonName }}
     </button>
-    <button class="head-banner__button-arrow" @click="scrollTo"></button>
+    <button class="section-cover__button-arrow" @click="scrollTo"></button>
   </section>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      buttonName: 'Рассказать историю',
-    };
-  },
-
   props: ['scrollTo'],
 
   computed: {
-    getTitle() {
-      return this.$store.getters['headBanner/getTitle'];
+    getSectionData() {
+      return this.$store.getters['sectionCover/getData'];
     },
   },
 
   methods: {
     openPopup() {
-      this.$store.commit('formQuestions/setPopupState');
+      this.$store.commit('ui-formQuestions/setPopupState');
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.head-banner {
+.section-cover {
   min-height: calc(100vh - 80px);
   padding: 0 60px 40px;
   display: flex;
@@ -53,20 +47,20 @@ export default {
   font-family: 'Inter', monospace;
 }
 
-.head-banner__video {
-  position: absolute;
-  z-index: 0;
+.section-cover__video {
+  width: 100%;
+  height: 100%;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  top: 0;
-  -o-object-fit: cover;
+  z-index: 0;
+  position: absolute;
   object-fit: cover;
-  height: 100%;
-  width: 100%;
+  object-position: center;
 }
 
-.head-banner__image {
+.section-cover__image {
   position: absolute;
   top: 0;
   left: 0;
@@ -77,7 +71,7 @@ export default {
   z-index: 1;
 }
 
-.head-banner__title {
+.section-cover__title {
   margin: 0 0 30px;
   font-style: normal;
   font-weight: 800;
@@ -89,7 +83,7 @@ export default {
   z-index: 1;
 }
 
-.head-banner__button {
+.section-cover__button {
   @extend %button-default;
   min-height: 60px;
   margin: 0 auto;
@@ -106,16 +100,16 @@ export default {
   z-index: 1;
 }
 
-.head-banner__button:hover {
+.section-cover__button:hover {
   background-color: #613a939d;
 }
 
-.head-banner__button:focus {
+.section-cover__button:focus {
   outline: none;
   background-color: $mainColor;
 }
 
-.head-banner__button-arrow {
+.section-cover__button-arrow {
   @extend %button-default;
   width: 40px;
   height: 20px;
@@ -133,79 +127,79 @@ export default {
   transition: opacity linear 0.2s;
 }
 
-.head-banner__button-arrow:hover {
+.section-cover__button-arrow:hover {
   opacity: 0.3;
 }
 
-.head-banner__button-arrow:focus {
+.section-cover__button-arrow:focus {
   outline: none;
 }
 
 @media screen and (max-width: 1280px) {
-  .head-banner {
+  .section-cover {
     max-width: 1440px;
     padding: 0 50px 40px;
   }
 
-  .head-banner__title {
+  .section-cover__title {
     font-size: 78px;
     line-height: 94px;
   }
 
-  .head-banner__button {
+  .section-cover__button {
     min-height: 58px;
     font-size: 22px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .head-banner__title {
+  .section-cover__title {
     font-size: 78px;
     line-height: 94px;
   }
 
-  .head-banner__button {
+  .section-cover__button {
     min-height: 56px;
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .head-banner {
+  .section-cover {
     min-height: calc(100vh - 76px);
     padding: 0 40px 40px;
   }
 
-  .head-banner__title {
+  .section-cover__title {
     font-size: 64px;
     line-height: 77px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .head-banner {
+  .section-cover {
     padding: 0 0 30px;
   }
 
-  .head-banner__title {
+  .section-cover__title {
     font-size: 48px;
     line-height: 58px;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .head-banner {
+  .section-cover {
     min-height: calc(100vh - 61px);
     padding: 0 15px 40px;
   }
 
-  .head-banner__title {
+  .section-cover__title {
     margin: 0 0 20px;
     font-size: 36px;
     line-height: 44px;
   }
 
-  .head-banner__button {
+  .section-cover__button {
     min-height: 44px;
     padding: 0 30px;
     font-size: 16px;

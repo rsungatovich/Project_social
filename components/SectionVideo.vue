@@ -2,10 +2,10 @@
   <section class="section-video">
     <div class="section-video__box section-video__box_left">
       <ui-title class="section-video__title">
-        {{ getTitle }}
+        {{ getSectionData.title }}
       </ui-title>
       <ui-subtitle class="section-video__subtitle">
-        {{ getSubtitle }}
+        {{ getSectionData.subtitle }}
       </ui-subtitle>
       <button
         class="section-video__button section-video__button_left"
@@ -57,25 +57,22 @@ export default {
   },
 
   computed: {
-    getTitle() {
-      return this.$store.getters['sectionVideo/getTitle'];
-    },
-    getSubtitle() {
-      return this.$store.getters['sectionVideo/getSubtitle'];
+    getSectionData() {
+      return this.$store.getters['sectionVideo/getData'];
     },
   },
 
   methods: {
     prevSwipe() {
       this.swiper.slidePrev(500, true);
-      this.setVisibleState(true);
+      this.setSliderData('isVisible', true);
     },
     nextSwipe() {
       this.swiper.slideNext(500, true);
-      this.setVisibleState(true);
+      this.setSliderData('isVisible', true);
     },
-    setVisibleState(boolean) {
-      this.$store.commit('slider/setVisibleState', { boolean });
+    setSliderData(prop, value) {
+      this.$store.commit('ui-slider/setPropertiesData', { prop, value });
     },
   },
 };
