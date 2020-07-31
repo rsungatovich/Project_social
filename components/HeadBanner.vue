@@ -9,9 +9,9 @@
     >
       <source src="../static/videos/headVideo.mp4" type="video/mp4" />
     </video>
-    <h2 class="head-banner__title">{{ getTitle }}</h2>
+    <h2 class="head-banner__title">{{ getSectionData.title }}</h2>
     <button class="head-banner__button" @click="openPopup">
-      {{ buttonName }}
+      {{ getSectionData.buttonName }}
     </button>
     <button class="head-banner__button-arrow" @click="scrollTo"></button>
   </section>
@@ -19,17 +19,11 @@
 
 <script>
 export default {
-  data() {
-    return {
-      buttonName: 'Рассказать историю',
-    };
-  },
-
   props: ['scrollTo'],
 
   computed: {
-    getTitle() {
-      return this.$store.getters['headBanner/getTitle'];
+    getSectionData() {
+      return this.$store.getters['headBanner/getData'];
     },
   },
 

@@ -1,9 +1,14 @@
 export const state = () => ({
-  title: 'Проект Благотворительного Фонда Константина Хабенского',
+  data: {
+    buttonMain: 'Главная',
+    buttonStories: 'Истории',
+    buttonTellStory: 'Рассказать историю',
+    title: 'Проект Благотворительного Фонда Константина Хабенского',
+  },
 });
 
 export const getters = {
-  getTitle(state) {
-    return state.title;
+  getData(state) {
+    return state.data;
   },
 };

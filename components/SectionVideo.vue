@@ -2,10 +2,10 @@
   <section class="section-video">
     <div class="section-video__box section-video__box_left">
       <ui-title class="section-video__title">
-        {{ getTitle }}
+        {{ getSectionData.title }}
       </ui-title>
       <ui-subtitle class="section-video__subtitle">
-        {{ getSubtitle }}
+        {{ getSectionData.subtitle }}
       </ui-subtitle>
       <button
         class="section-video__button section-video__button_left"
@@ -57,11 +57,8 @@ export default {
   },
 
   computed: {
-    getTitle() {
-      return this.$store.getters['sectionVideo/getTitle'];
-    },
-    getSubtitle() {
-      return this.$store.getters['sectionVideo/getSubtitle'];
+    getSectionData() {
+      return this.$store.getters['sectionVideo/getData'];
     },
   },
 

@@ -1,11 +1,11 @@
 <template>
   <section class="section-statistic">
     <ui-title class="section-statistic__title">
-      {{ getTitle }}
+      {{ getSectionData.title }}
     </ui-title>
     <div class="section-statistic__container">
       <ui-progress-card
-        v-for="card of getCards"
+        v-for="card of getSectionData.cards"
         :key="card.id"
         :progress="card.progress"
       >
@@ -34,11 +34,8 @@ export default {
   },
 
   computed: {
-    getTitle() {
-      return this.$store.getters['sectionStatistic/getTitle'];
-    },
-    getCards() {
-      return this.$store.getters['sectionStatistic/getCards'];
+    getSectionData() {
+      return this.$store.getters['sectionStatistic/getData'];
     },
   },
 };

@@ -1,9 +1,12 @@
 export const state = () => ({
-  title: '#Раклечится',
+  data: {
+    title: '#Раклечится',
+    buttonName: 'Рассказать историю',
+  },
 });
 
 export const getters = {
-  getTitle(state) {
-    return state.title;
+  getData(state) {
+    return state.data;
   },
 };

@@ -1,11 +1,11 @@
 <template>
   <section class="section-tellstory">
     <ui-title class="section-tellstory__title">
-      {{ getTitle }}
+      {{ getSectionData.title }}
     </ui-title>
     <div class="section-tellstory__container">
       <ui-subtitle class="section-tellstory__subtitle">
-        {{ getSubtitle }}
+        {{ getSectionData.subtitle }}
       </ui-subtitle>
       <div class="section-tellstory__box">
         <div class="section-tellstory__controls">
@@ -14,14 +14,14 @@
             ref="firstButton"
             @click="toggleIsActive"
           >
-            {{ firstControlName }}
+            {{ getSectionData.firstControlName }}
           </button>
           <button
             class="section-tellstory__control"
             ref="secondButton"
             @click="toggleIsActive"
           >
-            {{ lastControlName }}
+            {{ getSectionData.lastControlName }}
           </button>
         </div>
         <div class="section-tellstory__inner">
@@ -40,14 +40,14 @@
               v-if="firstButton"
               @theClick="openFormQuestions"
             >
-              {{ firstButtonName }}
+              {{ getSectionData.firstButtonName }}
             </ui-button-middle>
             <ui-button-middle
               class="section-tellstory__button-middle"
               v-if="secondButton"
               @theClick="openFormContacts"
             >
-              {{ secondButtonName }}
+              {{ getSectionData.secondButtonName }}
             </ui-button-middle>
           </div>
         </div>
@@ -72,29 +72,20 @@ export default {
     return {
       firstButton: true,
       secondButton: false,
-      firstControlName: '1-й вариант',
-      lastControlName: '2-й вариант',
-      firstButtonName: 'Заполнить форму',
-      secondButtonName: 'Оставить контакт',
     };
   },
 
   computed: {
-    getTitle() {
-      return this.$store.getters['sectionTellstory/getTitle'];
-    },
-    getSubtitle() {
-      return this.$store.getters['sectionTellstory/getSubtitle'];
+    getSectionData() {
+      return this.$store.getters['sectionTellstory/getData'];
     },
     getDescription() {
       if (this.firstButton) {
-        return this.$store.getters['sectionTellstory/getDescription'][0]
-          .paragraphs;
+        return this.getSectionData.description[0].paragraphs;
       }
 
       if (this.secondButton) {
-        return this.$store.getters['sectionTellstory/getDescription'][1]
-          .paragraphs;
+        return this.getSectionData.description[1].paragraphs;
       }
     },
   },

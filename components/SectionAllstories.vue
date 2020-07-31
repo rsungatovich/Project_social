@@ -1,7 +1,7 @@
 <template>
   <section class="section-allstories">
     <ui-title class="section-allstories__title">
-      {{ getTitle }}
+      {{ getSectionData.title }}
     </ui-title>
     <ui-search class="section-allstories__search" />
     <ui-story-grid
@@ -44,6 +44,17 @@ export default {
   },
 
   computed: {
+    filterStories() {
+      if (this.getSearchValue.trim()) {
+        return this.getStoriesData.filter(data => {
+          return data.author
+            .toLowerCase()
+            .includes(this.getSearchValue.toLowerCase());
+        });
+      }
+
+      return this.getStoriesData;
+    },
     renderStories() {
       return this.filterStories.filter(
         (card, index) =>
@@ -51,14 +62,14 @@ export default {
           index >= this.getPerPage * this.getCurrentPage - this.getPerPage
       );
     },
+    nothingNoFound() {
+      return this.filterStories.length > 0 ? false : true;
+    },
     getStoriesData() {
       return this.$store.getters['storiesData/getStoriesData'];
     },
-    totalPages() {
-      return Math.ceil(this.getStoriesData.length / this.getPerPage);
-    },
-    getTitle() {
-      return this.$store.getters['sectionAllstories/getTitle'];
+    getSectionData() {
+      return this.$store.getters['sectionAllstories/getData'];
     },
     getCurrentPage() {
       return this.$store.getters['pagination/getCurrentPage'];
@@ -68,18 +79,6 @@ export default {
     },
     getSearchValue() {
       return this.$store.getters['search/getValue'];
-    },
-    filterStories() {
-      if (this.getSearchValue.trim()) {
-        return this.getStoriesData.filter(data => {
-          return data.author.includes(this.getSearchValue);
-        });
-      }
-
-      return this.getStoriesData;
-    },
-    nothingNoFound() {
-      return this.filterStories.length > 0 ? false : true;
     },
   },
 
@@ -107,10 +106,6 @@ export default {
       } else {
         this.setPerPage(16);
       }
-    },
-
-    setCurrentPage(param) {
-      return this.$store.commit('pagination/setCurrentPage', { param });
     },
 
     setPerPage(param) {

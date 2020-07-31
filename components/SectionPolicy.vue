@@ -1,11 +1,15 @@
 <template>
   <section class="policy">
     <h2 class="policy__title">
-      {{ getTitle }}
+      {{ getSectionData.title }}
     </h2>
     <div class="policy__information">
       <ol class="policy__list">
-        <li class="policy__item" v-for="item in getInformation" :key="item.id">
+        <li
+          class="policy__item"
+          v-for="item in getSectionData.information"
+          :key="item.id"
+        >
           {{ item.title }}
           <p class="policy__heading" v-if="item.description">
             {{ item.description }}
@@ -34,11 +38,8 @@ export default {
   },
 
   computed: {
-    getTitle() {
-      return this.$store.getters['sectionPolicy/getTitle'];
-    },
-    getInformation() {
-      return this.$store.getters['sectionPolicy/getInformation'];
+    getSectionData() {
+      return this.$store.getters['sectionPolicy/getData'];
     },
   },
 };

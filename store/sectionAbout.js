@@ -1,5 +1,8 @@
 export const state = () => ({
-  content: {
+  data: {
+    firstControlName: 'Рак Лечится',
+    lastControlName: 'Фонд Хабенского',
+    buttonName: 'Рассказать историю',
     heading: '#Раклечится',
     title: 'О проекте',
     subtitle:
@@ -31,19 +34,8 @@ export const state = () => ({
   },
 });
 
-export const mutations = {};
-
 export const getters = {
-  getHeading(state) {
-    return state.content.heading;
-  },
-  getTitle(state) {
-    return state.content.title;
-  },
-  getSubtitle(state) {
-    return state.content.subtitle;
-  },
-  getDescription(state) {
-    return state.content.description;
+  getData(state) {
+    return state.data;
   },
 };

@@ -1,9 +1,11 @@
 export const state = () => ({
-  title: 'Истории неизлечимых привычек',
+  data: {
+    title: 'Истории неизлечимых привычек',
+  },
 });
 
 export const getters = {
-  getTitle(state) {
-    return state.title;
+  getData(state) {
+    return state.data;
   },
 };

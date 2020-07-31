@@ -1,5 +1,9 @@
 export const state = () => ({
-  content: {
+  data: {
+    firstControlName: '1-й вариант',
+    lastControlName: '2-й вариант',
+    firstButtonName: 'Заполнить форму',
+    secondButtonName: 'Оставить контакт',
     title: 'Расскажите свою историю',
     subtitle:
       'Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта поделиться своей историей неизлечимых привычек, навязчивых идей и болезненных привязанностей.',
@@ -26,16 +30,8 @@ export const state = () => ({
   },
 });
 
-export const mutations = {};
-
 export const getters = {
-  getTitle(state) {
-    return state.content.title;
-  },
-  getSubtitle(state) {
-    return state.content.subtitle;
-  },
-  getDescription(state) {
-    return state.content.description;
+  getData(state) {
+    return state.data;
   },
 };

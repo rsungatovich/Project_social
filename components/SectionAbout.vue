@@ -2,20 +2,20 @@
   <section class="section-about">
     <div class="section-about__content">
       <p class="section-about__heading">
-        {{ getHeading }}
+        {{ getSectionData.heading }}
       </p>
       <ui-title class="section-about__title section-about__title_theme_main">
-        {{ getTitle }}
+        {{ getSectionData.title }}
       </ui-title>
       <div class="section-about__container">
         <div class="section-about__wrapper">
           <ui-subtitle
             class="section-about__subtitle section-about__subtitle_theme_main"
           >
-            {{ getSubtitle }}
+            {{ getSectionData.subtitle }}
           </ui-subtitle>
           <button class="section-about__button" @click="openPopup">
-            {{ buttonName }}
+            {{ getSectionData.buttonName }}
           </button>
           <img
             class="section-about__image section-about__image_first"
@@ -30,14 +30,14 @@
               ref="firstButton"
               @click="toggleIsActive"
             >
-              {{ firstControlName }}
+              {{ getSectionData.firstControlName }}
             </button>
             <button
               class="section-about__control"
               ref="secondButton"
               @click="toggleIsActive"
             >
-              {{ lastControlName }}
+              {{ getSectionData.lastControlName }}
             </button>
           </div>
           <div class="section-about__description">
@@ -50,7 +50,7 @@
             </p>
           </div>
           <button class="section-about__button-mob" @click="openPopup">
-            {{ buttonName }}
+            {{ getSectionData.buttonName }}
           </button>
           <img
             class="section-about__image section-about__image_first-mob"
@@ -82,29 +82,20 @@ export default {
     return {
       firstButton: true,
       secondButton: false,
-      firstControlName: 'Рак Лечится',
-      lastControlName: 'Фонд Хабенского',
-      buttonName: 'Рассказать историю',
     };
   },
 
   computed: {
-    getHeading() {
-      return this.$store.getters['sectionAbout/getHeading'];
-    },
-    getTitle() {
-      return this.$store.getters['sectionAbout/getTitle'];
-    },
-    getSubtitle() {
-      return this.$store.getters['sectionAbout/getSubtitle'];
+    getSectionData() {
+      return this.$store.getters['sectionAbout/getData'];
     },
     getDescription() {
       if (this.firstButton) {
-        return this.$store.getters['sectionAbout/getDescription'][0].paragraphs;
+        return this.getSectionData.description[0].paragraphs;
       }
 
       if (this.secondButton) {
-        return this.$store.getters['sectionAbout/getDescription'][1].paragraphs;
+        return this.getSectionData.description[1].paragraphs;
       }
     },
   },

@@ -3,14 +3,14 @@
     <section class="footer__content">
       <div class="footer__box footer__box_left">
         <ui-title class="footer__title">
-          {{ getTitle }}
+          {{ getSectionData.title }}
         </ui-title>
         <nav class="footer__navigation">
           <nuxt-link to="/" class="footer__link">
-            {{ buttonMain }}
+            {{ getSectionData.buttonMain }}
           </nuxt-link>
           <nuxt-link to="/stories" class="footer__link">
-            {{ buttonStories }}
+            {{ getSectionData.buttonStories }}
           </nuxt-link>
         </nav>
       </div>
@@ -35,14 +35,14 @@
             </a>
           </p>
           <button class="footer__share" @click="openPopup">
-            {{ buttonShare }}
+            {{ getSectionData.buttonShare }}
           </button>
         </div>
       </div>
     </section>
     <section class="footer__copyright">
-      <p class="footer__copy">{{ copyrightFirst }}</p>
-      <p class="footer__copy">{{ copyrightLast }}</p>
+      <p class="footer__copy">{{ getSectionData.copyrightFirst }}</p>
+      <p class="footer__copy">{{ getSectionData.copyrightLast }}</p>
     </section>
   </footer>
 </template>
@@ -55,19 +55,9 @@ export default {
     'ui-title': Title,
   },
 
-  data() {
-    return {
-      buttonMain: 'Главная',
-      buttonStories: 'Истории',
-      buttonShare: 'Поделитесь ↗',
-      copyrightFirst: 'Рак Лечится 2020',
-      copyrightLast: 'Сделано студентами Яндекс Практикум',
-    };
-  },
-
   computed: {
-    getTitle() {
-      return this.$store.getters['footer/getTitle'];
+    getSectionData() {
+      return this.$store.getters['footer/getData'];
     },
   },
 
