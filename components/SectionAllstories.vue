@@ -71,16 +71,16 @@ export default {
       return this.filterStories.length > 0 ? false : true;
     },
     getStoriesData() {
-      return this.$store.getters['global-storiesData/getStoriesData'];
+      return this.$store.getters['globalStoriesData/getData'];
     },
     getSectionData() {
       return this.$store.getters['sectionAllstories/getData'];
     },
     getPaginationData() {
-      return this.$store.getters['ui-pagination/getData'];
+      return this.$store.getters['uiPagination/getData'];
     },
     getSearchData() {
-      return this.$store.getters['ui-search/getData'];
+      return this.$store.getters['uiSearch/getData'];
     },
   },
 
@@ -110,10 +110,7 @@ export default {
       }
     },
     setPaginationData(prop, value) {
-      return this.$store.commit('ui-pagination/setPropertiesData', {
-        prop,
-        value,
-      });
+      this.$store.commit('uiPagination/setData', { prop, value });
     },
   },
 
@@ -122,7 +119,7 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('global-storiesData/storiesDataRequest');
+    await this.$store.dispatch('globalStoriesData/dataRequest');
   },
 };
 </script>

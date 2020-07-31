@@ -63,7 +63,7 @@ export default {
 
   methods: {
     setPopupSocialsState() {
-      this.$store.commit('ui-popupSocials/setPopupState');
+      this.$store.commit('uiPopupSocials/toggleState');
     },
   },
 };

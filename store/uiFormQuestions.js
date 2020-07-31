@@ -101,14 +101,14 @@ export const getters = {
 };
 
 export const mutations = {
+  setData(state, { name, value }) {
+    return (state.data[name] = value);
+  },
   setAnswers(state, { name, answer }) {
     return (state.data.answers[name] = answer);
   },
-  setPopupState(state) {
+  toggleState(state) {
     return (state.data.visible = !state.data.visible);
-  },
-  setPropertiesData(state, { name, value }) {
-    return (state.data[name] = value);
   },
 };
 

@@ -18,14 +18,17 @@ export const state = () => ({
   },
 });
 
-export const mutations = {
-  setPopupState(state) {
-    return (state.data.visible = !state.data.visible);
-  },
-};
-
 export const getters = {
   getData(state) {
     return state.data;
+  },
+};
+
+export const mutations = {
+  setData(state, { name, value }) {
+    return (state.data[name] = value);
+  },
+  toggleState(state) {
+    return (state.data.visible = !state.data.visible);
   },
 };

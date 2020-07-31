@@ -5,7 +5,7 @@
     </p>
     <ui-button-small
       class="popup-thanks__button-small"
-      @theClick="setFormQuestionState"
+      @theClick="toggleFormQuestionsState"
     >
       {{ getUIData.buttonClose }}
     </ui-button-small>
@@ -23,12 +23,12 @@ export default {
   },
   computed: {
     getUIData() {
-      return this.$store.getters['ui-popupThanks/getData'];
+      return this.$store.getters['uiPopupThanks/getData'];
     },
   },
   methods: {
-    setFormQuestionState() {
-      this.$store.commit('ui-formQuestions/setPopupState');
+    toggleFormQuestionsState() {
+      this.$store.commit('uiFormQuestions/toggleState');
     },
   },
 };

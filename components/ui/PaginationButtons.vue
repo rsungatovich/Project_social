@@ -124,35 +124,32 @@ export default {
       return end < this.totalPages ? end : this.totalPages;
     },
     getUIData() {
-      return this.$store.getters['ui-pagination/getData'];
+      return this.$store.getters['uiPagination/getData'];
     },
   },
 
   methods: {
     prevPage() {
       if (this.getUIData.currentPage > 1) {
-        this.setPropertiesData('currentPage', this.getUIData.currentPage - 1);
+        this.setSectionData('currentPage', this.getUIData.currentPage - 1);
       }
     },
     nextPage() {
       if (this.getUIData.currentPage < this.totalPages) {
-        this.setPropertiesData('currentPage', this.getUIData.currentPage + 1);
+        this.setSectionData('currentPage', this.getUIData.currentPage + 1);
       }
     },
     switchPage(event) {
-      this.setPropertiesData('currentPage', +event.target.textContent);
+      this.setSectionData('currentPage', +event.target.textContent);
     },
     switchFirstPage() {
-      this.setPropertiesData('currentPage', 1);
+      this.setSectionData('currentPage', 1);
     },
     switchLastPage() {
-      this.setPropertiesData('currentPage', this.totalPages);
+      this.setSectionData('currentPage', this.totalPages);
     },
-    setPropertiesData(prop, value) {
-      return this.$store.commit('ui-pagination/setPropertiesData', {
-        prop,
-        value,
-      });
+    setSectionData(prop, value) {
+      this.$store.commit('uiPagination/setData', { prop, value });
     },
   },
 };

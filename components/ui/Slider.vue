@@ -20,7 +20,7 @@
         <button
           class="slider__button-play"
           v-if="getUIData.isVisible"
-          @click="setPropertiesData('isVisible', false)"
+          @click="setSectionData('isVisible', false)"
         ></button>
       </div>
     </div>
@@ -31,13 +31,13 @@
 export default {
   computed: {
     getUIData() {
-      return this.$store.getters['ui-slider/getData'];
+      return this.$store.getters['uiSlider/getData'];
     },
   },
 
   methods: {
-    setPropertiesData(prop, value) {
-      this.$store.commit('ui-slider/setPropertiesData', { prop, value });
+    setSectionData(prop, value) {
+      this.$store.commit('uiSlider/setData', { prop, value });
     },
   },
 };

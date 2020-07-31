@@ -1,5 +1,5 @@
 <template>
-  <popup @theClick="setFormQuestionState">
+  <popup @theClick="toggleFormQuestionsState">
     <form
       class="form-questions"
       v-if="getUIData.visibleForm"
@@ -69,14 +69,14 @@ export default {
 
   computed: {
     getUIData() {
-      return this.$store.getters['ui-formQuestions/getData'];
+      return this.$store.getters['uiFormQuestions/getData'];
     },
   },
 
   methods: {
     backForm() {
       if (this.getUIData.counter > 1) {
-        this.setPropertiesData('counter', this.getUIData.counter - 1);
+        this.setSectionData('counter', this.getUIData.counter - 1);
         this.formStatus();
       }
     },
@@ -84,36 +84,33 @@ export default {
       this.setAnswers(this.getUIData.counter, this.$refs.input.value);
 
       if (this.getUIData.counter < 12) {
-        this.setPropertiesData('counter', this.getUIData.counter + 1);
+        this.setSectionData('counter', this.getUIData.counter + 1);
         this.formStatus();
       } else {
-        this.setPropertiesData('counter', 1);
-        this.setPropertiesData('visibleForm', false);
-        this.setPropertiesData('visibleThanks', true);
+        this.setSectionData('counter', 1);
+        this.setSectionData('visibleForm', false);
+        this.setSectionData('visibleThanks', true);
 
         console.log(this.getUIData.answers);
       }
     },
     formStatus() {
       if (this.getUIData.counter === 12) {
-        this.setPropertiesData('visiblePolicy', true);
-        this.setPropertiesData('buttonNext', 'Отправить');
+        this.setSectionData('visiblePolicy', true);
+        this.setSectionData('buttonNext', 'Отправить');
       } else {
-        this.setPropertiesData('visiblePolicy', false);
-        this.setPropertiesData('buttonNext', 'Далее');
+        this.setSectionData('visiblePolicy', false);
+        this.setSectionData('buttonNext', 'Далее');
       }
     },
     setAnswers(name, answer) {
-      return this.$store.commit('ui-formQuestions/setAnswers', {
-        name,
-        answer,
-      });
+      this.$store.commit('uiFormQuestions/setAnswers', { name, answer });
     },
-    setFormQuestionState() {
-      this.$store.commit('ui-formQuestions/setPopupState');
+    toggleFormQuestionsState() {
+      this.$store.commit('uiFormQuestions/toggleState');
     },
-    setPropertiesData(name, value) {
-      this.$store.commit('ui-formQuestions/setPropertiesData', { name, value });
+    setSectionData(name, value) {
+      this.$store.commit('uiFormQuestions/setData', { name, value });
     },
   },
 };

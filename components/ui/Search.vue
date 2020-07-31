@@ -28,34 +28,31 @@ export default {
 
   computed: {
     getUIData() {
-      return this.$store.getters['ui-search/getData'];
+      return this.$store.getters['uiSearch/getData'];
     },
   },
 
   methods: {
     resetValue() {
       this.$refs.input.value = '';
-      this.setPropertiesData('searchValue', '');
+      this.setSectionData('searchValue', '');
     },
     searchData(event) {
       if (event.target.tagName === 'INPUT' && event.keyCode == 13) {
         this.setPaginationData('currentPage', 1);
-        this.setPropertiesData('searchValue', this.$refs.input.value);
+        this.setSectionData('searchValue', this.$refs.input.value);
       }
 
       if (event.target.tagName === 'BUTTON') {
         this.setPaginationData('currentPage', 1);
-        this.setPropertiesData('searchValue', this.$refs.input.value);
+        this.setSectionData('searchValue', this.$refs.input.value);
       }
     },
-    setPropertiesData(prop, value) {
-      return this.$store.commit('ui-search/setPropertiesData', { prop, value });
+    setSectionData(prop, value) {
+      this.$store.commit('uiSearch/setData', { prop, value });
     },
     setPaginationData(prop, value) {
-      return this.$store.commit('ui-pagination/setPropertiesData', {
-        prop,
-        value,
-      });
+      this.$store.commit('uiPagination/setData', { prop, value });
     },
   },
 };

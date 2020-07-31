@@ -38,14 +38,14 @@
             <ui-button-middle
               class="section-tellstory__button-middle"
               v-if="getSectionData.firstButton"
-              @theClick="setFormQuestionsState"
+              @theClick="toggleFormQuestionsState"
             >
               {{ getSectionData.firstButtonName }}
             </ui-button-middle>
             <ui-button-middle
               class="section-tellstory__button-middle"
               v-if="getSectionData.secondButton"
-              @theClick="setFormContactsState"
+              @theClick="toggleFormContactsState"
             >
               {{ getSectionData.secondButtonName }}
             </ui-button-middle>
@@ -94,24 +94,21 @@ export default {
         this.$refs.secondButton.classList.toggle(
           'section-tellstory__control_is-active'
         );
-        this.setPropertiesData('firstButton', !this.getSectionData.firstButton);
-        this.setPropertiesData(
-          'secondButton',
-          !this.getSectionData.secondButton
-        );
+        this.setSectionData('firstButton', !this.getSectionData.firstButton);
+        this.setSectionData('secondButton', !this.getSectionData.secondButton);
       }
     },
 
-    setPropertiesData(prop, value) {
-      this.$store.commit('sectionTellstory/setPropertiesData', { prop, value });
+    setSectionData(prop, value) {
+      this.$store.commit('sectionTellstory/setData', { prop, value });
     },
 
-    setFormQuestionsState() {
-      this.$store.commit('ui-formQuestions/setPopupState');
+    toggleFormQuestionsState() {
+      this.$store.commit('uiFormQuestions/toggleState');
     },
 
-    setFormContactsState() {
-      this.$store.commit('ui-formContacts/setPopupState');
+    toggleFormContactsState() {
+      this.$store.commit('uiFormContacts/toggleState');
     },
   },
 };

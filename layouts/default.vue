@@ -27,15 +27,15 @@ export default {
 
   computed: {
     getFormQustionsState() {
-      return this.$store.getters['ui-formQuestions/getData'].visible;
+      return this.$store.getters['uiFormQuestions/getData'].visible;
     },
 
     getFormContactsState() {
-      return this.$store.getters['ui-formContacts/getData'].visible;
+      return this.$store.getters['uiFormContacts/getData'].visible;
     },
 
     getPopupSocialsState() {
-      return this.$store.getters['ui-popupSocials/getData'].visible;
+      return this.$store.getters['uiPopupSocials/getData'].visible;
     },
   },
 };

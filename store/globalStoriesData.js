@@ -1,5 +1,5 @@
 export const state = () => ({
-  storiesData: [
+  data: [
     {
       id: 5,
       title: 'Моя любовь к чтению книг с конца не лечится, в отличие от рака',
@@ -82,19 +82,19 @@ export const state = () => ({
 });
 
 export const getters = {
-  getStoriesData(state) {
-    return state.storiesData;
+  getData(state) {
+    return state.data;
   },
 };
 
 export const mutations = {
-  setStoriesData(state, { data }) {
-    return (state.storiesData = data.reverse());
+  setData(state, { data }) {
+    return (state.data = data.reverse());
   },
 };
 
 export const actions = {
-  storiesDataRequest({ state, commit }) {
+  dataRequest({ state, commit }) {
     return fetch('https://strapi.kruzhok.io/stories')
       .then(res => {
         if (res.ok) {
@@ -104,7 +104,7 @@ export const actions = {
         return Promise.reject(res.status);
       })
       .then(data => {
-        return commit('setStoriesData', { data });
+        return commit('setData', { data });
       })
       .catch(err => console.log(err));
   },
