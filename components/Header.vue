@@ -3,7 +3,7 @@
     <nav
       :class="[
         'header__navigation-mob',
-        { 'header__navigation-mob_active': getVisibleState },
+        { 'header__navigation-mob_active': getMenuData.visible },
       ]"
     >
       <nuxt-link to="/" class="header__link-mob">
@@ -12,7 +12,7 @@
       <nuxt-link to="/stories" class="header__link-mob">
         {{ getSectionData.buttonStories }}
       </nuxt-link>
-      <button class="header__button-mob" @click="setFormQuestionsState">
+      <button class="header__button-mob" @click="toggleFormQuestionsState">
         {{ getSectionData.buttonTellStory }}
       </button>
     </nav>
@@ -32,11 +32,14 @@
         <nuxt-link to="/stories" class="header__link">
           {{ getSectionData.buttonStories }}
         </nuxt-link>
-        <button class="header__button" @click="setFormQuestionsState">
+        <button class="header__button" @click="toggleFormQuestionsState">
           {{ getSectionData.buttonTellStory }}
         </button>
       </nav>
-      <button class="header__mobile-bar" @click="setVisibleState"></button>
+      <button
+        class="header__mobile-bar"
+        @click="toggleMobileMenuState"
+      ></button>
     </div>
   </header>
 </template>
@@ -47,17 +50,17 @@ export default {
     getSectionData() {
       return this.$store.getters['sectionHeader/getData'];
     },
-    getVisibleState() {
-      return this.$store.getters['ui-mobileMenu/getVisibleState'];
+    getMenuData() {
+      return this.$store.getters['uiMobileMenu/getData'];
     },
   },
 
   methods: {
-    setFormQuestionsState() {
-      this.$store.commit('ui-formQuestions/setPopupState');
+    toggleFormQuestionsState() {
+      this.$store.commit('uiFormQuestions/toggleState');
     },
-    setVisibleState() {
-      this.$store.commit('ui-mobileMenu/setVisibleState');
+    toggleMobileMenuState(prop, value) {
+      this.$store.commit('uiMobileMenu/toggleState');
     },
   },
 };

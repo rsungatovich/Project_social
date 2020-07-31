@@ -10,7 +10,7 @@
       <source src="../static/videos/headVideo.mp4" type="video/mp4" />
     </video>
     <h2 class="section-cover__title">{{ getSectionData.title }}</h2>
-    <button class="section-cover__button" @click="openPopup">
+    <button class="section-cover__button" @click="toggleFormQuestionsState">
       {{ getSectionData.buttonName }}
     </button>
     <button class="section-cover__button-arrow" @click="scrollTo"></button>
@@ -28,8 +28,8 @@ export default {
   },
 
   methods: {
-    openPopup() {
-      this.$store.commit('ui-formQuestions/setPopupState');
+    toggleFormQuestionsState() {
+      this.$store.commit('uiFormQuestions/toggleState');
     },
   },
 };

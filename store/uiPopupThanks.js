@@ -10,3 +10,9 @@ export const getters = {
     return state.data;
   },
 };
+
+export const mutations = {
+  setData(state, { name, value }) {
+    return (state.data[name] = value);
+  },
+};

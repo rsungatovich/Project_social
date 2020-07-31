@@ -39,7 +39,7 @@ export const getters = {
 };
 
 export const mutations = {
-  setPropertiesData(state, { prop, value }) {
+  setData(state, { prop, value }) {
     return (state.data[prop] = value);
   },
 };

@@ -50,7 +50,7 @@ export default {
 
   computed: {
     getBannerData(state) {
-      return this.$store.getters['ui-tagBanner/getData'];
+      return this.$store.getters['uiTagBanner/getData'];
     },
   },
 

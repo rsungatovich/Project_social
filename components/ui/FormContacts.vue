@@ -1,5 +1,5 @@
 <template>
-  <popup @theClick="setFormContactsState">
+  <popup @theClick="toggleFormContactsState">
     <form class="form-contacts" @submit.prevent="submitForm" ref="form">
       <p class="form-contacts__headline">
         {{ getUIData.information.headline }}
@@ -78,7 +78,7 @@ export default {
   },
   computed: {
     getUIData() {
-      return this.$store.getters['ui-formContacts/getData'];
+      return this.$store.getters['uiFormContacts/getData'];
     },
   },
   methods: {
@@ -86,14 +86,14 @@ export default {
       this.$refs.form.querySelectorAll('input').forEach(input => {
         this.setInputValues(input.name, input.value);
       });
-      this.setFormContactsState();
+      this.toggleFormContactsState();
       console.log(this.getUIData.inputValues);
     },
     setInputValues(type, value) {
-      this.$store.commit('ui-formContacts/setInputValues', { type, value });
+      this.$store.commit('uiFormContacts/setInputValues', { type, value });
     },
-    setFormContactsState() {
-      this.$store.commit('ui-formContacts/setPopupState');
+    toggleFormContactsState() {
+      this.$store.commit('uiFormContacts/toggleState');
     },
   },
 };

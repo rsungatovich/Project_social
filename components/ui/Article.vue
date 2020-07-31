@@ -55,16 +55,16 @@ export default {
       return localizedDate;
     },
     getStoriesData() {
-      return this.$store.getters['global-storiesData/getStoriesData'];
+      return this.$store.getters['globalStoriesData/getData'];
     },
     getUIData() {
-      return this.$store.getters['ui-article/getData'];
+      return this.$store.getters['uiArticle/getData'];
     },
   },
 
   methods: {
     setPopupSocialsState() {
-      this.$store.commit('ui-popupSocials/setPopupState');
+      this.$store.commit('uiPopupSocials/toggleState');
     },
 
     findImageSize(card) {
@@ -80,7 +80,7 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('global-storiesData/storiesDataRequest');
+    await this.$store.dispatch('globalStoriesData/dataRequest');
   },
 };
 </script>

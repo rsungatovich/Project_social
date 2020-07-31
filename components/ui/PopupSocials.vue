@@ -87,12 +87,12 @@ export default {
   },
   computed: {
     getUIData() {
-      return this.$store.getters['ui-popupSocials/getData'];
+      return this.$store.getters['uiPopupSocials/getData'];
     },
   },
   methods: {
     setPopupSocialsState() {
-      this.$store.commit('ui-popupSocials/setPopupState');
+      this.$store.commit('uiPopupSocials/toggleState');
     },
   },
 };

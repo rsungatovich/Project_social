@@ -14,7 +14,10 @@
           >
             {{ getSectionData.subtitle }}
           </ui-subtitle>
-          <button class="section-about__button" @click="setFormQuestionsState">
+          <button
+            class="section-about__button"
+            @click="toggleFormQuestionsState"
+          >
             {{ getSectionData.buttonName }}
           </button>
           <img
@@ -51,7 +54,7 @@
           </div>
           <button
             class="section-about__button-mob"
-            @click="setFormQuestionsState"
+            @click="toggleFormQuestionsState"
           >
             {{ getSectionData.buttonName }}
           </button>
@@ -107,20 +110,17 @@ export default {
         this.$refs.secondButton.classList.toggle(
           'section-about__control_is-active'
         );
-        this.setPropertiesData('firstButton', !this.getSectionData.firstButton);
-        this.setPropertiesData(
-          'secondButton',
-          !this.getSectionData.secondButton
-        );
+        this.setSectionData('firstButton', !this.getSectionData.firstButton);
+        this.setSectionData('secondButton', !this.getSectionData.secondButton);
       }
     },
 
-    setPropertiesData(prop, value) {
-      this.$store.commit('sectionAbout/setPropertiesData', { prop, value });
+    setSectionData(prop, value) {
+      this.$store.commit('sectionAbout/setData', { prop, value });
     },
 
-    setFormQuestionsState() {
-      this.$store.commit('ui-formQuestions/setPopupState');
+    toggleFormQuestionsState() {
+      this.$store.commit('uiFormQuestions/toggleState');
     },
   },
 };

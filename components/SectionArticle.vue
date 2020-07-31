@@ -53,7 +53,7 @@ export default {
     },
 
     getStoriesData() {
-      return this.$store.getters['global-storiesData/getStoriesData'];
+      return this.$store.getters['globalStoriesData/getData'];
     },
 
     getSectionData() {
@@ -75,7 +75,7 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('global-storiesData/storiesDataRequest');
+    await this.$store.dispatch('globalStoriesData/dataRequest');
   },
 };
 </script>

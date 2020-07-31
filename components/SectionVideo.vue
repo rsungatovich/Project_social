@@ -72,7 +72,7 @@ export default {
       this.setSliderData('isVisible', true);
     },
     setSliderData(prop, value) {
-      this.$store.commit('ui-slider/setPropertiesData', { prop, value });
+      this.$store.commit('uiSlider/setData', { prop, value });
     },
   },
 };
