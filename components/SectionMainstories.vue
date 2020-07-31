@@ -55,7 +55,7 @@ export default {
       return this.getPresentStories.filter((card, index) => index < 4);
     },
     getStoriesData() {
-      return this.$store.getters['storiesData/getStoriesData'];
+      return this.$store.getters['global-storiesData/getStoriesData'];
     },
     getSectionData() {
       return this.$store.getters['sectionMainstories/getData'];
@@ -102,7 +102,7 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('storiesData/storiesDataRequest');
+    await this.$store.dispatch('global-storiesData/storiesDataRequest');
   },
 };
 </script>

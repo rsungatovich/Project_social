@@ -45,19 +45,19 @@
 export default {
   computed: {
     getSectionData() {
-      return this.$store.getters['header/getData'];
+      return this.$store.getters['sectionHeader/getData'];
     },
     getVisibleState() {
-      return this.$store.getters['mobileMenu/getVisibleState'];
+      return this.$store.getters['ui-mobileMenu/getVisibleState'];
     },
   },
 
   methods: {
     openPopup() {
-      this.$store.commit('formQuestions/setPopupState');
+      this.$store.commit('ui-formQuestions/setPopupState');
     },
     setVisibleState() {
-      this.$store.commit('mobileMenu/setVisibleState');
+      this.$store.commit('ui-mobileMenu/setVisibleState');
     },
   },
 };

@@ -25,12 +25,12 @@ export default {
   },
   computed: {
     getDescription() {
-      return this.$store.getters['popupThanks/getDescription'];
+      return this.$store.getters['ui-popupThanks/getDescription'];
     },
   },
   methods: {
     closePopup() {
-      this.$store.commit('formQuestions/setPopupState');
+      this.$store.commit('ui-formQuestions/setPopupState');
     },
   },
 };

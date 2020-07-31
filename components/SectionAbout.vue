@@ -117,7 +117,7 @@ export default {
     },
 
     openPopup() {
-      this.$store.commit('formQuestions/setPopupState');
+      this.$store.commit('ui-formQuestions/setPopupState');
     },
   },
 };

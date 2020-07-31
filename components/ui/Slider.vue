@@ -27,10 +27,10 @@
 export default {
   computed: {
     getSlidesData() {
-      return this.$store.getters['slider/getSlidesData'];
+      return this.$store.getters['ui-slider/getSlidesData'];
     },
     getVisibleState() {
-      return this.$store.getters['slider/getVisibleState'];
+      return this.$store.getters['ui-slider/getVisibleState'];
     },
   },
 
@@ -40,7 +40,7 @@ export default {
     },
 
     setVisibleState(boolean) {
-      this.$store.commit('slider/setVisibleState', { boolean });
+      this.$store.commit('ui-slider/setVisibleState', { boolean });
     },
   },
 };

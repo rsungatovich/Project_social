@@ -6,12 +6,10 @@
 
 <script>
 import SectionArticle from '@/components/SectionArticle';
-import PopupSocials from '@/components/ui/PopupSocials';
 
 export default {
   components: {
     'section-article': SectionArticle,
-    'popup-socials': PopupSocials,
   },
 };
 </script>
@@ -22,10 +20,6 @@ export default {
 }
 
 .content__section-article {
-  margin: 0 auto;
-}
-
-.content__no-found-404 {
   margin: 0 auto;
 }
 </style>

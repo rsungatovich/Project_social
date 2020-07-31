@@ -72,7 +72,7 @@ export default {
       this.setVisibleState(true);
     },
     setVisibleState(boolean) {
-      this.$store.commit('slider/setVisibleState', { boolean });
+      this.$store.commit('ui-slider/setVisibleState', { boolean });
     },
   },
 };

@@ -57,13 +57,13 @@ export default {
 
   computed: {
     getSectionData() {
-      return this.$store.getters['footer/getData'];
+      return this.$store.getters['sectionFooter/getData'];
     },
   },
 
   methods: {
     openPopup() {
-      this.$store.commit('popupSocials/setPopupState');
+      this.$store.commit('ui-popupSocials/setPopupState');
     },
   },
 };

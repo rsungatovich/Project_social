@@ -87,15 +87,15 @@ export default {
   },
   computed: {
     getLinks() {
-      return this.$store.getters['popupSocials/getLinks'];
+      return this.$store.getters['ui-popupSocials/getLinks'];
     },
     getDescription() {
-      return this.$store.getters['popupSocials/getDescription'];
+      return this.$store.getters['ui-popupSocials/getDescription'];
     },
   },
   methods: {
     closePopup() {
-      this.$store.commit('popupSocials/setPopupState');
+      this.$store.commit('ui-popupSocials/setPopupState');
     },
   },
 };

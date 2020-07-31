@@ -110,10 +110,10 @@ export default {
       return end < this.totalPages ? end : this.totalPages;
     },
     getPerPage() {
-      return this.$store.getters['pagination/getPerPage'];
+      return this.$store.getters['ui-pagination/getPerPage'];
     },
     getCurrentPage() {
-      return this.$store.getters['pagination/getCurrentPage'];
+      return this.$store.getters['ui-pagination/getCurrentPage'];
     },
   },
 
@@ -149,7 +149,7 @@ export default {
       }
     },
     setCurrentPage(param) {
-      return this.$store.commit('pagination/setCurrentPage', { param });
+      return this.$store.commit('ui-pagination/setCurrentPage', { param });
     },
   },
 

@@ -41,7 +41,7 @@ export default {
 
   computed: {
     getStoriesData() {
-      return this.$store.getters['storiesData/getStoriesData'];
+      return this.$store.getters['global-storiesData/getStoriesData'];
     },
 
     findStoryData() {
@@ -67,7 +67,7 @@ export default {
 
   methods: {
     openPopup() {
-      this.$store.commit('popupSocials/setPopupState');
+      this.$store.commit('ui-popupSocials/setPopupState');
     },
 
     findImageSize(card) {
@@ -83,7 +83,7 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('storiesData/storiesDataRequest');
+    await this.$store.dispatch('global-storiesData/storiesDataRequest');
   },
 };
 </script>

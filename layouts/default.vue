@@ -1,8 +1,8 @@
 <template>
   <div class="page">
-    <the-header class="page__header" />
+    <section-header class="page__header" />
     <nuxt />
-    <the-footer class="page__footer" />
+    <section-footer class="page__footer" />
     <form-questions v-if="visibleFormQustions" />
     <form-contacts v-if="visibleFormContacts" />
     <popup-socials v-if="visiblePopupSocials" />
@@ -20,8 +20,8 @@ import NoFound404 from '@/components/ui/NoFound404';
 
 export default {
   components: {
-    'the-header': Header,
-    'the-footer': Footer,
+    'section-header': Header,
+    'section-footer': Footer,
     'form-questions': FormQuestions,
     'form-contacts': FormContacts,
     'popup-socials': PopupSocials,
@@ -42,15 +42,15 @@ export default {
 
   computed: {
     visibleFormQustions() {
-      return this.$store.getters['formQuestions/getPopupState'];
+      return this.$store.getters['ui-formQuestions/getPopupState'];
     },
 
     visibleFormContacts() {
-      return this.$store.getters['formContacts/getPopupState'];
+      return this.$store.getters['ui-formContacts/getPopupState'];
     },
 
     visiblePopupSocials() {
-      return this.$store.getters['popupSocials/getPopupState'];
+      return this.$store.getters['ui-popupSocials/getPopupState'];
     },
   },
 };

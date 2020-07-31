@@ -91,7 +91,7 @@ export default {
   },
   computed: {
     getInformation() {
-      return this.$store.getters['formContacts/getInformation'];
+      return this.$store.getters['ui-formContacts/getInformation'];
     },
   },
   methods: {
@@ -104,10 +104,10 @@ export default {
       this.closePopup();
     },
     closePopup() {
-      this.$store.commit('formContacts/setPopupState');
+      this.$store.commit('ui-formContacts/setPopupState');
     },
     setValues(type, value) {
-      return this.$store.commit('formContacts/setValues', { type, value });
+      return this.$store.commit('ui-formContacts/setValues', { type, value });
     },
   },
 };

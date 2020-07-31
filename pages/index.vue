@@ -1,24 +1,24 @@
 <template>
   <main class="content">
-    <head-banner class="content__head-banner" :scrollTo="scrollTo" />
+    <section-cover class="content__section-cover" :scrollTo="scrollTo" />
     <section-video class="content__section-video" ref="sectionVideo" />
-    <tag-banner class="content__tag-banner">
+    <ui-tag-banner class="content__tag-banner">
       <template v-slot:title>
-        {{ getTagContentFirst }}
+        {{ getBannerData.tagContentFirst }}
       </template>
       <template v-slot:subtitle>
-        {{ getTagFirst }}
+        {{ getBannerData.tagFirst }}
       </template>
-    </tag-banner>
+    </ui-tag-banner>
     <section-mainstories class="content__section-mainstories" />
-    <tag-banner class="content__tag-banner">
+    <ui-tag-banner class="content__tag-banner">
       <template v-slot:title>
-        {{ getTagContentSecond }}
+        {{ getBannerData.contentSecond }}
       </template>
       <template v-slot:subtitle>
-        {{ getTagFirst }} {{ getTagSecond }}
+        {{ getBannerData.tagFirst }} {{ getBannerData.tagSecond }}
       </template>
-    </tag-banner>
+    </ui-tag-banner>
     <section-instagram class="content__section-instagram" />
     <section-tellstory class="content__section-tellstory" />
     <section-statistic class="content__section-statistic" />
@@ -27,45 +27,30 @@
 </template>
 
 <script>
-import HeadBanner from '@/components/HeadBanner';
-import TagBanner from '@/components/TagBanner';
+import SectionCover from '@/components/SectionCover';
 import SectionVideo from '@/components/SectionVideo';
 import SectionMainstories from '@/components/SectionMainstories';
 import SectionInstagram from '@/components/SectionInstagram';
 import SectionTellstory from '@/components/SectionTellstory';
 import SectionStatistic from '@/components/SectionStatistic';
 import SectionAbout from '@/components/SectionAbout';
-import FormQuestions from '@/components/ui/FormQuestions';
-import FormContacts from '@/components/ui/FormContacts';
-import PopupThanks from '@/components/ui/PopupThanks';
+import TagBanner from '@/components/ui/TagBanner';
 
 export default {
   components: {
-    'head-banner': HeadBanner,
-    'tag-banner': TagBanner,
+    'ui-tag-banner': TagBanner,
+    'section-cover': SectionCover,
     'section-video': SectionVideo,
     'section-mainstories': SectionMainstories,
     'section-instagram': SectionInstagram,
     'section-tellstory': SectionTellstory,
     'section-statistic': SectionStatistic,
     'section-about': SectionAbout,
-    'form-questions': FormQuestions,
-    'form-contacts': FormContacts,
-    'popup-thanks': PopupThanks,
   },
 
   computed: {
-    getTagFirst(state) {
-      return this.$store.getters['tagBanner/getTagFirst'];
-    },
-    getTagSecond(state) {
-      return this.$store.getters['tagBanner/getTagSecond'];
-    },
-    getTagContentFirst(state) {
-      return this.$store.getters['tagBanner/getTagContentFirst'];
-    },
-    getTagContentSecond(state) {
-      return this.$store.getters['tagBanner/getTagContentSecond'];
+    getBannerData(state) {
+      return this.$store.getters['ui-tagBanner/getData'];
     },
   },
 
@@ -82,7 +67,7 @@ export default {
   font-family: 'Inter', monospace;
 }
 
-.content__head-banner {
+.content__section-cover {
   margin: 0 auto;
 }
 
@@ -98,7 +83,7 @@ export default {
   margin: 0 auto;
 }
 
-.content__tag-banner {
+.ui-content__tag-banner {
   margin: 0 auto;
 }
 

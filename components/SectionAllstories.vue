@@ -66,19 +66,19 @@ export default {
       return this.filterStories.length > 0 ? false : true;
     },
     getStoriesData() {
-      return this.$store.getters['storiesData/getStoriesData'];
+      return this.$store.getters['global-storiesData/getStoriesData'];
     },
     getSectionData() {
       return this.$store.getters['sectionAllstories/getData'];
     },
     getCurrentPage() {
-      return this.$store.getters['pagination/getCurrentPage'];
+      return this.$store.getters['ui-pagination/getCurrentPage'];
     },
     getPerPage() {
-      return this.$store.getters['pagination/getPerPage'];
+      return this.$store.getters['ui-pagination/getPerPage'];
     },
     getSearchValue() {
-      return this.$store.getters['search/getValue'];
+      return this.$store.getters['ui-search/getValue'];
     },
   },
 
@@ -109,7 +109,7 @@ export default {
     },
 
     setPerPage(param) {
-      return this.$store.commit('pagination/setPerPage', { param });
+      return this.$store.commit('ui-pagination/setPerPage', { param });
     },
   },
 
@@ -118,7 +118,7 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('storiesData/storiesDataRequest');
+    await this.$store.dispatch('global-storiesData/storiesDataRequest');
   },
 };
 </script>

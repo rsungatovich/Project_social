@@ -77,13 +77,13 @@ export default {
 
   computed: {
     getForms() {
-      return this.$store.getters['formQuestions/getForms'];
+      return this.$store.getters['ui-formQuestions/getForms'];
     },
     getAnswers() {
-      return this.$store.getters['formQuestions/getAnswers'];
+      return this.$store.getters['ui-formQuestions/getAnswers'];
     },
     getCounter() {
-      return this.$store.getters['formQuestions/getCounter'];
+      return this.$store.getters['ui-formQuestions/getCounter'];
     },
   },
 
@@ -119,16 +119,16 @@ export default {
       }
     },
     closePopup() {
-      this.$store.commit('formQuestions/setPopupState');
+      this.$store.commit('ui-formQuestions/setPopupState');
     },
     setAnswers() {
-      return this.$store.commit('formQuestions/setAnswers', {
+      return this.$store.commit('ui-formQuestions/setAnswers', {
         name: this.getCounter,
         answer: this.$refs.input.value,
       });
     },
     setCounter(num) {
-      return this.$store.commit('formQuestions/setCounter', {
+      return this.$store.commit('ui-formQuestions/setCounter', {
         count: num,
       });
     },

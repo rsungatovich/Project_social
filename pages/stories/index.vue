@@ -22,8 +22,4 @@ export default {
 .content__section-allstories {
   margin: 0 auto;
 }
-
-.content__no-found-404 {
-  margin: 0 auto;
-}
 </style>

@@ -35,16 +35,16 @@ export default {
 
   methods: {
     setValue(value) {
-      this.$store.commit('search/setValue', { value });
+      this.$store.commit('ui-search/setValue', { value });
     },
 
     resetValue() {
       this.$refs.input.value = '';
-      this.$store.commit('search/resetValue');
+      this.$store.commit('ui-search/resetValue');
     },
 
     setCurrentPage(param) {
-      return this.$store.commit('pagination/setCurrentPage', { param });
+      return this.$store.commit('ui-pagination/setCurrentPage', { param });
     },
 
     searchData(event) {

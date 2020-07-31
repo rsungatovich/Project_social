@@ -107,11 +107,11 @@ export default {
     },
 
     openFormQuestions() {
-      this.$store.commit('formQuestions/setPopupState');
+      this.$store.commit('ui-formQuestions/setPopupState');
     },
 
     openFormContacts() {
-      this.$store.commit('formContacts/setPopupState');
+      this.$store.commit('ui-formContacts/setPopupState');
     },
   },
 };
