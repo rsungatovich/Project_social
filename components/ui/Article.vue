@@ -78,10 +78,6 @@ export default {
         return card.ImageUrl[0].formats.thumbnail.url;
     },
   },
-
-  async fetch() {
-    await this.$store.dispatch('globalStoriesData/dataRequest');
-  },
 };
 </script>
 

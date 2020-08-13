@@ -11,6 +11,10 @@ export default {
   components: {
     'section-article': SectionArticle,
   },
+  async fetch() {
+    await this.$store.dispatch('globalContentData/dataRequest');
+    await this.$store.dispatch('globalStoriesData/dataRequest');
+  },
 };
 </script>
 
