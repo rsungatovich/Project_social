@@ -59,6 +59,11 @@ export default {
       this.$refs.sectionVideo.$el.scrollIntoView({ behavior: 'smooth' });
     },
   },
+
+  async fetch() {
+    await this.$store.dispatch('globalContentData/dataRequest');
+    await this.$store.dispatch('globalStoriesData/dataRequest');
+  },
 };
 </script>
 

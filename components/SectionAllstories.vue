@@ -117,10 +117,6 @@ export default {
   created: function() {
     this.countStories();
   },
-
-  async fetch() {
-    await this.$store.dispatch('globalStoriesData/dataRequest');
-  },
 };
 </script>
 

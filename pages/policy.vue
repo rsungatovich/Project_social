@@ -11,6 +11,10 @@ export default {
   components: {
     'section-policy': SectionPolicy,
   },
+
+  async fetch() {
+    await this.$store.dispatch('globalContentData/dataRequest');
+  },
 };
 </script>
 
