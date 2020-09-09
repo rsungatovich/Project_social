@@ -1,22 +1,28 @@
-# Social
+# **Раклечится**
+Версия 1.0.0
 
-> Social
+## О проекте:
+Проект для благотворительного фонда Константина Хабенского. Раклечится 2020.
 
-## Build Setup
+## Основной функционал:
+- Запросы на API (fetch)
+- Слайдер с видео контентом
+- Выдвижной меню-бар (для моб.)
+- Динамический рендеринг данных
+- Роутинг страниц с историями
+- Пагинация страниц с историями
+- Поле ввода для поиска историй
+- Возможность репостнуть страницу
+- Форма с вопросами об истории
+- Форма с контактными данными
+- Адаптивная/респонсив верстка
 
-```bash
-# install dependencies
-$ npm install
+## Стэк технологий:
+ES5+, CSS3, HTML5, SCSS, GIT, WebPack, BEM, Vue (SPA), Nuxt (SSR).
 
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## Инструкции по запуску:
+- Склонировать репозиторий с github- "git clone"
+- Установить зависимости при помощи npm - "npm i"
+- Запустить в development режиме - "npm run dev"
+- Запустить сборку production-билда - "npm run build"
+- Запустить сборку для статического-билда - "npm run generate"
